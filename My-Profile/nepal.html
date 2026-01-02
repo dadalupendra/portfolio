@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="About Nepal — Provinces, 77 Districts, famous places, travel basics." />
+  <meta name="theme-color" content="#0b1220" />
+  <title>About Nepal | Dadal Upendra Singh</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/nepal.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="logo" aria-hidden="true">◎</span>
+        <div class="brand-text">
+          <strong class="brand-title">About Nepal</strong>
+          <span class="brand-sub">Provinces • 77 Districts • Travel Basics</span>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Primary">
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="sr-only">Open menu</span>
+        </button>
+
+        <ul class="nav-menu" id="navMenu">
+          <li><a class="nav-link" href="#facts" data-i18n="navFacts">Quick Facts</a></li>
+          <li><a class="nav-link" href="#districts" data-i18n="navDistricts">Provinces & Districts</a></li>
+          <li><a class="nav-link" href="#places" data-i18n="navPlaces">Famous Places</a></li>
+          <li><a class="nav-link" href="#travel" data-i18n="navTravel">Travel</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn btn-ghost" id="themeToggle" type="button" aria-label="Toggle theme">
+          <span id="themeIcon" aria-hidden="true">🌙</span>
+        </button>
+        <a class="btn btn-secondary" href="index.html" data-i18n="backBtn">← Back to Portfolio</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero nepal-hero">
+      <div class="container hero-inner">
+        <div class="hero-left">
+          <p class="pill" data-i18n="pill">Nepal • Culture • Nature • People</p>
+
+          <h1 data-i18n="heroTitle">Nepal: A small country with a big heart.</h1>
+
+          <p class="lead" data-i18n="heroSub">
+            This page helps you explore Nepal’s 7 provinces, 77 districts, famous places, and basic travel planning.
+          </p>
+
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#districts" data-i18n="ctaExplore">Explore Districts</a>
+            <a class="btn btn-secondary" href="#places" data-i18n="ctaPlaces">See Places</a>
+          </div>
+
+          <div class="lang-switch" aria-label="Language switch">
+            <button class="lang-btn is-active" data-lang="en" type="button">EN</button>
+            <button class="lang-btn" data-lang="ne" type="button">ने</button>
+            <button class="lang-btn" data-lang="ja" type="button">日</button>
+            <button class="lang-btn" data-lang="hi" type="button">हि</button>
+          </div>
+
+          <div class="mini-stats" role="list">
+            <div class="stat" role="listitem">
+              <span class="stat-num">7</span>
+              <span class="stat-label" data-i18n="statProvinces">Provinces</span>
+            </div>
+            <div class="stat" role="listitem">
+              <span class="stat-num">77</span>
+              <span class="stat-label" data-i18n="statDistricts">Districts</span>
+            </div>
+            <div class="stat" role="listitem">
+              <span class="stat-num">🗺️</span>
+              <span class="stat-label" data-i18n="statPlan">Plan</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="card nepal-map-card">
+            <h3 class="nepal-card-title" data-i18n="mapTitle">Nepal Map (OpenStreetMap)</h3>
+            <p class="muted" data-i18n="mapNote">Embedded preview. Use “Open full map” for details.</p>
+
+            <div class="map-embed">
+              <iframe
+                title="Nepal map"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=79.8%2C26.3%2C89.9%2C31.0&layer=mapnik"
+                loading="lazy"></iframe>
+            </div>
+
+            <div class="nepal-card-actions">
+              <a class="btn btn-small btn-secondary" target="_blank" rel="noreferrer"
+                 href="https://www.openstreetmap.org/#map=7/28.3/84.0"
+                 data-i18n="openFullMap">Open full map</a>
+
+              <button class="btn btn-small btn-secondary" id="loadWikiNepal" type="button" data-i18n="loadWiki">
+                Load Wikipedia summary
+              </button>
+            </div>
+
+            <div class="wiki-box" id="wikiNepal" aria-live="polite"></div>
+            <p class="tiny-note" data-i18n="wikiTip">Note: Wikipedia needs internet.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="facts">
+      <div class="container">
+        <div class="section-head">
+          <h2 data-i18n="factsTitle">Quick Facts</h2>
+          <p data-i18n="factsSub">Short, simple, useful info (edit later).</p>
+        </div>
+
+        <div class="nepal-facts-grid">
+          <article class="card"><h3 data-i18n="fact1Title">Capital</h3><p class="muted" data-i18n="fact1Body">Kathmandu</p></article>
+          <article class="card"><h3 data-i18n="fact2Title">Nature</h3><p class="muted" data-i18n="fact2Body">Mountains, hills, and Terai.</p></article>
+          <article class="card"><h3 data-i18n="fact3Title">Best seasons</h3><p class="muted" data-i18n="fact3Body">Spring and Autumn.</p></article>
+          <article class="card"><h3 data-i18n="fact4Title">Culture</h3><p class="muted" data-i18n="fact4Body">Many groups, languages, festivals.</p></article>
+        </div>
+
+        <div class="callout">
+          <strong data-i18n="calloutTitle">Traditional travel rule:</strong>
+          <span data-i18n="calloutBody">Respect culture. Dress modestly in temples. Ask before photos.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="districts">
+      <div class="container">
+        <div class="section-head">
+          <h2 data-i18n="distTitle">Provinces & 77 Districts</h2>
+          <p data-i18n="distSub">Search districts, filter by province, and explore.</p>
+        </div>
+
+        <div class="nepal-toolbar">
+          <div class="toolbar-left">
+            <input id="districtSearch" type="search" placeholder="Search district..." />
+            <select id="provinceSelect">
+              <option value="all">All Provinces</option>
+            </select>
+          </div>
+
+          <div class="toolbar-right">
+            <span class="result-pill" id="resultCount">77 results</span>
+            <button class="btn btn-small btn-secondary" id="clearFilter" type="button" data-i18n="clearBtn">Clear</button>
+          </div>
+        </div>
+
+        <div class="province-cards" id="provinceCards"></div>
+
+        <div class="card">
+          <div class="district-head">
+            <h3 data-i18n="districtListTitle">District List</h3>
+            <p class="muted" data-i18n="districtListSub">Click a district to open details page.</p>
+          </div>
+
+          <div class="district-list" id="districtList"></div>
+          <p class="tiny-note" data-i18n="districtNote">Tip: District click -> district.html details.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="places">
+      <div class="container">
+        <div class="section-head">
+          <h2 data-i18n="placesTitle">Famous Places</h2>
+          <p data-i18n="placesSub">Classic destinations to start with.</p>
+        </div>
+        <div class="places-grid" id="placesGrid"></div>
+      </div>
+    </section>
+
+    <section class="section alt" id="travel">
+      <div class="container">
+        <div class="section-head">
+          <h2 data-i18n="travelTitle">Travel Basics</h2>
+          <p data-i18n="travelSub">Simple checklist (edit prices later).</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3 data-i18n="howToGoTitle">How to go</h3>
+            <ul class="checklist">
+              <li data-i18n="how1">International flight → Kathmandu (TIA).</li>
+              <li data-i18n="how2">Inside Nepal: plane (fast), bus (cheap), jeep (mountain).</li>
+              <li data-i18n="how3">For trekking: plan permits, guide/porter if needed.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3 data-i18n="budgetTitle">Budget idea (example)</h3>
+            <div class="budget-grid">
+              <div class="budget-item"><span data-i18n="b1">Local meals</span><strong>$2–$6</strong></div>
+              <div class="budget-item"><span data-i18n="b2">Budget hotel</span><strong>$10–$25</strong></div>
+              <div class="budget-item"><span data-i18n="b3">Local bus</span><strong>$1–$10</strong></div>
+              <div class="budget-item"><span data-i18n="b4">Domestic flight</span><strong>$80–$200</strong></div>
+            </div>
+            <p class="muted" data-i18n="budgetNote">Example only. Update later.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p>© <span id="year"></span> About Nepal Project • DADAL UPENDRA SINGH</p>
+        <a class="backtop" href="#top">Back to top ↑</a>
+      </div>
+    </footer>
+  </main>
+
+  <link rel="stylesheet" href="nepal.css" />
+<script src="nepal.js"></script>
+
+</body>
+</html>

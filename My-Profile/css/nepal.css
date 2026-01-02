@@ -1,0 +1,176 @@
+.nepal-map-card iframe{
+  width:100%;
+  height:280px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  background: rgba(255,255,255,.04);
+}
+
+.nepal-card-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
+.map-embed{ margin-top:10px; }
+
+.wiki-box{
+  margin-top:12px;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:12px 14px;
+  background: rgba(255,255,255,.04);
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.lang-switch{ display:flex; gap:8px; margin: 10px 0 0; flex-wrap:wrap; }
+.lang-btn{
+  padding:10px 12px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background: rgba(255,255,255,.05);
+  color: var(--text);
+  font-weight:900;
+  cursor:pointer;
+}
+.lang-btn.is-active{ background: rgba(122,168,255,.18); }
+
+.nepal-facts-grid{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:14px;
+}
+
+.callout{
+  margin-top:14px;
+  padding:14px 16px;
+  border-radius:16px;
+  border:1px solid var(--border);
+  background: rgba(159,240,198,.10);
+}
+
+.nepal-toolbar{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+  align-items:center;
+  margin: 12px 0 16px;
+}
+.toolbar-left{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+
+#districtSearch{
+  width: min(420px, 82vw);
+  padding:12px 14px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background: rgba(255,255,255,.05);
+  color: var(--text);
+  outline:none;
+}
+
+#provinceSelect{
+  padding:12px 14px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background: rgba(255,255,255,.05);
+  color: var(--text);
+  outline:none;
+  font-weight:800;
+}
+
+.result-pill{
+  display:inline-flex;
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background: rgba(255,255,255,.05);
+  font-weight:900;
+}
+
+.province-cards{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:14px;
+  margin-bottom:14px;
+}
+.province-card{
+  border:1px solid var(--border);
+  background: rgba(255,255,255,.05);
+  border-radius:16px;
+  padding:14px;
+  cursor:pointer;
+}
+.province-card .top{ display:flex; justify-content:space-between; gap:10px; }
+.province-card .name{ font-weight:900; }
+.province-card .count{
+  padding:7px 10px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background: rgba(122,168,255,.14);
+  font-weight:900;
+  font-size:12px;
+}
+.province-card .hint{ margin-top:10px; color: var(--muted); font-size:13px; line-height:1.5; }
+
+.district-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:10px;
+}
+
+.district-list{ display:flex; flex-wrap:wrap; gap:10px; }
+.district-chip{
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  padding:10px 12px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background: rgba(255,255,255,.05);
+  cursor:pointer;
+  font-weight:900;
+}
+.district-chip .prov{ font-weight:800; color: var(--muted); font-size:12px; }
+
+.places-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:14px;
+}
+.tag{
+  display:inline-flex;
+  padding:7px 10px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background: rgba(159,240,198,.10);
+  font-weight:900;
+  font-size:12px;
+}
+.place-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
+
+.budget-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:10px;
+  margin-top:10px;
+}
+.budget-item{
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:12px 14px;
+  background: rgba(255,255,255,.05);
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+.budget-item span{ color: var(--muted); font-weight:900; }
+
+@media (max-width: 980px){
+  .nepal-facts-grid{ grid-template-columns: repeat(2, 1fr); }
+  .province-cards{ grid-template-columns: repeat(2, 1fr); }
+  .places-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 680px){
+  .places-grid{ grid-template-columns: 1fr; }
+}
