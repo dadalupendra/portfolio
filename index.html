@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Portfolio of DADAL UPENDRA SINGH — Information Processing (情報処理科) student at 専門学校東京テクニカルカレッジ. Goal: IT services and app development." />
+  <meta name="theme-color" content="#0b1220" />
+  <title>DADAL UPENDRA SINGH | Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <div class="brand">
+  <div class="brand-photo" aria-label="Profile photo">
+    <img id="brandImg" src="assets/profile.jpg" alt="Dadal profile photo" />
+    <span id="brandFallback" class="brand-fallback" aria-hidden="true">DU</span>
+  </div>
+
+  <div class="brand-text">
+    <strong class="brand-title">DADAL UPENDRA SINGH</strong>
+    <span class="brand-sub">情報処理科 / 専門学校東京テクニカルカレッジ • Tokyo</span>
+  </div>
+</div>
+
+
+      <nav class="nav" aria-label="Primary">
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="sr-only">Open menu</span>
+        </button>
+
+        <ul class="nav-menu" id="navMenu">
+          <li><a class="nav-link" href="#about">About</a></li>
+          <li><a class="nav-link" href="#skills">Skills</a></li>
+          <li><a class="nav-link" href="#projects">Projects</a></li>
+          <li><a class="nav-link" href="#education">Education</a></li>
+          <li><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn btn-ghost" id="themeToggle" type="button" aria-label="Toggle theme">
+          <span id="themeIcon" aria-hidden="true">🌙</span>
+        </button>
+        <a class="btn btn-primary" href="#contact">Hire / Connect</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-left">
+          <p class="pill">Open to Intern / Junior • IT Service • (Goal) App Development</p>
+
+          <h1>
+            Hi, I’m <span class="accent">DADAL UPENDRA SINGH</span>.
+            <br />
+            I’m an <span class="accent">Information Processing</span> student in Tokyo.
+          </h1>
+
+          <p class="lead">
+            I study IT at <strong>専門学校東京テクニカルカレッジ</strong> (情報処理科).
+            I can speak a little <strong>Nepali, Hindi, Japanese, and English</strong>.
+            My goal is to work in an IT company in the future—especially in <strong>app development</strong> and <strong>IT services</strong>.
+          </p>
+
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#projects">See Projects</a>
+            <a class="btn btn-secondary" href="#about">Read About Me</a>
+            <button class="btn btn-ghost" id="copyEmailBtn" type="button">Copy Email</button>
+          </div>
+
+          <div class="mini-stats" role="list">
+            <div class="stat" role="listitem">
+              <span class="stat-num">HTML/CSS</span>
+              <span class="stat-label">Frontend</span>
+            </div>
+            <div class="stat" role="listitem">
+              <span class="stat-num">JavaScript</span>
+              <span class="stat-label">Learning</span>
+            </div>
+            <div class="stat" role="listitem">
+              <span class="stat-num">Oracle SQL</span>
+              <span class="stat-label">Basics</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="avatar" id="avatarBox">
+  <img id="profileImg" src="assets/profile.jpg" alt="Profile photo" />
+  <div class="avatar-fallback" id="avatarFallback" aria-hidden="true">DU</div>
+</div>
+
+<div class="avatar-actions">
+  <label class="btn btn-small btn-secondary">
+    Upload Photo
+    <input type="file" id="avatarInput" accept="image/*" hidden />
+  </label>
+  <button class="btn btn-small btn-ghost" id="avatarReset" type="button">Reset</button>
+</div>
+
+
+            <div class="profile-info">
+              <h2 class="profile-name">DADAL UPENDRA SINGH</h2>
+              <p class="profile-role">情報処理科 Student • IT Service / (Goal) App Dev</p>
+
+              <ul class="profile-list">
+                <li><span>School</span><strong>専門学校東京テクニカルカレッジ</strong></li>
+                <li><span>Department</span><strong>情報処理科</strong></li>
+                <li><span>Languages</span><strong>Nepali • Hindi • 日本語 • English (basic)</strong></li>
+                <li><span>Email</span><strong id="emailText">upendradadal824@gmail.com</strong></li>
+              </ul>
+
+              <div class="profile-links">
+                <a class="btn btn-small btn-secondary" href="#contact">Contact</a>
+              </div>
+
+              <p class="tiny-note">※ Profile photo चाहिँ assets/profile.jpg राख</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head">
+          <h2>About</h2>
+          <p>Simple, clear, and honest—this is the best way to build trust.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>About Upendra (JP / NP / EN)</h3>
+
+            <details open class="lang-box">
+              <summary>日本語（やさしい）</summary>
+              <p>
+                はじめまして、DADAL UPENDRA SINGH です。ネパール出身で、
+                現在は専門学校東京テクニカルカレッジ（情報処理科）でITを勉強しています。
+              </p>
+              <p>
+                ネパール語・ヒンディー語・日本語・英語を少し話せます。
+                将来はIT企業でITサービスやアプリ開発（目標）の仕事をしたいです。
+                今はHTML/CSS/JavaScript と Oracle（SQL）を練習しています。
+              </p>
+            </details>
+
+            <details class="lang-box">
+              <summary>नेपाली (सजिलो)</summary>
+              <p>
+                नमस्ते, म DADAL UPENDRA SINGH हुँ। म नेपाळबाट आएको हुँ र अहिले
+                専門学校東京テクニカルカレッジ (情報処理科) मा IT पढ्दैछु।
+              </p>
+              <p>
+                म नेपाली, हिन्दी, जापानी र अंग्रेजी अलि-अलि बोल्न सक्छु।
+                भविष्यमा IT company मा IT Service र (goal) App Development क्षेत्रमा काम गर्ने मेरो लक्ष्य छ।
+                अहिले HTML/CSS/JavaScript र Oracle (SQL) अभ्यास गर्दैछु।
+              </p>
+            </details>
+
+            <details class="lang-box">
+              <summary>English (simple)</summary>
+              <p>
+                Hi, I’m DADAL UPENDRA SINGH from Nepal. I’m studying IT at
+                Tokyo Technical College (Information Processing Department).
+              </p>
+              <p>
+                I can speak a little Nepali, Hindi, Japanese, and English.
+                My goal is to work in an IT company in the future, especially in IT services and app development.
+                Right now I’m practicing HTML/CSS/JavaScript and Oracle (SQL).
+              </p>
+            </details>
+          </div>
+
+          <div class="card">
+            <h3>What I’m Working On</h3>
+            <ul class="checklist">
+              <li>Portfolio website (this site)</li>
+              <li>“About Nepal” website project (districts + details)</li>
+              <li>Practice projects: To-Do app, form validation, simple UI components</li>
+              <li>Oracle SQL notes + exercises</li>
+            </ul>
+            <p class="muted">Fundamentals first. Small projects finish गरेरै grow हुन्छ।</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="skills">
+      <div class="container">
+        <div class="section-head">
+          <h2>Skills</h2>
+          <p>Build strong basics—then scale.</p>
+        </div>
+
+        <div class="skills-grid">
+          <article class="skill-card">
+            <h3>Frontend</h3>
+            <div class="chips">
+              <span class="chip">HTML</span>
+              <span class="chip">CSS</span>
+              <span class="chip">Responsive UI</span>
+            </div>
+            <p class="muted">Clean layout, mobile friendly pages.</p>
+          </article>
+
+          <article class="skill-card">
+            <h3>JavaScript</h3>
+            <div class="chips">
+              <span class="chip">DOM</span>
+              <span class="chip">Forms</span>
+              <span class="chip">LocalStorage</span>
+            </div>
+            <p class="muted">Basic interactivity & simple apps.</p>
+          </article>
+
+          <article class="skill-card">
+            <h3>Database</h3>
+            <div class="chips">
+              <span class="chip">Oracle SQL (basic)</span>
+              <span class="chip">CRUD</span>
+              <span class="chip">Constraints</span>
+            </div>
+            <p class="muted">Practice queries & concepts.</p>
+          </article>
+
+          <article class="skill-card">
+            <h3>Strengths</h3>
+            <div class="chips">
+              <span class="chip">責任感</span>
+              <span class="chip">Teamwork</span>
+              <span class="chip">Consistency</span>
+            </div>
+            <p class="muted">Reliable, steady improvement.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head">
+          <h2>Projects</h2>
+          <p>Even if it’s small—finish it well.</p>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card" data-tags="web js">
+            <div class="project-top">
+              <h3>About Nepal Website</h3>
+              <span class="badge">Web</span>
+            </div>
+            <p class="muted">
+              7 provinces, 77 districts, search/filter, district detail pages, travel basics.
+            </p>
+            <ul class="project-meta">
+              <li><strong>Tech:</strong> HTML, CSS, JavaScript</li>
+              <li><strong>Status:</strong> Active</li>
+            </ul>
+            <div class="project-actions">
+              <a class="btn btn-small btn-secondary" href="nepal.html">Live</a>
+            </div>
+          </article>
+
+          <article class="project-card" data-tags="web js">
+            <div class="project-top">
+              <h3>Portfolio Website</h3>
+              <span class="badge">JavaScript</span>
+            </div>
+            <p class="muted">
+              Responsive portfolio with theme toggle and contact mail generator.
+            </p>
+            <ul class="project-meta">
+              <li><strong>Tech:</strong> HTML, CSS, JS</li>
+              <li><strong>Status:</strong> Active</li>
+            </ul>
+            <div class="project-actions">
+              <a class="btn btn-small btn-secondary" href="#top">Live</a>
+            </div>
+          </article>
+
+          <article class="project-card" data-tags="sql">
+            <div class="project-top">
+              <h3>Oracle SQL Notes</h3>
+              <span class="badge">SQL</span>
+            </div>
+            <p class="muted">
+              Practice notes: constraints, views, rollback basics—short examples for study.
+            </p>
+            <ul class="project-meta">
+              <li><strong>Tech:</strong> Oracle SQL</li>
+              <li><strong>Status:</strong> Ongoing</li>
+            </ul>
+            <div class="project-actions">
+              <a class="btn btn-small btn-secondary" href="#contact">Contact</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="vault">
+  <div class="container">
+    <div class="section-head">
+      <h2>Document & Photo Vault</h2>
+      <p>Japan र Nepal को documents/photos अलग-अलग save हुन्छ (this browser only).</p>
+    </div>
+
+    <div class="vault-controls card">
+      <div class="vault-row">
+        <div class="vault-seg" role="tablist" aria-label="Region">
+          <button class="seg-btn active" type="button" data-region="japan">Japan</button>
+          <button class="seg-btn" type="button" data-region="nepal">Nepal</button>
+        </div>
+
+        <div class="vault-seg" role="tablist" aria-label="Type">
+          <button class="seg-btn active" type="button" data-type="photo">Photos</button>
+          <button class="seg-btn" type="button" data-type="doc">Documents</button>
+        </div>
+
+        <div class="vault-search">
+          <input id="vaultSearch" type="search" placeholder="Search title / note..." />
+        </div>
+      </div>
+
+      <form id="vaultForm" class="vault-form">
+        <div class="vault-grid">
+          <label class="vault-field">
+            <span>Title</span>
+            <input id="vaultTitle" type="text" required placeholder="e.g., Residence Card, JLPT, Certificate..." />
+          </label>
+
+          <label class="vault-field">
+            <span>Note</span>
+            <input id="vaultNote" type="text" placeholder="short note (optional)" />
+          </label>
+
+          <label class="vault-field">
+            <span>File</span>
+            <input id="vaultFile" type="file"
+              accept="image/*,application/pdf,.pdf,.doc,.docx,.txt"
+              required />
+          </label>
+        </div>
+
+        <div class="vault-actions">
+          <button class="btn btn-primary" type="submit">Save</button>
+          <button class="btn btn-secondary" id="vaultClearSearch" type="button">Clear Search</button>
+        </div>
+
+        <p class="tiny-note" id="vaultNoteLine"></p>
+      </form>
+    </div>
+
+    <div class="vault-list" id="vaultList" aria-live="polite"></div>
+  </div>
+</section>
+
+    <div class="edu-lang-switch" aria-label="Education language switch">
+  <button class="btn btn-ghost btn-small edu-lang-btn" type="button" data-edu-lang="en">EN</button>
+  <button class="btn btn-ghost btn-small edu-lang-btn" type="button" data-edu-lang="jp">日本語</button>
+  <button class="btn btn-ghost btn-small edu-lang-btn" type="button" data-edu-lang="np">नेपाली</button>
+</div>
+       <section class="section alt" id="education">
+  <div class="container">
+    <div class="section-head">
+      <h2>Education</h2>
+      <p>Strong foundation comes from steady study.</p>
+    </div>
+    <div class="timeline">
+      <!-- Japan -->
+      <div class="timeline-item">
+  <div class="dot" aria-hidden="true"></div>
+  <div class="timeline-content">
+    <h3>
+      <button class="school-open" type="button" data-school="ttc">
+        <span data-edu-lang="en">Tokyo Technical College — Information Processing</span>
+        <span data-edu-lang="jp" hidden>専門学校東京テクニカルカレッジ — 情報処理科</span>
+        <span data-edu-lang="np" hidden>Tokyo Technical College — Information Processing</span>
+      </button>
+    </h3>
+    <p class="muted">
+      <span data-edu-lang="en">Tokyo, Japan</span>
+      <span data-edu-lang="jp" hidden>東京・日本</span>
+      <span data-edu-lang="np" hidden>टोकियो, जापान</span>
+    </p>
+    <p>
+      <span data-edu-lang="en">Learning IT fundamentals, web basics, and databases.</span>
+      <span data-edu-lang="jp" hidden>ITの基礎、Web基礎、データベースを学んでいます。</span>
+      <span data-edu-lang="np" hidden>IT को आधार, Web basics र Database सिक्दैछु।</span>
+    </p>
+  </div>
+</div>
+
+      <!-- Nepal -->
+<div class="timeline-item">
+  <div class="dot" aria-hidden="true"></div>
+  <div class="timeline-content">
+    <h3>
+      <button class="school-open" type="button" data-school="nepal">
+        <span data-edu-lang="en">A.T.T.S College — Community Medical Assistant (CMA)</span>
+        <span data-edu-lang="jp" hidden>A.T.T.S College — Community Medical Assistant（CMA）</span>
+        <span data-edu-lang="np" hidden>A.T.T.S College — सामुदायिक चिकित्सा सहायक (CMA)</span>
+      </button>
+    </h3>
+
+    <p class="muted">
+      <span data-edu-lang="en">Sandhikharka, Arghakhanchi, Nepal • 2017 – 2019</span>
+      <span data-edu-lang="jp" hidden>ネパール・アルガカンチ県サンディカルカ • 2017〜2019年</span>
+      <span data-edu-lang="np" hidden>सन्धिखर्क, अर्घाखाँची, नेपाल • २०१७–२०१९</span>
+    </p>
+
+    <p>
+      <span data-edu-lang="en">
+        Studied CMA. This built discipline and communication, and later motivated my shift to IT.
+      </span>
+      <span data-edu-lang="jp" hidden>
+        CMAを学び、規律とコミュニケーション力を身につけました。その後IT分野へ転向しました。
+      </span>
+      <span data-edu-lang="np" hidden>
+        CMA पढेर अनुशासन र communication बलियो भयो, पछि IT तर्फ आउन प्रेरणा मिल्यो।
+      </span>
+    </p>
+  </div>
+</div>
+
+</section>
+
+<!-- School Details Templates (edit these anytime) -->
+ <button class="school-open" type="button" data-school="nepal">
+  A.T.T.S College — Community Medical Assistant (CMA)
+</button>
+<p class="muted">Arghakhanchi, Nepal</p>
+<p>Studied community healthcare basics and support skills.</p>
+
+<template id="school-ttc">
+  <p><strong>Location:</strong> Tokyo, Japan</p>
+  <ul>
+    <li>Department: 情報処理科</li>
+    <li>Focus: Web basics, programming fundamentals, databases</li>
+    <li>Goal: IT Service & App Development</li>
+  </ul>
+</template>
+
+<template id="school-nepal">
+  <p><strong>School:</strong> A.T.T.S College</p>
+  <p><strong>Location:</strong> Sandhikharka, Arghakhanchi, Nepal</p>
+  <p><strong>Program:</strong> Community Medical Assistant (CMA)</p>
+  <p><strong>Years:</strong> 2017 – 2019</p>
+
+  <ul>
+    <li>Learned basic community healthcare support and patient communication</li>
+    <li>Built discipline, consistency, and teamwork through structured study</li>
+    <li>These fundamentals helped me adapt to study and work in Japan</li>
+  </ul>
+
+  <hr style="border:none;border-top:1px solid rgba(0,0,0,.08);margin:12px 0;" />
+
+  <p><strong>日本語（簡単）</strong></p>
+  <ul>
+    <li>学校：A.T.T.S College（ネパール）</li>
+    <li>場所：アルガカンチ県 サンディカルカ</li>
+    <li>専攻：CMA（地域医療の補助）</li>
+    <li>期間：2017年〜2019年</li>
+  </ul>
+</template>
+<template id="school-nepal">
+  <div data-edu-lang="en">
+    <p><strong>School:</strong> A.T.T.S College</p>
+    <p><strong>Location:</strong> Sandhikharka, Arghakhanchi, Nepal</p>
+    <p><strong>Program:</strong> Community Medical Assistant (CMA)</p>
+    <p><strong>Years:</strong> 2017 – 2019</p>
+    <ul>
+      <li>Built discipline, responsibility, and teamwork</li>
+      <li>Learned patient communication and community support basics</li>
+      <li>Transition to IT: interested in improving services with technology</li>
+    </ul>
+  </div>
+
+  <div data-edu-lang="jp" hidden>
+    <p><strong>学校:</strong> A.T.T.S College</p>
+    <p><strong>場所:</strong> ネパール・アルガカンチ県サンディカルカ</p>
+    <p><strong>専攻:</strong> Community Medical Assistant（CMA）</p>
+    <p><strong>期間:</strong> 2017年〜2019年</p>
+    <ul>
+      <li>規律・責任感・チームワークを身につけました</li>
+      <li>地域支援とコミュニケーションの基礎を学びました</li>
+      <li>ITへ転向：技術でサービス改善したいと思いました</li>
+    </ul>
+  </div>
+
+  <div data-edu-lang="np" hidden>
+    <p><strong>स्कूल:</strong> A.T.T.S College</p>
+    <p><strong>ठेगाना:</strong> सन्धिखर्क, अर्घाखाँची, नेपाल</p>
+    <p><strong>Program:</strong> Community Medical Assistant (CMA)</p>
+    <p><strong>Years:</strong> २०१७–२०१९</p>
+    <ul>
+      <li>अनुशासन, जिम्मेवारी र teamwork बलियो भयो</li>
+      <li>community support र communication को आधार सिकें</li>
+      <li>पछि IT तर्फ आउन motivation भयो (service सुधार गर्ने सोच)</li>
+    </ul>
+  </div>
+</template>
+
+
+<!-- Modal -->
+<div class="modal" id="schoolModal" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" type="button" data-close aria-label="Close">×</button>
+    <h3 id="modalTitle"></h3>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-head">
+          <h2>Contact</h2>
+          <p>Send a message—simple and direct.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Get in touch</h3>
+            <p class="muted">“Send Email” will open your email app (static site).</p>
+
+            <ul class="contact-list">
+              <li><span>📧 Email</span> <strong id="emailText2">upendradadal824@gmail.com</strong></li>
+              <li><span>🏫 School</span> <strong>専門学校東京テクニカルカレッジ</strong></li>
+              <li><span>🗣️ Languages</span> <strong>Nepali • Hindi • 日本語 • English (basic)</strong></li>
+            </ul>
+
+            <div class="contact-actions">
+              <a class="btn btn-primary" id="mailtoLink"
+                 href="mailto:upendradadal824@gmail.com?subject=Portfolio%20Inquiry&body=Hi%20Dadal,%0A%0A">
+                Send Email
+              </a>
+              <button class="btn btn-secondary" id="copyEmailBtn2" type="button">Copy Email</button>
+            </div>
+          </div>
+
+          <form class="card form" id="contactForm">
+            <h3>Quick Message</h3>
+
+            <label>
+              Name
+              <input type="text" name="name" id="name" placeholder="Your name" required />
+            </label>
+
+            <label>
+              Email
+              <input type="email" name="email" id="email" placeholder="you@example.com" required />
+            </label>
+
+            <label>
+              Message
+              <textarea name="message" id="message" rows="5" placeholder="Write your message..." required></textarea>
+            </label>
+
+            <button class="btn btn-primary" type="submit">Prepare Email</button>
+            <p class="tiny-note" id="formNote"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p>© <span id="year"></span> DADAL UPENDRA SINGH. All rights reserved.</p>
+        <a class="backtop" href="#top">Back to top ↑</a>
+      </div>
+    </footer>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
