@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HTML/CSS Demo — Responsive Design | Dadal Upendra Singh</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#050b18;color:#e8f0ff;min-height:100vh}
+.top-bar{background:rgba(15,28,56,.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(100,160,255,.12);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.top-bar h1{font-size:.95rem;display:flex;align-items:center;gap:8px}
+.top-bar h1 span{color:#4d9fff}
+.back-btn{padding:8px 16px;border-radius:10px;border:1px solid rgba(100,160,255,.2);background:rgba(255,255,255,.05);color:#e8f0ff;font-weight:600;font-size:.82rem;cursor:pointer;text-decoration:none;transition:background .15s}
+.back-btn:hover{background:rgba(255,255,255,.1)}
+.hero-banner{text-align:center;padding:60px 24px;background:linear-gradient(135deg,rgba(77,159,255,.08),rgba(0,229,196,.05));position:relative;overflow:hidden}
+.hero-banner::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='1' fill='%234d9fff' opacity='.15'/%3E%3C/svg%3E");pointer-events:none}
+.hero-banner h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:.5rem;position:relative}
+.hero-banner h2 em{color:#4d9fff;font-style:normal}
+.hero-banner p{color:#7a90c0;max-width:600px;margin:0 auto;line-height:1.8;position:relative}
+.badge{display:inline-flex;padding:5px 14px;border-radius:999px;background:rgba(77,159,255,.1);border:1px solid rgba(77,159,255,.3);color:#4d9fff;font-size:.75rem;font-weight:700;margin-bottom:1rem;position:relative}
+.container{max-width:900px;margin:0 auto;padding:0 24px 60px}
+.section-title{font-size:1.2rem;font-weight:700;margin:2.5rem 0 1rem;padding-bottom:.5rem;border-bottom:1px solid rgba(100,160,255,.12)}
+
+/* CSS Demo: Flexbox */
+.flex-demo{display:flex;gap:10px;flex-wrap:wrap;margin-top:1rem}
+.flex-item{flex:1;min-width:100px;padding:20px;text-align:center;border-radius:12px;font-weight:700;font-size:.85rem;transition:transform .2s}
+.flex-item:hover{transform:scale(1.05)}
+.fi-1{background:linear-gradient(135deg,rgba(77,159,255,.2),rgba(77,159,255,.05));border:1px solid rgba(77,159,255,.3);color:#4d9fff}
+.fi-2{background:linear-gradient(135deg,rgba(0,229,196,.2),rgba(0,229,196,.05));border:1px solid rgba(0,229,196,.3);color:#00e5c4}
+.fi-3{background:linear-gradient(135deg,rgba(167,139,250,.2),rgba(167,139,250,.05));border:1px solid rgba(167,139,250,.3);color:#a78bfa}
+.fi-4{background:linear-gradient(135deg,rgba(245,166,35,.15),rgba(245,166,35,.05));border:1px solid rgba(245,166,35,.3);color:#f5a623}
+
+/* CSS Grid Demo */
+.grid-demo{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto;gap:10px;margin-top:1rem}
+.grid-item{padding:20px;border-radius:12px;text-align:center;font-weight:600;font-size:.82rem;background:rgba(15,28,56,.65);border:1px solid rgba(100,160,255,.12);transition:all .2s}
+.grid-item:hover{border-color:rgba(100,160,255,.3);transform:translateY(-2px)}
+.gi-wide{grid-column:span 2}
+.gi-tall{grid-row:span 2;display:flex;align-items:center;justify-content:center}
+
+/* Animation Demo */
+.anim-row{display:flex;gap:16px;justify-content:center;margin-top:1.5rem;flex-wrap:wrap}
+.anim-box{width:80px;height:80px;border-radius:14px;display:grid;place-items:center;font-size:1.4rem;cursor:pointer}
+.anim-bounce{background:rgba(77,159,255,.15);border:1px solid rgba(77,159,255,.3);animation:bounce 2s ease infinite}
+.anim-spin{background:rgba(0,229,196,.15);border:1px solid rgba(0,229,196,.3);animation:spin 3s linear infinite}
+.anim-pulse{background:rgba(167,139,250,.15);border:1px solid rgba(167,139,250,.3);animation:pulse 2s ease infinite}
+.anim-shake{background:rgba(255,95,87,.12);border:1px solid rgba(255,95,87,.25);animation:shake 1.5s ease infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.15);opacity:.7}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+/* Card Demo */
+.card-demo{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:1rem}
+.demo-card{background:rgba(15,28,56,.65);border:1px solid rgba(100,160,255,.12);border-radius:14px;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.demo-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.4)}
+.demo-card-img{height:100px;display:grid;place-items:center;font-size:2.5rem}
+.demo-card-img.bg1{background:linear-gradient(135deg,#0a1a3c,#142040)}
+.demo-card-img.bg2{background:linear-gradient(135deg,#14082e,#0a1a3c)}
+.demo-card-img.bg3{background:linear-gradient(135deg,#081028,#0c1630)}
+.demo-card-body{padding:14px}
+.demo-card-body h4{font-size:.9rem;margin-bottom:4px}
+.demo-card-body p{font-size:.78rem;color:#7a90c0;line-height:1.6}
+
+/* Gradient Text Demo */
+.gradient-showcase{display:flex;flex-direction:column;gap:12px;margin-top:1rem}
+.grad-text{font-size:1.6rem;font-weight:800;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;padding:8px 0}
+.gt1{background-image:linear-gradient(90deg,#4d9fff,#00e5c4)}
+.gt2{background-image:linear-gradient(90deg,#ff5f57,#f5a623)}
+.gt3{background-image:linear-gradient(90deg,#a78bfa,#4d9fff)}
+.gt4{background-image:linear-gradient(90deg,#00e5c4,#f5a623,#ff5f57)}
+
+/* Responsive note */
+.responsive-note{background:rgba(0,229,196,.06);border:1px solid rgba(0,229,196,.15);border-radius:12px;padding:16px;margin-top:1.5rem;font-size:.88rem;color:#00e5c4;text-align:center}
+
+footer{text-align:center;padding:2rem;color:#445580;font-size:.78rem;border-top:1px solid rgba(100,160,255,.08);margin-top:3rem}
+
+@media(max-width:600px){
+  .grid-demo{grid-template-columns:1fr 1fr}
+  .gi-wide{grid-column:span 1}
+  .card-demo{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <h1>🌐 <span>HTML/CSS</span> Demo — Built by Dadal</h1>
+  <a class="back-btn" href="../index.html#skills">← Back to Portfolio</a>
+</div>
+
+<div class="hero-banner">
+  <span class="badge">🌐 Pure HTML & CSS</span>
+  <h2>The Art of <em>Web Design</em></h2>
+  <p>Showcasing Flexbox, Grid, animations, gradients, and responsive design — all without JavaScript!</p>
+</div>
+
+<div class="container">
+
+  <h3 class="section-title">📦 Flexbox Layout</h3>
+  <p style="color:#7a90c0;font-size:.88rem">Flexible boxes that wrap and resize automatically:</p>
+  <div class="flex-demo">
+    <div class="flex-item fi-1">Flex 1</div>
+    <div class="flex-item fi-2">Flex 2</div>
+    <div class="flex-item fi-3">Flex 3</div>
+    <div class="flex-item fi-4">Flex 4</div>
+  </div>
+
+  <h3 class="section-title">🔲 CSS Grid Layout</h3>
+  <p style="color:#7a90c0;font-size:.88rem">Grid areas with spanning — responsive columns and rows:</p>
+  <div class="grid-demo">
+    <div class="grid-item gi-wide" style="background:linear-gradient(135deg,rgba(77,159,255,.12),rgba(0,229,196,.08))">Wide Column (span 2)</div>
+    <div class="grid-item gi-tall" style="background:linear-gradient(135deg,rgba(167,139,250,.12),rgba(77,159,255,.08))">Tall Row<br>(span 2)</div>
+    <div class="grid-item">Normal</div>
+    <div class="grid-item">Normal</div>
+    <div class="grid-item">Normal</div>
+    <div class="grid-item">Normal</div>
+  </div>
+
+  <h3 class="section-title">✨ CSS Animations</h3>
+  <p style="color:#7a90c0;font-size:.88rem">Pure CSS animations — no JavaScript needed:</p>
+  <div class="anim-row">
+    <div class="anim-box anim-bounce">⬆️</div>
+    <div class="anim-box anim-spin">🔄</div>
+    <div class="anim-box anim-pulse">💫</div>
+    <div class="anim-box anim-shake">📳</div>
+  </div>
+
+  <h3 class="section-title">🎨 Gradient Text</h3>
+  <div class="gradient-showcase">
+    <div class="grad-text gt1">Blue → Teal Gradient</div>
+    <div class="grad-text gt2">Red → Orange Gradient</div>
+    <div class="grad-text gt3">Purple → Blue Gradient</div>
+    <div class="grad-text gt4">Multi-Color Gradient</div>
+  </div>
+
+  <h3 class="section-title">🃏 Card Components</h3>
+  <div class="card-demo">
+    <div class="demo-card">
+      <div class="demo-card-img bg1">🏔️</div>
+      <div class="demo-card-body"><h4>Nepal</h4><p>Beautiful mountains and rich culture</p></div>
+    </div>
+    <div class="demo-card">
+      <div class="demo-card-img bg2">🗼</div>
+      <div class="demo-card-body"><h4>Tokyo</h4><p>Technology hub and neon lights</p></div>
+    </div>
+    <div class="demo-card">
+      <div class="demo-card-img bg3">💻</div>
+      <div class="demo-card-body"><h4>Coding</h4><p>Building the future one line at a time</p></div>
+    </div>
+  </div>
+
+  <div class="responsive-note">
+    📱 Try resizing your browser window — this page is fully responsive!
+  </div>
+</div>
+
+<footer>Built by Dadal Upendra Singh · 専門学校東京テクニカルカレッジ · HTML/CSS Demo</footer>
+</body>
+</html>

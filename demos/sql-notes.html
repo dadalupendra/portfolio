@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SQL Notes & Exercises | Dadal Upendra Singh</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Segoe UI',system-ui,sans-serif;background:#050b18;color:#e8f0ff;min-height:100vh}
+.bar{background:rgba(15,28,56,.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(100,160,255,.12);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.bar h1{font-size:.95rem}.bar h1 span{color:#a78bfa}
+.back{padding:8px 16px;border-radius:10px;border:1px solid rgba(100,160,255,.2);background:rgba(255,255,255,.05);color:#e8f0ff;font-weight:600;font-size:.82rem;text-decoration:none}.back:hover{background:rgba(255,255,255,.1)}
+.wrap{max-width:800px;margin:0 auto;padding:40px 24px 60px}
+h2{font-size:1.8rem;font-weight:800;text-align:center;margin-bottom:.5rem}h2 em{color:#a78bfa;font-style:normal}
+.sub{text-align:center;color:#7a90c0;margin-bottom:2rem}
+.note{background:rgba(15,28,56,.5);border:1px solid rgba(100,160,255,.12);border-radius:14px;padding:1.5rem;margin-bottom:1.5rem}
+.note h3{color:#a78bfa;margin-bottom:.8rem;font-size:1rem;display:flex;align-items:center;gap:8px}
+.note p{color:#7a90c0;font-size:.88rem;line-height:1.7;margin-bottom:.5rem}
+.code{background:#0c1630;border:1px solid rgba(100,160,255,.12);border-radius:10px;padding:14px;margin-top:.8rem;overflow-x:auto}
+.code pre{color:#7ec8ff;font-family:'Consolas',monospace;font-size:.82rem;line-height:1.7}
+.kw{color:#c792ea}.str{color:#c3e88d}.cm{color:#546e7a}.fn{color:#82aaff}.num{color:#f78c6c}
+.output{background:rgba(167,139,250,.06);border:1px solid rgba(167,139,250,.15);border-radius:10px;padding:12px;margin-top:8px;font-family:monospace;font-size:.82rem;color:#a78bfa}
+.table-wrap{overflow-x:auto;margin-top:.8rem;border-radius:10px;border:1px solid rgba(100,160,255,.1)}
+table{width:100%;border-collapse:collapse;font-size:.82rem}
+th{background:rgba(15,28,56,.9);color:#a78bfa;padding:10px 14px;text-align:left;font-weight:700;font-size:.76rem;text-transform:uppercase;white-space:nowrap}
+td{padding:8px 14px;border-top:1px solid rgba(100,160,255,.05);color:#7a90c0}
+tr:hover td{background:rgba(77,159,255,.04)}
+footer{text-align:center;padding:2rem;color:#445580;font-size:.78rem;border-top:1px solid rgba(100,160,255,.08);margin-top:2rem}
+</style>
+</head>
+<body>
+<div class="bar"><h1>🗃️ <span>SQL Notes</span> — Dadal</h1><a class="back" href="../index.html#projects">← Portfolio</a></div>
+<div class="wrap">
+<h2>Oracle <em>SQL</em> Study Notes</h2>
+<p class="sub">Exercises and notes from my 情報処理科 database class.</p>
+
+<div class="note"><h3>📌 1. Basic SELECT</h3>
+<p>Retrieve specific columns with conditions.</p>
+<div class="code"><pre><span class="kw">SELECT</span> name, email, country
+<span class="kw">FROM</span> students
+<span class="kw">WHERE</span> country = <span class="str">'Nepal'</span>
+<span class="kw">AND</span> enrollment_date >= <span class="str">'2023-01-01'</span>;</pre></div>
+<div class="table-wrap"><table><thead><tr><th>name</th><th>email</th><th>country</th></tr></thead><tbody><tr><td>Dadal Upendra</td><td>dadal@example.com</td><td>Nepal</td></tr></tbody></table></div>
+</div>
+
+<div class="note"><h3>📌 2. JOIN — Multiple Tables</h3>
+<p>Combine students with their course enrollments.</p>
+<div class="code"><pre><span class="kw">SELECT</span> s.name, c.course_name, e.grade
+<span class="kw">FROM</span> students s
+<span class="kw">INNER JOIN</span> enrollments e <span class="kw">ON</span> s.id = e.student_id
+<span class="kw">INNER JOIN</span> courses c <span class="kw">ON</span> c.id = e.course_id
+<span class="kw">ORDER BY</span> s.name;</pre></div>
+<div class="table-wrap"><table><thead><tr><th>name</th><th>course</th><th>grade</th></tr></thead><tbody><tr><td>Dadal</td><td>Java Programming</td><td>A</td></tr><tr><td>Dadal</td><td>Web Development</td><td>A</td></tr><tr><td>Yuki</td><td>Database Design</td><td>B+</td></tr></tbody></table></div>
+</div>
+
+<div class="note"><h3>📌 3. GROUP BY & Aggregates</h3>
+<p>Count students per country and find averages.</p>
+<div class="code"><pre><span class="kw">SELECT</span> country, <span class="fn">COUNT</span>(*) <span class="kw">AS</span> total,
+       <span class="fn">ROUND</span>(<span class="fn">AVG</span>(score), <span class="num">1</span>) <span class="kw">AS</span> avg_score
+<span class="kw">FROM</span> students
+<span class="kw">GROUP BY</span> country
+<span class="kw">HAVING</span> <span class="fn">COUNT</span>(*) >= <span class="num">2</span>
+<span class="kw">ORDER BY</span> avg_score <span class="kw">DESC</span>;</pre></div>
+</div>
+
+<div class="note"><h3>📌 4. Subquery</h3>
+<p>Find students with above-average scores.</p>
+<div class="code"><pre><span class="kw">SELECT</span> name, score
+<span class="kw">FROM</span> students
+<span class="kw">WHERE</span> score > (<span class="kw">SELECT</span> <span class="fn">AVG</span>(score) <span class="kw">FROM</span> students)
+<span class="kw">ORDER BY</span> score <span class="kw">DESC</span>;</pre></div>
+</div>
+
+<div class="note"><h3>📌 5. CREATE VIEW</h3>
+<p>Create a reusable view for common queries.</p>
+<div class="code"><pre><span class="kw">CREATE VIEW</span> student_summary <span class="kw">AS</span>
+<span class="kw">SELECT</span> s.name, s.country,
+       <span class="fn">COUNT</span>(e.course_id) <span class="kw">AS</span> courses_taken,
+       <span class="fn">ROUND</span>(<span class="fn">AVG</span>(e.score), <span class="num">1</span>) <span class="kw">AS</span> avg_grade
+<span class="kw">FROM</span> students s
+<span class="kw">LEFT JOIN</span> enrollments e <span class="kw">ON</span> s.id = e.student_id
+<span class="kw">GROUP BY</span> s.name, s.country;</pre></div>
+</div>
+
+<div class="note"><h3>📌 6. PL/SQL Procedure</h3>
+<p>A stored procedure with error handling.</p>
+<div class="code"><pre><span class="kw">CREATE OR REPLACE PROCEDURE</span> add_student(
+    p_name <span class="kw">IN</span> VARCHAR2,
+    p_email <span class="kw">IN</span> VARCHAR2,
+    p_country <span class="kw">IN</span> VARCHAR2
+) <span class="kw">AS</span>
+<span class="kw">BEGIN</span>
+    <span class="kw">INSERT INTO</span> students (name, email, country, enrollment_date)
+    <span class="kw">VALUES</span> (p_name, p_email, p_country, <span class="fn">SYSDATE</span>);
+    <span class="kw">COMMIT</span>;
+    <span class="fn">DBMS_OUTPUT.PUT_LINE</span>(<span class="str">'Student added: '</span> || p_name);
+<span class="kw">EXCEPTION</span>
+    <span class="kw">WHEN</span> DUP_VAL_ON_INDEX <span class="kw">THEN</span>
+        <span class="fn">DBMS_OUTPUT.PUT_LINE</span>(<span class="str">'Error: Email already exists'</span>);
+<span class="kw">END</span>;</pre></div>
+</div>
+
+</div>
+<footer>Built by Dadal Upendra Singh · Oracle SQL Study Notes</footer>
+</body>
+</html>
