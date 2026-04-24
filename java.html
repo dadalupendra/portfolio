@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Java Demo — Complete Nepal Guide | Dadal Upendra Singh</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#050b18;color:#e8f0ff;min-height:100vh;line-height:1.7}
+a{color:#4d9fff;text-decoration:none}
+.bar{background:rgba(15,28,56,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(100,160,255,.12);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.bar h1{font-size:.95rem;display:flex;align-items:center;gap:8px}.bar h1 span{color:#f5a623}
+.back{padding:8px 16px;border-radius:10px;border:1px solid rgba(100,160,255,.2);background:rgba(255,255,255,.05);color:#e8f0ff;font-weight:600;font-size:.82rem;text-decoration:none}.back:hover{background:rgba(255,255,255,.1)}
+.hero{text-align:center;padding:60px 24px 40px;background:linear-gradient(180deg,rgba(245,166,35,.06),transparent);position:relative}
+.hero h2{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;margin-bottom:.5rem}
+.hero h2 em{color:#f5a623;font-style:normal}
+.hero p{color:#7a90c0;max-width:620px;margin:0 auto;line-height:1.8;font-size:1.02rem}
+.badge{display:inline-flex;padding:6px 16px;border-radius:999px;background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.3);color:#f5a623;font-size:.75rem;font-weight:700;margin-bottom:1rem}
+.flag-huge{font-size:5rem;text-align:center;margin:1.5rem 0 .5rem;filter:drop-shadow(0 8px 24px rgba(0,0,0,.4))}
+.cx{max-width:960px;margin:0 auto;padding:0 24px 60px}
+.st{font-size:1.3rem;font-weight:800;margin:3rem 0 1rem;padding-bottom:.6rem;border-bottom:2px solid rgba(100,160,255,.12);display:flex;align-items:center;gap:10px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.c{background:rgba(15,28,56,.6);backdrop-filter:blur(6px);border:1px solid rgba(100,160,255,.12);border-radius:14px;padding:1.3rem;transition:transform .2s,border-color .2s}
+.c:hover{transform:translateY(-3px);border-color:rgba(100,160,255,.25)}
+.c .ic{font-size:2rem;margin-bottom:.6rem;display:block}
+.c h3{font-size:.95rem;font-weight:700;color:#00e5c4;margin-bottom:.4rem}
+.c h4{font-size:.88rem;font-weight:700;color:#f5a623;margin-bottom:.3rem}
+.c p{color:#7a90c0;font-size:.86rem;line-height:1.75}
+.c ul{list-style:none;padding:0}
+.c ul li{color:#7a90c0;font-size:.84rem;padding:3px 0 3px 16px;position:relative}
+.c ul li::before{content:'•';position:absolute;left:0;color:#4d9fff}
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:1.5rem 0}
+.stat{text-align:center;background:rgba(15,28,56,.5);border:1px solid rgba(100,160,255,.1);border-radius:12px;padding:1.2rem .8rem}
+.stat .num{font-size:1.6rem;font-weight:800;display:block;background:linear-gradient(90deg,#4d9fff,#00e5c4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat .lbl{font-size:.72rem;color:#445580;text-transform:uppercase;letter-spacing:.06em;margin-top:4px}
+.code{background:#0c1630;border:1px solid rgba(100,160,255,.12);border-radius:12px;padding:18px;margin:1rem 0;overflow-x:auto}
+.code pre{color:#7ec8ff;font-family:'Consolas','Courier New',monospace;font-size:.82rem;line-height:1.75}
+.kw{color:#c792ea}.str{color:#c3e88d}.cm{color:#546e7a}.cls{color:#ffcb6b}.num{color:#f78c6c}.fn{color:#82aaff}
+.img-placeholder{width:100%;height:200px;border-radius:12px;display:grid;place-items:center;font-size:3rem;margin:1rem 0}
+.tbl{overflow-x:auto;border-radius:12px;border:1px solid rgba(100,160,255,.1);margin:1rem 0}
+table{width:100%;border-collapse:collapse;font-size:.84rem}
+th{background:rgba(15,28,56,.9);color:#f5a623;padding:10px 14px;text-align:left;font-weight:700;font-size:.76rem;text-transform:uppercase;letter-spacing:.05em}
+td{padding:10px 14px;border-top:1px solid rgba(100,160,255,.05);color:#7a90c0}
+tr:hover td{background:rgba(77,159,255,.03)}
+.timeline{position:relative;padding-left:24px;margin:1rem 0}
+.timeline::before{content:'';position:absolute;left:6px;top:4px;bottom:4px;width:2px;background:linear-gradient(to bottom,#4d9fff,#00e5c4);border-radius:2px}
+.tl-item{position:relative;margin-bottom:1.2rem;padding-left:20px}
+.tl-dot{position:absolute;left:-23px;top:4px;width:10px;height:10px;border-radius:50%;background:#4d9fff;border:2px solid #050b18;box-shadow:0 0 0 3px rgba(77,159,255,.25)}
+.tl-year{font-size:.74rem;color:#445580;font-weight:700;letter-spacing:.08em}
+.tl-text{font-size:.86rem;color:#7a90c0}
+.quote{border-left:3px solid #f5a623;padding:12px 18px;background:rgba(245,166,35,.05);border-radius:0 10px 10px 0;margin:1rem 0;font-style:italic;color:#7a90c0;font-size:.9rem}
+footer{text-align:center;padding:2rem 24px;color:#445580;font-size:.78rem;border-top:1px solid rgba(100,160,255,.08);margin-top:3rem}
+@media(max-width:768px){.g2,.g3{grid-template-columns:1fr}.g4,.stat-row{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.stat-row{grid-template-columns:1fr 1fr}.g4{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <h1>☕ <span>Java</span> × Nepal — Built by Dadal</h1>
+  <a class="back" href="../index.html#skills">← Back to Portfolio</a>
+</div>
+
+<div class="hero">
+  <span class="badge">☕ Java OOP Concepts × Nepal</span>
+  <h2>Complete Guide to <em>Nepal</em> 🇳🇵</h2>
+  <p>A comprehensive information page about Nepal — geography, culture, history, food, festivals, and more. Designed using Java OOP data modeling concepts.</p>
+</div>
+
+<div class="cx">
+  <div class="flag-huge">🇳🇵</div>
+
+  <!-- Quick Stats -->
+  <div class="stat-row">
+    <div class="stat"><span class="num">30M+</span><span class="lbl">Population</span></div>
+    <div class="stat"><span class="num">147,516</span><span class="lbl">Area (km²)</span></div>
+    <div class="stat"><span class="num">125+</span><span class="lbl">Ethnic Groups</span></div>
+    <div class="stat"><span class="num">8,848m</span><span class="lbl">Highest Peak</span></div>
+  </div>
+
+  <!-- ═══ BASIC INFO ═══ -->
+  <h3 class="st">🏔️ Basic Information</h3>
+  <div class="g2">
+    <div class="c">
+      <h3>Official Details</h3>
+      <ul>
+        <li><strong>Official Name:</strong> Federal Democratic Republic of Nepal (संघीय लोकतान्त्रिक गणतन्त्र नेपाल)</li>
+        <li><strong>Capital:</strong> Kathmandu (काठमाडौं)</li>
+        <li><strong>Government:</strong> Federal parliamentary republic</li>
+        <li><strong>President:</strong> Ram Chandra Poudel</li>
+        <li><strong>Prime Minister:</strong> KP Sharma Oli</li>
+        <li><strong>Currency:</strong> Nepalese Rupee (NPR / रू)</li>
+        <li><strong>Calling Code:</strong> +977</li>
+        <li><strong>Internet TLD:</strong> .np</li>
+        <li><strong>Driving Side:</strong> Left</li>
+      </ul>
+    </div>
+    <div class="c">
+      <h3>Language & People</h3>
+      <ul>
+        <li><strong>Official Language:</strong> Nepali (नेपाली)</li>
+        <li><strong>Other Major Languages:</strong> Maithili, Bhojpuri, Tharu, Tamang, Newari, Magar, Gurung</li>
+        <li><strong>Total Languages:</strong> 123 living languages</li>
+        <li><strong>Literacy Rate:</strong> ~68%</li>
+        <li><strong>Major Ethnic Groups:</strong> Chhetri, Brahman-Hill, Magar, Tharu, Tamang, Newar, Kami, Yadav, Rai</li>
+        <li><strong>Religion:</strong> Hindu (81.3%), Buddhist (9%), Muslim (4.4%), Christian, Kirant</li>
+        <li><strong>National Anthem:</strong> "Sayaun Thunga Phulka" (Made of Hundreds of Flowers)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ═══ GEOGRAPHY ═══ -->
+  <h3 class="st">🌍 Geography & Nature</h3>
+  <div class="g3">
+    <div class="c">
+      <span class="ic">🏔️</span>
+      <h4>Himalayas (North)</h4>
+      <p>Home to 8 of the world's 14 highest peaks over 8,000m including Sagarmatha (Mt. Everest 8,848.86m), Kanchenjunga (8,586m), Lhotse, Makalu, Cho Oyu, Dhaulagiri, Manaslu, and Annapurna.</p>
+    </div>
+    <div class="c">
+      <span class="ic">⛰️</span>
+      <h4>Hills (Middle)</h4>
+      <p>The mid-hills region (700-4,000m) includes the Kathmandu Valley, Pokhara, and Bandipur. Home to most of Nepal's population with terraced farming and ancient towns.</p>
+    </div>
+    <div class="c">
+      <span class="ic">🌾</span>
+      <h4>Terai (South)</h4>
+      <p>The flat lowland plains bordering India. Rich agricultural land growing rice, wheat, and sugarcane. Home to Chitwan and Bardia National Parks with rhinos and tigers.</p>
+    </div>
+  </div>
+
+  <div class="c" style="margin-top:14px">
+    <h3>🗺️ Key Geographic Facts</h3>
+    <div class="g2" style="margin-top:.8rem">
+      <ul>
+        <li><strong>Borders:</strong> China (Tibet) to the north, India to the south, east, and west</li>
+        <li><strong>Highest Point:</strong> Mt. Everest (Sagarmatha) — 8,848.86m</li>
+        <li><strong>Lowest Point:</strong> Kechana Kalan, Jhapa — 59m above sea level</li>
+        <li><strong>Major Rivers:</strong> Koshi, Gandaki, Karnali, Bagmati, Rapti</li>
+      </ul>
+      <ul>
+        <li><strong>Major Lakes:</strong> Rara Lake, Phewa Lake, Begnas Lake, Tilicho Lake</li>
+        <li><strong>Climate Zones:</strong> 5 (tropical to arctic — all within 200km)</li>
+        <li><strong>National Parks:</strong> 12 (Chitwan, Sagarmatha, Langtang, Bardia, etc.)</li>
+        <li><strong>UNESCO Sites:</strong> 4 (2 cultural in Kathmandu Valley, Lumbini, Chitwan)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ═══ 8000m PEAKS ═══ -->
+  <h3 class="st">⛰️ Eight-Thousanders in Nepal</h3>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>#</th><th>Mountain</th><th>Height</th><th>Nepali Name</th><th>First Summit</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Mount Everest</td><td>8,848.86m</td><td>सगरमाथा (Sagarmatha)</td><td>1953 — Hillary & Tenzing</td></tr>
+        <tr><td>2</td><td>Kanchenjunga</td><td>8,586m</td><td>कञ्चनजङ्गा</td><td>1955</td></tr>
+        <tr><td>3</td><td>Lhotse</td><td>8,516m</td><td>ल्होत्से</td><td>1956</td></tr>
+        <tr><td>4</td><td>Makalu</td><td>8,485m</td><td>मकालु</td><td>1955</td></tr>
+        <tr><td>5</td><td>Cho Oyu</td><td>8,188m</td><td>चो ओयु</td><td>1954</td></tr>
+        <tr><td>6</td><td>Dhaulagiri I</td><td>8,167m</td><td>धौलागिरी</td><td>1960</td></tr>
+        <tr><td>7</td><td>Manaslu</td><td>8,163m</td><td>मनास्लु</td><td>1956</td></tr>
+        <tr><td>8</td><td>Annapurna I</td><td>8,091m</td><td>अन्नपूर्ण</td><td>1950 (first 8000er climbed)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══ CULTURE ═══ -->
+  <h3 class="st">🕉️ Culture & Religion</h3>
+  <div class="g2">
+    <div class="c">
+      <span class="ic">🛕</span>
+      <h4>Hinduism (81.3%)</h4>
+      <p>Nepal is one of the world's most Hindu countries. Major temples include Pashupatinath (Lord Shiva), Muktinath, Janaki Mandir, Manakamana, and Budhanilkantha. The Kumari (Living Goddess) tradition is unique to Nepal.</p>
+    </div>
+    <div class="c">
+      <span class="ic">☸️</span>
+      <h4>Buddhism (9%)</h4>
+      <p>Nepal is the birthplace of Siddhartha Gautama (Lord Buddha) in Lumbini in 563 BCE. Major Buddhist sites: Boudhanath Stupa, Swayambhunath (Monkey Temple), and Namo Buddha. Tibetan Buddhism is strong in the north.</p>
+    </div>
+  </div>
+
+  <div class="c" style="margin-top:14px">
+    <h3>🎶 Arts & Traditions</h3>
+    <div class="g2" style="margin-top:.8rem">
+      <ul>
+        <li><strong>Music:</strong> Madal (drum), sarangi, bansuri, dohori (duet folk singing)</li>
+        <li><strong>Dance:</strong> Maruni, Lakhe, Deuda, Tamang Selo, Dhime</li>
+        <li><strong>Architecture:</strong> Pagoda style (originated in Nepal!), Newar wood carvings</li>
+        <li><strong>Clothing:</strong> Daura Suruwal (men), Gunyu Cholo (women), Dhaka topi (cap)</li>
+      </ul>
+      <ul>
+        <li><strong>Handicrafts:</strong> Thangka paintings, singing bowls, pashmina, Dhaka fabric</li>
+        <li><strong>Martial Art:</strong> Khukuri — the iconic curved Nepali knife</li>
+        <li><strong>Script:</strong> Devanagari (देवनागरी) — shared with Hindi</li>
+        <li><strong>Calendar:</strong> Bikram Sambat (BS) — ~57 years ahead of Gregorian</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ═══ FESTIVALS ═══ -->
+  <h3 class="st">🎉 Major Festivals</h3>
+  <div class="g3">
+    <div class="c"><span class="ic">🪔</span><h4>Dashain (दशैं)</h4><p>The biggest festival. 15 days celebrating the victory of good over evil (Goddess Durga). Families reunite, receive tika and jamara blessings. Kite flying, animal offerings, new clothes.</p></div>
+    <div class="c"><span class="ic">🏮</span><h4>Tihar (तिहार)</h4><p>5-day festival of lights. Day 1: Crow worship. Day 2: Dog worship. Day 3: Laxmi Puja (goddess of wealth) with oil lamps. Day 4: Govardhan Puja. Day 5: Bhai Tika (brothers & sisters).</p></div>
+    <div class="c"><span class="ic">🎨</span><h4>Holi (होली)</h4><p>Festival of colors celebrating spring. People throw colored powder and water at each other. Also called Fagu Purnima. Major celebrations in Kathmandu and Terai.</p></div>
+    <div class="c"><span class="ic">🐍</span><h4>Nag Panchami</h4><p>Worship of snake gods. Pictures of Nagas placed above doorways. Believed to protect from snakes and bring rain for good harvests.</p></div>
+    <div class="c"><span class="ic">🪷</span><h4>Buddha Jayanti</h4><p>Celebrates Buddha's birth, enlightenment, and death. Major celebrations at Lumbini and Boudhanath. Monks chant sutras, butter lamps are lit.</p></div>
+    <div class="c"><span class="ic">🏺</span><h4>Chhath Puja</h4><p>Sun worship festival mainly in Terai. Devotees fast and offer prayers to the setting and rising sun while standing in water. Extremely disciplined ritual.</p></div>
+    <div class="c"><span class="ic">🎭</span><h4>Indra Jatra</h4><p>Kathmandu's biggest street festival. The Kumari (Living Goddess) is paraded through the city on a chariot. Masked dances, pole-raising ceremony.</p></div>
+    <div class="c"><span class="ic">🌕</span><h4>Teej (तीज)</h4><p>Women's festival. Married women fast for their husbands' long life. Dancing and singing in red saris. Celebrates Goddess Parvati's union with Lord Shiva.</p></div>
+    <div class="c"><span class="ic">🎊</span><h4>Lhosar</h4><p>New Year celebrations for Tamang, Sherpa, and Gurung communities. Feasting, traditional dancing, and cultural performances.</p></div>
+  </div>
+
+  <!-- ═══ FOOD ═══ -->
+  <h3 class="st">🍛 Food & Cuisine</h3>
+  <div class="g2">
+    <div class="c">
+      <span class="ic">🍚</span>
+      <h4>Dal Bhat (दालभात)</h4>
+      <p>The national dish — steamed rice with lentil soup, vegetables (tarkari), pickles (achar), and meat curry. Eaten twice daily by most Nepalis. "Dal Bhat power, 24 hour!" is a popular saying among trekkers.</p>
+    </div>
+    <div class="c">
+      <span class="ic">🥟</span>
+      <h4>Momo (मो:मो:)</h4>
+      <p>Steamed or fried dumplings filled with meat (buff/chicken) or vegetables. Served with spicy tomato achar. Originally from Tibet, now Nepal's favorite street food. Found everywhere from streets to restaurants.</p>
+    </div>
+    <div class="c">
+      <span class="ic">🫓</span>
+      <h4>Sel Roti (सेलरोटी)</h4>
+      <p>Ring-shaped sweet rice bread, deep-fried. Traditional during Dashain and Tihar. Made from rice flour batter. Eaten with yogurt or meat curry. A festival essential.</p>
+    </div>
+    <div class="c">
+      <span class="ic">🥘</span>
+      <h4>Newari Cuisine</h4>
+      <p>The richest food culture. Chatamari (Nepali pizza), Yomari (sweet steamed dumpling), Choila (spiced grilled meat), Bara (lentil pancake), Aila (rice liquor), Kwati (mixed bean soup).</p>
+    </div>
+  </div>
+  <div class="c" style="margin-top:14px">
+    <h3>🍽️ More Traditional Foods</h3>
+    <div class="g4" style="margin-top:.8rem">
+      <div><h4 style="color:#f5a623;font-size:.82rem">Gundruk</h4><p style="font-size:.78rem;color:#7a90c0">Fermented leafy greens — Nepal's superfood, rich in probiotics</p></div>
+      <div><h4 style="color:#f5a623;font-size:.82rem">Dhido</h4><p style="font-size:.78rem;color:#7a90c0">Buckwheat/millet porridge — staple in hilly regions</p></div>
+      <div><h4 style="color:#f5a623;font-size:.82rem">Thukpa</h4><p style="font-size:.78rem;color:#7a90c0">Tibetan noodle soup — popular in cold mountain regions</p></div>
+      <div><h4 style="color:#f5a623;font-size:.82rem">Juju Dhau</h4><p style="font-size:.78rem;color:#7a90c0">"King of yogurt" from Bhaktapur — creamy clay pot yogurt</p></div>
+    </div>
+  </div>
+
+  <!-- ═══ HISTORY ═══ -->
+  <h3 class="st">📜 Brief History</h3>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">563 BCE</div><div class="tl-text"><strong>Siddhartha Gautama (Buddha) born</strong> in Lumbini, southern Nepal</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">~300 CE</div><div class="tl-text"><strong>Licchavi Dynasty</strong> — Golden age of art, brought Hinduism and Buddhism together</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1200–1769</div><div class="tl-text"><strong>Malla Dynasty</strong> — Built Kathmandu's famous Durbar Squares, temples, and pagodas</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1769</div><div class="tl-text"><strong>Prithvi Narayan Shah</strong> unified Nepal's small kingdoms into one nation</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1846–1951</div><div class="tl-text"><strong>Rana Regime</strong> — Hereditary prime ministers ruled; Shah kings were figureheads</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1953</div><div class="tl-text"><strong>Tenzing Norgay & Edmund Hillary</strong> reach the summit of Everest</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1990</div><div class="tl-text"><strong>People's Movement</strong> — Democracy restored, constitutional monarchy</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2008</div><div class="tl-text"><strong>Monarchy abolished</strong> — Nepal becomes a federal democratic republic</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2015</div><div class="tl-text"><strong>New Constitution adopted</strong> — 7 provinces created; devastating earthquake (7.8 magnitude, ~9,000 died)</div></div>
+  </div>
+
+  <!-- ═══ TOURISM ═══ -->
+  <h3 class="st">✈️ Tourism & Trekking</h3>
+  <div class="g3">
+    <div class="c"><span class="ic">🏔️</span><h4>Everest Base Camp Trek</h4><p>14-day trek to 5,364m. Fly to Lukla, pass through Namche Bazaar, see Everest up close. One of the world's most iconic treks.</p></div>
+    <div class="c"><span class="ic">🌄</span><h4>Annapurna Circuit</h4><p>Classic 2-3 week trek through diverse landscapes. Cross Thorong La pass (5,416m). Rice paddies, forests, alpine desert, and mountain panoramas.</p></div>
+    <div class="c"><span class="ic">🏞️</span><h4>Pokhara</h4><p>The lake city. Phewa Lake, Sarangkot sunrise, paragliding, World Peace Pagoda. Gateway to Annapurna. Nepal's tourism capital after Kathmandu.</p></div>
+    <div class="c"><span class="ic">🛕</span><h4>Kathmandu Valley</h4><p>7 UNESCO World Heritage monument zones. Pashupatinath, Boudhanath, Swayambhunath, Patan Durbar Square, Bhaktapur Durbar Square. Over 2,500 years of history.</p></div>
+    <div class="c"><span class="ic">🦏</span><h4>Chitwan National Park</h4><p>UNESCO site. Jungle safaris to see one-horned rhinos, Bengal tigers, gharial crocodiles, over 500 bird species. Tharu cultural performances.</p></div>
+    <div class="c"><span class="ic">🕉️</span><h4>Lumbini</h4><p>Birthplace of Lord Buddha. UNESCO World Heritage Site. Maya Devi Temple, Ashoka Pillar, monastic zones with temples from 25+ countries. A place of world peace.</p></div>
+  </div>
+
+  <!-- ═══ FUN FACTS ═══ -->
+  <h3 class="st">💡 Amazing Facts About Nepal</h3>
+  <div class="g2">
+    <div class="c">
+      <h3>🚩 Unique Facts</h3>
+      <ul>
+        <li>Nepal's flag is the <strong>only non-rectangular national flag</strong> in the world — two stacked triangles</li>
+        <li>Nepal has <strong>never been colonized</strong> by any foreign power</li>
+        <li>The <strong>cow is the national animal</strong> and is sacred (not eaten)</li>
+        <li><strong>Timezone is UTC+5:45</strong> — one of the few 45-minute offsets in the world</li>
+        <li>Nepal has <strong>more festivals than days in a year</strong></li>
+        <li>The <strong>Kumari</strong> (Living Goddess) tradition is unique to Nepal — a young girl worshipped as a deity</li>
+      </ul>
+    </div>
+    <div class="c">
+      <h3>🌟 Records & Achievements</h3>
+      <ul>
+        <li><strong>Deepest gorge:</strong> Kali Gandaki Gorge (5,571m deep)</li>
+        <li><strong>Highest lake:</strong> Tilicho Lake (4,919m altitude)</li>
+        <li><strong>Most Everest summits:</strong> Kami Rita Sherpa — 30 times (world record)</li>
+        <li><strong>Gurkha soldiers</strong> — among the world's most feared and respected warriors</li>
+        <li><strong>Birthplace of Buddha</strong> — Lumbini, 563 BCE</li>
+        <li><strong>Pagoda architecture</strong> — originated in Nepal, spread to China and Japan</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ═══ JAVA CODE ═══ -->
+  <h3 class="st">☕ Java OOP Model</h3>
+  <p style="color:#7a90c0;font-size:.9rem;margin-bottom:.5rem">This page's data is modeled using Java OOP concepts — classes, inheritance, enums, and collections:</p>
+
+  <div class="code">
+<pre><span class="cm">// Nepal.java — Complete Java class representing Nepal</span>
+<span class="kw">public class</span> <span class="cls">Nepal</span> {
+    <span class="kw">private final</span> String officialName = <span class="str">"Federal Democratic Republic of Nepal"</span>;
+    <span class="kw">private final</span> String capital = <span class="str">"Kathmandu"</span>;
+    <span class="kw">private final</span> <span class="kw">int</span> population = <span class="num">30_000_000</span>;
+    <span class="kw">private final</span> <span class="kw">double</span> area = <span class="num">147_516.0</span>; <span class="cm">// km²</span>
+    <span class="kw">private final</span> List&lt;<span class="cls">Mountain</span>&gt; mountains = <span class="kw">new</span> ArrayList&lt;&gt;();
+    <span class="kw">private final</span> List&lt;<span class="cls">Festival</span>&gt; festivals = <span class="kw">new</span> ArrayList&lt;&gt;();
+
+    <span class="kw">public</span> <span class="cls">Nepal</span>() {
+        mountains.add(<span class="kw">new</span> <span class="cls">Mountain</span>(<span class="str">"Sagarmatha"</span>, <span class="num">8848.86</span>, <span class="num">1953</span>));
+        mountains.add(<span class="kw">new</span> <span class="cls">Mountain</span>(<span class="str">"Kanchenjunga"</span>, <span class="num">8586</span>, <span class="num">1955</span>));
+        mountains.add(<span class="kw">new</span> <span class="cls">Mountain</span>(<span class="str">"Lhotse"</span>, <span class="num">8516</span>, <span class="num">1956</span>));
+        festivals.add(<span class="kw">new</span> <span class="cls">Festival</span>(<span class="str">"Dashain"</span>, <span class="num">15</span>, <span class="cls">Season</span>.AUTUMN));
+        festivals.add(<span class="kw">new</span> <span class="cls">Festival</span>(<span class="str">"Tihar"</span>, <span class="num">5</span>, <span class="cls">Season</span>.AUTUMN));
+    }
+
+    <span class="kw">public</span> String <span class="fn">getGreeting</span>() {
+        <span class="kw">return</span> <span class="str">"नमस्ते! Welcome to "</span> + officialName;
+    }
+
+    <span class="kw">public</span> <span class="cls">Mountain</span> <span class="fn">getHighestPeak</span>() {
+        <span class="kw">return</span> mountains.stream()
+            .max(Comparator.comparing(<span class="cls">Mountain</span>::getHeight))
+            .orElse(<span class="kw">null</span>);
+    }
+}
+
+<span class="cm">// Mountain.java — Represents a peak</span>
+<span class="kw">record</span> <span class="cls">Mountain</span>(String name, <span class="kw">double</span> height, <span class="kw">int</span> firstSummitYear) {
+    <span class="kw">public boolean</span> <span class="fn">isEightThousander</span>() {
+        <span class="kw">return</span> height >= <span class="num">8000</span>;
+    }
+}
+
+<span class="cm">// Festival.java</span>
+<span class="kw">record</span> <span class="cls">Festival</span>(String name, <span class="kw">int</span> durationDays, <span class="cls">Season</span> season) {}
+
+<span class="kw">enum</span> <span class="cls">Season</span> { SPRING, SUMMER, AUTUMN, WINTER }</pre>
+  </div>
+
+  <div class="quote">
+    "सगरमाथा (Sagarmatha) — 'Forehead of the Sky.' That's what we call Mount Everest in Nepal. It's not just a mountain; it's the soul of our nation."
+  </div>
+
+  <!-- ═══ PROVINCES ═══ -->
+  <h3 class="st">🗺️ 7 Provinces of Nepal</h3>
+  <div class="tbl">
+    <table>
+      <thead><tr><th>Province</th><th>Capital</th><th>Population</th><th>Famous For</th></tr></thead>
+      <tbody>
+        <tr><td>1. Koshi</td><td>Biratnagar</td><td>~4.5M</td><td>Tea gardens, Everest region, Ilam</td></tr>
+        <tr><td>2. Madhesh</td><td>Janakpur</td><td>~5.4M</td><td>Janaki Temple, Terai culture, Chhath Puja</td></tr>
+        <tr><td>3. Bagmati</td><td>Kathmandu</td><td>~5.5M</td><td>Capital city, Pashupatinath, Chitwan</td></tr>
+        <tr><td>4. Gandaki</td><td>Pokhara</td><td>~2.4M</td><td>Pokhara, Annapurna, Muktinath</td></tr>
+        <tr><td>5. Lumbini</td><td>Butwal</td><td>~4.5M</td><td>Birthplace of Buddha, Palpa, Tansen</td></tr>
+        <tr><td>6. Karnali</td><td>Birendranagar</td><td>~1.6M</td><td>Rara Lake, remote trekking, Dolpo</td></tr>
+        <tr><td>7. Sudurpashchim</td><td>Dhangadhi</td><td>~2.5M</td><td>Shuklaphanta, Api Himal, far-west culture</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══ NEPAL & JAPAN ═══ -->
+  <h3 class="st">🇳🇵🤝🇯🇵 Nepal & Japan Connection</h3>
+  <div class="c">
+    <h3>Why Many Nepalis Come to Japan</h3>
+    <div class="g2" style="margin-top:.8rem">
+      <ul>
+        <li><strong>Education:</strong> ~40,000+ Nepali students study in Japan</li>
+        <li><strong>Work:</strong> Technical intern training, Specified Skilled Workers (SSW)</li>
+        <li><strong>Language Schools:</strong> Japanese language schools as gateway</li>
+        <li><strong>IT Industry:</strong> Growing number of Nepali IT professionals</li>
+      </ul>
+      <ul>
+        <li><strong>Restaurants:</strong> Nepali/Indian restaurants across Japan</li>
+        <li><strong>Community:</strong> Nepali population in Japan ~125,000+</li>
+        <li><strong>Cultural Exchange:</strong> Both countries value respect, discipline, and harmony</li>
+        <li><strong>Shared Values:</strong> Both Hindu and Buddhist traditions</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Built by Dadal Upendra Singh · 専門学校東京テクニカルカレッジ · Java OOP × Nepal 🇳🇵<br>
+  <span style="color:#7a90c0;font-size:.72rem">This page models Nepal's data using Java OOP concepts — classes, records, enums, collections, and streams.</span>
+</footer>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JS Playground | Dadal Upendra Singh</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:'Segoe UI',system-ui,sans-serif;background:#050b18;color:#e8f0ff;min-height:100vh}
+.bar{background:rgba(15,28,56,.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(100,160,255,.12);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.bar h1{font-size:.95rem}.bar h1 span{color:#00e5c4}
+.back{padding:8px 16px;border-radius:10px;border:1px solid rgba(100,160,255,.2);background:rgba(255,255,255,.05);color:#e8f0ff;font-weight:600;font-size:.82rem;text-decoration:none}.back:hover{background:rgba(255,255,255,.1)}
+.wrap{max-width:700px;margin:0 auto;padding:40px 24px 60px}
+h2{font-size:1.8rem;font-weight:800;text-align:center;margin-bottom:.5rem}h2 em{color:#00e5c4;font-style:normal}
+.sub{text-align:center;color:#7a90c0;margin-bottom:2rem}
+.demo{background:rgba(15,28,56,.65);border:1px solid rgba(100,160,255,.15);border-radius:14px;padding:1.5rem;margin-bottom:1.5rem}
+.demo h3{color:#00e5c4;margin-bottom:1rem;font-size:1rem}
+input,textarea{width:100%;padding:10px 14px;border-radius:10px;border:1px solid rgba(100,160,255,.15);background:rgba(255,255,255,.04);color:#e8f0ff;font-size:.9rem;outline:none;margin-bottom:10px;font-family:inherit}
+input:focus,textarea:focus{border-color:#4d9fff}
+.btn{display:inline-flex;padding:10px 20px;border-radius:10px;border:none;font-weight:700;font-size:.86rem;cursor:pointer;background:linear-gradient(135deg,#4d9fff,#00e5c4);color:#03080f;transition:opacity .15s}.btn:hover{opacity:.85}
+.btn-sm{padding:8px 14px;font-size:.8rem}
+.result{margin-top:12px;padding:14px;border-radius:10px;background:rgba(0,229,196,.06);border:1px solid rgba(0,229,196,.15);color:#00e5c4;font-size:.9rem;min-height:44px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.error{color:#ff5f57;font-size:.78rem;display:none;margin-top:4px}
+.error.show{display:block}
+.char-count{text-align:right;font-size:.75rem;color:#445580;margin-top:-6px;margin-bottom:8px}
+.timer-display{font-size:3rem;font-weight:800;text-align:center;padding:1rem;font-family:monospace;color:#4d9fff}
+.timer-btns{display:flex;gap:10px;justify-content:center;margin-top:1rem}
+.timer-btns button{padding:10px 20px;border-radius:10px;border:1px solid rgba(100,160,255,.2);background:rgba(255,255,255,.05);color:#e8f0ff;font-weight:700;cursor:pointer}.timer-btns button:hover{background:rgba(255,255,255,.1)}
+.password-out{font-family:monospace;font-size:1.1rem;letter-spacing:2px;word-break:break-all;color:#f5a623}
+footer{text-align:center;padding:2rem;color:#445580;font-size:.78rem;border-top:1px solid rgba(100,160,255,.08);margin-top:2rem}
+@media(max-width:500px){.form-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="bar"><h1>⚡ <span>JS Playground</span> — Dadal</h1><a class="back" href="../index.html#projects">← Portfolio</a></div>
+<div class="wrap">
+<h2>Interactive <em>JS</em> Playground</h2>
+<p class="sub">Real working JavaScript demos — play with them!</p>
+
+<!-- Form Validation -->
+<div class="demo">
+<h3>📝 Form Validation</h3>
+<div class="form-grid">
+  <div><input id="fname" placeholder="First name" oninput="validateForm()"><div class="error" id="fnameErr">Name is required</div></div>
+  <div><input id="femail" type="email" placeholder="Email" oninput="validateForm()"><div class="error" id="femailErr">Invalid email</div></div>
+</div>
+<textarea id="fmsg" rows="3" placeholder="Message (min 10 chars)" oninput="validateForm();updateCharCount()"></textarea>
+<div class="char-count" id="charCount">0 characters</div>
+<button class="btn" onclick="submitForm()">Submit</button>
+<div class="result" id="formResult">Fill the form above — validation is live!</div>
+</div>
+
+<!-- Stopwatch -->
+<div class="demo">
+<h3>⏱️ Stopwatch</h3>
+<div class="timer-display" id="timerDisplay">00:00:00</div>
+<div class="timer-btns">
+  <button onclick="startTimer()">▶ Start</button>
+  <button onclick="stopTimer()">⏸ Stop</button>
+  <button onclick="resetTimer()">↺ Reset</button>
+  <button onclick="lapTimer()">🏁 Lap</button>
+</div>
+<div class="result" id="laps" style="margin-top:12px;min-height:0"></div>
+</div>
+
+<!-- Password Generator -->
+<div class="demo">
+<h3>🔐 Password Generator</h3>
+<div style="display:flex;gap:10px;align-items:center;margin-bottom:10px">
+  <label style="font-size:.85rem;color:#7a90c0;white-space:nowrap">Length:</label>
+  <input type="range" id="pwLen" min="6" max="32" value="16" oninput="document.getElementById('pwLenVal').textContent=this.value" style="flex:1;accent-color:#4d9fff">
+  <span id="pwLenVal" style="font-weight:700;min-width:24px">16</span>
+</div>
+<button class="btn" onclick="genPassword()">🎲 Generate</button>
+<div class="result"><span class="password-out" id="pwOut">Click generate!</span></div>
+</div>
+
+<!-- Word Counter -->
+<div class="demo">
+<h3>📊 Word & Character Counter</h3>
+<textarea id="wcText" rows="4" placeholder="Type or paste text here..." oninput="countWords()"></textarea>
+<div class="result" id="wcResult">Words: 0 | Characters: 0 | Sentences: 0 | Lines: 1</div>
+</div>
+
+</div>
+<footer>Built by Dadal Upendra Singh · JS Playground</footer>
+
+<script>
+/* Form */
+function validateForm(){
+  const n=document.getElementById('fname').value.trim();
+  const e=document.getElementById('femail').value.trim();
+  document.getElementById('fnameErr').classList.toggle('show',!n);
+  document.getElementById('femailErr').classList.toggle('show',e&&!e.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/));
+}
+function updateCharCount(){document.getElementById('charCount').textContent=document.getElementById('fmsg').value.length+' characters';}
+function submitForm(){
+  const n=document.getElementById('fname').value.trim();
+  const e=document.getElementById('femail').value.trim();
+  const m=document.getElementById('fmsg').value.trim();
+  if(!n||!e||m.length<10){document.getElementById('formResult').textContent='❌ Please fix errors above';return;}
+  document.getElementById('formResult').textContent=`✅ Form submitted! Name: ${n}, Email: ${e}`;
+}
+/* Timer */
+let timerInterval,timerMs=0,laps=[];
+function pad(n){return String(n).padStart(2,'0');}
+function fmtTime(ms){const s=Math.floor(ms/1000);return pad(Math.floor(s/3600))+':'+pad(Math.floor(s%3600/60))+':'+pad(s%60);}
+function startTimer(){if(timerInterval)return;timerInterval=setInterval(()=>{timerMs+=100;document.getElementById('timerDisplay').textContent=fmtTime(timerMs);},100);}
+function stopTimer(){clearInterval(timerInterval);timerInterval=null;}
+function resetTimer(){stopTimer();timerMs=0;laps=[];document.getElementById('timerDisplay').textContent='00:00:00';document.getElementById('laps').textContent='';}
+function lapTimer(){if(!timerMs)return;laps.push(fmtTime(timerMs));document.getElementById('laps').textContent=laps.map((l,i)=>`Lap ${i+1}: ${l}`).join(' | ');}
+/* Password */
+function genPassword(){const len=parseInt(document.getElementById('pwLen').value);const chars='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*';let pw='';for(let i=0;i<len;i++)pw+=chars[Math.floor(Math.random()*chars.length)];document.getElementById('pwOut').textContent=pw;}
+/* Word count */
+function countWords(){const t=document.getElementById('wcText').value;const w=t.trim()?t.trim().split(/\s+/).length:0;const c=t.length;const s=t.split(/[.!?]+/).filter(x=>x.trim()).length;const l=t.split('\n').length;document.getElementById('wcResult').textContent=`Words: ${w} | Characters: ${c} | Sentences: ${s} | Lines: ${l}`;}
+</script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>日本語 Demo — Japanese Language | Dadal Upendra Singh</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI','Hiragino Sans',system-ui,sans-serif;background:#050b18;color:#e8f0ff;min-height:100vh}
+.top-bar{background:rgba(15,28,56,.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(100,160,255,.12);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.top-bar h1{font-size:.95rem;display:flex;align-items:center;gap:8px}
+.top-bar h1 span{color:#ff5f57}
+.back-btn{padding:8px 16px;border-radius:10px;border:1px solid rgba(100,160,255,.2);background:rgba(255,255,255,.05);color:#e8f0ff;font-weight:600;font-size:.82rem;cursor:pointer;text-decoration:none}
+.back-btn:hover{background:rgba(255,255,255,.1)}
+.hero{text-align:center;padding:50px 24px 30px;background:linear-gradient(180deg,rgba(255,95,87,.06),transparent)}
+.hero h2{font-size:clamp(1.6rem,4vw,2.5rem);font-weight:800;margin-bottom:.5rem}
+.hero h2 em{color:#ff5f57;font-style:normal}
+.hero p{color:#7a90c0;max-width:550px;margin:0 auto;line-height:1.8}
+.badge{display:inline-flex;padding:5px 14px;border-radius:999px;background:rgba(255,95,87,.08);border:1px solid rgba(255,95,87,.25);color:#ff5f57;font-size:.75rem;font-weight:700;margin-bottom:1rem}
+.container{max-width:850px;margin:0 auto;padding:0 24px 60px}
+.section-title{font-size:1.2rem;font-weight:700;margin:2.5rem 0 1rem;padding-bottom:.5rem;border-bottom:1px solid rgba(100,160,255,.12)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:1rem}
+.jcard{background:rgba(15,28,56,.65);border:1px solid rgba(100,160,255,.12);border-radius:14px;padding:1.4rem;text-align:center;transition:transform .2s,border-color .2s}
+.jcard:hover{transform:translateY(-3px);border-color:rgba(100,160,255,.3)}
+.jcard .big{font-size:2.8rem;display:block;margin-bottom:.5rem}
+.jcard .reading{color:#ff5f57;font-size:1rem;font-weight:700;margin-bottom:.2rem}
+.jcard .meaning{color:#7a90c0;font-size:.85rem}
+.phrase-box{background:rgba(15,28,56,.5);border:1px solid rgba(100,160,255,.1);border-radius:12px;padding:16px;margin-bottom:10px;display:flex;align-items:center;gap:16px}
+.phrase-jp{font-size:1.2rem;font-weight:700;color:#e8f0ff;min-width:180px}
+.phrase-reading{color:#ff5f57;font-size:.88rem}
+.phrase-en{color:#7a90c0;font-size:.85rem;margin-left:auto}
+.level-bar{display:flex;gap:4px;margin-top:1rem;margin-bottom:.5rem}
+.level-seg{flex:1;height:8px;border-radius:4px;background:rgba(100,160,255,.08)}
+.level-seg.filled{background:linear-gradient(90deg,#ff5f57,#f5a623)}
+.level-label{display:flex;justify-content:space-between;font-size:.72rem;color:#445580}
+.jlpt-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:1rem}
+.jlpt-card{text-align:center;padding:14px 8px;border-radius:10px;border:1px solid rgba(100,160,255,.1);background:rgba(15,28,56,.4)}
+.jlpt-card.current{border-color:rgba(255,95,87,.4);background:rgba(255,95,87,.08)}
+.jlpt-card .jlpt-level{font-size:1.1rem;font-weight:800;display:block}
+.jlpt-card .jlpt-desc{font-size:.68rem;color:#7a90c0;margin-top:4px}
+footer{text-align:center;padding:2rem;color:#445580;font-size:.78rem;border-top:1px solid rgba(100,160,255,.08);margin-top:3rem}
+@media(max-width:500px){.jlpt-grid{grid-template-columns:repeat(3,1fr)}.phrase-box{flex-direction:column;align-items:flex-start;gap:6px}.phrase-en{margin-left:0}}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <h1>🇯🇵 <span>日本語</span> Demo — Built by Dadal</h1>
+  <a class="back-btn" href="../index.html#skills">← Back to Portfolio</a>
+</div>
+
+<div class="hero">
+  <span class="badge">🇯🇵 日本語学習</span>
+  <h2><em>日本語</em> — My Japanese Journey</h2>
+  <p>From Nepal to Tokyo — learning Japanese for life, work, and connection. Currently around JLPT N3 level.</p>
+</div>
+
+<div class="container">
+
+  <h3 class="section-title">📊 My JLPT Level</h3>
+  <div class="level-bar">
+    <div class="level-seg filled"></div>
+    <div class="level-seg filled"></div>
+    <div class="level-seg filled"></div>
+    <div class="level-seg"></div>
+    <div class="level-seg"></div>
+  </div>
+  <div class="level-label"><span>N5 (Beginner)</span><span>N3 ← I'm here</span><span>N1 (Advanced)</span></div>
+
+  <div class="jlpt-grid">
+    <div class="jlpt-card"><span class="jlpt-level" style="color:#00e5c4">N5</span><span class="jlpt-desc">基礎 ✓</span></div>
+    <div class="jlpt-card"><span class="jlpt-level" style="color:#4d9fff">N4</span><span class="jlpt-desc">初級 ✓</span></div>
+    <div class="jlpt-card current"><span class="jlpt-level" style="color:#ff5f57">N3</span><span class="jlpt-desc">中級 📍</span></div>
+    <div class="jlpt-card"><span class="jlpt-level" style="color:#7a90c0">N2</span><span class="jlpt-desc">上中級</span></div>
+    <div class="jlpt-card"><span class="jlpt-level" style="color:#445580">N1</span><span class="jlpt-desc">上級</span></div>
+  </div>
+
+  <h3 class="section-title">📝 Basic Kanji I Know</h3>
+  <div class="grid">
+    <div class="jcard"><span class="big">日本</span><div class="reading">にほん</div><div class="meaning">Japan</div></div>
+    <div class="jcard"><span class="big">学校</span><div class="reading">がっこう</div><div class="meaning">School</div></div>
+    <div class="jcard"><span class="big">情報</span><div class="reading">じょうほう</div><div class="meaning">Information</div></div>
+    <div class="jcard"><span class="big">勉強</span><div class="reading">べんきょう</div><div class="meaning">Study</div></div>
+    <div class="jcard"><span class="big">仕事</span><div class="reading">しごと</div><div class="meaning">Work / Job</div></div>
+    <div class="jcard"><span class="big">東京</span><div class="reading">とうきょう</div><div class="meaning">Tokyo</div></div>
+  </div>
+
+  <h3 class="section-title">💬 Useful Phrases</h3>
+  <div class="phrase-box"><span class="phrase-jp">はじめまして</span><span class="phrase-reading">hajimemashite</span><span class="phrase-en">Nice to meet you</span></div>
+  <div class="phrase-box"><span class="phrase-jp">よろしくお願いします</span><span class="phrase-reading">yoroshiku onegaishimasu</span><span class="phrase-en">Please take care of me</span></div>
+  <div class="phrase-box"><span class="phrase-jp">IT企業で働きたいです</span><span class="phrase-reading">IT kigyou de hatarakitai desu</span><span class="phrase-en">I want to work at an IT company</span></div>
+  <div class="phrase-box"><span class="phrase-jp">ネパール出身です</span><span class="phrase-reading">Nepāru shusshin desu</span><span class="phrase-en">I'm from Nepal</span></div>
+  <div class="phrase-box"><span class="phrase-jp">プログラミングが好きです</span><span class="phrase-reading">puroguramingu ga suki desu</span><span class="phrase-en">I like programming</span></div>
+  <div class="phrase-box"><span class="phrase-jp">一生懸命頑張ります</span><span class="phrase-reading">isshōkenmei ganbarimasu</span><span class="phrase-en">I'll do my best with all my effort</span></div>
+
+  <h3 class="section-title">🏫 School Vocabulary</h3>
+  <div class="grid">
+    <div class="jcard"><span class="big">先生</span><div class="reading">せんせい</div><div class="meaning">Teacher</div></div>
+    <div class="jcard"><span class="big">授業</span><div class="reading">じゅぎょう</div><div class="meaning">Class / Lesson</div></div>
+    <div class="jcard"><span class="big">宿題</span><div class="reading">しゅくだい</div><div class="meaning">Homework</div></div>
+    <div class="jcard"><span class="big">試験</span><div class="reading">しけん</div><div class="meaning">Exam / Test</div></div>
+    <div class="jcard"><span class="big">卒業</span><div class="reading">そつぎょう</div><div class="meaning">Graduation</div></div>
+    <div class="jcard"><span class="big">就職</span><div class="reading">しゅうしょく</div><div class="meaning">Employment</div></div>
+  </div>
+</div>
+
+<footer>Built by Dadal Upendra Singh · 専門学校東京テクニカルカレッジ · 日本語 Demo</footer>
+</body>
+</html>

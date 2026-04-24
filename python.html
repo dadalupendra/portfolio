@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Python Demo — Scripts & Automation | Dadal Upendra Singh</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#050b18;color:#e8f0ff;min-height:100vh}
+.top-bar{background:rgba(15,28,56,.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(100,160,255,.12);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+.top-bar h1{font-size:.95rem;display:flex;align-items:center;gap:8px}
+.top-bar h1 span{color:#00e5c4}
+.back-btn{padding:8px 16px;border-radius:10px;border:1px solid rgba(100,160,255,.2);background:rgba(255,255,255,.05);color:#e8f0ff;font-weight:600;font-size:.82rem;cursor:pointer;text-decoration:none}
+.back-btn:hover{background:rgba(255,255,255,.1)}
+.hero{text-align:center;padding:50px 24px 30px;background:linear-gradient(180deg,rgba(0,229,196,.06),transparent)}
+.hero h2{font-size:clamp(1.6rem,4vw,2.5rem);font-weight:800;margin-bottom:.5rem}
+.hero h2 em{color:#00e5c4;font-style:normal}
+.hero p{color:#7a90c0;max-width:550px;margin:0 auto;line-height:1.8}
+.badge{display:inline-flex;padding:5px 14px;border-radius:999px;background:rgba(0,229,196,.1);border:1px solid rgba(0,229,196,.3);color:#00e5c4;font-size:.75rem;font-weight:700;margin-bottom:1rem}
+.container{max-width:850px;margin:0 auto;padding:0 24px 60px}
+.section-title{font-size:1.2rem;font-weight:700;margin:2.5rem 0 1rem;padding-bottom:.5rem;border-bottom:1px solid rgba(100,160,255,.12)}
+.code-block{background:#0c1630;border:1px solid rgba(100,160,255,.12);border-radius:10px;padding:16px;margin-top:1rem;overflow-x:auto}
+.code-block pre{color:#7ec8ff;font-family:'Consolas','Courier New',monospace;font-size:.82rem;line-height:1.7}
+.kw{color:#c792ea}.str{color:#c3e88d}.cm{color:#546e7a}.fn{color:#82aaff}.num{color:#f78c6c}.dec{color:#ffcb6b}
+.output{background:rgba(0,229,196,.06);border:1px solid rgba(0,229,196,.15);border-radius:10px;padding:14px;margin-top:8px;font-family:monospace;font-size:.82rem;color:#00e5c4}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:1rem}
+.concept-card{background:rgba(15,28,56,.5);border:1px solid rgba(100,160,255,.1);border-radius:12px;padding:16px}
+.concept-card h4{font-size:.9rem;color:#00e5c4;margin-bottom:.5rem}
+.concept-card p{font-size:.8rem;color:#7a90c0;line-height:1.6}
+footer{text-align:center;padding:2rem;color:#445580;font-size:.78rem;border-top:1px solid rgba(100,160,255,.08);margin-top:3rem}
+@media(max-width:600px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <h1>🐍 <span>Python</span> Demo — Built by Dadal</h1>
+  <a class="back-btn" href="../index.html#skills">← Back to Portfolio</a>
+</div>
+
+<div class="hero">
+  <span class="badge">🐍 Built with Python</span>
+  <h2><em>Python</em> Scripts &amp; Automation</h2>
+  <p>Simple Python programs demonstrating basics — variables, loops, functions, lists, and dictionaries.</p>
+</div>
+
+<div class="container">
+
+  <h3 class="section-title">📝 Hello World & Basics</h3>
+  <div class="code-block">
+<pre><span class="cm"># Basic Python — variables and f-strings</span>
+name = <span class="str">"Dadal Upendra Singh"</span>
+school = <span class="str">"Tokyo Technical College"</span>
+skills = [<span class="str">"Java"</span>, <span class="str">"JavaScript"</span>, <span class="str">"Python"</span>, <span class="str">"SQL"</span>]
+
+<span class="fn">print</span>(<span class="str">f"Hello! I'm <span class="dec">{name}</span>"</span>)
+<span class="fn">print</span>(<span class="str">f"Studying at <span class="dec">{school}</span>"</span>)
+<span class="fn">print</span>(<span class="str">f"I know <span class="dec">{len(skills)}</span> programming languages"</span>)</pre>
+  </div>
+  <div class="output">
+    Hello! I'm Dadal Upendra Singh<br>
+    Studying at Tokyo Technical College<br>
+    I know 4 programming languages
+  </div>
+
+  <h3 class="section-title">🔄 Loops & Logic</h3>
+  <div class="code-block">
+<pre><span class="cm"># FizzBuzz — classic coding challenge</span>
+<span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="num">1</span>, <span class="num">16</span>):
+    <span class="kw">if</span> i % <span class="num">15</span> == <span class="num">0</span>:
+        <span class="fn">print</span>(<span class="str">"FizzBuzz"</span>)
+    <span class="kw">elif</span> i % <span class="num">3</span> == <span class="num">0</span>:
+        <span class="fn">print</span>(<span class="str">"Fizz"</span>)
+    <span class="kw">elif</span> i % <span class="num">5</span> == <span class="num">0</span>:
+        <span class="fn">print</span>(<span class="str">"Buzz"</span>)
+    <span class="kw">else</span>:
+        <span class="fn">print</span>(i)</pre>
+  </div>
+  <div class="output">1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, FizzBuzz</div>
+
+  <h3 class="section-title">📊 Dictionary — Nepal Facts</h3>
+  <div class="code-block">
+<pre><span class="cm"># Using dictionaries to store structured data</span>
+nepal = {
+    <span class="str">"name"</span>: <span class="str">"Nepal"</span>,
+    <span class="str">"capital"</span>: <span class="str">"Kathmandu"</span>,
+    <span class="str">"population"</span>: <span class="num">30_000_000</span>,
+    <span class="str">"languages"</span>: [<span class="str">"Nepali"</span>, <span class="str">"Maithili"</span>, <span class="str">"Hindi"</span>],
+    <span class="str">"highest_peak"</span>: {<span class="str">"name"</span>: <span class="str">"Sagarmatha"</span>, <span class="str">"height_m"</span>: <span class="num">8848.86</span>}
+}
+
+<span class="kw">for</span> key, value <span class="kw">in</span> nepal.items():
+    <span class="fn">print</span>(<span class="str">f"<span class="dec">{key}</span>: <span class="dec">{value}</span>"</span>)</pre>
+  </div>
+
+  <h3 class="section-title">🔧 Functions</h3>
+  <div class="code-block">
+<pre><span class="cm"># Temperature converter function</span>
+<span class="kw">def</span> <span class="fn">celsius_to_fahrenheit</span>(celsius):
+    <span class="str">"""Convert Celsius to Fahrenheit"""</span>
+    <span class="kw">return</span> (celsius * <span class="num">9</span>/<span class="num">5</span>) + <span class="num">32</span>
+
+<span class="cm"># Nepal city temperatures</span>
+cities = {<span class="str">"Kathmandu"</span>: <span class="num">22</span>, <span class="str">"Pokhara"</span>: <span class="num">25</span>, <span class="str">"Lumbini"</span>: <span class="num">30</span>}
+
+<span class="kw">for</span> city, temp <span class="kw">in</span> cities.items():
+    f_temp = <span class="fn">celsius_to_fahrenheit</span>(temp)
+    <span class="fn">print</span>(<span class="str">f"<span class="dec">{city}</span>: <span class="dec">{temp}</span>°C = <span class="dec">{f_temp}</span>°F"</span>)</pre>
+  </div>
+  <div class="output">
+    Kathmandu: 22°C = 71.6°F<br>
+    Pokhara: 25°C = 77.0°F<br>
+    Lumbini: 30°C = 86.0°F
+  </div>
+
+  <h3 class="section-title">💡 Python Concepts I'm Learning</h3>
+  <div class="grid">
+    <div class="concept-card"><h4>Variables & Types</h4><p>int, float, string, bool, list, tuple, dict</p></div>
+    <div class="concept-card"><h4>Control Flow</h4><p>if/elif/else, for loops, while loops, break/continue</p></div>
+    <div class="concept-card"><h4>Functions</h4><p>def, return, parameters, *args, **kwargs</p></div>
+    <div class="concept-card"><h4>Data Structures</h4><p>Lists, dictionaries, sets, comprehensions</p></div>
+    <div class="concept-card"><h4>File I/O</h4><p>Reading/writing text files, CSV handling</p></div>
+    <div class="concept-card"><h4>OOP Basics</h4><p>Classes, __init__, methods, inheritance</p></div>
+  </div>
+</div>
+
+<footer>Built by Dadal Upendra Singh · 専門学校東京テクニカルカレッジ · Python Demo</footer>
+</body>
+</html>
