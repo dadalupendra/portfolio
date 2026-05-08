@@ -496,4 +496,85 @@
     }, { passive: true });
   }
 
+  /* ──────────────────────────────────────
+     11. RESUME DOWNLOAD
+     - Prefer assets/resume.pdf if present (HEAD probe)
+     - Fallback: print the hidden #resumePrint section as PDF
+  ────────────────────────────────────── */
+  function printResume() {
+    document.body.classList.add('printing-resume');
+    setTimeout(() => {
+      window.print();
+      // Some browsers don't fire `afterprint` reliably; clean up after a delay too
+      setTimeout(() => document.body.classList.remove('printing-resume'), 1000);
+    }, 60);
+  }
+  window.addEventListener('afterprint', () => {
+    document.body.classList.remove('printing-resume');
+  });
+
+  async function handleResumeClick(e) {
+    if (e) e.preventDefault();
+    // Try the real PDF first
+    try {
+      const r = await fetch('assets/resume.pdf', { method: 'HEAD', cache: 'no-store' });
+      if (r.ok) {
+        window.open('assets/resume.pdf', '_blank', 'noopener,noreferrer');
+        return;
+      }
+    } catch (_) { /* fetch may fail on file:// — fall through to print */ }
+    // Fallback: print
+    printResume();
+  }
+
+  $$('#resumeBtn, .js-resume-btn').forEach(btn => {
+    btn.addEventListener('click', handleResumeClick);
+  });
+
+  /* ──────────────────────────────────────
+     12. CONTACT FORM (Formspree)
+  ────────────────────────────────────── */
+  const contactForm = $('#contactForm');
+  if (contactForm) {
+    const status = $('#contactFormStatus');
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      // Honeypot check — bots fill hidden fields, real users don't
+      if (contactForm.elements['_gotcha'] && contactForm.elements['_gotcha'].value) {
+        return;
+      }
+      const data = new FormData(contactForm);
+      const action = contactForm.getAttribute('action');
+      if (!action || action.includes('REPLACE_WITH_FORM_ID')) {
+        if (status) {
+          status.textContent = 'Form not configured yet. Please email upendradadal824@gmail.com directly.';
+          status.className = 'contact-form-status err';
+        }
+        return;
+      }
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.dataset.label = submitBtn.textContent; submitBtn.textContent = 'Sending…'; }
+      if (status) { status.textContent = ''; status.className = 'contact-form-status'; }
+      try {
+        const res = await fetch(action, {
+          method: 'POST',
+          body: data,
+          headers: { Accept: 'application/json' },
+        });
+        if (res.ok) {
+          contactForm.reset();
+          if (status) { status.textContent = '✓ Thanks! Your message was sent. I\'ll reply soon.'; status.className = 'contact-form-status ok'; }
+        } else {
+          const json = await res.json().catch(() => ({}));
+          const msg = (json.errors && json.errors.map(x => x.message).join(', ')) || 'Send failed. Please try email instead.';
+          if (status) { status.textContent = '✗ ' + msg; status.className = 'contact-form-status err'; }
+        }
+      } catch (_) {
+        if (status) { status.textContent = '✗ Network error. Please email upendradadal824@gmail.com directly.'; status.className = 'contact-form-status err'; }
+      } finally {
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = submitBtn.dataset.label || 'Send Message'; }
+      }
+    });
+  }
+
 })();
