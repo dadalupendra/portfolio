@@ -33,7 +33,7 @@ No npm/build step, authentication, API token or custom domain is required.
 
 ## Authentic project entries
 
-Seven user-reported project entries are shown: NextStep Study, GakusaiNavi, Nepal Quest: 77 Districts, QR Menu Generator, NPL 2026 Website, Posture & Distance Alert, and this Developer Portfolio. Project statuses are not claims of completion. The **Developer Portfolio** and uploaded **NPL 2026 Website** now have public GitHub Pages destinations; other entries have no fabricated demo links.
+The Portfolio Projects section now displays exactly **four** requested entries: **NextStep Study**, **QR Menu Generator**, **NPL 2026 Website** and **Nepal Spice**. GakusaiNavi, Nepal Quest: 77 Districts, Posture & Distance Alert and the self-referencing Developer Portfolio card were removed **from project listings and printed work summary**, without deleting the website itself. NextStep Study's previously configured Base44 destination has been restored at https://next-step-ai-a4248ae0.base44.app/; its external public accessibility may change independently. NPL 2026 and Nepal Spice have hosted GitHub Pages project pages. QR Menu Generator remains marked in development with no invented public link.
 
 The three former practice demo pages (Java OOP, JavaScript Playground and SQL Notes) were deleted from `demos/`, and their mock projects have been removed from the site.
 
@@ -90,11 +90,18 @@ The uploaded ZIP contains an **older version of this portfolio**, including lega
 Three useful features were adapted into the current portfolio without removing the existing content or interactions:
 
 1. **Real multilingual personal introduction:** an accessible English / 日本語 / नेपाली tabbed About card. This preserves the idea of the older language-specific bio, but uses verifiable study/technology facts rather than dated career goals.
-2. **Currently building:** genuine project-status highlights for NextStep Study, GakusaiNavi, Nepal Quest and the published Portfolio, linking visitors to the existing project list.
+2. **Currently building:** genuine project-status highlights for NextStep Study, QR Menu Generator, NPL 2026 and Nepal Spice, linking visitors to the current four project cards.
 3. **Featured published project:** an NPL 2026 spotlight with working relative GitHub Pages and GitHub source links. The card explicitly states that live cricket updates depend on third-party providers.
 4. **Clickable education journey:** Grade 10 at Shree Siddha Secondary School → Grade XII at Shree Sampal Secondary School → Tokyo Technical College. Selecting a stage scrolls to the appropriate existing school card and its on-demand Google Map.
 
 New files: `css/curated-legacy-features.css` and `js/curated-legacy-features.js`. All surrounding new UI text is translated in the current six portfolio languages and the new tab interface supports keyboard arrow navigation.
 
-**Deliberately excluded:** old practice/demo links, unverified skills percentages/JLPT level, mock NextStep domains and content, and the browser-only document/photo vault. The vault stored data locally per-device and would not be a secure place to publish personal credentials on a public portfolio. No contents of the ZIP's `.git` directory were uploaded to the public repository.
+**Deliberately excluded:** old practice/demo links, unverified skills percentages/JLPT level, and the browser-only document/photo vault. The vault stored data locally per-device and would not be a secure place to publish personal credentials on a public portfolio. No contents of the ZIP's `.git` directory were uploaded to the public repository.
 
+
+## Updated Portfolio projects: NextStep link and Nepal Spice
+
+- **NextStep Study:** restored the previous Base44 app URL to its portfolio project card: https://next-step-ai-a4248ae0.base44.app/ . Base44 reports the matching app is ready; the external URL was not verified in a browser.
+- **Nepal Spice:** project page at https://dadalupendra.github.io/portfolio/nepal-spice/ , built from the 26 real dish names, trilingual labels and *illustrative* prices in the uploaded `nepal-spice-complete.zip`. Includes live filtering, language switching, mobile layout and a **local-only sample cart**; it is not a production checkout system.
+- **Publishing boundaries:** the uploaded archive also contains a separate Java Servlet / Oracle / SMTP back end requiring Tomcat, which GitHub Pages cannot run. The school's original frontend uses browser-local demonstration authentication. For safety the published preview avoids presenting these systems as real payment, login, delivery, ordering or email services.
+- **Photos and attribution:** the supplied ZIP's `images/CREDITS.md` says the 26 photos were copied from various sites for noncommercial classroom use and should be replaced with properly licensed images before public release. Therefore they are **not republished** in the public GitHub Pages preview, which uses icons instead.
