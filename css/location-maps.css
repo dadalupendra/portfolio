@@ -1,0 +1,30 @@
+/* Place information — accessible, responsive and consistent with navy/cyan theme. */
+.place-details{position:relative;display:flex;flex-direction:column;gap:13px;margin-bottom:20px}
+.place-photo{position:relative;width:100%;height:176px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:linear-gradient(140deg,var(--panel2),var(--bg2));isolation:isolate}
+.place-photo img{width:100%;height:100%;object-fit:cover;object-position:center;display:none}
+.place-photo img.loaded:not([hidden]){display:block}
+.place-photo-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:9px;padding:16px;text-align:center;color:var(--muted);background:radial-gradient(circle at 50% 30%,#00e4ef17,transparent 65%),linear-gradient(115deg,var(--panel),var(--bg2))}
+.place-photo-placeholder[hidden]{display:none}
+.place-photo-placeholder span:first-child{font-size:2.3rem;line-height:1;filter:drop-shadow(0 6px 9px #00d5e75a)}
+.place-photo-label{font-size:.8rem;line-height:1.45;font-weight:650;max-width:260px}
+.place-address{display:flex;flex-direction:column;gap:4px;margin:0!important;padding-left:1px;color:var(--muted);font-size:.82rem;line-height:1.55}
+.place-name{color:var(--text);font-size:.9rem;line-height:1.4}
+.place-address-detail{overflow-wrap:anywhere}
+.place-actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.place-map-link,.place-map-toggle{display:inline-flex;justify-content:center;align-items:center;min-height:44px;border-radius:10px;padding:10px 14px;font:700 .79rem/1.35 Inter,"Noto Sans JP","Noto Sans Devanagari",system-ui,sans-serif;text-decoration:none;text-align:center;cursor:pointer;transition:background .18s ease,border-color .18s ease,transform .18s ease}
+.place-map-link{border:1px solid transparent;background:linear-gradient(105deg,#18a6ee,#00dcd3);color:#031b2d!important}
+.place-map-toggle{border:1px solid var(--line);background:var(--panel);color:var(--text)}
+.place-map-toggle:hover,.place-map-toggle:focus-visible{border-color:var(--cyan);background:var(--panel2)}
+.place-map-link:hover,.place-map-toggle:hover{transform:translateY(-1px)}
+.place-map-panel{width:100%;margin-top:5px;border:2px solid var(--cyan);border-radius:15px;overflow:hidden;background:var(--bg2);box-shadow:0 0 20px #00cbea21}
+.place-map-panel[hidden]{display:none!important}
+.place-map-panel iframe{display:block;width:100%;height:260px;border:0;background:var(--bg2)}
+.info-card:has(.place-details),.education-card:has(.place-details){overflow:visible}
+.info-card .place-details{margin-top:0}
+.education-card .place-details{margin-bottom:13px}
+:root[data-theme="light"] .place-photo-placeholder{background:linear-gradient(130deg,#eff9ff,#dceefb);color:#355574}
+:root[data-theme="light"] .place-map-panel{border-color:#007e8c;box-shadow:0 8px 26px #16527e19}
+:root[data-theme="light"] .place-map-link{background:linear-gradient(110deg,#157bd7,#13bcb8);color:#fff!important}
+@media(max-width:720px){.place-photo{height:160px}.place-map-panel iframe{height:230px}.place-actions{align-items:stretch}.place-map-link,.place-map-toggle{flex:1 1 145px}}
+@media(prefers-reduced-motion:reduce){.place-map-link,.place-map-toggle{transition:none!important;transform:none!important}}
+@media print{.place-photo,.place-map-panel,.place-actions{display:none!important}.place-details{margin-bottom:8px}.place-address{color:#111!important}}
