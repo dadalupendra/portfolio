@@ -17,12 +17,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/portfolio-v3.css">
 <link rel="stylesheet" href="css/portfolio-v4.css">
-<link rel="stylesheet" href="css/live-3d-background.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.152.2/three.min.js" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="css/three-enhancements.css">
 <script defer src="js/portfolio-v3.js"></script>
-<script defer src="js/live-3d-background.js"></script>
+<script defer src="js/three-effects.js"></script>
 </head>
 <body>
-<canvas id="live3dBackground" aria-hidden="true"></canvas>
+<canvas id="threeBackground" aria-hidden="true"></canvas>
 <a href="#main" class="skip">Skip to content</a>
 <header class="site-header" id="top">
 <div class="wrap header-inner">
@@ -87,11 +88,11 @@
 </div></section>
 
 <section id="projects" class="section section-tinted"><div class="wrap">
-  <div class="section-top"><div><span class="eyebrow" data-i18n="workLabel">SELECTED WORK</span><h2 class="section-title" data-i18n="workTitle">Projects &amp; practice</h2><p class="section-subtitle" data-i18n="workSubtitle">Real applications and learning demos. Project status and source access are clearly labeled.</p></div></div>
+  <div class="section-top"><div><span class="eyebrow" data-i18n="workLabel">SELECTED WORK</span><h2 class="section-title" data-i18n="workTitle">Projects &amp; practice</h2><p class="section-subtitle" data-i18n="workSubtitle">Real projects with transparent development status and only genuine public links.</p></div></div>
   <div class="filter-bar" id="projectFilters" role="group" aria-label="Project category filters">
     <button class="filter" type="button" data-filter="all" aria-pressed="true" data-i18n="filterAll">All</button>
     <button class="filter" type="button" data-filter="app" aria-pressed="false" data-i18n="filterApp">Applications</button>
-    <button class="filter" type="button" data-filter="study" aria-pressed="false" data-i18n="filterStudy">Learning Demos</button>
+    <button class="filter" type="button" data-filter="web" aria-pressed="false" data-i18n="filterStudy">Web Projects</button>
     <button class="filter" type="button" data-filter="inprogress" aria-pressed="false" data-i18n="filterProgress">In Progress</button>
   </div>
   <div class="projects-grid" id="projectsGrid" aria-live="polite"></div>
@@ -195,12 +196,12 @@
   </div>
 </div></section>
 </main>
-<footer class="footer"><div class="wrap footer-inner"><span>© <span id="footerYear"></span> Dadal Upendra Singh · <span data-i18n="footerText">Built with HTML, CSS and JavaScript.</span></span><div class="footer-links"><a href="#home" data-i18n="backTop">Back to top ↑</a><a href="legacy.html" data-i18n="legacy">Previous version / local vault</a></div></div></footer>
+<footer class="footer"><div class="wrap footer-inner"><span>© <span id="footerYear"></span> Dadal Upendra Singh · <span data-i18n="footerText">Built with HTML, CSS and JavaScript.</span></span><div class="footer-links"><a href="#home" data-i18n="backTop">Back to top ↑</a></div></div></footer>
 <article class="print-cv" id="cvPrint">
   <h1>DADAL UPENDRA SINGH</h1><p data-cv="subtitle">Information Processing Student | Tokyo, Japan</p><p>GitHub: github.com/dadalupendra | Email: upendradadal824@gmail.com</p>
   <h2 data-cv="profile">Profile</h2><p data-cv="profileText">IT student with practical experience in building web projects and studying Java, JavaScript, HTML/CSS and Oracle SQL.</p>
   <h2 data-cv="tech">Technical skills</h2><p>HTML, CSS, JavaScript, Java, Oracle SQL, PL/SQL, Node.js, React, Git/GitHub, Python/C fundamentals.</p>
-  <h2 data-cv="work">Selected work</h2><ul><li>NextStep Study — language learning application (work in progress)</li><li>Java OOP practical demos</li><li>JavaScript DOM and localStorage exercises</li><li>Oracle SQL study demos</li><li>GakusaiNavi — school festival project (project work)</li></ul>
+  <h2 data-cv="work">Selected work</h2><ul><li>NextStep Study — Japanese language learning platform (in development)</li><li>GakusaiNavi — school festival application (Java Servlet, Oracle)</li><li>Nepal Quest: 77 Districts — Unity/C# educational game (in development)</li><li>QR Menu Generator — Node.js/SQLite menu project</li><li>NPL 2026 Website — cricket information website project</li><li>Posture &amp; Distance Alert — Raspberry Pi school research</li><li>Developer Portfolio — HTML, CSS, JavaScript and Three.js</li></ul>
   <h2 data-cv="education">Education</h2><p>Tokyo Technical College, Information Processing (情報処理科)</p><p>Shree Sampal Secondary School, Sunsera, Darchula, Nepal — Grade XII, NEB (2078 B.S.), GPA 2.73.</p><p>Shree Siddha Secondary School, Sina, Darchula, Nepal — school education through Grade 10.</p>
   <h2 data-cv="experience">Experience</h2><p>Part-time role, Kaiten Sushi Misaki — since August 2023.</p>
 </article>
