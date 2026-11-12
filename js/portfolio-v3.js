@@ -98,6 +98,12 @@ Object.assign(dict.ne,{"techCaption":"बनाउने · सिक्ने �
 Object.assign(dict.hi,{"techCaption":"बनाएँ · सीखें · सुधारें","statProjects":"पोर्टफोलियो प्रोजेक्ट","statSkills":"तकनीकी कौशल","statStudent":"टोक्यो में IT छात्र","statGpa":"NEB कक्षा 12 GPA","statLanguages":"वेबसाइट की भाषाएँ"});
 Object.assign(dict.zh,{"techCaption":"构建 · 学习 · 进步","statProjects":"作品集项目","statSkills":"技术领域","statStudent":"东京IT学生","statGpa":"NEB 十二年级 GPA","statLanguages":"网站支持语言"});
 Object.assign(dict.ko,{"techCaption":"개발 · 학습 · 성장","statProjects":"포트폴리오 프로젝트","statSkills":"기술 분야","statStudent":"도쿄 IT 학생","statGpa":"NEB 12학년 GPA","statLanguages":"웹사이트 언어"});
+dict.en.filterStudy="Web projects";
+dict.ja.filterStudy="Web制作";
+dict.ne.filterStudy="वेब प्रोजेक्ट";
+dict.hi.filterStudy="वेब प्रोजेक्ट";
+dict.zh.filterStudy="网页项目";
+dict.ko.filterStudy="웹 프로젝트";
 const cvTranslations={
   en:{subtitle:'Information Processing Student | Tokyo, Japan',profile:'Profile',profileText:'IT student with practical project experience in HTML/CSS, JavaScript, Java and Oracle SQL.',tech:'Technical skills',work:'Selected work',education:'Education',experience:'Experience'},
   ja:{subtitle:'情報処理科 学生 | 日本・東京',profile:'プロフィール',profileText:'HTML/CSS、JavaScript、Java、Oracle SQLを学び、実践的な制作に取り組む情報処理科の学生。',tech:'技術スキル',work:'主な制作',education:'学歴',experience:'経験'},
@@ -108,62 +114,48 @@ const cvTranslations={
 };
 const localized = (en,ja,ne,hi,zh,ko)=>({en,ja,ne,hi,zh,ko});
 const projects=[
-{id:'nextstep',category:'app',icon:'📚',name:'NextStep Study',description:localized(
-'Language-learning application project with vocabulary, lessons, quizzes and learner progress.',
-'単語・レッスン・クイズ・学習進捗を扱う語学学習アプリの開発。',
-'शब्द, पाठ, क्विज र सिकाइ प्रगतिसहितको भाषा सिक्ने एप।',
-'शब्दावली, पाठ, क्विज और सीखने की प्रगति वाला भाषा अध्ययन ऐप।',
-'包含词汇、课程、测验与学习进度的语言学习应用。',
-'어휘, 학습 콘텐츠, 퀴즈 및 진도 기능을 포함한 언어 학습 앱.'
-),tech:['JavaScript','Web App','Learning'],link:'https://next-step-ai-a4248ae0.base44.app/',linkKind:'project',status:'app'},
-{id:'java',category:'study',icon:'☕',name:'Java OOP Exercises',description:localized(
-'Coursework examples covering classes, interfaces, inheritance and object-oriented design.',
-'クラス、インターフェース、継承、オブジェクト指向設計の学習デモ。',
-'class, interface, inheritance र OOP अभ्यासका उदाहरणहरू।',
-'क्लास, इंटरफेस, इनहेरिटेंस और OOP के अभ्यास।',
-'类、接口、继承与面向对象设计的学习示例。',
-'클래스, 인터페이스, 상속 및 객체지향 설계 학습 예제.'
-),tech:['Java','OOP','Coursework'],link:'demos/java-oop.html',linkKind:'demo',status:'study'},
-{id:'javascript',category:'study',icon:'⚡',name:'JavaScript Playground',description:localized(
-'Interactive demonstrations of DOM manipulation, forms and browser storage.',
-'DOM操作、フォーム、ブラウザ内ストレージを学ぶ実践デモ。',
-'DOM, form र browser storage सम्बन्धी interactive अभ्यास।',
-'DOM, फॉर्म और ब्राउज़र स्टोरेज के इंटरैक्टिव उदाहरण।',
-'展示 DOM 操作、表单和浏览器存储的互动示例。',
-'DOM 조작, 폼 및 브라우저 저장소 인터랙티브 실습.'
-),tech:['HTML','CSS','JavaScript'],link:'demos/js-playground.html',linkKind:'demo',status:'study'},
-{id:'sql',category:'study',icon:'🗃️',name:'Oracle SQL Practice',description:localized(
-'Database learning notes and examples for querying and PL/SQL concepts.',
-'SQL検索とPL/SQLの基本を学ぶノート・演習。',
-'SQL query र PL/SQL अवधारणाका सिकाइ नोट र अभ्यास।',
-'SQL क्वेरी और PL/SQL अवधारणाओं के अध्ययन नोट और उदाहरण।',
-'SQL 查询与 PL/SQL 基础的学习笔记和练习。',
-'SQL 쿼리와 PL/SQL 기초 학습 노트 및 예제.'
-),tech:['Oracle SQL','PL/SQL','DB'],link:'demos/sql-notes.html',linkKind:'demo',status:'study'},
-{id:'gakusai',category:'inprogress',icon:'🎪',name:'GakusaiNavi',description:localized(
-'School festival application project built around event listings, schedules and Java/Oracle coursework.',
-'イベント情報・スケジュールを扱う学園祭向けアプリの制作プロジェクト。',
-'कार्यक्रम र समयतालिकामा आधारित विद्यालय उत्सव एप प्रोजेक्ट।',
-'इवेंट और समय-सारिणी के लिए स्कूल फेस्टिवल ऐप प्रोजेक्ट।',
-'以活动信息与日程安排为核心的校园节日应用项目。',
-'행사 정보와 일정 안내를 위한 학교 축제 앱 프로젝트.'
-),tech:['Java','Servlet','Oracle'],link:null,linkKind:null,status:'inprogress'},
-{id:'nepalquest',category:'inprogress',icon:'🏔️',name:'Nepal Quest: 77 Districts',description:localized(
-'Educational 3D game concept exploring Nepal’s districts; Unity project under development.',
-'ネパールの77郡をテーマにした教育用3Dゲーム。Unityで開発中。',
-'नेपालका ७७ जिल्ला चिनाउने 3D शैक्षिक गेम, Unity मा विकासाधीन।',
-'नेपाल के 77 जिलों पर आधारित शैक्षिक 3D गेम, Unity में विकासाधीन।',
-'以尼泊尔 77 个地区为主题的教育 3D 游戏，使用 Unity 开发中。',
-'네팔 77개 지역을 소개하는 교육용 3D 게임으로 Unity에서 개발 중입니다.'
-),tech:['Unity','C#','3D'],link:null,linkKind:null,status:'inprogress'},
-{id:'qrmenu',category:'inprogress',icon:'🍽️',name:'QR Menu Generator',description:localized(
-'Restaurant menu and QR project experimenting with a Node.js backend and SQLite storage.',
-'Node.jsとSQLiteを使った飲食店向けQRメニューのプロジェクト。',
-'Node.js र SQLite प्रयोग गरिएको रेस्टुरेन्ट QR मेनु प्रोजेक्ट।',
-'Node.js और SQLite पर आधारित रेस्तराँ QR मेनू प्रोजेक्ट।',
-'使用 Node.js 后端与 SQLite 存储的餐厅二维码菜单项目。',
-'Node.js 백엔드와 SQLite 저장소를 활용한 식당 QR 메뉴 프로젝트.'
-),tech:['Node.js','SQLite','QR'],link:null,linkKind:null,status:'inprogress'}
+{id:"nextstep",category:"app",icon:"📚",name:"NextStep Study",description:localized("Real ongoing Japanese-learning application work involving vocabulary, grammar, kanji and practice exams.",
+"語彙・文法・漢字・模擬試験に取り組む日本語学習アプリの開発。",
+"शब्दावली, व्याकरण, कान्जी र अभ्यास परीक्षासहितको जापानी भाषा अध्ययन एपमा जारी काम।",
+"शब्दावली, व्याकरण, कांजी और अभ्यास परीक्षाओं वाला जापानी भाषा अध्ययन ऐप।",
+"正在开发的日语学习应用，涵盖词汇、语法、汉字和练习考试。",
+"어휘, 문법, 한자 및 모의고사를 포함한 일본어 학습 앱 개발 작업."),tech:["React","PWA","Learning"],link:null,linkKind:null,status:"inprogress"},
+{id:"gakusai",category:"app",icon:"🎪",name:"GakusaiNavi",description:localized("School-festival information project using Java Servlet and Oracle, developed for coursework.",
+"Java ServletとOracleを使って制作した学園祭情報アプリの学校課題。",
+"Java Servlet र Oracle प्रयोग गरिएको विद्यालय उत्सव सूचना प्रणालीको प्रोजेक्ट।",
+"Java Servlet और Oracle का उपयोग कर बनाया गया स्कूल उत्सव सूचना प्रोजेक्ट।",
+"使用 Java Servlet 和 Oracle 开发的校园祭信息课程项目。",
+"Java Servlet 및 Oracle로 제작한 학교 축제 정보 프로젝트."),tech:["Java","Servlet","Oracle"],link:null,linkKind:null,status:"inprogress"},
+{id:"nepalquest",category:"inprogress",icon:"🏔️",name:"Nepal Quest: 77 Districts",description:localized("Unity/C# educational game project exploring Nepal's 77 districts; still under development.",
+"Unity/C#を使用したネパール77地区を題材とする教育ゲーム。開発途中です。",
+"नेपालका ७७ जिल्ला चिनाउने Unity/C# शैक्षिक खेल प्रोजेक्ट, निर्माणाधीन।",
+"नेपाल के 77 जिलों पर आधारित Unity/C# शैक्षिक गेम, विकासाधीन।",
+"使用 Unity/C# 开发的尼泊尔77个地区教育游戏，仍在开发中。",
+"네팔 77개 지역을 주제로 한 Unity/C# 교육 게임으로 개발 중입니다."),tech:["Unity","C#","3D"],link:null,linkKind:null,status:"inprogress"},
+{id:"qrmenu",category:"app",icon:"🍽️",name:"QR Menu Generator",description:localized("Node.js and SQLite QR menu application project for restaurant ordering and menu access.",
+"Node.jsとSQLiteを使った飲食店のQRメニューアプリの制作。",
+"रेस्टुरेन्टको QR मेनुका लागि Node.js र SQLite मा भइरहेको एप विकास।",
+"रेस्तराँ QR मेनू के लिए Node.js और SQLite पर एप विकास।",
+"使用 Node.js 和 SQLite 制作的餐厅二维码菜单应用。",
+"Node.js 및 SQLite 기반 레스토랑 QR 메뉴 앱 프로젝트."),tech:["Node.js","SQLite","QR"],link:null,linkKind:null,status:"inprogress"},
+{id:"npl",category:"web",icon:"🏏",name:"NPL 2026 Website",description:localized("Nepal Premier League 2026 cricket information website project; live-data features are being developed.",
+"ネパール・プレミアリーグ2026のクリケット情報サイト。ライブデータ機能を開発中。",
+"नेपाल प्रिमियर लिग २०२६ को क्रिकेट सूचना वेबसाइट, लाइभ डाटा सुविधा विकासाधीन।",
+"नेपाल प्रीमियर लीग 2026 की क्रिकेट वेबसाइट, लाइव डेटा सुविधाएँ विकासाधीन।",
+"尼泊尔超级联赛2026板球信息网站，实时数据功能仍在开发。",
+"네팔 프리미어리그 2026 크리켓 정보 웹사이트이며 실시간 데이터 기능 개발 중입니다."),tech:["HTML","JavaScript","API"],link:null,linkKind:null,status:"inprogress"},
+{id:"raspberry",category:"inprogress",icon:"📟",name:"Posture & Distance Alert",description:localized("Student research project for posture and viewing-distance alerts with Raspberry Pi and sensors.",
+"Raspberry Piとセンサーによる姿勢・画面距離の注意喚起を目指す学校研究。",
+"Raspberry Pi र सेन्सरद्वारा बसाइको मुद्रा र स्क्रिन दूरी सचेत गर्ने विद्यार्थी अनुसन्धान प्रोजेक्ट।",
+"Raspberry Pi और सेंसर से मुद्रा तथा स्क्रीन दूरी अलर्ट देने वाला छात्र शोध प्रोजेक्ट।",
+"使用 Raspberry Pi 和传感器提醒坐姿及观看距离的学生研究项目。",
+"Raspberry Pi와 센서로 자세 및 화면 시청 거리를 알리는 학생 연구 프로젝트."),tech:["Raspberry Pi","Python","Sensors"],link:null,linkKind:null,status:"inprogress"},
+{id:"portfolio",category:"web",icon:"🌐",name:"Developer Portfolio",description:localized("This published portfolio website, made with HTML, CSS, JavaScript and a Three.js 3D scene.",
+"HTML・CSS・JavaScript・Three.jsを使用した、現在公開中のポートフォリオサイト。",
+"HTML, CSS, JavaScript र Three.js बाट बनेको यो प्रकाशित पोर्टफोलियो वेबसाइट।",
+"HTML, CSS, JavaScript और Three.js से बनी यह सार्वजनिक पोर्टफोलियो वेबसाइट।",
+"使用 HTML、CSS、JavaScript 和 Three.js 构建的本公开作品集网站。",
+"HTML, CSS, JavaScript 및 Three.js로 만든 현재 공개된 포트폴리오 웹사이트."),tech:["HTML","CSS","JavaScript","Three.js"],link:"https://dadalupendra.github.io/portfolio/",linkKind:'project',status:"app"}
 ];
 const $=s=>document.querySelector(s);
 const all=s=>Array.from(document.querySelectorAll(s));
