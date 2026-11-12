@@ -94,10 +94,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<!-- Libraries -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<!-- Visual depth is now CSS-only; no 3D engine or animation library needed. -->
 
 <style>
 /* ═══════════════════════════════════════════
@@ -1015,14 +1012,15 @@ a.skill-link{text-decoration:none;color:inherit;cursor:pointer;display:block}
   .rp-footer{margin-top:6mm;padding-top:3mm;border-top:1px solid #ccc;color:#666;font-size:8.5pt;text-align:center}
 }
 </style>
+<link rel="stylesheet" href="css/professional.css"/>
 </head>
 <body>
 
 <!-- ═══ CUSTOM CURSOR (desktop only) ═══ -->
-<div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
 
 <!-- ═══ 3D CANVAS BACKGROUND ═══ -->
-<canvas id="canvas3d" aria-hidden="true"></canvas>
+
 
 <!-- ═══ SKIP LINK (Accessibility) ═══ -->
 <a class="skip-link" href="#main">Skip to content</a>
@@ -1052,13 +1050,13 @@ a.skill-link{text-decoration:none;color:inherit;cursor:pointer;display:block}
         <span class="sr-only">Toggle menu</span>
       </button>
       <ul class="nav-menu" id="navMenu" role="menubar">
+        <li role="none"><a class="nav-link" href="#projects" role="menuitem">Projects</a></li>
         <li role="none"><a class="nav-link" href="#about" role="menuitem">About</a></li>
         <li role="none"><a class="nav-link" href="#skills" role="menuitem">Skills</a></li>
         <li role="none"><a class="nav-link" href="#showcase" role="menuitem">Showcase</a></li>
-        <li role="none"><a class="nav-link" href="#projects" role="menuitem">Projects</a></li>
         <li role="none"><a class="nav-link" href="#education" role="menuitem">Education</a></li>
-        <li role="none"><a class="nav-link" href="#vault" role="menuitem">Vault</a></li>
         <li role="none"><a class="nav-link" href="#contact" role="menuitem">Contact</a></li>
+        <li role="none"><a class="nav-link" href="#vault" role="menuitem">Vault</a></li>
       </ul>
     </nav>
 
@@ -1113,6 +1111,7 @@ a.skill-link{text-decoration:none;color:inherit;cursor:pointer;display:block}
         <span class="open-badge">Open to Intern / Junior IT</span>
       </div>
 
+      <span class="hero-kicker">Web Development · Software Engineering</span>
       <h1>
         Hi, I'm Dadal
         <span class="line-name"> Upendra Singh.</span>
@@ -1120,8 +1119,8 @@ a.skill-link{text-decoration:none;color:inherit;cursor:pointer;display:block}
       </h1>
 
       <p class="hero-lead">
-        IT student in Tokyo — building real web projects, studying Java, Oracle &amp; JavaScript.
-        From Nepal, growing fast in Japan's tech world. Full-stack learner with a passion for clean code.
+        I'm an IT student in Tokyo building practical web applications with Java, JavaScript and SQL.
+        Explore my projects, working demos and learning journey.
       </p>
 
       <div class="hero-tags">
@@ -1134,8 +1133,8 @@ a.skill-link{text-decoration:none;color:inherit;cursor:pointer;display:block}
       </div>
 
       <div class="hero-cta">
-        <a class="btn btn-primary" href="https://mail.google.com/mail/?view=cm&fs=1&to=upendradadal824%40gmail.com&su=Internship%20%2F%20Junior%20IT%20Opportunity&body=Hi%20Dadal%2C%0A%0A%5BYour%20message%5D%0A%0AThanks%2C%0A%5BYour%20name%5D" target="_blank" rel="noopener noreferrer">✉️ Hire Me</a>
-        <a class="btn btn-secondary" href="#projects">See Projects →</a>
+        <a class="btn btn-primary" href="#projects">Explore My Projects →</a>
+        <a class="btn btn-secondary" href="#contact">Get in Touch</a>
       </div>
     </div>
 
@@ -1149,7 +1148,7 @@ a.skill-link{text-decoration:none;color:inherit;cursor:pointer;display:block}
       <!-- Profile photo as main visual (drop your photo at assets/profile.png) -->
       <img id="heroPortraitImg" src="assets/profile.png" alt="Dadal Upendra Singh" class="hero-portrait-photo" onerror="this.style.display='none'"/>
       <!-- 3D canvas as subtle overlay effect -->
-      <canvas id="aiPortraitCanvas" class="hero-portrait-canvas-overlay" aria-hidden="true"></canvas>
+      
       <!-- Info overlay at bottom -->
       <div class="hero-portrait-overlay">
         <div class="hero-portrait-name">DADAL UPENDRA SINGH</div>
@@ -1164,6 +1163,202 @@ a.skill-link{text-decoration:none;color:inherit;cursor:pointer;display:block}
 
   </div>
 </section>
+
+<!-- ═══ PROJECTS ═══ -->
+<section class="section alt" id="projects">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-label">Projects</span>
+      <h2>Selected projects</h2>
+      <p class="section-sub">Explore practical applications, code demos and the technologies behind each build.</p>
+    </div>
+
+    <div class="projects-grid reveal">
+
+      <!-- Language Learning App -->
+      <div class="proj-card c2">
+        <div class="proj-preview">
+          <div class="proj-preview-inner" style="background:linear-gradient(135deg,#0a1a3c,#142040);font-size:1rem;flex-direction:column;gap:8px;">
+            <span style="font-size:2.8rem;">📚</span>
+            <span style="font-family:var(--display);font-weight:700;font-size:.82rem;color:var(--accent);">NextStep Learning</span>
+          </div>
+          <div class="proj-preview-overlay">
+            <a class="proj-preview-btn" href="https://next-step-ai-a4248ae0.base44.app/" target="_blank" rel="noopener noreferrer">Open Live App →</a>
+          </div>
+        </div>
+        <div class="proj-body">
+          <span class="proj-badge pb-wip">🔥 LIVE APP</span>
+          <div class="proj-title">Language Learning App</div>
+          <p class="proj-desc">Multi-language platform with vocabulary manager, grammar lessons, quiz engine, and progress tracker.</p>
+          <ul class="proj-features">
+            <li>Vocabulary cards with spaced repetition</li>
+            <li>Grammar lessons with examples</li>
+            <li>Offline-first Book Mode</li>
+            <li>Progress tracking dashboard</li>
+          </ul>
+          <div class="tech-chips">
+            <span class="tc">Node.js</span><span class="tc">Express</span><span class="tc">SQLite</span><span class="tc">JavaScript</span>
+          </div>
+          <div class="proj-actions">
+            <a class="btn btn-primary btn-sm" href="https://next-step-ai-a4248ae0.base44.app/" target="_blank" rel="noopener noreferrer">🌐 Open App</a>
+            <button class="btn btn-secondary btn-sm proj-preview-trigger" data-url="https://next-step-ai-a4248ae0.base44.app/" type="button">▶ Preview</button>
+            <!-- TODO: replace with the real repo URL once published -->
+            <a class="btn btn-ghost btn-sm proj-source" href="https://github.com/dadalupendra" target="_blank" rel="noopener noreferrer" title="View source on GitHub" aria-label="View source on GitHub">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              Source
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Java OOP -->
+      <div class="proj-card c3">
+        <a href="demos/java-oop.html" class="proj-preview" style="display:block;text-decoration:none;color:inherit">
+          <div class="proj-preview-inner" style="background:linear-gradient(135deg,#1a0f2e,#0f1c38);flex-direction:column;gap:8px;">
+            <span style="font-size:2.8rem;">☕</span>
+            <span style="font-family:var(--display);font-weight:700;font-size:.82rem;color:var(--accent3);">Java OOP</span>
+          </div>
+          <div class="proj-preview-overlay"><span class="proj-preview-btn">Open Demo →</span></div>
+        </a>
+        <div class="proj-body">
+          <span class="proj-badge pb-prac">PRACTICE</span>
+          <div class="proj-title">Java OOP Mini-Projects</div>
+          <p class="proj-desc">Object-oriented practice: class hierarchies, interfaces, exception handling, collections, and CLI apps.</p>
+          <ul class="proj-features">
+            <li>Inheritance &amp; polymorphism exercises</li>
+            <li>Interface design patterns</li>
+            <li>Exception handling practice</li>
+            <li>Collection framework usage</li>
+          </ul>
+          <div class="tech-chips">
+            <span class="tc">Java</span><span class="tc">OOP</span><span class="tc">CLI</span><span class="tc">Collections</span>
+          </div>
+          <div class="proj-actions">
+            <a class="btn btn-primary btn-sm" href="demos/java-oop.html">☕ Open Demo</a>
+            <!-- TODO: replace with the real repo URL once published -->
+            <a class="btn btn-ghost btn-sm proj-source" href="https://github.com/dadalupendra" target="_blank" rel="noopener noreferrer" title="View source on GitHub" aria-label="View source on GitHub">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              Source
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- JS Playground -->
+      <div class="proj-card c5">
+        <a href="demos/js-playground.html" class="proj-preview" style="display:block;text-decoration:none;color:inherit">
+          <div class="proj-preview-inner" style="background:linear-gradient(135deg,#081028,#0c1630);flex-direction:column;gap:8px;">
+            <span style="font-size:2.8rem;">⚡</span>
+            <span style="font-family:var(--display);font-weight:700;font-size:.82rem;color:var(--accent2);">JS Playground</span>
+          </div>
+          <div class="proj-preview-overlay"><span class="proj-preview-btn">Open Demo →</span></div>
+        </a>
+        <div class="proj-body">
+          <span class="proj-badge pb-feat">FEATURED</span>
+          <div class="proj-title">Interactive JS Playground</div>
+          <p class="proj-desc">JavaScript DOM fundamentals — event handling, localStorage, form validation with live error messages.</p>
+          <ul class="proj-features">
+            <li>DOM manipulation exercises</li>
+            <li>LocalStorage persistence</li>
+            <li>Form validation with UX</li>
+            <li>Responsive UI components</li>
+          </ul>
+          <div class="tech-chips">
+            <span class="tc">HTML</span><span class="tc">CSS</span><span class="tc">JavaScript</span><span class="tc">LocalStorage</span>
+          </div>
+          <div class="proj-actions">
+            <a class="btn btn-primary btn-sm" href="demos/js-playground.html">⚡ Open Demo</a>
+            <!-- TODO: replace with the real repo URL once published -->
+            <a class="btn btn-ghost btn-sm proj-source" href="https://github.com/dadalupendra" target="_blank" rel="noopener noreferrer" title="View source on GitHub" aria-label="View source on GitHub">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              Source
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Oracle SQL -->
+      <div class="proj-card c6">
+        <a href="demos/sql-notes.html" class="proj-preview" style="display:block;text-decoration:none;color:inherit">
+          <div class="proj-preview-inner" style="background:linear-gradient(135deg,#14082e,#0a1a3c);flex-direction:column;gap:8px;">
+            <span style="font-size:2.8rem;">🗃️</span>
+            <span style="font-family:var(--display);font-weight:700;font-size:.82rem;color:var(--purple);">SQL Studies</span>
+          </div>
+          <div class="proj-preview-overlay"><span class="proj-preview-btn">Open Demo →</span></div>
+        </a>
+        <div class="proj-body">
+          <span class="proj-badge pb-prac">STUDY</span>
+          <div class="proj-title">Oracle SQL Notes &amp; Exercises</div>
+          <p class="proj-desc">Structured SQL study — SELECT, JOIN, GROUP BY, subqueries, indexes, views, and PL/SQL stored procedures.</p>
+          <ul class="proj-features">
+            <li>Complex JOIN queries</li>
+            <li>PL/SQL stored procedures</li>
+            <li>Schema design &amp; normalization</li>
+            <li>Index optimization study</li>
+          </ul>
+          <div class="tech-chips">
+            <span class="tc">Oracle SQL</span><span class="tc">PL/SQL</span><span class="tc">DB Design</span><span class="tc">Views</span>
+          </div>
+          <div class="proj-actions">
+            <a class="btn btn-primary btn-sm" href="demos/sql-notes.html">🗃️ Open Notes</a>
+            <!-- TODO: replace with the real repo URL once published -->
+            <a class="btn btn-ghost btn-sm proj-source" href="https://github.com/dadalupendra" target="_blank" rel="noopener noreferrer" title="View source on GitHub" aria-label="View source on GitHub">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              Source
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio (This site!) -->
+      <div class="proj-card c1">
+        <div class="proj-preview">
+          <div class="proj-preview-inner" style="background:linear-gradient(135deg,#050b18,#0c1630);flex-direction:column;gap:8px;">
+            <span style="font-size:2.8rem;">🌐</span>
+            <span style="font-family:var(--display);font-weight:700;font-size:.82rem;color:var(--red);">This Portfolio</span>
+          </div>
+          <div class="proj-preview-overlay"><span class="proj-preview-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to Top ↑</span></div>
+        </div>
+        <div class="proj-body">
+          <span class="proj-badge pb-new">NEW</span>
+          <div class="proj-title">3D Portfolio Website</div>
+          <p class="proj-desc">The site you're viewing now — Three.js 3D background, GSAP animations, responsive glassmorphism UI, and IndexedDB vault.</p>
+          <ul class="proj-features">
+            <li>Three.js 3D particle background</li>
+            <li>AI holographic portrait</li>
+            <li>Glassmorphism card design</li>
+            <li>IndexedDB document vault</li>
+          </ul>
+          <div class="tech-chips">
+            <span class="tc">HTML/CSS</span><span class="tc">Three.js</span><span class="tc">GSAP</span><span class="tc">JavaScript</span>
+          </div>
+          <div class="proj-actions">
+            <a class="btn btn-primary btn-sm" href="#top">↑ Back to Top</a>
+            <!-- TODO: replace with the real repo URL once published -->
+            <a class="btn btn-ghost btn-sm proj-source" href="https://github.com/dadalupendra" target="_blank" rel="noopener noreferrer" title="View source on GitHub" aria-label="View source on GitHub">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              Source
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROJECT PREVIEW MODAL ═══ -->
+<div class="proj-modal" id="projModal">
+  <div class="proj-modal-bg" data-proj-close></div>
+  <div class="proj-modal-content">
+    <div class="proj-modal-header">
+      <span class="proj-modal-title" id="projModalTitle">Project Preview</span>
+      <button class="proj-modal-close" data-proj-close type="button">✕</button>
+    </div>
+    <iframe class="proj-modal-iframe" id="projModalFrame" src="" title="Project Preview" loading="lazy"></iframe>
+  </div>
+</div>
+
 
 <!-- ═══ ABOUT ═══ -->
 <section class="section alt" id="about">
@@ -1376,201 +1571,6 @@ a.skill-link{text-decoration:none;color:inherit;cursor:pointer;display:block}
     </div>
   </div>
 </section>
-
-<!-- ═══ PROJECTS ═══ -->
-<section class="section alt" id="projects">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="section-label">Projects</span>
-      <h2>What I've built</h2>
-      <p class="section-sub">Click preview to open projects — hover for 3D effect.</p>
-    </div>
-
-    <div class="projects-grid reveal">
-
-      <!-- Language Learning App -->
-      <div class="proj-card c2">
-        <div class="proj-preview">
-          <div class="proj-preview-inner" style="background:linear-gradient(135deg,#0a1a3c,#142040);font-size:1rem;flex-direction:column;gap:8px;">
-            <span style="font-size:2.8rem;">📚</span>
-            <span style="font-family:var(--display);font-weight:700;font-size:.82rem;color:var(--accent);">NextStep Learning</span>
-          </div>
-          <div class="proj-preview-overlay">
-            <a class="proj-preview-btn" href="https://next-step-ai-a4248ae0.base44.app/" target="_blank" rel="noopener noreferrer">Open Live App →</a>
-          </div>
-        </div>
-        <div class="proj-body">
-          <span class="proj-badge pb-wip">🔥 LIVE APP</span>
-          <div class="proj-title">Language Learning App</div>
-          <p class="proj-desc">Multi-language platform with vocabulary manager, grammar lessons, quiz engine, and progress tracker.</p>
-          <ul class="proj-features">
-            <li>Vocabulary cards with spaced repetition</li>
-            <li>Grammar lessons with examples</li>
-            <li>Offline-first Book Mode</li>
-            <li>Progress tracking dashboard</li>
-          </ul>
-          <div class="tech-chips">
-            <span class="tc">Node.js</span><span class="tc">Express</span><span class="tc">SQLite</span><span class="tc">JavaScript</span>
-          </div>
-          <div class="proj-actions">
-            <a class="btn btn-primary btn-sm" href="https://next-step-ai-a4248ae0.base44.app/" target="_blank" rel="noopener noreferrer">🌐 Open App</a>
-            <button class="btn btn-secondary btn-sm proj-preview-trigger" data-url="https://next-step-ai-a4248ae0.base44.app/" type="button">▶ Preview</button>
-            <!-- TODO: replace with the real repo URL once published -->
-            <a class="btn btn-ghost btn-sm proj-source" href="https://github.com/dadalupendra" target="_blank" rel="noopener noreferrer" title="View source on GitHub" aria-label="View source on GitHub">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-              Source
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Java OOP -->
-      <div class="proj-card c3">
-        <a href="demos/java-oop.html" class="proj-preview" style="display:block;text-decoration:none;color:inherit">
-          <div class="proj-preview-inner" style="background:linear-gradient(135deg,#1a0f2e,#0f1c38);flex-direction:column;gap:8px;">
-            <span style="font-size:2.8rem;">☕</span>
-            <span style="font-family:var(--display);font-weight:700;font-size:.82rem;color:var(--accent3);">Java OOP</span>
-          </div>
-          <div class="proj-preview-overlay"><span class="proj-preview-btn">Open Demo →</span></div>
-        </a>
-        <div class="proj-body">
-          <span class="proj-badge pb-prac">PRACTICE</span>
-          <div class="proj-title">Java OOP Mini-Projects</div>
-          <p class="proj-desc">Object-oriented practice: class hierarchies, interfaces, exception handling, collections, and CLI apps.</p>
-          <ul class="proj-features">
-            <li>Inheritance &amp; polymorphism exercises</li>
-            <li>Interface design patterns</li>
-            <li>Exception handling practice</li>
-            <li>Collection framework usage</li>
-          </ul>
-          <div class="tech-chips">
-            <span class="tc">Java</span><span class="tc">OOP</span><span class="tc">CLI</span><span class="tc">Collections</span>
-          </div>
-          <div class="proj-actions">
-            <a class="btn btn-primary btn-sm" href="demos/java-oop.html">☕ Open Demo</a>
-            <!-- TODO: replace with the real repo URL once published -->
-            <a class="btn btn-ghost btn-sm proj-source" href="https://github.com/dadalupendra" target="_blank" rel="noopener noreferrer" title="View source on GitHub" aria-label="View source on GitHub">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-              Source
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- JS Playground -->
-      <div class="proj-card c5">
-        <a href="demos/js-playground.html" class="proj-preview" style="display:block;text-decoration:none;color:inherit">
-          <div class="proj-preview-inner" style="background:linear-gradient(135deg,#081028,#0c1630);flex-direction:column;gap:8px;">
-            <span style="font-size:2.8rem;">⚡</span>
-            <span style="font-family:var(--display);font-weight:700;font-size:.82rem;color:var(--accent2);">JS Playground</span>
-          </div>
-          <div class="proj-preview-overlay"><span class="proj-preview-btn">Open Demo →</span></div>
-        </a>
-        <div class="proj-body">
-          <span class="proj-badge pb-feat">FEATURED</span>
-          <div class="proj-title">Interactive JS Playground</div>
-          <p class="proj-desc">JavaScript DOM fundamentals — event handling, localStorage, form validation with live error messages.</p>
-          <ul class="proj-features">
-            <li>DOM manipulation exercises</li>
-            <li>LocalStorage persistence</li>
-            <li>Form validation with UX</li>
-            <li>Responsive UI components</li>
-          </ul>
-          <div class="tech-chips">
-            <span class="tc">HTML</span><span class="tc">CSS</span><span class="tc">JavaScript</span><span class="tc">LocalStorage</span>
-          </div>
-          <div class="proj-actions">
-            <a class="btn btn-primary btn-sm" href="demos/js-playground.html">⚡ Open Demo</a>
-            <!-- TODO: replace with the real repo URL once published -->
-            <a class="btn btn-ghost btn-sm proj-source" href="https://github.com/dadalupendra" target="_blank" rel="noopener noreferrer" title="View source on GitHub" aria-label="View source on GitHub">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-              Source
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Oracle SQL -->
-      <div class="proj-card c6">
-        <a href="demos/sql-notes.html" class="proj-preview" style="display:block;text-decoration:none;color:inherit">
-          <div class="proj-preview-inner" style="background:linear-gradient(135deg,#14082e,#0a1a3c);flex-direction:column;gap:8px;">
-            <span style="font-size:2.8rem;">🗃️</span>
-            <span style="font-family:var(--display);font-weight:700;font-size:.82rem;color:var(--purple);">SQL Studies</span>
-          </div>
-          <div class="proj-preview-overlay"><span class="proj-preview-btn">Open Demo →</span></div>
-        </a>
-        <div class="proj-body">
-          <span class="proj-badge pb-prac">STUDY</span>
-          <div class="proj-title">Oracle SQL Notes &amp; Exercises</div>
-          <p class="proj-desc">Structured SQL study — SELECT, JOIN, GROUP BY, subqueries, indexes, views, and PL/SQL stored procedures.</p>
-          <ul class="proj-features">
-            <li>Complex JOIN queries</li>
-            <li>PL/SQL stored procedures</li>
-            <li>Schema design &amp; normalization</li>
-            <li>Index optimization study</li>
-          </ul>
-          <div class="tech-chips">
-            <span class="tc">Oracle SQL</span><span class="tc">PL/SQL</span><span class="tc">DB Design</span><span class="tc">Views</span>
-          </div>
-          <div class="proj-actions">
-            <a class="btn btn-primary btn-sm" href="demos/sql-notes.html">🗃️ Open Notes</a>
-            <!-- TODO: replace with the real repo URL once published -->
-            <a class="btn btn-ghost btn-sm proj-source" href="https://github.com/dadalupendra" target="_blank" rel="noopener noreferrer" title="View source on GitHub" aria-label="View source on GitHub">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-              Source
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Portfolio (This site!) -->
-      <div class="proj-card c1">
-        <div class="proj-preview">
-          <div class="proj-preview-inner" style="background:linear-gradient(135deg,#050b18,#0c1630);flex-direction:column;gap:8px;">
-            <span style="font-size:2.8rem;">🌐</span>
-            <span style="font-family:var(--display);font-weight:700;font-size:.82rem;color:var(--red);">This Portfolio</span>
-          </div>
-          <div class="proj-preview-overlay"><span class="proj-preview-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to Top ↑</span></div>
-        </div>
-        <div class="proj-body">
-          <span class="proj-badge pb-new">NEW</span>
-          <div class="proj-title">3D Portfolio Website</div>
-          <p class="proj-desc">The site you're viewing now — Three.js 3D background, GSAP animations, responsive glassmorphism UI, and IndexedDB vault.</p>
-          <ul class="proj-features">
-            <li>Three.js 3D particle background</li>
-            <li>AI holographic portrait</li>
-            <li>Glassmorphism card design</li>
-            <li>IndexedDB document vault</li>
-          </ul>
-          <div class="tech-chips">
-            <span class="tc">HTML/CSS</span><span class="tc">Three.js</span><span class="tc">GSAP</span><span class="tc">JavaScript</span>
-          </div>
-          <div class="proj-actions">
-            <a class="btn btn-primary btn-sm" href="#top">↑ Back to Top</a>
-            <!-- TODO: replace with the real repo URL once published -->
-            <a class="btn btn-ghost btn-sm proj-source" href="https://github.com/dadalupendra" target="_blank" rel="noopener noreferrer" title="View source on GitHub" aria-label="View source on GitHub">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-              Source
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══ PROJECT PREVIEW MODAL ═══ -->
-<div class="proj-modal" id="projModal">
-  <div class="proj-modal-bg" data-proj-close></div>
-  <div class="proj-modal-content">
-    <div class="proj-modal-header">
-      <span class="proj-modal-title" id="projModalTitle">Project Preview</span>
-      <button class="proj-modal-close" data-proj-close type="button">✕</button>
-    </div>
-    <iframe class="proj-modal-iframe" id="projModalFrame" src="" title="Project Preview" loading="lazy"></iframe>
-  </div>
-</div>
 
 <!-- ═══ EDUCATION ═══ -->
 <section class="section" id="education">
@@ -1972,286 +1972,35 @@ a.skill-link{text-decoration:none;color:inherit;cursor:pointer;display:block}
      THREE.JS — Enhanced 3D Background
      Neural network particles + floating geometry
 ═══════════════════════════════════════════ -->
-<script>
-(function(){
-  'use strict';
-  const canvas = document.getElementById('canvas3d');
-  if(!canvas || typeof THREE === 'undefined') return;
 
-  /* Respect prefers-reduced-motion: skip the heavy 3D scene entirely
-     and use a static gradient background instead. */
-  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(reduceMotion){
-    canvas.style.display = 'none';
-    document.documentElement.classList.add('reduce-motion');
-    return;
-  }
-
-  const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true});
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-  renderer.setSize(window.innerWidth, window.innerHeight);
-
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);
-  camera.position.z = 30;
-
-  const group = new THREE.Group();
-  scene.add(group);
-
-  /* ── Floating Geometry Shapes ── */
-  const geos = [
-    new THREE.OctahedronGeometry(0.6,0),
-    new THREE.TetrahedronGeometry(0.5,0),
-    new THREE.BoxGeometry(0.7,0.7,0.7),
-    new THREE.SphereGeometry(0.35,6,6),
-    new THREE.IcosahedronGeometry(0.4,0),
-  ];
-  const mats = [
-    new THREE.MeshPhongMaterial({color:0x4d9fff, transparent:true, opacity:.55}),
-    new THREE.MeshPhongMaterial({color:0x00e5c4, transparent:true, opacity:.45}),
-    new THREE.MeshPhongMaterial({color:0xa78bfa, transparent:true, opacity:.4}),
-    new THREE.MeshBasicMaterial({color:0x4d9fff, transparent:true, opacity:.15, wireframe:true}),
-    new THREE.MeshBasicMaterial({color:0x00e5c4, transparent:true, opacity:.12, wireframe:true}),
-  ];
-
-  const meshes = [];
-  for(let i=0;i<70;i++){
-    const mesh = new THREE.Mesh(
-      geos[Math.floor(Math.random()*geos.length)],
-      mats[Math.floor(Math.random()*mats.length)]
-    );
-    mesh.position.set(
-      (Math.random()-0.5)*90,
-      (Math.random()-0.5)*70,
-      (Math.random()-0.5)*50
-    );
-    mesh.rotation.set(Math.random()*Math.PI*2, Math.random()*Math.PI*2, Math.random()*Math.PI*2);
-    mesh.scale.setScalar(0.4 + Math.random()*1.2);
-    mesh.userData = {
-      rotX: (Math.random()-0.5)*0.008,
-      rotY: (Math.random()-0.5)*0.012,
-      fSpeed: 0.3+Math.random()*0.7,
-      fOff: Math.random()*Math.PI*2,
-      fAmp: 0.05+Math.random()*0.1,
-    };
-    group.add(mesh);
-    meshes.push(mesh);
-  }
-
-  /* ── Neural Network Particles + Connection Lines ── */
-  const ptCount = 200;
-  const ptPositions = new Float32Array(ptCount * 3);
-  const ptVelocities = [];
-  for(let i=0;i<ptCount;i++){
-    ptPositions[i*3]   = (Math.random()-0.5)*80;
-    ptPositions[i*3+1] = (Math.random()-0.5)*60;
-    ptPositions[i*3+2] = (Math.random()-0.5)*40;
-    ptVelocities.push({
-      x:(Math.random()-0.5)*0.02,
-      y:(Math.random()-0.5)*0.02,
-      z:(Math.random()-0.5)*0.01,
-    });
-  }
-  const ptGeo = new THREE.BufferGeometry();
-  ptGeo.setAttribute('position', new THREE.BufferAttribute(ptPositions,3));
-  const ptCloud = new THREE.Points(ptGeo, new THREE.PointsMaterial({
-    color:0x4d9fff, size:0.12, transparent:true, opacity:.7, sizeAttenuation:true,
-  }));
-  scene.add(ptCloud);
-
-  /* Connection lines between close particles */
-  const maxLines = 400;
-  const linePositions = new Float32Array(maxLines * 6);
-  const lineGeo = new THREE.BufferGeometry();
-  lineGeo.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
-  lineGeo.setDrawRange(0, 0);
-  const lineMat = new THREE.LineBasicMaterial({color:0x4d9fff, transparent:true, opacity:.08});
-  const lineSegments = new THREE.LineSegments(lineGeo, lineMat);
-  scene.add(lineSegments);
-
-  /* ── Grid Plane (holographic) ── */
-  const gridHelper = new THREE.GridHelper(80, 40, 0x4d9fff, 0x0c1630);
-  gridHelper.material.transparent = true;
-  gridHelper.material.opacity = 0.06;
-  gridHelper.position.y = -25;
-  scene.add(gridHelper);
-
-  /* ── Lights ── */
-  scene.add(new THREE.AmbientLight(0xffffff, 0.3));
-  const dLight1 = new THREE.DirectionalLight(0x4d9fff, 1.2);
-  dLight1.position.set(10,10,10);
-  scene.add(dLight1);
-  const dLight2 = new THREE.DirectionalLight(0x00e5c4, 0.8);
-  dLight2.position.set(-10,-5,5);
-  scene.add(dLight2);
-  const pLight = new THREE.PointLight(0xa78bfa, 0.6, 60);
-  pLight.position.set(0,0,15);
-  scene.add(pLight);
-
-  /* ── Mouse Parallax ── */
-  let mx=0, my=0;
-  document.addEventListener('mousemove', e=>{
-    mx = (e.clientX/window.innerWidth - 0.5)*2;
-    my = (e.clientY/window.innerHeight - 0.5)*2;
-  });
-
-  let t=0;
-  const connectionDist = 12;
-
-  function animate(){
-    requestAnimationFrame(animate);
-    t += 0.01;
-
-    /* Animate floating shapes */
-    meshes.forEach(m=>{
-      m.rotation.x += m.userData.rotX;
-      m.rotation.y += m.userData.rotY;
-      m.position.y += Math.sin(t * m.userData.fSpeed + m.userData.fOff) * m.userData.fAmp;
-    });
-
-    /* Move neural particles */
-    const pos = ptGeo.attributes.position.array;
-    for(let i=0;i<ptCount;i++){
-      const v = ptVelocities[i];
-      pos[i*3]   += v.x;
-      pos[i*3+1] += v.y;
-      pos[i*3+2] += v.z;
-      // Bounce
-      if(Math.abs(pos[i*3])>45)   v.x *= -1;
-      if(Math.abs(pos[i*3+1])>35) v.y *= -1;
-      if(Math.abs(pos[i*3+2])>25) v.z *= -1;
-    }
-    ptGeo.attributes.position.needsUpdate = true;
-
-    /* Draw connection lines between nearby particles */
-    let lineIdx = 0;
-    const lp = lineGeo.attributes.position.array;
-    for(let i=0;i<ptCount && lineIdx<maxLines;i++){
-      for(let j=i+1;j<ptCount && lineIdx<maxLines;j++){
-        const dx = pos[i*3]-pos[j*3];
-        const dy = pos[i*3+1]-pos[j*3+1];
-        const dz = pos[i*3+2]-pos[j*3+2];
-        const d2 = dx*dx+dy*dy+dz*dz;
-        if(d2 < connectionDist*connectionDist){
-          lp[lineIdx*6]   = pos[i*3];
-          lp[lineIdx*6+1] = pos[i*3+1];
-          lp[lineIdx*6+2] = pos[i*3+2];
-          lp[lineIdx*6+3] = pos[j*3];
-          lp[lineIdx*6+4] = pos[j*3+1];
-          lp[lineIdx*6+5] = pos[j*3+2];
-          lineIdx++;
-        }
-      }
-    }
-    lineGeo.setDrawRange(0, lineIdx*2);
-    lineGeo.attributes.position.needsUpdate = true;
-
-    /* Parallax */
-    group.rotation.y += (mx*0.04 - group.rotation.y)*0.03;
-    group.rotation.x += (-my*0.02 - group.rotation.x)*0.03;
-
-    /* Grid gentle animation */
-    gridHelper.position.y = -25 + Math.sin(t*0.3)*0.5;
-
-    /* Pulsing point light */
-    pLight.intensity = 0.4 + Math.sin(t*1.5)*0.3;
-
-    renderer.render(scene, camera);
-  }
-  animate();
-
-  window.addEventListener('resize', ()=>{
-    camera.aspect = window.innerWidth/window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  });
-})();
-</script>
 
 <!-- ═══════════════════════════════════════════
      GSAP — Scroll Animations + 3D Card Tilts
 ═══════════════════════════════════════════ -->
 <script>
+/* Lightweight scroll reveals and skill progress; respects reduced-motion settings. */
 (function(){
   'use strict';
-
-  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ── Intersection Observer for .reveal elements (always run — just toggles a class) ── */
-  const reveals = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.classList.add('visible');
-        e.target.querySelectorAll('.skill-fill[data-w]').forEach(bar=>{
-          bar.style.width = bar.getAttribute('data-w');
-        });
-      }
-    });
-  },{threshold:0.12});
-  reveals.forEach(el=>io.observe(el));
-
-  /* Skill bars visible on load */
-  document.querySelectorAll('.skill-fill[data-w]').forEach(bar=>{
-    if(bar.getBoundingClientRect().top < window.innerHeight){
+  const items = document.querySelectorAll('.reveal');
+  const reveal = el => {
+    el.classList.add('visible');
+    el.querySelectorAll('.skill-fill[data-w]').forEach(bar => {
       bar.style.width = bar.getAttribute('data-w');
-    }
-  });
-
-  /* Skip 3D tilts + GSAP entrance when user prefers reduced motion */
-  if(reduceMotion) return;
-
-  /* ── 3D Tilt Effect — Skills ── */
-  document.querySelectorAll('.skill-hex').forEach(card=>{
-    card.addEventListener('mousemove', e=>{
-      const r=card.getBoundingClientRect();
-      const x=(e.clientX-r.left)/r.width-0.5;
-      const y=(e.clientY-r.top)/r.height-0.5;
-      card.style.transform=`perspective(600px) rotateY(${x*20}deg) rotateX(${-y*16}deg) translateZ(16px) scale(1.04)`;
     });
-    card.addEventListener('mouseleave',()=>{card.style.transform='';});
-  });
-
-  /* ── 3D Tilt Effect — Projects ── */
-  document.querySelectorAll('.proj-card').forEach(card=>{
-    card.addEventListener('mousemove', e=>{
-      const r=card.getBoundingClientRect();
-      const x=(e.clientX-r.left)/r.width-0.5;
-      const y=(e.clientY-r.top)/r.height-0.5;
-      card.style.transform=`perspective(700px) rotateY(${x*14}deg) rotateX(${-y*10}deg) translateY(-6px) translateZ(8px)`;
-    });
-    card.addEventListener('mouseleave',()=>{card.style.transform='';});
-  });
-
-  /* ── 3D Tilt Effect — Hero Portrait ── */
-  const heroPortrait = document.getElementById('heroPortrait');
-  if(heroPortrait){
-    heroPortrait.addEventListener('mousemove', e=>{
-      const r=heroPortrait.getBoundingClientRect();
-      const x=(e.clientX-r.left)/r.width-0.5;
-      const y=(e.clientY-r.top)/r.height-0.5;
-      heroPortrait.style.transform=`perspective(900px) rotateY(${x*8}deg) rotateX(${-y*6}deg) translateZ(8px)`;
-      heroPortrait.style.transition='transform 0.1s';
-    });
-    heroPortrait.addEventListener('mouseleave',()=>{
-      heroPortrait.style.transform='';
-      heroPortrait.style.transition='transform 0.4s ease';
-    });
-  }
-
-  /* ── GSAP Hero Entrance Animations ── */
-  if(window.gsap){
-    const targets=[
-      {sel:'.flag-bar',  p:{duration:.8, y:20, opacity:0, ease:'power2.out', delay:.1}},
-      {sel:'.hero h1',   p:{duration:1,  y:60, opacity:0, ease:'power3.out', delay:.2}},
-      {sel:'.hero-lead', p:{duration:1,  y:40, opacity:0, ease:'power3.out', delay:.45}},
-      {sel:'.hero-tags', p:{duration:1,  y:30, opacity:0, ease:'power3.out', delay:.6}},
-      {sel:'.hero-cta',  p:{duration:1,  y:30, opacity:0, ease:'power3.out', delay:.75}},
-      {sel:'.hero-portrait', p:{duration:1.2, x:40, opacity:0, ease:'power3.out', delay:.35}},
-    ];
-    targets.forEach(({sel,p})=>{
-      if(document.querySelector(sel)) gsap.from(sel,p);
-    });
+  };
+  if (!('IntersectionObserver' in window) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    items.forEach(reveal);
+  } else {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          reveal(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.08});
+    items.forEach(el => observer.observe(el));
   }
 })();
 </script>
@@ -2260,337 +2009,10 @@ a.skill-link{text-decoration:none;color:inherit;cursor:pointer;display:block}
      AI 3D PORTRAIT — Enhanced Holographic Head
      Three.js scene with face, orbit rings, particles
 ═══════════════════════════════════════════ -->
-<script>
-function initAIPortrait(canvasId, W, H){
-  'use strict';
-  if(typeof THREE==='undefined') return;
-  const canvas=document.getElementById(canvasId);
-  if(!canvas) return;
 
-  canvas.width=W*2; canvas.height=H*2;
-  canvas.style.height=H+'px';
-
-  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false});
-  renderer.setPixelRatio(2);
-  renderer.setSize(W,H);
-  renderer.setClearColor(0x050b18,1);
-
-  const scene=new THREE.Scene();
-  scene.fog=new THREE.FogExp2(0x050b18,0.028);
-
-  const camera=new THREE.PerspectiveCamera(42,W/H,0.1,200);
-  camera.position.set(0,0.5,7.5);
-
-  /* ── HEAD (organic mesh) ── */
-  const _tmp=new THREE.IcosahedronGeometry(1.6,3);
-  const _src=_tmp.attributes.position;
-  const _new=new Float32Array(_src.count*3);
-  for(let i=0;i<_src.count;i++){
-    _new[i*3]   = _src.getX(i)+(Math.random()-0.5)*0.05;
-    _new[i*3+1] = _src.getY(i)+(Math.random()-0.5)*0.05;
-    _new[i*3+2] = _src.getZ(i)+(Math.random()-0.5)*0.05;
-  }
-  const headGeo=new THREE.BufferGeometry();
-  headGeo.setAttribute('position',new THREE.BufferAttribute(_new,3));
-  if(_tmp.index) headGeo.setIndex(_tmp.index);
-  headGeo.computeVertexNormals();
-  _tmp.dispose();
-
-  const head=new THREE.Mesh(headGeo,new THREE.MeshStandardMaterial({color:0x0a1a3c,metalness:0.92,roughness:0.08}));
-  head.position.set(0,0.4,0);
-  scene.add(head);
-
-  const wireHead=new THREE.Mesh(headGeo,new THREE.MeshBasicMaterial({color:0x4d9fff,wireframe:true,transparent:true,opacity:0.09}));
-  wireHead.position.copy(head.position);
-  scene.add(wireHead);
-
-  /* ── NECK + SHOULDERS ── */
-  const neck=new THREE.Mesh(
-    new THREE.CylinderGeometry(0.38,0.5,0.7,12),
-    new THREE.MeshStandardMaterial({color:0x0a1a3c,metalness:0.85,roughness:0.15})
-  );
-  neck.position.set(0,-1.05,0);
-  scene.add(neck);
-
-  const shoulderGeo=new THREE.CylinderGeometry(1.5,1.2,0.45,18);
-  const shoulders=new THREE.Mesh(shoulderGeo,new THREE.MeshStandardMaterial({color:0x060e22,metalness:0.92,roughness:0.08}));
-  shoulders.position.set(0,-1.6,0);
-  scene.add(shoulders);
-  const sWire=new THREE.Mesh(shoulderGeo,new THREE.MeshBasicMaterial({color:0x00e5c4,wireframe:true,transparent:true,opacity:0.07}));
-  sWire.position.copy(shoulders.position);
-  scene.add(sWire);
-
-  /* ── EYES ── */
-  function makeEye(x){
-    const eye=new THREE.Mesh(
-      new THREE.SphereGeometry(0.18,20,20),
-      new THREE.MeshStandardMaterial({color:0x00e5c4,emissive:0x00e5c4,emissiveIntensity:2.4,metalness:1,roughness:0.05})
-    );
-    eye.position.set(x,0.52,1.35);
-    scene.add(eye);
-    const ring=new THREE.Mesh(
-      new THREE.RingGeometry(0.22,0.32,36),
-      new THREE.MeshBasicMaterial({color:0x00e5c4,transparent:true,opacity:0.55,side:THREE.DoubleSide})
-    );
-    ring.position.set(x,0.52,1.37);
-    scene.add(ring);
-    const ring2=new THREE.Mesh(
-      new THREE.RingGeometry(0.35,0.42,36),
-      new THREE.MeshBasicMaterial({color:0x4d9fff,transparent:true,opacity:0.22,side:THREE.DoubleSide})
-    );
-    ring2.position.set(x,0.52,1.36);
-    scene.add(ring2);
-    return {eye,ring,ring2};
-  }
-  const lEye=makeEye(-0.52);
-  const rEye=makeEye(0.52);
-
-  /* ── BROWS ── */
-  function makeBrow(x){
-    const pts=[];
-    for(let i=0;i<=8;i++){
-      const u=(i/8-0.5)*0.55;
-      pts.push(new THREE.Vector3(x+u, 0.82+(x>0?-u:u)*0.35, 1.38));
-    }
-    scene.add(new THREE.Line(
-      new THREE.BufferGeometry().setFromPoints(pts),
-      new THREE.LineBasicMaterial({color:0x4d9fff,transparent:true,opacity:0.55})
-    ));
-  }
-  makeBrow(-0.52); makeBrow(0.52);
-
-  /* ── MOUTH ── */
-  const mPts=[];
-  for(let i=0;i<=14;i++){
-    const a=(i/14-0.5)*1.0;
-    mPts.push(new THREE.Vector3(a,-0.28+Math.pow(a,2)*0.38,1.40));
-  }
-  scene.add(new THREE.Line(
-    new THREE.BufferGeometry().setFromPoints(mPts),
-    new THREE.LineBasicMaterial({color:0x4d9fff,transparent:true,opacity:0.62})
-  ));
-
-  /* ── SCAN LINE ── */
-  const scanMat=new THREE.MeshBasicMaterial({color:0x00e5c4,transparent:true,opacity:0.55,side:THREE.DoubleSide});
-  const scanLine=new THREE.Mesh(new THREE.PlaneGeometry(3.4,0.02),scanMat);
-  scene.add(scanLine);
-
-  /* ── ENERGY CORE (pulsing sphere behind head) ── */
-  const coreMat=new THREE.MeshBasicMaterial({color:0x4d9fff,transparent:true,opacity:0.08});
-  const core=new THREE.Mesh(new THREE.SphereGeometry(2.2,24,24),coreMat);
-  core.position.set(0,0.3,-1);
-  scene.add(core);
-
-  /* ── ORBIT RINGS ── */
-  const ringCfg=[
-    {r:2.3,col:0x4d9fff,op:.28,rx:Math.PI/2,ry:.3},
-    {r:2.8,col:0x00e5c4,op:.20,rx:1.2,ry:.8},
-    {r:3.3,col:0xa78bfa,op:.15,rx:.5,ry:1.5},
-    {r:3.7,col:0x4d9fff,op:.09,rx:.2,ry:2.0},
-  ];
-  const orbitMeshes=ringCfg.map(d=>{
-    const m=new THREE.Mesh(
-      new THREE.TorusGeometry(d.r,0.012,8,140),
-      new THREE.MeshBasicMaterial({color:d.col,transparent:true,opacity:d.op})
-    );
-    m.rotation.x=d.rx; m.rotation.y=d.ry;
-    scene.add(m);
-    return m;
-  });
-
-  /* ── DATA NODES ── */
-  const nodeGeo=new THREE.OctahedronGeometry(0.09,0);
-  const nodeCols=[0x4d9fff,0x00e5c4,0xa78bfa];
-  const dataNodes=[];
-  [2.3,2.8,3.3].forEach((r,ri)=>{
-    for(let i=0;i<5;i++){
-      const angle=(i/5)*Math.PI*2;
-      const node=new THREE.Mesh(nodeGeo,new THREE.MeshBasicMaterial({color:nodeCols[ri]}));
-      node.position.set(Math.cos(angle)*r,Math.sin(angle)*r*0.28,Math.sin(angle)*r*0.88);
-      node.userData={angle,r,speed:0.006+ri*0.002};
-      scene.add(node);
-      dataNodes.push(node);
-    }
-  });
-
-  /* ── PARTICLES ── */
-  const pp=[];
-  for(let i=0;i<480;i++){
-    const th=Math.random()*Math.PI*2;
-    const ph=Math.acos(2*Math.random()-1);
-    const r=2.8+Math.random()*3.5;
-    pp.push(Math.sin(ph)*Math.cos(th)*r,Math.sin(ph)*Math.sin(th)*r,Math.cos(ph)*r);
-  }
-  const ppGeo=new THREE.BufferGeometry();
-  ppGeo.setAttribute('position',new THREE.Float32BufferAttribute(pp,3));
-  const ppCloud=new THREE.Points(ppGeo,new THREE.PointsMaterial({color:0x7ec8ff,size:0.046,transparent:true,opacity:0.7}));
-  scene.add(ppCloud);
-
-  /* ── DATA STREAM PARTICLES (flowing around head) ── */
-  const streamCount=100;
-  const streamPos=new Float32Array(streamCount*3);
-  const streamData=[];
-  for(let i=0;i<streamCount;i++){
-    const angle=Math.random()*Math.PI*2;
-    const r=1.8+Math.random()*1.2;
-    const y=(Math.random()-0.5)*3;
-    streamPos[i*3]=Math.cos(angle)*r;
-    streamPos[i*3+1]=y;
-    streamPos[i*3+2]=Math.sin(angle)*r;
-    streamData.push({angle,r,y,speed:0.01+Math.random()*0.02,ySpeed:(Math.random()-0.5)*0.02});
-  }
-  const streamGeo=new THREE.BufferGeometry();
-  streamGeo.setAttribute('position',new THREE.BufferAttribute(streamPos,3));
-  scene.add(new THREE.Points(streamGeo,new THREE.PointsMaterial({color:0x00e5c4,size:0.05,transparent:true,opacity:0.9})));
-
-  /* ── CIRCUIT DOTS ── */
-  const cdp=[];
-  for(let i=0;i<140;i++){
-    const a=Math.random()*Math.PI*2;
-    const r=1.8+Math.random()*0.6;
-    cdp.push(Math.cos(a)*r,(Math.random()-0.5)*3.2,Math.sin(a)*r);
-  }
-  const cdGeo=new THREE.BufferGeometry();
-  cdGeo.setAttribute('position',new THREE.Float32BufferAttribute(cdp,3));
-  scene.add(new THREE.Points(cdGeo,new THREE.PointsMaterial({color:0x00e5c4,size:0.07,transparent:true,opacity:0.88})));
-
-  /* ── LIGHTS ── */
-  scene.add(new THREE.AmbientLight(0x0a1a3a,0.7));
-  const bL=new THREE.PointLight(0x4d9fff,4.0,16); bL.position.set(-3,2,5); scene.add(bL);
-  const tL=new THREE.PointLight(0x00e5c4,3.5,14); tL.position.set(3,-1,4); scene.add(tL);
-  const pL=new THREE.PointLight(0xa78bfa,2.5,12); pL.position.set(0,4,-3); scene.add(pL);
-  scene.add(Object.assign(new THREE.PointLight(0xffffff,1.2,8),{position:new THREE.Vector3(0,-3,2)}));
-
-  /* ── MOUSE ── */
-  let mx=0,my=0,tmx=0,tmy=0;
-  canvas.addEventListener('mousemove',e=>{
-    const r=canvas.getBoundingClientRect();
-    tmx=(e.clientX-r.left)/r.width*2-1;
-    tmy=-((e.clientY-r.top)/r.height*2-1);
-  });
-  canvas.addEventListener('mouseleave',()=>{tmx=0;tmy=0;});
-
-  let t=0;
-  (function anim(){
-    requestAnimationFrame(anim);
-    t+=0.016;
-    mx+=(tmx-mx)*0.06;
-    my+=(tmy-my)*0.06;
-
-    /* Head movement */
-    head.rotation.y=mx*0.5+Math.sin(t*0.32)*0.10;
-    head.rotation.x=my*0.20+Math.sin(t*0.25)*0.055;
-    head.rotation.z=Math.sin(t*0.18)*0.025;
-    wireHead.rotation.copy(head.rotation);
-    neck.rotation.y=head.rotation.y*0.4;
-    shoulders.rotation.y=head.rotation.y*0.2;
-    sWire.rotation.y=shoulders.rotation.y;
-
-    /* Eye pulse + blink */
-    const pulse=1.6+Math.sin(t*2.2)*0.7;
-    lEye.eye.material.emissiveIntensity=pulse;
-    rEye.eye.material.emissiveIntensity=pulse;
-    lEye.ring.material.opacity=0.3+Math.abs(Math.sin(t*2.2))*0.32;
-    rEye.ring.material.opacity=lEye.ring.material.opacity;
-    const blink=Math.abs(Math.sin(t*0.8))>0.997;
-    [lEye,rEye].forEach(e=>{e.eye.scale.y=blink?0.08:1;});
-
-    /* Scan line */
-    scanLine.position.set(0,0.4+1.7*Math.sin(t*0.9),1.62);
-    scanMat.opacity=0.22+Math.abs(Math.sin(t*0.9))*0.38;
-
-    /* Energy core pulse */
-    const coreScale=1+Math.sin(t*1.5)*0.08;
-    core.scale.setScalar(coreScale);
-    coreMat.opacity=0.05+Math.abs(Math.sin(t*1.5))*0.06;
-
-    /* Orbit rings */
-    orbitMeshes[0].rotation.z+=0.005;
-    orbitMeshes[1].rotation.z-=0.004;
-    orbitMeshes[2].rotation.x+=0.003;
-    orbitMeshes[3].rotation.y+=0.002;
-
-    /* Data nodes orbit */
-    dataNodes.forEach(n=>{
-      n.userData.angle+=n.userData.speed;
-      const r2=n.userData.r;
-      n.position.x=Math.cos(n.userData.angle)*r2;
-      n.position.y=Math.sin(n.userData.angle*0.3)*r2*0.22;
-      n.position.z=Math.sin(n.userData.angle)*r2*0.85;
-      n.rotation.y+=0.04;
-    });
-
-    /* Data streams flowing around head */
-    const sp=streamGeo.attributes.position.array;
-    for(let i=0;i<streamCount;i++){
-      const d=streamData[i];
-      d.angle+=d.speed;
-      d.y+=d.ySpeed;
-      if(Math.abs(d.y)>2) d.ySpeed*=-1;
-      sp[i*3]=Math.cos(d.angle)*d.r;
-      sp[i*3+1]=d.y+0.4;
-      sp[i*3+2]=Math.sin(d.angle)*d.r;
-    }
-    streamGeo.attributes.position.needsUpdate=true;
-
-    /* Ambient particle rotation */
-    ppCloud.rotation.y+=0.0007;
-    ppCloud.rotation.x=Math.sin(t*0.12)*0.055;
-
-    /* Light breathing */
-    bL.intensity=3.5+Math.sin(t*1.3)*1.2;
-    tL.intensity=3.0+Math.cos(t*1.0)*1.0;
-    pL.intensity=2.0+Math.sin(t*0.7)*0.7;
-
-    renderer.render(scene,camera);
-  })();
-}
-
-/* Auto-init portrait — skip on small screens or with reduced-motion */
-(function wait(){
-  /* Skip the heavy AI portrait scene on phones (<768px) and for users
-     who prefer reduced motion. The static profile photo + fallback are enough. */
-  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const tooSmall = window.innerWidth < 768;
-  if(reduceMotion || tooSmall){
-    const c = document.getElementById('aiPortraitCanvas');
-    if(c) c.style.display = 'none';
-    return;
-  }
-  if(typeof THREE!=='undefined'){
-    initAIPortrait('aiPortraitCanvas',420,500);
-  }else{
-    setTimeout(wait,50);
-  }
-})();
-</script>
 
 <!-- ═══ CUSTOM CURSOR SCRIPT ═══ -->
-<script>
-(function(){
-  'use strict';
-  const glow=document.getElementById('cursorGlow');
-  if(!glow || 'ontouchstart' in window) return;
-  /* Skip the custom cursor when user prefers reduced motion */
-  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    glow.style.display='none';
-    return;
-  }
 
-  document.addEventListener('mousemove',e=>{
-    glow.style.left=e.clientX+'px';
-    glow.style.top=e.clientY+'px';
-    if(!glow.classList.contains('visible')) glow.classList.add('visible');
-  });
-  document.addEventListener('mouseleave',()=>{glow.classList.remove('visible');});
-
-  /* Enlarge on interactive elements */
-  document.querySelectorAll('a,button,.card,.skill-hex,.proj-card,.stat-card').forEach(el=>{
-    el.addEventListener('mouseenter',()=>glow.classList.add('hover'));
-    el.addEventListener('mouseleave',()=>glow.classList.remove('hover'));
-  });
-})();
-</script>
 
 <!-- ═══ PROJECT PREVIEW MODAL LOGIC ═══ -->
 <script>
@@ -2632,81 +2054,7 @@ function initAIPortrait(canvasId, W, H){
 </script>
 
 <!-- ═══ BANNER CANVAS ANIMATION (optional 3D behind banner) ═══ -->
-<script>
-(function(){
-  'use strict';
-  /* Animated particles inside the banner section */
-  const banner = document.querySelector('.showcase-banner');
-  if(!banner || typeof THREE === 'undefined') return;
-  /* Respect reduced-motion */
-  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  const cvs = document.createElement('canvas');
-  cvs.setAttribute('aria-hidden','true');
-  cvs.style.cssText = 'position:absolute;inset:0;z-index:1;pointer-events:none;';
-  banner.prepend(cvs);
-
-  const ctx = cvs.getContext('2d');
-  let W, H;
-  const particles = [];
-
-  function resize(){
-    W = cvs.width = banner.offsetWidth;
-    H = cvs.height = banner.offsetHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  /* Create banner particles */
-  for(let i=0; i<80; i++){
-    particles.push({
-      x: Math.random()*2000,
-      y: Math.random()*800,
-      r: Math.random()*2+0.5,
-      dx: (Math.random()-0.5)*0.4,
-      dy: (Math.random()-0.5)*0.3,
-      opacity: Math.random()*0.5+0.1,
-      color: ['rgba(77,159,255,','rgba(0,229,196,','rgba(167,139,250,'][Math.floor(Math.random()*3)],
-    });
-  }
-
-  function drawBanner(){
-    requestAnimationFrame(drawBanner);
-    ctx.clearRect(0,0,W,H);
-
-    /* Draw connection lines */
-    for(let i=0;i<particles.length;i++){
-      for(let j=i+1;j<particles.length;j++){
-        const dx = particles[i].x-particles[j].x;
-        const dy = particles[i].y-particles[j].y;
-        const dist = Math.sqrt(dx*dx+dy*dy);
-        if(dist<120){
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(77,159,255,${0.06*(1-dist/120)})`;
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-        }
-      }
-    }
-
-    /* Draw and move particles */
-    particles.forEach(p=>{
-      p.x += p.dx;
-      p.y += p.dy;
-      if(p.x<0||p.x>W) p.dx *= -1;
-      if(p.y<0||p.y>H) p.dy *= -1;
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
-      ctx.fillStyle = p.color + p.opacity + ')';
-      ctx.fill();
-    });
-  }
-  drawBanner();
-})();
-</script>
 
 <!-- ═══ MAIN APPLICATION LOGIC ═══ -->
 <script src="js/main.js"></script>
