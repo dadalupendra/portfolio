@@ -49,6 +49,7 @@ body{
     radial-gradient(ellipse 680px 480px at 4% 27%,rgba(27,167,184,.065),transparent 75%),
     var(--bg);
   color:var(--text);
+  opacity:1; /* Show content immediately, even before JavaScript finishes loading. */
   line-height:1.65;
   font-feature-settings:"kern";
 }
@@ -146,7 +147,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   background:linear-gradient(to top,rgba(4,13,30,.94) 4%,rgba(4,13,30,.67) 55%,transparent 100%);
 }
 .hero-portrait-canvas-overlay,#canvas3d,.cursor-glow{display:none!important}
-.section{padding:78px 0}
+.section{padding:78px 0;scroll-margin-top:80px}
 .section.alt{background:rgba(10,25,48,.30);backdrop-filter:none}
 [data-theme="light"] .section.alt{background:rgba(221,235,252,.34)}
 .section-label{color:var(--accent2);font-size:.72rem;letter-spacing:.18em}
