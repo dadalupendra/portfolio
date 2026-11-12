@@ -1,0 +1,816 @@
+/* ==========================================================================
+   Nepal Spice — 注文追跡 & レビュー (standalone)
+   Theme: cream #fdfbf7 · red #b91c1c · white cards · 12px radius
+   ========================================================================== */
+
+:root {
+  --bg: #fdfbf7;
+  --surface: #ffffff;
+  --surface-2: #f7f2ea;
+  --ink: #241c17;
+  --ink-soft: #6f635b;
+  --line: #ece2d6;
+
+  --red: #b91c1c; /* primary / active step */
+  --red-soft: #fdeaea;
+  --green: #15803d; /* completed step     */
+  --green-soft: #e7f6ec;
+  --gray: #9ca3af; /* pending step       */
+  --gray-soft: #f1f2f4;
+  --gold: #f59e0b; /* stars              */
+
+  --r: 12px;
+  --shadow: 0 1px 2px rgba(40, 20, 10, 0.05), 0 6px 18px rgba(40, 20, 10, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  font-family:
+    "Noto Sans JP",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Hiragino Kaku Gothic ProN",
+    "Yu Gothic",
+    sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+h1,
+h2,
+p,
+ol,
+ul {
+  margin: 0;
+}
+ol,
+ul {
+  padding: 0;
+  list-style: none;
+}
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+button {
+  cursor: pointer;
+  border: 0;
+  background: none;
+}
+svg {
+  width: 1em;
+  height: 1em;
+  display: block;
+}
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.page {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: clamp(16px, 4vw, 40px) clamp(14px, 4vw, 24px) 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ------------------------------------------------------------- top nav -- */
+.topnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.backlink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--red);
+  text-decoration: none;
+  padding: 6px 10px 6px 6px;
+  border-radius: 99px;
+  transition: background 0.15s;
+}
+.backlink:hover {
+  background: var(--red-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.backlink svg {
+  width: 16px;
+  height: 16px;
+}
+.topnav .shop {
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+
+/* ---------------------------------------------------------------- cards -- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+  padding: clamp(18px, 3.4vw, 26px);
+}
+.card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.eyebrow {
+  margin: 0 0 2px;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+.eyebrow b {
+  color: var(--ink);
+}
+.card-head h1 {
+  margin: 0;
+  font-size: clamp(20px, 3.6vw, 25px);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+.card-head h2 {
+  margin: 0;
+  font-size: clamp(18px, 3.2vw, 22px);
+  font-weight: 800;
+}
+
+/* --------------------------------------------------------------- buttons -- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 18px;
+  border-radius: 10px;
+  font-size: 14.5px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background 0.15s,
+    color 0.15s,
+    border-color 0.15s,
+    transform 0.1s;
+}
+.btn svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn.solid {
+  background: var(--red);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(185, 28, 28, 0.22);
+}
+.btn.solid:hover {
+  background: #a31616;
+}
+.btn.ghost {
+  background: var(--surface);
+  color: var(--ink-soft);
+  border: 1.5px solid var(--line);
+}
+.btn.ghost:hover {
+  color: var(--red);
+  border-color: #f3c7c7;
+  background: var(--red-soft);
+}
+.btn.small {
+  height: 36px;
+  padding: 0 13px;
+  font-size: 13px;
+  border-radius: 9px;
+}
+.btn.small svg {
+  width: 14px;
+  height: 14px;
+}
+.btn.block {
+  width: 100%;
+}
+.btn:focus-visible,
+.star:focus-visible,
+.star-picker button:focus-visible {
+  outline: 3px solid rgba(185, 28, 28, 0.35);
+  outline-offset: 2px;
+}
+
+/* ------------------------------------------------------------ ETA banner -- */
+.eta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--red-soft);
+  border: 1px solid #f7cccc;
+  border-radius: var(--r);
+  padding: 12px 14px;
+  margin-bottom: 22px;
+}
+.eta-ic {
+  width: 38px;
+  height: 38px;
+  flex: none;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: var(--red);
+  color: #fff;
+}
+.eta-ic svg {
+  width: 20px;
+  height: 20px;
+}
+.eta-main {
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--red);
+  line-height: 1.25;
+}
+.eta-sub {
+  font-size: 12.5px;
+  color: #7a5c5c;
+}
+.eta.done {
+  background: var(--green-soft);
+  border-color: #c7e9d2;
+}
+.eta.done .eta-ic {
+  background: var(--green);
+}
+.eta.done .eta-main {
+  color: var(--green);
+}
+.eta.done .eta-sub {
+  color: #3f6b4f;
+}
+
+/* ---------------------------------------------------------------- stepper -- */
+/*  Mobile : vertical list (icon column on the left, connector line between) */
+/*  Desktop: horizontal row                                                 */
+.stepper {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 12px;
+  align-items: flex-start;
+  padding-bottom: 22px;
+}
+.step:last-child {
+  padding-bottom: 0;
+}
+
+/* connector line */
+.step::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 38px;
+  bottom: 2px;
+  width: 2px;
+  background: var(--line);
+  border-radius: 2px;
+}
+.step:last-child::before {
+  display: none;
+}
+.step.done::before {
+  background: var(--green);
+}
+.step.active::before {
+  background: linear-gradient(var(--red), var(--line));
+}
+
+.dot {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--gray-soft);
+  color: var(--gray);
+  border: 2px solid var(--line);
+  font-size: 13.5px;
+  font-weight: 800;
+  transition:
+    background 0.3s,
+    color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+  z-index: 1;
+}
+.dot svg {
+  width: 18px;
+  height: 18px;
+}
+
+.step-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  padding-top: 8px;
+  color: var(--ink-soft);
+}
+.step-note {
+  font-size: 12px;
+  color: var(--ink-soft);
+  opacity: 0.85;
+  margin-top: 1px;
+}
+
+/* pending (default) = gray, completed = green, active = red */
+.step.done .dot {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+.step.done .step-title {
+  color: var(--ink);
+  font-weight: 700;
+}
+.step.done .step-title::after {
+  content: " ✓";
+  color: var(--green);
+  font-weight: 800;
+}
+
+.step.active .dot {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+  box-shadow: 0 0 0 5px rgba(185, 28, 28, 0.14);
+  animation: pulse 2s ease-in-out infinite;
+}
+.step.active .step-title {
+  color: var(--red);
+  font-weight: 800;
+  font-size: 15.5px;
+}
+.step.active .step-title::after {
+  content: " ・ 進行中";
+  font-size: 11.5px;
+  color: var(--red);
+  font-weight: 700;
+  opacity: 0.85;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 5px rgba(185, 28, 28, 0.14);
+  }
+  50% {
+    box-shadow: 0 0 0 9px rgba(185, 28, 28, 0.05);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .step.active .dot {
+    animation: none;
+  }
+}
+
+/* ----------------------------------------------------------- driver card -- */
+.driver {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+  padding: 14px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  animation: fade 0.35s ease;
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.avatar {
+  flex: none;
+  display: grid;
+  place-items: center;
+  background: var(--red-soft);
+  color: var(--red);
+  border-radius: 50%;
+  overflow: hidden;
+}
+.driver-avatar {
+  width: 52px;
+  height: 52px;
+  background: var(--red);
+  color: #fff;
+}
+.driver-avatar svg {
+  width: 26px;
+  height: 26px;
+}
+.driver-info {
+  flex: 1;
+  min-width: 150px;
+}
+.driver-name {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+}
+.driver-meta {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}
+.call {
+  margin-left: auto;
+}
+
+/* --------------------------------------------------------------- hints -- */
+.hint-line {
+  margin-top: 18px;
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+.hint-line code {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 0 4px;
+  font-size: 11.5px;
+}
+
+/* ------------------------------------------------------ rating summary -- */
+.rating-summary {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 14px 16px;
+  margin-bottom: 20px;
+}
+.score {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.score-num {
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.stars {
+  display: flex;
+  gap: 2px;
+  color: var(--gold);
+  font-size: 16px;
+}
+.stars svg {
+  width: 1em;
+  height: 1em;
+}
+.stars .off {
+  color: #ddd3c6;
+}
+.score-sub {
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  margin-left: 2px;
+}
+.score-count {
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+.score-count b {
+  font-size: 15px;
+  color: var(--ink);
+}
+
+/* ------------------------------------------------------------ review form -- */
+.review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}
+.form-label {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+.star-picker {
+  display: flex;
+  gap: 4px;
+  margin: -6px 0 2px;
+}
+.star-picker button {
+  width: 40px;
+  height: 40px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  color: #ddd3c6;
+  font-size: 30px;
+  line-height: 1;
+  transition:
+    color 0.12s,
+    transform 0.12s;
+}
+.star-picker button svg {
+  width: 30px;
+  height: 30px;
+}
+.star-picker button.on {
+  color: var(--gold);
+}
+.star-picker button:hover {
+  transform: scale(1.12);
+}
+
+.field {
+  position: relative;
+  display: block;
+}
+.field input,
+.field textarea {
+  width: 100%;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  padding: 11px 12px;
+  font-size: 14.5px;
+  resize: vertical;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+.field textarea {
+  padding-bottom: 26px;
+  min-height: 96px;
+}
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.12);
+}
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #a8a09a;
+}
+.counter {
+  position: absolute;
+  right: 10px;
+  bottom: 8px;
+  font-size: 11.5px;
+  color: var(--ink-soft);
+}
+.counter.over {
+  color: var(--red);
+  font-weight: 700;
+}
+.form-error {
+  min-height: 0;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--red);
+  margin: 0;
+}
+.form-error:empty {
+  display: none;
+}
+
+/* ---------------------------------------------------------- review list -- */
+.review-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 6px;
+}
+.review {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 12px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.review:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+.review .avatar {
+  width: 42px;
+  height: 42px;
+  font-size: 14px;
+  font-weight: 800;
+}
+.review-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.review-name {
+  font-size: 14px;
+  font-weight: 800;
+}
+.review-date {
+  font-size: 11.5px;
+  color: var(--ink-soft);
+}
+.review-stars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  color: var(--gold);
+  font-size: 13px;
+  margin-left: auto;
+}
+.review-stars .off {
+  color: #ddd3c6;
+}
+/* サマリー用：大きな平均値の隣に置くので数値は出さず、サイズは親(.stars)に合わせる */
+.review-stars.small {
+  font-size: inherit;
+  margin-left: 0;
+}
+.review-stars em {
+  font-style: normal;
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 12.5px;
+  margin-left: 4px;
+}
+.review-text {
+  margin: 5px 0 0;
+  font-size: 13.5px;
+  color: var(--ink);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.badge-new {
+  font-size: 10.5px;
+  font-weight: 800;
+  color: var(--red);
+  background: var(--red-soft);
+  border-radius: 99px;
+  padding: 1px 7px;
+}
+.empty {
+  padding: 18px 0;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+.foot {
+  text-align: center;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+/* --------------------------------------------------------------- toast -- */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  transform: translate(-50%, 20px);
+  background: var(--ink);
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 700;
+  padding: 10px 16px;
+  border-radius: 99px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.25s,
+    transform 0.25s;
+  z-index: 50;
+  max-width: calc(100% - 32px);
+  text-align: center;
+}
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* =========================================================== responsive = */
+@media (min-width: 720px) {
+  /* stepper becomes horizontal */
+  .stepper {
+    flex-direction: row;
+    gap: 6px;
+    margin-top: 6px;
+  }
+  .step {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 8px;
+    padding: 0 2px;
+    flex: 1;
+  }
+  .step::before {
+    left: calc(50% + 24px);
+    right: calc(-50% + 24px);
+    top: 19px;
+    bottom: auto;
+    width: auto;
+    height: 2px;
+  }
+  .step-title {
+    padding: 0;
+    font-size: 13px;
+    line-height: 1.35;
+  }
+  .step-note {
+    font-size: 11px;
+  }
+  .step.active .step-title {
+    font-size: 13.5px;
+  }
+  .step.active .step-title::after {
+    content: "";
+  }
+  .step.done .step-title::after {
+    content: "";
+  }
+}
+
+@media (max-width: 420px) {
+  .card-head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .card-head .btn {
+    width: 100%;
+  }
+  .driver {
+    gap: 10px;
+  }
+  .driver-avatar {
+    width: 46px;
+    height: 46px;
+  }
+  .call {
+    width: 100%;
+    margin-left: 0;
+  }
+  .score-count {
+    margin-left: 0;
+    width: 100%;
+  }
+  .review-stars {
+    margin-left: 0;
+    width: 100%;
+  }
+}

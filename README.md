@@ -102,9 +102,9 @@ New files: `css/curated-legacy-features.css` and `js/curated-legacy-features.js`
 ## Updated Portfolio projects: NextStep link and Nepal Spice
 
 - **NextStep Study:** restored the previous Base44 app URL to its portfolio project card: https://next-step-ai-a4248ae0.base44.app/ . Base44 reports the matching app is ready; the external URL was not verified in a browser.
-- **Nepal Spice:** project page at https://dadalupendra.github.io/portfolio/nepal-spice/ , built from the 26 real dish names, trilingual labels and *illustrative* prices in the uploaded `nepal-spice-complete.zip`. Includes live filtering, language switching, mobile layout and a **local-only sample cart**; it is not a production checkout system.
+- **Nepal Spice:** the original uploaded frontend is published at https://dadalupendra.github.io/portfolio/nepal-spice/ with 26 photos, account creation/login, cart, checkout, order history and tracking. Accounts and orders remain browser-local; real payments and deliveries are not connected.
 - **Publishing boundaries:** the uploaded archive also contains a separate Java Servlet / Oracle / SMTP back end requiring Tomcat, which GitHub Pages cannot run. The school's original frontend uses browser-local demonstration authentication. For safety the published preview avoids presenting these systems as real payment, login, delivery, ordering or email services.
-- **Photos and attribution:** the supplied ZIP's `images/CREDITS.md` says the 26 photos were copied from various sites for noncommercial classroom use and should be replaced with properly licensed images before public release. Therefore they are **not republished** in the public GitHub Pages preview, which uses icons instead.
+- **Photos and attribution:** the original supplied photo assets are included with their unchanged attribution file at `nepal-spice/images/CREDITS.md`. The application is the supplied school project, not a commercial restaurant service.
 
 ## NextStep Global and NextStep Study links
 
@@ -113,16 +113,21 @@ New files: `css/curated-legacy-features.css` and `js/curated-legacy-features.js`
 - **NextStep Study GitHub:** the owner's requested clone/repository URL `https://github.com/dadalupendra/nextstep-ai.git` is now shown as an additional project-card button. The GitHub connector reports this repository is **private**, so other visitors need GitHub access to see it. The URL points to the Git repository; it is not a public source-code preview.
 - The project counter and print resume were updated from four to five project entries. All language switching, 3D rendering, Maps and theme controls remain in place.
 
+## Nepal Spice original application
 
-## Nepal Spice hosted app and source
+[Open Nepal Spice](https://dadalupendra.github.io/portfolio/nepal-spice/)
 
-The Nepal Spice project card and its public menu-demo page now include:
+The portfolio now serves the original uploaded application instead of the
+separately recreated menu preview. It includes the supplied HTML, CSS,
+JavaScript, 26 food photos, login and registration, cart, checkout screen,
+order history, tracking and reviews. No ChatGPT account is needed to open it.
+The application has its own browser-local account creation screen.
 
-- [GitHub source](https://github.com/dadalupendra/nepali-spice): the complete uploaded frontend, 26 food photos, Java email module, documentation and tests.
-- [Hosted app (private)](https://nepal-spice-dadal.expertwarbler.chatgpt.site/): the deployed frontend, currently restricted to the owner's ChatGPT account.
-- [Public portfolio demo](https://dadalupendra.github.io/portfolio/nepal-spice/): the existing trilingual menu and browser-local sample cart.
+[Original source repository](https://github.com/dadalupendra/nepali-spice)
 
-The hosted app's private access is labeled on both pages. Real payments,
-deliveries and the Java email/Oracle backend are not connected to the hosted
-frontend. Project-card link labels follow all six portfolio languages; the
-Nepal Spice page labels follow its English, Japanese and Nepali settings.
+Accounts, cart and orders remain in the visitor's browser. Tracking uses the
+original simulated progression. Real payments, restaurant order submission,
+delivery tracking and the Java email/Oracle backend are not connected.
+The separate private ChatGPT-hosted copy is no longer a portfolio destination.
+
+Frontend verification scripts are included in `nepal-spice/tests/`.

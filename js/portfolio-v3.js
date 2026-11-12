@@ -116,12 +116,6 @@ Object.assign(dict.ne,{"sourceRepo":"GitHub रिपोजिटरी ↗","pr
 Object.assign(dict.hi,{"sourceRepo":"GitHub रिपॉजिटरी ↗","privateSource":"प्राइवेट रिपॉजिटरी — खोलने के लिए अनुमति आवश्यक है"});
 Object.assign(dict.zh,{"sourceRepo":"GitHub 代码仓库 ↗","privateSource":"私人仓库 — 需要访问权限"});
 Object.assign(dict.ko,{"sourceRepo":"GitHub 저장소 ↗","privateSource":"비공개 저장소 — 접근 권한이 필요합니다"});
-Object.assign(dict.en,{hostedApp:'Hosted app ↗',privateHostedApp:'Hosted app (private) ↗',hostedAccess:"Requires the owner's ChatGPT sign-in"});
-Object.assign(dict.ja,{hostedApp:'ホスト版を開く ↗',privateHostedApp:'ホスト版（非公開） ↗',hostedAccess:'所有者のChatGPTアカウントでログインが必要です'});
-Object.assign(dict.ne,{hostedApp:'Hosted एप खोल्नुहोस् ↗',privateHostedApp:'Hosted एप (निजी) ↗',hostedAccess:'मालिकको ChatGPT account बाट login आवश्यक छ'});
-Object.assign(dict.hi,{hostedApp:'होस्ट किया गया ऐप ↗',privateHostedApp:'होस्ट किया गया ऐप (निजी) ↗',hostedAccess:'मालिक के ChatGPT खाते से लॉगिन आवश्यक है'});
-Object.assign(dict.zh,{hostedApp:'打开托管应用 ↗',privateHostedApp:'托管应用（私人） ↗',hostedAccess:'需要使用所有者的 ChatGPT 账号登录'});
-Object.assign(dict.ko,{hostedApp:'호스팅 앱 열기 ↗',privateHostedApp:'호스팅 앱 (비공개) ↗',hostedAccess:'소유자의 ChatGPT 계정으로 로그인해야 합니다'});
 const cvTranslations={
   en:{subtitle:'Information Processing Student | Tokyo, Japan',profile:'Profile',profileText:'IT student with practical project experience in HTML/CSS, JavaScript, Java and Oracle SQL.',tech:'Technical skills',work:'Selected work',education:'Education',experience:'Experience'},
   ja:{subtitle:'情報処理科 学生 | 日本・東京',profile:'プロフィール',profileText:'HTML/CSS、JavaScript、Java、Oracle SQLを学び、実践的な制作に取り組む情報処理科の学生。',tech:'技術スキル',work:'主な制作',education:'学歴',experience:'経験'},
@@ -131,6 +125,12 @@ const cvTranslations={
   ko:{subtitle:'정보처리 전공 학생 | 일본 도쿄',profile:'소개',profileText:'HTML/CSS, JavaScript, Java, Oracle SQL을 배우며 실습 프로젝트를 진행하는 IT 학생입니다.',tech:'기술 역량',work:'주요 작업',education:'학력',experience:'경험'}
 };
 const localized = (en,ja,ne,hi,zh,ko)=>({en,ja,ne,hi,zh,ko});
+dict.en.openApp="Open app ↗";
+dict.ja.openApp="アプリを開く ↗";
+dict.ne.openApp="एप खोल्नुहोस् ↗";
+dict.hi.openApp="ऐप खोलें ↗";
+dict.zh.openApp="打开应用 ↗";
+dict.ko.openApp="앱 열기 ↗";
 const projects=[
 {id:"nextstep",category:"app",icon:"📚",name:"NextStep Study",description:localized("Real ongoing Japanese-learning application work involving vocabulary, grammar, kanji and practice exams.",
 "語彙・文法・漢字・模擬試験に取り組む日本語学習アプリの開発。",
@@ -158,7 +158,7 @@ const projects=[
 "नेपाल प्रीमियर लीग 2026 की क्रिकेट वेबसाइट, लाइव डेटा सुविधाएँ विकासाधीन।",
 "尼泊尔超级联赛2026板球信息网站，实时数据功能仍在开发。",
 "네팔 프리미어리그 2026 크리켓 정보 웹사이트이며 실시간 데이터 기능 개발 중입니다."),tech:["HTML","JavaScript","API"],link:"npl-2026/",linkKind:"project",status:"inprogress"},
-{id:"nepalspice",category:"web",icon:"🌶️",name:"Nepal Spice",description:localized("Trilingual Nepalese food-menu school project with 26 dishes and a browser-only cart preview. Prices are illustrative; no real ordering or payments.","ネパール料理26品と3言語対応のメニュー・サンプルカートを備えた学校制作プロジェクト。価格は参考値で、実際の注文や決済はできません。","२६ परिकार, तीन भाषा र ब्राउजरमै चल्ने नमुना कार्ट भएको नेपाल स्पाइस विद्यालय प्रोजेक्ट। मूल्यहरू उदाहरण हुन्, वास्तविक अर्डर वा भुक्तानी हुँदैन।","26 व्यंजनों, तीन भाषाओं और ब्राउज़र में चलने वाली सैंपल कार्ट वाला स्कूल प्रोजेक्ट। वास्तविक ऑर्डर या भुगतान नहीं होता।","涵盖26道尼泊尔菜、三种语言和浏览器示例购物车的学校项目。价格为示例，不处理真实订单或付款。","네팔 요리 26종, 3개 언어와 브라우저 내 샘플 카트를 갖춘 학교 프로젝트입니다. 실제 주문이나 결제는 지원하지 않습니다."),tech:["HTML","CSS","JavaScript","Menu UI"],link:"nepal-spice/",linkKind:"project",source:"https://github.com/dadalupendra/nepali-spice",hosted:"https://nepal-spice-dadal.expertwarbler.chatgpt.site/",hostedPrivate:true,status:"app"}
+{id:"nepalspice",category:"web",icon:"🌶️",name:"Nepal Spice",description:localized("Original Nepal Spice application with 26 food photos, account creation, login, cart, order history and tracking. Data stays in the browser; real payments and deliveries are not connected.","Nepal Spiceの元のアプリ。料理写真26点、アカウント作成、ログイン、カート、注文履歴、追跡画面を搭載。データはブラウザ内に保存され、実際の決済・配達には未接続です。","२६ परिकारका फोटो, account creation, login, cart, order history र tracking भएको मूल Nepal Spice app। डाटा ब्राउजरमै रहन्छ; वास्तविक भुक्तानी र डेलिभरी सेवा जोडिएको छैन।","26 व्यंजनों की तस्वीरों, खाता निर्माण, लॉगिन, कार्ट, ऑर्डर हिस्ट्री और ट्रैकिंग वाला मूल Nepal Spice ऐप। डेटा ब्राउज़र में रहता है; वास्तविक भुगतान और डिलीवरी सेवाएँ जुड़ी नहीं हैं।","原版 Nepal Spice 应用，包含26张菜品照片、注册、登录、购物车、订单历史和跟踪页面。数据保存在浏览器中，尚未连接真实支付或配送服务。","음식 사진 26장, 계정 생성, 로그인, 장바구니, 주문 내역과 추적 화면을 갖춘 원본 Nepal Spice 앱입니다. 데이터는 브라우저에 저장되며 실제 결제와 배송 서비스는 연결되지 않았습니다."),tech:["HTML","CSS","JavaScript","Local Storage"],link:"nepal-spice/",linkKind:"app",source:"https://github.com/dadalupendra/nepali-spice",status:"app"}
 ];
 const $=s=>document.querySelector(s);
 const all=s=>Array.from(document.querySelectorAll(s));
@@ -197,7 +197,7 @@ function renderProjects(){
     const links=document.createElement('div');links.className='project-links';
     if(p.link){
       const link=document.createElement('a');link.href=p.link;
-      link.textContent=t[p.linkKind==='demo'?'openDemo':'openProject'];
+      link.textContent=t[p.linkKind==='app'?'openApp':p.linkKind==='demo'?'openDemo':'openProject'];
       if(p.link.startsWith('https://')){link.target='_blank';link.rel='noopener noreferrer';}
       links.appendChild(link);
     } else {
@@ -210,14 +210,6 @@ function renderProjects(){
       sourceLink.textContent=t.sourceRepo;
       if(p.sourcePrivate){sourceLink.title=t.privateSource;sourceLink.setAttribute('aria-label',t.sourceRepo+' — '+t.privateSource);}
       links.appendChild(sourceLink);
-    }
-    if(p.hosted){
-      const hostedLink=document.createElement('a');
-      hostedLink.href=p.hosted;hostedLink.target='_blank';hostedLink.rel='noopener noreferrer';
-      hostedLink.className='secondary';
-      hostedLink.textContent=p.hostedPrivate?t.privateHostedApp:t.hostedApp;
-      if(p.hostedPrivate){hostedLink.title=t.hostedAccess;hostedLink.setAttribute('aria-label',t.privateHostedApp+' — '+t.hostedAccess);}
-      links.appendChild(hostedLink);
     }
     body.append(name,desc,tags,links);article.append(visual,body);grid.appendChild(article);
   });

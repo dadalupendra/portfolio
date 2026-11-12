@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#b91c1c">
+<title>注文追跡 & レビュー — Nepal Spice</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23b91c1c'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23fff' font-family='Arial'%3E%E0%A4%AE%3C/text%3E%3C/svg%3E">
+<!-- No external fonts/CDNs: track.css uses the locally installed font stack. -->
+<link rel="stylesheet" href="track.css">
+</head>
+<body>
+
+<!-- icon sprite (same visual language as the rest of the site) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-bike" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M12 17.5 9 10h6l3 7.5M9 10 7.5 6H5M15 10l-1.5-4H17"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 6.5 6.5L17 13l4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.2 2 2 0 0 1 6.5 3z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12.5 5.2 5.2L20 7"/></symbol>
+  <symbol id="i-reset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17l-6.1 3.6 1.4-6.8L2.2 9.1l6.9-.8z"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.2-4 4.2-6 8-6s6.8 2 8 6"/></symbol>
+</svg>
+
+<div class="page">
+
+  <nav class="topnav" aria-label="ページ移動">
+    <a class="backlink" href="index.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      メニューに戻る
+    </a>
+    <span class="shop">Nepal Spice</span>
+  </nav>
+
+  <!-- ===================== 1. ORDER TRACKING ===================== -->
+  <section class="card" id="trackCard" aria-labelledby="trackTitle">
+
+    <div class="card-head">
+      <div>
+        <p class="eyebrow">注文番号 <b id="orderNo">—</b></p>
+        <h1 id="trackTitle">ご注文の状況</h1>
+      </div>
+      <button class="btn ghost small" id="resetBtn" type="button" title="最初からやり直す">
+        <svg><use href="#i-reset"/></svg>リセット
+      </button>
+    </div>
+
+    <!-- live region: screen readers announce every status change -->
+    <div class="eta" aria-live="polite">
+      <span class="eta-ic"><svg><use href="#i-clock"/></svg></span>
+      <div>
+        <p class="eta-main" id="etaMain">あと15分</p>
+        <p class="eta-sub" id="etaSub">見込み時間はデモ用に短縮表示しています</p>
+      </div>
+    </div>
+
+    <!-- 5-step visual stepper. Steps are drawn from JS (STAGES array) -->
+    <ol class="stepper" id="stepper"></ol>
+
+    <!-- driver card: hidden until the "配達中" stage -->
+    <div class="driver" id="driverCard" hidden>
+      <div class="avatar driver-avatar" aria-hidden="true">
+        <!-- photo placeholder: initials on a brand-coloured circle -->
+        <svg><use href="#i-user"/></svg>
+      </div>
+      <div class="driver-info">
+        <p class="driver-name" id="dName">Rajesh K.</p>
+        <p class="driver-meta"><span id="dVehicle">バイク</span> · <span id="dPlate">KT-24-8871</span></p>
+        <p class="driver-meta" id="dPhone">090-1234-5678</p>
+      </div>
+      <a class="btn solid small call" id="callBtn" href="tel:09012345678">
+        <svg><use href="#i-phone"/></svg>ドライバーに電話
+      </a>
+    </div>
+
+    <p class="hint-line">
+      <b>デモ：</b>状態は 8 秒ごとに自動で進みます（<code>setInterval</code>）。
+      現在の状態は <code>localStorage</code>（<code>ns_tracking</code>）に注文番号ごと保存されるので、
+      更新しても続きから再開します。
+    </p>
+  </section>
+
+  <!-- ===================== 2. REVIEWS ===================== -->
+  <section class="card" id="reviewCard" aria-labelledby="reviewTitle">
+
+    <div class="card-head">
+      <div>
+        <p class="eyebrow">レビュー</p>
+        <h2 id="reviewTitle">Nepal Spice 全体の評価</h2>
+      </div>
+    </div>
+
+    <!-- average + count, calculated from ALL stored reviews -->
+    <div class="rating-summary">
+      <div class="score">
+        <p class="score-num" id="avgNum">0.0</p>
+        <div class="stars small" id="avgStars" aria-hidden="true"></div>
+        <p class="score-sub">平均評価</p>
+      </div>
+      <p class="score-count"><b id="reviewCount">0</b> 件のレビュー</p>
+    </div>
+
+    <!-- write review form -->
+    <form class="review-form" id="reviewForm" novalidate>
+      <p class="form-label" id="rateLabel">星をタップして評価してください</p>
+
+      <!-- star selector: 5 buttons, clickable 1..5, keyboard friendly -->
+      <div class="star-picker" id="starPicker" role="radiogroup" aria-labelledby="rateLabel"></div>
+      <input type="hidden" id="ratingValue" value="0">
+
+      <label class="field">
+        <span class="sr">名前</span>
+        <input id="reviewName" type="text" maxlength="20" placeholder="お名前（任意）" autocomplete="nickname">
+      </label>
+
+      <label class="field">
+        <span class="sr">コメント</span>
+        <textarea id="reviewText" rows="4" maxlength="300" required
+                  placeholder="料理の感想を書いてください（300文字まで）"></textarea>
+        <span class="counter"><b id="charCount">0</b>/300</span>
+      </label>
+
+      <p class="form-error" id="formError" role="alert"></p>
+
+      <button class="btn solid block" type="submit">レビューを投稿</button>
+    </form>
+
+    <!-- existing reviews, newest first -->
+    <ul class="review-list" id="reviewList" aria-live="polite"></ul>
+  </section>
+
+  <p class="foot">Nepal Spice · 学校課題デモ · 実際の注文・配達は行いません</p>
+</div>
+
+<script src="track.js"></script>
+</body>
+</html>
