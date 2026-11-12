@@ -149,7 +149,7 @@ const projects=[
 "नेपाल प्रिमियर लिग २०२६ को क्रिकेट सूचना वेबसाइट, लाइभ डाटा सुविधा विकासाधीन।",
 "नेपाल प्रीमियर लीग 2026 की क्रिकेट वेबसाइट, लाइव डेटा सुविधाएँ विकासाधीन।",
 "尼泊尔超级联赛2026板球信息网站，实时数据功能仍在开发。",
-"네팔 프리미어리그 2026 크리켓 정보 웹사이트이며 실시간 데이터 기능 개발 중입니다."),tech:["HTML","JavaScript","API"],link:null,linkKind:null,status:"inprogress"},
+"네팔 프리미어리그 2026 크리켓 정보 웹사이트이며 실시간 데이터 기능 개발 중입니다."),tech:["HTML","JavaScript","API"],link:"npl-2026/",linkKind:"project",status:"inprogress"},
 {id:"raspberry",category:"inprogress",icon:"📟",name:"Posture & Distance Alert",description:localized("Student research project for posture and viewing-distance alerts with Raspberry Pi and sensors.",
 "Raspberry Piとセンサーによる姿勢・画面距離の注意喚起を目指す学校研究。",
 "Raspberry Pi र सेन्सरद्वारा बसाइको मुद्रा र स्क्रिन दूरी सचेत गर्ने विद्यार्थी अनुसन्धान प्रोजेक्ट।",
