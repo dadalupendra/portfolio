@@ -1013,6 +1013,7 @@ a.skill-link{text-decoration:none;color:inherit;cursor:pointer;display:block}
 }
 </style>
 <link rel="stylesheet" href="css/professional.css"/>
+<link rel="stylesheet" href="css/code-banner.css"/>
 </head>
 <body>
 
@@ -1164,6 +1165,39 @@ a.skill-link{text-decoration:none;color:inherit;cursor:pointer;display:block}
   </div>
 </section>
 
+<!-- INTERACTIVE PROGRAMMING BANNER -->
+<section class="code-banner" id="codeShowcase" aria-labelledby="codeShowcaseHeading">
+  <div class="container"><div class="code-banner-inner">
+    <div class="code-banner-copy">
+      <span class="code-banner-eyebrow">DADAL / SOFTWARE DEVELOPMENT</span>
+      <h2 id="codeShowcaseHeading">Ideas into <em>working code.</em></h2>
+      <p>Exploring software engineering through practical projects. Select a programming language to see a real code example — from web interfaces to backend and databases.</p>
+      <div class="code-banner-ctas">
+        <a class="btn btn-primary" href="#projects">Explore projects ↗</a>
+        <a class="btn btn-secondary code-second" href="#skills">View my skills</a>
+      </div>
+    </div>
+    <div class="code-window">
+      <div class="code-window-header">
+        <div class="code-window-title"><span class="code-dots" aria-hidden="true"><i></i><i></i><i></i></span><span id="codeFileName">app.js</span></div>
+        <button class="code-copy" id="codeCopy" type="button" aria-label="Copy selected code example">Copy code</button>
+      </div>
+      <div class="code-languages" role="tablist" aria-label="Programming language code examples">
+        <button type="button" role="tab" aria-selected="true" tabindex="0" data-code-lang="javascript">JavaScript</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1" data-code-lang="python">Python</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1" data-code-lang="java">Java</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1" data-code-lang="html">HTML</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1" data-code-lang="css">CSS</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1" data-code-lang="c">C</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1" data-code-lang="sql">SQL</button>
+        <button type="button" role="tab" aria-selected="false" tabindex="-1" data-code-lang="typescript">TypeScript</button>
+      </div>
+      <pre class="code-preview"><code id="codePreviewText" aria-live="polite">const developer = "Dadal Upendra Singh";</code></pre>
+      <div class="code-window-footer"><span id="codeDetail">Browser interactivity</span><span><strong>08</strong> language examples · Click to switch</span></div>
+    </div>
+  </div></div>
+</section>
+
 <!-- ═══ PROJECTS ═══ -->
 <section class="section alt" id="projects">
   <div class="container">
@@ -1203,7 +1237,7 @@ a.skill-link{text-decoration:none;color:inherit;cursor:pointer;display:block}
             <a class="btn btn-primary btn-sm" href="https://next-step-ai-a4248ae0.base44.app/" target="_blank" rel="noopener noreferrer">🌐 Open App</a>
             <button class="btn btn-secondary btn-sm proj-preview-trigger" data-url="https://next-step-ai-a4248ae0.base44.app/" type="button">▶ Preview</button>
             <!-- TODO: replace with the real repo URL once published -->
-            <a class="btn btn-ghost btn-sm proj-source" href="https://github.com/dadalupendra" target="_blank" rel="noopener noreferrer" title="View source on GitHub" aria-label="View source on GitHub">
+            <a class="btn btn-ghost btn-sm proj-source" href="https://github.com/dadalupendra" target="_blank" rel="noopener noreferrer" title="Visit GitHub profile" aria-label="Visit GitHub profile">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
               Source
             </a>
@@ -1236,7 +1270,7 @@ a.skill-link{text-decoration:none;color:inherit;cursor:pointer;display:block}
           <div class="proj-actions">
             <a class="btn btn-primary btn-sm" href="demos/java-oop.html">☕ Open Demo</a>
             <!-- TODO: replace with the real repo URL once published -->
-            <a class="btn btn-ghost btn-sm proj-source" href="https://github.com/dadalupendra" target="_blank" rel="noopener noreferrer" title="View source on GitHub" aria-label="View source on GitHub">
+            <a class="btn btn-ghost btn-sm proj-source" href="https://github.com/dadalupendra" target="_blank" rel="noopener noreferrer" title="Visit GitHub profile" aria-label="Visit GitHub profile">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
               Source
             </a>
@@ -1269,7 +1303,7 @@ a.skill-link{text-decoration:none;color:inherit;cursor:pointer;display:block}
           <div class="proj-actions">
             <a class="btn btn-primary btn-sm" href="demos/js-playground.html">⚡ Open Demo</a>
             <!-- TODO: replace with the real repo URL once published -->
-            <a class="btn btn-ghost btn-sm proj-source" href="https://github.com/dadalupendra" target="_blank" rel="noopener noreferrer" title="View source on GitHub" aria-label="View source on GitHub">
+            <a class="btn btn-ghost btn-sm proj-source" href="https://github.com/dadalupendra" target="_blank" rel="noopener noreferrer" title="Visit GitHub profile" aria-label="Visit GitHub profile">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
               Source
             </a>
@@ -1302,40 +1336,7 @@ a.skill-link{text-decoration:none;color:inherit;cursor:pointer;display:block}
           <div class="proj-actions">
             <a class="btn btn-primary btn-sm" href="demos/sql-notes.html">🗃️ Open Notes</a>
             <!-- TODO: replace with the real repo URL once published -->
-            <a class="btn btn-ghost btn-sm proj-source" href="https://github.com/dadalupendra" target="_blank" rel="noopener noreferrer" title="View source on GitHub" aria-label="View source on GitHub">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-              Source
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Portfolio (This site!) -->
-      <div class="proj-card c1">
-        <div class="proj-preview">
-          <div class="proj-preview-inner" style="background:linear-gradient(135deg,#050b18,#0c1630);flex-direction:column;gap:8px;">
-            <span style="font-size:2.8rem;">🌐</span>
-            <span style="font-family:var(--display);font-weight:700;font-size:.82rem;color:var(--red);">This Portfolio</span>
-          </div>
-          <div class="proj-preview-overlay"><span class="proj-preview-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to Top ↑</span></div>
-        </div>
-        <div class="proj-body">
-          <span class="proj-badge pb-new">NEW</span>
-          <div class="proj-title">3D Portfolio Website</div>
-          <p class="proj-desc">The site you're viewing now — Three.js 3D background, GSAP animations, responsive glassmorphism UI, and IndexedDB vault.</p>
-          <ul class="proj-features">
-            <li>Three.js 3D particle background</li>
-            <li>AI holographic portrait</li>
-            <li>Glassmorphism card design</li>
-            <li>IndexedDB document vault</li>
-          </ul>
-          <div class="tech-chips">
-            <span class="tc">HTML/CSS</span><span class="tc">Three.js</span><span class="tc">GSAP</span><span class="tc">JavaScript</span>
-          </div>
-          <div class="proj-actions">
-            <a class="btn btn-primary btn-sm" href="#top">↑ Back to Top</a>
-            <!-- TODO: replace with the real repo URL once published -->
-            <a class="btn btn-ghost btn-sm proj-source" href="https://github.com/dadalupendra" target="_blank" rel="noopener noreferrer" title="View source on GitHub" aria-label="View source on GitHub">
+            <a class="btn btn-ghost btn-sm proj-source" href="https://github.com/dadalupendra" target="_blank" rel="noopener noreferrer" title="Visit GitHub profile" aria-label="Visit GitHub profile">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
               Source
             </a>
@@ -1413,7 +1414,7 @@ a.skill-link{text-decoration:none;color:inherit;cursor:pointer;display:block}
     <div class="section-head reveal">
       <span class="section-label">Skills</span>
       <h2>What I can do</h2>
-      <p class="section-sub">Click any skill card to see a demo page I built! Hover for 3D effect.</p>
+      <p class="section-sub">Explore my skills and open practical learning demos.</p>
     </div>
 
     <div class="skills-3d-wrap">
@@ -2058,5 +2059,6 @@ a.skill-link{text-decoration:none;color:inherit;cursor:pointer;display:block}
 
 <!-- ═══ MAIN APPLICATION LOGIC ═══ -->
 <script src="js/main.js"></script>
+<script defer src="js/code-banner.js"></script>
 </body>
 </html>
