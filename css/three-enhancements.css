@@ -1,0 +1,35 @@
+/* Three.js enhancement: preserves v3/v4 content, layout and translations. */
+#threeBackground{position:fixed;inset:0;width:100%;height:100%;z-index:-2;pointer-events:none;display:block}
+#live3dBackground{display:none!important}
+body{isolation:isolate}
+.site-header{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--bg) 78%,transparent)!important;backdrop-filter:blur(18px) saturate(1.35);-webkit-backdrop-filter:blur(18px) saturate(1.35)}
+.hero,.section,.footer{position:relative;z-index:1}
+.hero{overflow:visible}
+.portrait{perspective:1200px;transform-style:preserve-3d;isolation:isolate;will-change:transform}
+.portrait-card{transform-style:preserve-3d;will-change:transform;transition:transform .22s ease,box-shadow .22s ease;box-shadow:0 0 2px #27f7ff,0 0 23px #00d5e650,0 24px 50px #0007}
+.portrait-tag{z-index:5;transform:translateZ(50px);box-shadow:0 12px 25px #0006}
+.portrait-card:after{content:"";position:absolute;inset:0;border:2px solid #22dcef9c;pointer-events:none;border-radius:inherit;box-shadow:inset 0 0 20px #00d7e632}
+.portrait{overflow:visible}
+#portrait3d{position:absolute;inset:-48px -45px;width:calc(100% + 90px);height:calc(100% + 96px);z-index:4;pointer-events:none;filter:drop-shadow(0 0 4px #08d5ff80)}
+.tech-visual{display:none!important}
+.portfolio-project{transform-style:preserve-3d;perspective:1100px;will-change:transform;transition:transform .2s ease,box-shadow .2s ease}
+.portfolio-project::before{content:"";position:absolute;inset:0;z-index:-1;opacity:0;background:radial-gradient(circle at var(--glow-x,50%) var(--glow-y,50%),#04e1f52a,transparent 64%);transition:opacity .25s}
+.portfolio-project:hover::before{opacity:1}
+.portfolio-project .project-glyph{display:block;transform:translateZ(22px);transition:transform .22s ease}
+.portfolio-project:hover .project-glyph{transform:translateZ(56px) scale(1.075)}
+.portfolio-project .project-body{transform:translateZ(12px)}
+.skill-box{transform-style:preserve-3d;transform-origin:center;will-change:transform;transition:transform .25s ease,box-shadow .25s ease}
+.skill-box:hover{transform:perspective(850px) rotateY(-7deg) translateY(-7px) translateZ(11px);box-shadow:0 18px 38px #0005,0 0 23px #00daea24}
+.skill-box .skill-icon{display:inline-block;transform:translateZ(22px);transition:transform .24s}
+.skill-box:hover .skill-icon{transform:translateZ(30px) rotateY(14deg)}
+.stat-chip{transform-style:preserve-3d;transition:transform .25s ease}
+.stat-chip:hover{transform:perspective(900px) translateY(-5px) rotateX(5deg)}
+.depth-reveal{opacity:0;transform:perspective(1100px) translateY(26px) rotateX(3deg);transition:transform .55s ease,opacity .55s ease}
+.depth-reveal.is-visible{opacity:1;transform:none}
+:root[data-theme="light"] #threeBackground{opacity:.57}
+:root[data-theme="light"] .portrait-card{box-shadow:0 0 0 1px #1685af,0 14px 44px #2476a12b}
+@media(max-width:1000px){#portrait3d{inset:-15px -25px;width:calc(100% + 50px);height:calc(100% + 30px)}}
+@media(max-width:750px){#portrait3d{display:none!important}.portfolio-project,.skill-box,.portrait-card{will-change:auto}.depth-reveal{transform:none;transition:opacity .35s}.portrait-card{transform:none!important}.stat-chip:hover{transform:none}}
+@media(hover:none){.portfolio-project:hover,.skill-box:hover,.portrait-card:hover{transform:none}.skill-box:hover .skill-icon{transform:none}}
+@media(prefers-reduced-motion:reduce){.depth-reveal,.depth-reveal.is-visible{opacity:1!important;transform:none!important;transition:none!important}#portrait3d{display:none!important}.portfolio-project,.skill-box,.portrait-card,.stat-chip{transform:none!important;transition:none!important}}
+@media print{#threeBackground,#portrait3d{display:none!important}}
