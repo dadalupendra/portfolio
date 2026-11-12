@@ -92,6 +92,12 @@ Object.assign(dict.ne,{"eduGrade10Status":"कक्षा १० सम्म",
 Object.assign(dict.hi,{"eduGrade10Status":"कक्षा 10 तक","eduGrade10School":"श्री सिद्ध माध्यमिक विद्यालय, सिना","eduGrade10Place":"सिना, दार्चुला, नेपाल","eduGrade10Level":"कक्षा 10 तक स्कूली शिक्षा"});
 Object.assign(dict.zh,{"eduGrade10Status":"至十年级","eduGrade10School":"Shree Siddha 中学（Sina）","eduGrade10Place":"尼泊尔达尔楚拉 Sina","eduGrade10Level":"在该校学习至十年级"});
 Object.assign(dict.ko,{"eduGrade10Status":"10학년까지","eduGrade10School":"Shree Siddha 중등학교, Sina","eduGrade10Place":"네팔 다르출라 Sina","eduGrade10Level":"10학년까지 학교 교육"});
+Object.assign(dict.en,{"techCaption":"BUILD · LEARN · IMPROVE","statProjects":"Portfolio projects","statSkills":"Skill areas","statStudent":"Student in Tokyo","statGpa":"NEB Grade XII GPA","statLanguages":"Website languages"});
+Object.assign(dict.ja,{"techCaption":"作る · 学ぶ · 成長する","statProjects":"掲載プロジェクト","statSkills":"技術分野","statStudent":"東京のIT学生","statGpa":"NEB第12学年 GPA","statLanguages":"サイト対応言語"});
+Object.assign(dict.ne,{"techCaption":"बनाउने · सिक्ने · सुधार्ने","statProjects":"पोर्टफोलियो प्रोजेक्ट","statSkills":"प्राविधिक सीप","statStudent":"टोकियोमा IT विद्यार्थी","statGpa":"NEB कक्षा १२ GPA","statLanguages":"वेबसाइटका भाषा"});
+Object.assign(dict.hi,{"techCaption":"बनाएँ · सीखें · सुधारें","statProjects":"पोर्टफोलियो प्रोजेक्ट","statSkills":"तकनीकी कौशल","statStudent":"टोक्यो में IT छात्र","statGpa":"NEB कक्षा 12 GPA","statLanguages":"वेबसाइट की भाषाएँ"});
+Object.assign(dict.zh,{"techCaption":"构建 · 学习 · 进步","statProjects":"作品集项目","statSkills":"技术领域","statStudent":"东京IT学生","statGpa":"NEB 十二年级 GPA","statLanguages":"网站支持语言"});
+Object.assign(dict.ko,{"techCaption":"개발 · 학습 · 성장","statProjects":"포트폴리오 프로젝트","statSkills":"기술 분야","statStudent":"도쿄 IT 학생","statGpa":"NEB 12학년 GPA","statLanguages":"웹사이트 언어"});
 const cvTranslations={
   en:{subtitle:'Information Processing Student | Tokyo, Japan',profile:'Profile',profileText:'IT student with practical project experience in HTML/CSS, JavaScript, Java and Oracle SQL.',tech:'Technical skills',work:'Selected work',education:'Education',experience:'Experience'},
   ja:{subtitle:'情報処理科 学生 | 日本・東京',profile:'プロフィール',profileText:'HTML/CSS、JavaScript、Java、Oracle SQLを学び、実践的な制作に取り組む情報処理科の学生。',tech:'技術スキル',work:'主な制作',education:'学歴',experience:'経験'},
