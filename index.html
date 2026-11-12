@@ -19,6 +19,8 @@
 <link rel="stylesheet" href="css/portfolio-v4.css">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.152.2/three.min.js" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="css/three-enhancements.css">
+<link rel="stylesheet" href="css/location-maps.css">
+<script defer src="js/location-maps.js"></script>
 <script defer src="js/portfolio-v3.js"></script>
 <script defer src="js/three-effects.js"></script>
 </head>
@@ -128,8 +130,8 @@
 <section id="experience" class="section"><div class="wrap">
   <span class="eyebrow" data-i18n="experienceLabel">EXPERIENCE</span><h2 class="section-title" data-i18n="experienceTitle">Work &amp; practical experience</h2><p class="section-subtitle" data-i18n="experienceSubtitle">Professional discipline and technology practice from school projects.</p>
   <div class="two-col">
-    <article class="info-card"><div class="timeline"><div class="timeline-item"><h3 data-i18n="expRole">Part-time team member — Kaiten Sushi Misaki</h3><p data-i18n="expDate">Tokyo, Japan · Since August 2023</p><p data-i18n="expDesc">Teamwork, customer service and dependable day-to-day operations.</p></div></div></article>
-    <article class="info-card"><div class="timeline"><div class="timeline-item"><h3 data-i18n="expSchoolRole">Student software projects</h3><p data-i18n="expSchoolPlace">Information Processing course</p><p data-i18n="expSchoolDesc">Web applications, Java/Oracle exercises, teamwork, testing and presentation projects.</p></div></div></article>
+    <article class="info-card" data-place-id="misaki"><div class="timeline"><div class="timeline-item"><h3 data-i18n="expRole">Part-time team member — Kaiten Sushi Misaki</h3><p data-i18n="expDate">Tokyo, Japan · Since August 2023</p><p data-i18n="expDesc">Teamwork, customer service and dependable day-to-day operations.</p></div></div></article>
+    <article class="info-card" data-place-id="ttc"><div class="timeline"><div class="timeline-item"><h3 data-i18n="expSchoolRole">Student software projects</h3><p data-i18n="expSchoolPlace">Information Processing course</p><p data-i18n="expSchoolDesc">Web applications, Java/Oracle exercises, teamwork, testing and presentation projects.</p></div></div></article>
   </div>
 </div></section>
 
@@ -138,7 +140,7 @@
   <h2 class="section-title" data-i18n="educationTitle">Education &amp; learning</h2>
   <p class="section-subtitle" data-i18n="eduIntro">A documented academic journey from Darchula, Nepal to Tokyo, Japan.</p>
   <div class="education-cards">
-    <article class="education-card education-featured">
+    <article class="education-card education-featured" data-place-id="ttc">
       <div class="edu-card-ornament" aria-hidden="true">⌘</div>
       <span class="edu-pill" data-i18n="eduCurrent">CURRENT STUDIES</span>
       <span class="edu-3d-icon" aria-hidden="true">💻</span>
@@ -146,7 +148,7 @@
       <p data-i18n="eduJapanDesc">Information Processing studies in Tokyo: programming, web technologies, databases and software fundamentals.</p>
       <div class="edu-meta"><span>📍 Tokyo, Japan</span><span data-i18n="eduJapanFocus">Java · Web · Oracle SQL</span></div>
     </article>
-    <article class="education-card">
+    <article class="education-card" data-place-id="sampal">
       <div class="edu-card-ornament" aria-hidden="true">✧</div>
       <span class="edu-pill" data-i18n="eduCompleted">COMPLETED</span>
       <span class="edu-3d-icon" aria-hidden="true">🎓</span>
@@ -159,7 +161,7 @@
       </div>
       <p class="edu-fineprint" data-i18n="eduSource">Details transcribed from your uploaded NEB academic documents. Sensitive identifiers are not published.</p>
     </article>
-    <article class="education-card">
+    <article class="education-card" data-place-id="siddha">
       <div class="edu-card-ornament" aria-hidden="true">✦</div>
       <span class="edu-pill" data-i18n="eduGrade10Status">UP TO GRADE 10</span>
       <span class="edu-3d-icon" aria-hidden="true">🏫</span>
