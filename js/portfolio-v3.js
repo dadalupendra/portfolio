@@ -110,6 +110,12 @@ Object.assign(dict.ne,{workTitle:"प्रोजेक्टहरू",workSubt
 Object.assign(dict.hi,{workTitle:"प्रोजेक्ट",workSubtitle:"वास्तविक विकास कार्य और प्रगति पर चल रहे प्रोजेक्ट। कोई नकली डेमो या लिंक नहीं।"});
 Object.assign(dict.zh,{workTitle:"项目",workSubtitle:"仅展示真实开发工作与进行中的项目，不包含虚构演示或占位链接。"});
 Object.assign(dict.ko,{workTitle:"프로젝트",workSubtitle:"실제 개발 작업과 진행 중인 프로젝트만 소개하며 가상 데모나 임시 링크는 없습니다."});
+Object.assign(dict.en,{"sourceRepo":"GitHub repository ↗","privateSource":"Private repository — sign-in and permission required"});
+Object.assign(dict.ja,{"sourceRepo":"GitHubリポジトリ ↗","privateSource":"非公開リポジトリ — 閲覧には権限が必要"});
+Object.assign(dict.ne,{"sourceRepo":"GitHub रिपोजिटरी ↗","privateSource":"Private repository — पहुँच गर्न अनुमति चाहिन्छ"});
+Object.assign(dict.hi,{"sourceRepo":"GitHub रिपॉजिटरी ↗","privateSource":"प्राइवेट रिपॉजिटरी — खोलने के लिए अनुमति आवश्यक है"});
+Object.assign(dict.zh,{"sourceRepo":"GitHub 代码仓库 ↗","privateSource":"私人仓库 — 需要访问权限"});
+Object.assign(dict.ko,{"sourceRepo":"GitHub 저장소 ↗","privateSource":"비공개 저장소 — 접근 권한이 필요합니다"});
 const cvTranslations={
   en:{subtitle:'Information Processing Student | Tokyo, Japan',profile:'Profile',profileText:'IT student with practical project experience in HTML/CSS, JavaScript, Java and Oracle SQL.',tech:'Technical skills',work:'Selected work',education:'Education',experience:'Experience'},
   ja:{subtitle:'情報処理科 学生 | 日本・東京',profile:'プロフィール',profileText:'HTML/CSS、JavaScript、Java、Oracle SQLを学び、実践的な制作に取り組む情報処理科の学生。',tech:'技術スキル',work:'主な制作',education:'学歴',experience:'経験'},
@@ -125,7 +131,15 @@ const projects=[
 "शब्दावली, व्याकरण, कान्जी र अभ्यास परीक्षासहितको जापानी भाषा अध्ययन एपमा जारी काम।",
 "शब्दावली, व्याकरण, कांजी और अभ्यास परीक्षाओं वाला जापानी भाषा अध्ययन ऐप।",
 "正在开发的日语学习应用，涵盖词汇、语法、汉字和练习考试。",
-"어휘, 문법, 한자 및 모의고사를 포함한 일본어 학습 앱 개발 작업."),tech:["React","PWA","Learning"],link:"https://next-step-ai-a4248ae0.base44.app/",linkKind:"project",status:"inprogress"},
+"어휘, 문법, 한자 및 모의고사를 포함한 일본어 학습 앱 개발 작업."),tech:["React","PWA","Learning"],link:"https://next-step-ai-a4248ae0.base44.app/",linkKind:"project",source:"https://github.com/dadalupendra/nextstep-ai.git",sourcePrivate:true,status:"inprogress"},
+{id:"nextstepglobal",category:"app",icon:"🌍",name:"NextStep Global",description:localized(
+"Location-based discovery project for exploring countries, regions, cities and places. The linked site was supplied by the project owner; live functionality has not been independently verified.",
+"国・地域・都市・スポットを探索する位置情報ベースのプロジェクト。掲載URLは制作者から提供されたもので、動作状況は未確認です。",
+"देश, प्रदेश, सहर र स्थानहरू खोज्न बनाइएको स्थानमा आधारित NextStep Global प्रोजेक्ट। वेबसाइटको URL प्रयोगकर्ताले दिएको हो; प्रत्यक्ष काम गर्ने अवस्था स्वतन्त्र रूपमा पुष्टि गरिएको छैन।",
+"देश, प्रदेश, शहर और स्थान खोजने के लिए स्थान-आधारित NextStep Global प्रोजेक्ट। वेबसाइट लिंक उपयोगकर्ता का दिया हुआ है; लाइव कार्यक्षमता की पुष्टि नहीं हुई है।",
+"按位置探索国家、地区、城市及地点的 NextStep Global 项目。网址由项目所有者提供，实时功能尚未独立验证。",
+"국가, 지역, 도시와 장소를 탐색하는 위치 기반 NextStep Global 프로젝트입니다. 링크는 소유자가 제공했으며 실제 동작 여부는 별도로 확인되지 않았습니다."
+),tech:["Web App","Location","Maps"],link:"https://nextstep-global.ai.studio",linkKind:"project",status:"inprogress"},
 {id:"qrmenu",category:"app",icon:"🍽️",name:"QR Menu Generator",description:localized("Node.js and SQLite QR menu application project for restaurant ordering and menu access.",
 "Node.jsとSQLiteを使った飲食店のQRメニューアプリの制作。",
 "रेस्टुरेन्टको QR मेनुका लागि Node.js र SQLite मा भइरहेको एप विकास।",
@@ -182,6 +196,14 @@ function renderProjects(){
       links.appendChild(link);
     } else {
       const msg=document.createElement('span');msg.textContent=t.noPublic;msg.style.cssText='color:var(--muted);font-size:.79rem;';links.appendChild(msg);
+    }
+    if(p.source){
+      const sourceLink=document.createElement('a');
+      sourceLink.href=p.source;sourceLink.target='_blank';sourceLink.rel='noopener noreferrer';
+      sourceLink.className='secondary';
+      sourceLink.textContent=t.sourceRepo;
+      if(p.sourcePrivate){sourceLink.title=t.privateSource;sourceLink.setAttribute('aria-label',t.sourceRepo+' — '+t.privateSource);}
+      links.appendChild(sourceLink);
     }
     body.append(name,desc,tags,links);article.append(visual,body);grid.appendChild(article);
   });
