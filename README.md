@@ -33,7 +33,7 @@ No npm/build step, authentication, API token or custom domain is required.
 
 ## Authentic project entries
 
-The Portfolio Projects section now displays exactly **four** requested entries: **NextStep Study**, **QR Menu Generator**, **NPL 2026 Website** and **Nepal Spice**. GakusaiNavi, Nepal Quest: 77 Districts, Posture & Distance Alert and the self-referencing Developer Portfolio card were removed **from project listings and printed work summary**, without deleting the website itself. NextStep Study's previously configured Base44 destination has been restored at https://next-step-ai-a4248ae0.base44.app/; its external public accessibility may change independently. NPL 2026 and Nepal Spice have hosted GitHub Pages project pages. QR Menu Generator remains marked in development with no invented public link.
+The Portfolio Projects section now displays **five** entries: **NextStep Study**, **NextStep Global**, **QR Menu Generator**, **NPL 2026 Website** and **Nepal Spice**. GakusaiNavi, Nepal Quest: 77 Districts, Posture & Distance Alert and the self-referencing Developer Portfolio card were removed **from project listings and printed work summary**, without deleting the website itself. NextStep Study's previously configured Base44 destination has been restored at https://next-step-ai-a4248ae0.base44.app/; its external public accessibility may change independently. NPL 2026 and Nepal Spice have hosted GitHub Pages project pages. QR Menu Generator remains marked in development with no invented public link.
 
 The three former practice demo pages (Java OOP, JavaScript Playground and SQL Notes) were deleted from `demos/`, and their mock projects have been removed from the site.
 
@@ -105,3 +105,10 @@ New files: `css/curated-legacy-features.css` and `js/curated-legacy-features.js`
 - **Nepal Spice:** project page at https://dadalupendra.github.io/portfolio/nepal-spice/ , built from the 26 real dish names, trilingual labels and *illustrative* prices in the uploaded `nepal-spice-complete.zip`. Includes live filtering, language switching, mobile layout and a **local-only sample cart**; it is not a production checkout system.
 - **Publishing boundaries:** the uploaded archive also contains a separate Java Servlet / Oracle / SMTP back end requiring Tomcat, which GitHub Pages cannot run. The school's original frontend uses browser-local demonstration authentication. For safety the published preview avoids presenting these systems as real payment, login, delivery, ordering or email services.
 - **Photos and attribution:** the supplied ZIP's `images/CREDITS.md` says the 26 photos were copied from various sites for noncommercial classroom use and should be replaced with properly licensed images before public release. Therefore they are **not republished** in the public GitHub Pages preview, which uses icons instead.
+
+## NextStep Global and NextStep Study links
+
+- **NextStep Global:** the owner-supplied site URL `https://nextstep-global.ai.studio` is linked from a new separate project card. External site availability was not verified in a browser.
+- **NextStep Study live app:** the existing `https://next-step-ai-a4248ae0.base44.app/` link remains unchanged.
+- **NextStep Study GitHub:** the owner's requested clone/repository URL `https://github.com/dadalupendra/nextstep-ai.git` is now shown as an additional project-card button. The GitHub connector reports this repository is **private**, so other visitors need GitHub access to see it. The URL points to the Git repository; it is not a public source-code preview.
+- The project counter and print resume were updated from four to five project entries. All language switching, 3D rendering, Maps and theme controls remain in place.
