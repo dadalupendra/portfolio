@@ -112,3 +112,17 @@ New files: `css/curated-legacy-features.css` and `js/curated-legacy-features.js`
 - **NextStep Study live app:** the existing `https://next-step-ai-a4248ae0.base44.app/` link remains unchanged.
 - **NextStep Study GitHub:** the owner's requested clone/repository URL `https://github.com/dadalupendra/nextstep-ai.git` is now shown as an additional project-card button. The GitHub connector reports this repository is **private**, so other visitors need GitHub access to see it. The URL points to the Git repository; it is not a public source-code preview.
 - The project counter and print resume were updated from four to five project entries. All language switching, 3D rendering, Maps and theme controls remain in place.
+
+
+## Nepal Spice hosted app and source
+
+The Nepal Spice project card and its public menu-demo page now include:
+
+- [GitHub source](https://github.com/dadalupendra/nepali-spice): the complete uploaded frontend, 26 food photos, Java email module, documentation and tests.
+- [Hosted app (private)](https://nepal-spice-dadal.expertwarbler.chatgpt.site/): the deployed frontend, currently restricted to the owner's ChatGPT account.
+- [Public portfolio demo](https://dadalupendra.github.io/portfolio/nepal-spice/): the existing trilingual menu and browser-local sample cart.
+
+The hosted app's private access is labeled on both pages. Real payments,
+deliveries and the Java email/Oracle backend are not connected to the hosted
+frontend. Project-card link labels follow all six portfolio languages; the
+Nepal Spice page labels follow its English, Japanese and Nepali settings.

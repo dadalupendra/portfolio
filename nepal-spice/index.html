@@ -41,6 +41,7 @@ main{padding:38px 0 75px}.section-title{font-size:clamp(1.6rem,3vw,2.25rem);marg
 footer{padding:23px 0 78px;border-top:1px solid var(--line);font-size:.8rem;color:var(--muted)}
 @media(max-width:1040px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:750px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-layout{grid-template-columns:1fr}.hero-plate{min-height:110px;font-size:5rem}.head .back{display:none}}@media(max-width:520px){.wrap{width:calc(100% - 26px)}.head{gap:6px}.head select,.head button{padding:7px;font-size:.75rem}.grid{grid-template-columns:1fr}.food{display:grid;grid-template-columns:112px 1fr}.food-top{height:100%;min-height:138px}.hero{padding:36px 0 29px}.food-body{padding:13px}.food h3{font-size:.94rem}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.project-links{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 10px}.project-links a{display:inline-flex;align-items:center;min-height:44px;padding:10px 15px;border-radius:10px;border:1px solid var(--red);color:var(--red);background:var(--card);font-size:.84rem;font-weight:800;text-decoration:none}.project-links a:focus-visible{outline:3px solid var(--red);outline-offset:3px}
 </style>
 </head><body>
 <a class="skip" href="#menu">Skip to menu</a>
@@ -50,6 +51,11 @@ footer{padding:23px 0 78px;border-top:1px solid var(--line);font-size:.8rem;colo
 <h1>Nepali flavours.<br><span id="heroLine">Modern experience.</span></h1>
 <p id="lead">Explore 26 dishes from the uploaded Nepal Spice school project. Browse the menu, filter categories and build a sample cart in your browser.</p>
 <div class="notice" id="notice">This is an interactive school portfolio demonstration, not an operating restaurant. Prices and menu items are illustrative. No real account, order, delivery or payment is processed.</div>
+<nav class="project-links" aria-label="Nepal Spice links">
+  <a id="hostedLink" href="https://nepal-spice-dadal.expertwarbler.chatgpt.site/" target="_blank" rel="noopener noreferrer" aria-describedby="hostedAccess">Hosted app (private) ↗</a>
+  <a id="sourceLink" href="https://github.com/dadalupendra/nepali-spice" target="_blank" rel="noopener noreferrer">GitHub source ↗</a>
+</nav>
+<p class="hint" id="hostedAccess">The hosted app requires the owner's ChatGPT sign-in. The menu preview below is public.</p>
 <div class="status"><span class="badge" id="badgeOne">26 menu items</span><span class="badge" id="badgeTwo">English · 日本語 · नेपाली</span><span class="badge" id="badgeThree">Browser-only cart</span></div>
 </div><div class="hero-plate" aria-hidden="true">🥟</div></div></div>
 <main id="menu" class="wrap">
@@ -100,6 +106,9 @@ const dict={
 en:{eyebrow:"CLASSROOM WEB APPLICATION · PORTFOLIO",hero:"Modern experience.",lead:"Explore 26 dishes from the uploaded Nepal Spice school project. Browse the menu, filter categories and build a sample cart in your browser.",notice:"Interactive school portfolio demonstration, not an operating restaurant. Prices and dishes are illustrative. No real account, order, delivery or payment is processed.",menuTitle:"Explore the menu",menuHint:"Menu data and sample prices are from the supplied source files. Photos were not published because reuse rights were not established.",veg:"Vegetarian only",search:"Search dishes…",all:"All",categories:["Momo","Rice & Curry","Noodles","Snacks","Drinks & Sweets"],add:"Add +",cart:"Sample cart",empty:"Your sample cart is empty.",clear:"Clear cart",subtotal:"Menu subtotal",cartNote:"No order is submitted. Cart data stays only in this browser.",footer:"Portfolio prototype based on supplied Nepal Spice files. No real orders or backend.",notes:"Spice",veggie:"Vegetarian",count:"dishes",back:"← Portfolio"},
 ja:{eyebrow:"学校制作のWebアプリ · ポートフォリオ",hero:"新しいメニュー体験。",lead:"学校で制作したNepal Spiceの26品を閲覧できます。料理の検索、絞り込み、サンプルカートをお試しください。",notice:"これは学校の制作実績を紹介するデモです。実在する飲食店の注文システムではありません。価格は参考例で、決済・配達・注文は行われません。",menuTitle:"メニューを見る",menuHint:"料理名と参考価格は提供された制作ファイルから引用しました。写真の再利用許諾が確認できないため公開していません。",veg:"ベジタリアンのみ",search:"料理を検索…",all:"すべて",categories:["モモ","ご飯・カレー","麺・スープ","軽食","飲み物・甘味"],add:"追加 +",cart:"サンプルカート",empty:"カートは空です。",clear:"カートを空にする",subtotal:"小計（参考）",cartNote:"実際の注文は送信されません。カート情報はブラウザにのみ保存されます。",footer:"提供されたNepal Spice制作ファイルに基づく学校プロジェクト紹介。実注文・バックエンドなし。",notes:"辛さ",veggie:"野菜",count:"品",back:"← ポートフォリオ"},
 ne:{eyebrow:"विद्यालयको वेब एप · पोर्टफोलियो",hero:"आधुनिक अनुभव।",lead:"तपाईंले पठाउनुभएको नेपाल स्पाइस प्रोजेक्टका २६ परिकार हेर्नुहोस्। मेनु खोज्न, छान्न र नमुना कार्ट बनाउन सकिन्छ।",notice:"यो विद्यालयको प्रोजेक्ट देखाउने नमुना वेबसाइट हो, सञ्चालनमा रहेको रेस्टुरेन्ट होइन। मूल्यहरू उदाहरण हुन्। वास्तविक अर्डर, भुक्तानी वा डेलिभरी हुँदैन।",menuTitle:"मेनु हेर्नुहोस्",menuHint:"परिकारका नाम र उदाहरण मूल्य तपाईंको मूल प्रोजेक्टबाट लिइएका हुन्। फोटोको सार्वजनिक पुनःप्रयोग अनुमति पुष्टि नभएकाले राखिएको छैन।",veg:"शाकाहारी मात्र",search:"परिकार खोज्नुहोस्…",all:"सबै",categories:["मःमः","भात र करी","नुडल","खाजा","पेय र मिठाई"],add:"थप्नुहोस् +",cart:"नमुना कार्ट",empty:"कार्ट खाली छ।",clear:"कार्ट खाली गर्नुहोस्",subtotal:"जम्मा (नमुना)",cartNote:"कुनै अर्डर पठाइँदैन। कार्टको जानकारी यही ब्राउजरमा मात्र रहन्छ।",footer:"नेपाल स्पाइसको उपलब्ध गराइएको स्रोतमा आधारित विद्यालय प्रोजेक्ट। वास्तविक अर्डर वा ब्याकएन्ड छैन।",notes:"पिरो",veggie:"शाकाहारी",count:"परिकार",back:"← पोर्टफोलियो"}};
+Object.assign(dict.en,{"hostedLink": "Hosted app (private) ↗", "sourceLink": "GitHub source ↗", "hostedAccess": "The hosted app requires the owner's ChatGPT sign-in. The menu preview below is public."});
+Object.assign(dict.ja,{"hostedLink": "ホスト版（非公開） ↗", "sourceLink": "GitHubソースコード ↗", "hostedAccess": "ホスト版は所有者のChatGPTアカウントでログインが必要です。下のメニューデモは公開されています。"});
+Object.assign(dict.ne,{"hostedLink": "Hosted एप (निजी) ↗", "sourceLink": "GitHub स्रोत कोड ↗", "hostedAccess": "Hosted एप खोल्न मालिकको ChatGPT account बाट login आवश्यक छ। तलको मेनु demo सबैले खोल्न सक्छन्।"});
 const $=id=>document.getElementById(id);
 let lang="en",cat="all",cart={},theme="light";
 try{const l=localStorage.getItem("nepal-spice-preview-lang");if(dict[l])lang=l;theme=localStorage.getItem("nepal-spice-preview-theme")==="dark"?"dark":"light";cart=JSON.parse(localStorage.getItem("nepal-spice-preview-cart")||"{}")||{};}catch{}
@@ -128,7 +137,7 @@ $("subtotal").textContent=money(total);
 }
 function translate(){
 document.documentElement.lang=lang;$("lang").value=lang;
-const mapping={eyebrow:"eyebrow",heroLine:"hero",lead:"lead",notice:"notice",menuTitle:"menuTitle",menuHint:"menuHint",vegText:"veg",cartBtnText:"cart",cartHeading:"cart",subLabel:"subtotal",cartNote:"cartNote",clear:"clear",footer:"footer"};
+const mapping={eyebrow:"eyebrow",heroLine:"hero",lead:"lead",notice:"notice",menuTitle:"menuTitle",menuHint:"menuHint",vegText:"veg",cartBtnText:"cart",cartHeading:"cart",subLabel:"subtotal",cartNote:"cartNote",clear:"clear",footer:"footer",hostedLink:"hostedLink",sourceLink:"sourceLink",hostedAccess:"hostedAccess"};
 for(const [id,key] of Object.entries(mapping))$(id).textContent=t(key);
 $("search").placeholder=t("search");$("search").setAttribute("aria-label",t("search"));
 const cats=document.querySelectorAll("[data-category]");cats.forEach((b,i)=>b.textContent=i===0?t("all"):t("categories")[i-1]);renderMenu();renderCart();
