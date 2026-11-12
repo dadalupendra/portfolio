@@ -33,7 +33,7 @@ No npm/build step, authentication, API token or custom domain is required.
 
 ## Authentic project entries
 
-Seven user-reported project entries are shown: NextStep Study, GakusaiNavi, Nepal Quest: 77 Districts, QR Menu Generator, NPL 2026 Website, Posture & Distance Alert, and this Developer Portfolio. Project statuses are not claims of completion; only the **Developer Portfolio** has a currently configured public destination. Other entries have no fabricated demo links.
+Seven user-reported project entries are shown: NextStep Study, GakusaiNavi, Nepal Quest: 77 Districts, QR Menu Generator, NPL 2026 Website, Posture & Distance Alert, and this Developer Portfolio. Project statuses are not claims of completion. The **Developer Portfolio** and uploaded **NPL 2026 Website** now have public GitHub Pages destinations; other entries have no fabricated demo links.
 
 The three former practice demo pages (Java OOP, JavaScript Playground and SQL Notes) were deleted from `demos/`, and their mock projects have been removed from the site.
 
@@ -76,3 +76,9 @@ There were no suitable photos of the four places in the supplied document scans,
 - `images/siddha-school.jpg`
 
 The existing `<img>` elements use `object-fit: cover`, lazy loading and load/error fallback. If a file exists, its photo appears automatically.
+
+## Published NPL 2026 project
+
+Uploaded standalone HTML has been published at [`npl-2026/index.html`](npl-2026/index.html), accessible at https://dadalupendra.github.io/portfolio/npl-2026/ and through the NPL project card on the portfolio home page. The original archive, teams, features and browser-side source adapters are retained.
+
+**Accuracy:** This is an independent fan project, not official live scoring infrastructure. GitHub Pages cannot run the uploaded source's Netlify Functions `/api` endpoints. The source's embedded 2026 records are a dated snapshot; provider-backed browser updates may fail or require a user-provided CricAPI key. An explicit notice links to ESPNcricinfo and Cricbuzz for current official/third-party match reporting. Do not present stale embedded data as confirmed live.
