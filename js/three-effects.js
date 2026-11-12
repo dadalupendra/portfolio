@@ -197,7 +197,7 @@
  // Mouse-follow tilt, works independently even if WebGL is unavailable.
  function tilt(el,limit){
   if(!el)return;
-  const target=el.classList.contains('portrait')?el.querySelector('.portrait-card'):el;
+  const target=el; // Tilt the entire portrait stack so the name overlay has real parallax depth.
   if(!target)return;
   el.addEventListener('pointermove',e=>{
    if(mobile()||reduced.matches||e.pointerType==='touch')return;
