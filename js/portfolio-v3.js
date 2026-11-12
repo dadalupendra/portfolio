@@ -79,6 +79,14 @@ contactLabel:'연락',contactTitle:'연락해 주세요',contactSubtitle:'이메
 statusApp:'앱',statusStudy:'학습 데모',statusProgress:'개발 중',openProject:'프로젝트 열기 ↗',openDemo:'데모 열기 ↗',source:'소스 코드 ↗',noPublic:'공개 데모 없음',empty:'이 카테고리에 프로젝트가 없습니다.'
 }
 };
+const cvTranslations={
+  en:{subtitle:'Information Processing Student | Tokyo, Japan',profile:'Profile',profileText:'IT student with practical project experience in HTML/CSS, JavaScript, Java and Oracle SQL.',tech:'Technical skills',work:'Selected work',education:'Education',experience:'Experience'},
+  ja:{subtitle:'情報処理科 学生 | 日本・東京',profile:'プロフィール',profileText:'HTML/CSS、JavaScript、Java、Oracle SQLを学び、実践的な制作に取り組む情報処理科の学生。',tech:'技術スキル',work:'主な制作',education:'学歴',experience:'経験'},
+  ne:{subtitle:'सूचना प्रविधि विद्यार्थी | टोकियो, जापान',profile:'परिचय',profileText:'HTML/CSS, JavaScript, Java र Oracle SQL सिक्दै व्यवहारिक प्रोजेक्टमा काम गर्ने IT विद्यार्थी।',tech:'प्राविधिक सीप',work:'मुख्य प्रोजेक्टहरू',education:'शिक्षा',experience:'अनुभव'},
+  hi:{subtitle:'आईटी छात्र | टोक्यो, जापान',profile:'परिचय',profileText:'HTML/CSS, JavaScript, Java और Oracle SQL सीखने तथा व्यावहारिक प्रोजेक्ट बनाने वाला आईटी छात्र।',tech:'तकनीकी कौशल',work:'प्रमुख प्रोजेक्ट',education:'शिक्षा',experience:'अनुभव'},
+  zh:{subtitle:'信息处理专业学生 | 日本东京',profile:'个人简介',profileText:'正在学习 HTML/CSS、JavaScript、Java 和 Oracle SQL，并开展实践项目的信息处理学生。',tech:'技术技能',work:'精选项目',education:'教育',experience:'经历'},
+  ko:{subtitle:'정보처리 전공 학생 | 일본 도쿄',profile:'소개',profileText:'HTML/CSS, JavaScript, Java, Oracle SQL을 배우며 실습 프로젝트를 진행하는 IT 학생입니다.',tech:'기술 역량',work:'주요 작업',education:'학력',experience:'경험'}
+};
 const localized = (en,ja,ne,hi,zh,ko)=>({en,ja,ne,hi,zh,ko});
 const projects=[
 {id:'nextstep',category:'app',icon:'📚',name:'NextStep Study',description:localized(
@@ -151,6 +159,7 @@ function translate(){
     if(typeof t[key]==='string')element.textContent=t[key];
   });
   $('#siteLanguage').value=language;
+  all('[data-cv]').forEach(el=>{const value=cvTranslations[language][el.dataset.cv];if(value)el.textContent=value;});
   renderProjects();
 }
 function renderProjects(){
