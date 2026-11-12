@@ -82,3 +82,19 @@ The existing `<img>` elements use `object-fit: cover`, lazy loading and load/err
 Uploaded standalone HTML has been published at [`npl-2026/index.html`](npl-2026/index.html), accessible at https://dadalupendra.github.io/portfolio/npl-2026/ and through the NPL project card on the portfolio home page. The original archive, teams, features and browser-side source adapters are retained.
 
 **Accuracy:** This is an independent fan project, not official live scoring infrastructure. GitHub Pages cannot run the uploaded source's Netlify Functions `/api` endpoints. The source's embedded 2026 records are a dated snapshot; provider-backed browser updates may fail or require a user-provided CricAPI key. An explicit notice links to ESPNcricinfo and Cricbuzz for current official/third-party match reporting. Do not present stale embedded data as confirmed live.
+
+## Selected improvements from the uploaded `My Profile.zip`
+
+The uploaded ZIP contains an **older version of this portfolio**, including legacy HTML and JavaScript, `.git` history, an offline Document/Photo Vault, demonstration pages and a featured-project mockup. It was inspected as reference material, **not copied over the live site**.
+
+Three useful features were adapted into the current portfolio without removing the existing content or interactions:
+
+1. **Real multilingual personal introduction:** an accessible English / 日本語 / नेपाली tabbed About card. This preserves the idea of the older language-specific bio, but uses verifiable study/technology facts rather than dated career goals.
+2. **Currently building:** genuine project-status highlights for NextStep Study, GakusaiNavi, Nepal Quest and the published Portfolio, linking visitors to the existing project list.
+3. **Featured published project:** an NPL 2026 spotlight with working relative GitHub Pages and GitHub source links. The card explicitly states that live cricket updates depend on third-party providers.
+4. **Clickable education journey:** Grade 10 at Shree Siddha Secondary School → Grade XII at Shree Sampal Secondary School → Tokyo Technical College. Selecting a stage scrolls to the appropriate existing school card and its on-demand Google Map.
+
+New files: `css/curated-legacy-features.css` and `js/curated-legacy-features.js`. All surrounding new UI text is translated in the current six portfolio languages and the new tab interface supports keyboard arrow navigation.
+
+**Deliberately excluded:** old practice/demo links, unverified skills percentages/JLPT level, mock NextStep domains and content, and the browser-only document/photo vault. The vault stored data locally per-device and would not be a secure place to publish personal credentials on a public portfolio. No contents of the ZIP's `.git` directory were uploaded to the public repository.
+
