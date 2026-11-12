@@ -1,0 +1,38 @@
+/* Interactive programming banner — portfolio v2 */
+.code-banner{padding:18px 0 64px;scroll-margin-top:85px}
+.code-banner-inner{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:24px;align-items:stretch;padding:32px;border:1px solid rgba(83,159,240,.26);border-radius:26px;background:linear-gradient(125deg,rgba(20,47,81,.94),rgba(8,24,48,.97));box-shadow:0 25px 75px rgba(0,8,26,.24);position:relative;overflow:hidden}
+.code-banner-inner::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 10% 10%,rgba(60,194,238,.12),transparent 50%),radial-gradient(circle at 95% 85%,rgba(70,113,240,.13),transparent 45%)}
+.code-banner-copy,.code-window{position:relative;z-index:1}
+.code-banner-copy{padding:10px 6px 10px 4px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.code-banner-eyebrow{font-size:.71rem;text-transform:uppercase;letter-spacing:.18em;color:#65e4dc;font-weight:800;margin-bottom:16px}
+.code-banner-copy h2{font-family:var(--display);font-size:clamp(2rem,3.5vw,3.05rem);letter-spacing:-.055em;line-height:1.12;color:#f1f8ff;max-width:15ch}
+.code-banner-copy h2 em{font-style:normal;background:linear-gradient(115deg,#64b0ff,#61e5db);color:transparent;background-clip:text;-webkit-background-clip:text}
+.code-banner-copy p{color:#bccce5;line-height:1.75;font-size:.96rem;margin:17px 0 25px;max-width:43ch}
+.code-banner-ctas{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.code-banner-ctas .btn{min-height:44px}
+.code-banner-ctas .code-second{color:#e0eeff;border-color:rgba(138,192,251,.3);background:rgba(18,47,83,.7)}
+.code-window{border:1px solid rgba(114,167,234,.29);border-radius:17px;background:#071323;box-shadow:0 20px 60px rgba(0,0,0,.23);min-width:0;overflow:hidden}
+.code-window-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 15px;border-bottom:1px solid rgba(99,153,219,.17);background:#0e2039}
+.code-window-title{display:flex;align-items:center;gap:10px;color:#b9cae1;font-size:.77rem;font-weight:700}
+.code-dots{display:flex;gap:6px}
+.code-dots i{display:block;width:9px;height:9px;border-radius:50%;background:#ff6d78}
+.code-dots i:nth-child(2){background:#ffc267}
+.code-dots i:nth-child(3){background:#45d7ab}
+.code-copy{padding:7px 12px;border-radius:8px;border:1px solid rgba(99,153,219,.26);background:#142b47;color:#d7e9ff;font-size:.77rem;font-weight:700}
+.code-copy:hover{background:#1d3a5d}
+.code-languages{display:flex;gap:6px;overflow-x:auto;padding:12px 14px 10px;border-bottom:1px solid rgba(99,153,219,.13);scrollbar-width:thin}
+.code-languages button{white-space:nowrap;flex:none;background:transparent;border:1px solid transparent;color:#a8bedb;border-radius:9px;padding:8px 11px;font-size:.79rem;font-weight:700;cursor:pointer}
+.code-languages button:hover{background:#162f50;color:#fff}
+.code-languages button[aria-selected="true"]{background:rgba(55,149,244,.2);color:#7cceff;border-color:rgba(91,173,247,.36)}
+.code-preview{margin:0;min-height:205px;max-height:265px;overflow:auto;padding:21px 22px;color:#d8e9ff;font-family:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;font-size:.87rem;line-height:1.9;white-space:pre;tab-size:2}
+.code-preview code{font:inherit}
+.code-preview .token-keyword{color:#84baff}
+.code-preview .token-string{color:#75e3c9}
+.code-preview .token-comment{color:#859ab9}
+.code-preview .token-number{color:#ffd28a}
+.code-window-footer{border-top:1px solid rgba(99,153,219,.14);padding:10px 17px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:#9eb3cf;font-size:.74rem}
+.code-window-footer strong{color:#64e0d9}
+[data-theme="light"] .code-banner-inner{background:linear-gradient(120deg,#122f53,#10213d)}
+@media(max-width:920px){.code-banner-inner{grid-template-columns:1fr;gap:23px;padding:24px}.code-banner-copy h2{max-width:none}.code-preview{min-height:160px}}
+@media(max-width:680px){.code-banner{padding:10px 0 44px}.code-banner-inner{padding:19px;border-radius:20px}.code-banner-copy{padding:5px}.code-banner-copy h2{font-size:2rem}.code-banner-copy p{margin:14px 0 18px}.code-languages{padding:9px}.code-preview{padding:16px;font-size:.78rem}.code-window-footer{font-size:.68rem}}
+@media(prefers-reduced-motion:reduce){.code-window *{scroll-behavior:auto!important}}
