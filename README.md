@@ -52,3 +52,27 @@ Academic credentials are summarized from user-supplied records (NEB Grade XII GP
 - `Email Me` launches a mail draft; it does not send automatically.
 - Project links are only included when a specific destination is known. Live status of external apps is not inferred.
 - If WebGL, the CDN, or device hardware is unavailable, the content remains accessible and a CSS fallback is used.
+
+## Real workplaces and schools on Google Maps
+
+The existing **Experience** and **Education** cards are kept. Location controls are added by `js/location-maps.js` and styled in `css/location-maps.css`:
+
+| Card | Place | Coordinates |
+| --- | --- | --- |
+| Work experience | Kaiten Sushi Misaki, Shinjuku East Side Square B1F | 35.6961095, 139.7090098 |
+| Student software projects and current education | Tokyo Technical College, Higashinakano | 35.7064974, 139.6853488 |
+| Grade XII | Shree Sampal Secondary School, Byans-4, Sunsera | 29.9470454, 80.6626123 |
+| Through Grade 10 | Shree Siddha Secondary School, Byans-3, Sina | 29.9223567, 80.6681549 |
+
+Each card includes a clickable, supplied **Google Maps CID** destination, an accessible **Show map / Hide map** control, and a lazy Google Maps iframe using `q=LAT,LNG&z=16&output=embed`. Expanding the map creates the iframe on demand to preserve initial page performance. The controls, titles, addresses and placeholders follow the existing six-language selector. Dark/light styles, responsive display and keyboard controls are supported.
+
+### Optional local photos
+
+There were no suitable photos of the four places in the supplied document scans, so the cards show clean photo placeholders instead of publishing academic certificates or hotlinking photos from Maps. Add **your own licensed place photos** to the repository with these exact relative paths:
+
+- `images/misaki.jpg`
+- `images/tokyo-technical-college.jpg`
+- `images/sampal-school.jpg`
+- `images/siddha-school.jpg`
+
+The existing `<img>` elements use `object-fit: cover`, lazy loading and load/error fallback. If a file exists, its photo appears automatically.
