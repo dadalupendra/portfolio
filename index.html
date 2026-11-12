@@ -20,9 +20,11 @@
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.152.2/three.min.js" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="css/three-enhancements.css">
 <link rel="stylesheet" href="css/location-maps.css">
+<link rel="stylesheet" href="css/curated-legacy-features.css">
 <script defer src="js/location-maps.js"></script>
 <script defer src="js/portfolio-v3.js"></script>
 <script defer src="js/three-effects.js"></script>
+<script defer src="js/curated-legacy-features.js"></script>
 </head>
 <body>
 <canvas id="threeBackground" aria-hidden="true"></canvas>
@@ -100,6 +102,24 @@
   <div class="projects-grid" id="projectsGrid" aria-live="polite"></div>
 </div></section>
 
+<!-- Curated from the uploaded older portfolio: honest featured-project showcase. -->
+<section class="section featured-case" id="featuredProject" aria-labelledby="featuredProjectTitle">
+  <div class="wrap">
+    <div class="featured-case-card">
+      <div>
+        <span class="featured-case-label" data-curated-i18n="featuredLabel">🚀 PUBLISHED PROJECT</span>
+        <h2 id="featuredProjectTitle" data-curated-i18n="featuredHeading">NPL 2026 Cricket Information Website</h2>
+        <p data-curated-i18n="featuredDesc">A real, published fan-built website from my own HTML project. It includes archived NPL information, player pages and cricket statistics. Live score updates depend on external data providers and are not guaranteed.</p>
+        <div class="featured-case-cta">
+          <a class="btn btn-primary" href="npl-2026/" data-curated-i18n="featuredOpen">Open published website ↗</a>
+          <a class="btn btn-outline" href="https://github.com/dadalupendra/portfolio/tree/main/npl-2026" target="_blank" rel="noopener noreferrer" data-curated-i18n="featuredCode">View source on GitHub ↗</a>
+        </div>
+      </div>
+      <div class="featured-case-badge" aria-hidden="true"><span class="cricket">🏏</span><strong>NPL 2026</strong><small>INDEPENDENT FAN PROJECT</small></div>
+    </div>
+  </div>
+</section>
+
 <section id="skills" class="section"><div class="wrap">
   <span class="eyebrow" data-i18n="skillLabel">TECHNOLOGIES</span><h2 class="section-title" data-i18n="skillsTitle">What I'm learning &amp; building with</h2><p class="section-subtitle" data-i18n="skillsSubtitle">An honest overview of my current technical practice, without invented proficiency scores.</p>
   <div class="skills-grid" id="skillsGrid">
@@ -125,6 +145,41 @@
       <li>▸ <span data-i18n="focus4">Learning by building and documenting projects</span></li>
     </ul></article>
   </div>
+  <!-- Curated original About: true multilingual introduction and current work, without mock skill scores or demo links. -->
+  <div class="profile-extras">
+    <article class="profile-story" aria-labelledby="bioLanguagesHeading">
+      <h3 class="profile-extra-heading" id="bioLanguagesHeading" data-curated-i18n="bioHeading">Meet me in three languages</h3>
+      <p class="profile-extra-lead" data-curated-i18n="bioLead">A short personal introduction in languages I use. Choose one to read.</p>
+      <div class="bio-tabs" role="tablist" aria-label="Introduction language">
+        <button type="button" role="tab" data-bio-lang="en" id="bioTabEn" aria-controls="bioPanelEn" aria-selected="true" tabindex="0">English</button>
+        <button type="button" role="tab" data-bio-lang="ja" id="bioTabJa" aria-controls="bioPanelJa" aria-selected="false" tabindex="-1">日本語</button>
+        <button type="button" role="tab" data-bio-lang="ne" id="bioTabNe" aria-controls="bioPanelNe" aria-selected="false" tabindex="-1">नेपाली</button>
+      </div>
+      <div class="bio-panel" id="bioPanelEn" role="tabpanel" aria-labelledby="bioTabEn" lang="en" tabindex="0">
+        <p>Hello! I'm Dadal Upendra Singh, originally from Nepal. I'm studying Information Processing in Tokyo, Japan.</p>
+        <p>I'm learning Java, JavaScript, HTML/CSS and Oracle SQL through practical projects, and I enjoy understanding how software works.</p>
+      </div>
+      <div class="bio-panel" id="bioPanelJa" role="tabpanel" aria-labelledby="bioTabJa" lang="ja" tabindex="0" hidden>
+        <p>はじめまして。ネパール出身のDadal Upendra Singhです。現在は東京で情報処理を勉強しています。</p>
+        <p>Java、JavaScript、HTML/CSS、Oracle SQLを使った制作や演習を通じて、ソフトウェア開発を学んでいます。</p>
+      </div>
+      <div class="bio-panel" id="bioPanelNe" role="tabpanel" aria-labelledby="bioTabNe" lang="ne" tabindex="0" hidden>
+        <p>नमस्ते! म दादल उपेन्द्र सिंह हुँ। म नेपालबाट आएको हुँ र अहिले टोकियोमा सूचना प्रविधि पढिरहेको छु।</p>
+        <p>Java, JavaScript, HTML/CSS र Oracle SQL प्रयोग गरेर व्यवहारिक प्रोजेक्ट बनाउँदै सफ्टवेयर विकास सिकिरहेको छु।</p>
+      </div>
+    </article>
+    <article class="real-work-card" aria-labelledby="buildingHeading">
+      <h3 id="buildingHeading" data-curated-i18n="buildingHeading">Currently building</h3>
+      <p data-curated-i18n="buildingLead">Projects I have worked on or am developing. Their status is shown accurately; an unfinished project is not presented as a completed product.</p>
+      <div class="real-work-tags">
+        <span class="pill" data-curated-i18n="buildingOne">📚 NextStep Study · In development</span>
+        <span class="pill" data-curated-i18n="buildingTwo">🎪 GakusaiNavi · School project</span>
+        <span class="pill" data-curated-i18n="buildingThree">🏔️ Nepal Quest · In development</span>
+        <span class="pill" data-curated-i18n="buildingFour">🌐 Portfolio · Published</span>
+      </div>
+      <div class="real-work-links"><a class="btn btn-primary" href="#projects" data-curated-i18n="buildingView">Explore actual projects ↗</a></div>
+    </article>
+  </div>
 </div></section>
 
 <section id="experience" class="section"><div class="wrap">
@@ -139,8 +194,33 @@
   <span class="eyebrow" data-i18n="educationLabel">EDUCATION</span>
   <h2 class="section-title" data-i18n="educationTitle">Education &amp; learning</h2>
   <p class="section-subtitle" data-i18n="eduIntro">A documented academic journey from Darchula, Nepal to Tokyo, Japan.</p>
+  <!-- Curated school timeline; links to the real location-enabled cards immediately below. -->
+  <div class="education-journey" aria-labelledby="journeyHeading">
+    <h3 id="journeyHeading" data-curated-i18n="journeyHeading">My education journey</h3>
+    <p data-curated-i18n="journeyLead">From school in Darchula, Nepal, to Information Processing studies in Tokyo. Select a stage to view its details and map.</p>
+    <div class="journey-track">
+      <button class="journey-step" type="button" data-journey-target="education-siddha" aria-label="View Shree Siddha Secondary School details">
+        <span class="journey-icon" aria-hidden="true">🏫</span>
+        <strong data-curated-i18n="journeyOne">Up to Grade 10 · Shree Siddha Secondary School</strong>
+        <small data-curated-i18n="journeyOneSub">Sina, Darchula, Nepal</small>
+        <span class="journey-arrow" data-curated-i18n="journeyOpen">View school & map ↗</span>
+      </button>
+      <button class="journey-step" type="button" data-journey-target="education-sampal" aria-label="View Shree Sampal Secondary School details">
+        <span class="journey-icon" aria-hidden="true">🎓</span>
+        <strong data-curated-i18n="journeyTwo">Grade XII · Shree Sampal Secondary School</strong>
+        <small data-curated-i18n="journeyTwoSub">Sunsera · 2078 B.S. · GPA 2.73</small>
+        <span class="journey-arrow" data-curated-i18n="journeyOpen">View school & map ↗</span>
+      </button>
+      <button class="journey-step" type="button" data-journey-target="education-ttc" aria-label="View Tokyo Technical College details">
+        <span class="journey-icon" aria-hidden="true">💻</span>
+        <strong data-curated-i18n="journeyThree">Information Processing · Tokyo Technical College</strong>
+        <small data-curated-i18n="journeyThreeSub">Higashinakano, Tokyo, Japan</small>
+        <span class="journey-arrow" data-curated-i18n="journeyOpen">View school & map ↗</span>
+      </button>
+    </div>
+  </div>
   <div class="education-cards">
-    <article class="education-card education-featured" data-place-id="ttc">
+    <article id="education-ttc" class="education-card education-featured" data-place-id="ttc">
       <div class="edu-card-ornament" aria-hidden="true">⌘</div>
       <span class="edu-pill" data-i18n="eduCurrent">CURRENT STUDIES</span>
       <span class="edu-3d-icon" aria-hidden="true">💻</span>
@@ -148,7 +228,7 @@
       <p data-i18n="eduJapanDesc">Information Processing studies in Tokyo: programming, web technologies, databases and software fundamentals.</p>
       <div class="edu-meta"><span>📍 Tokyo, Japan</span><span data-i18n="eduJapanFocus">Java · Web · Oracle SQL</span></div>
     </article>
-    <article class="education-card" data-place-id="sampal">
+    <article id="education-sampal" class="education-card" data-place-id="sampal">
       <div class="edu-card-ornament" aria-hidden="true">✧</div>
       <span class="edu-pill" data-i18n="eduCompleted">COMPLETED</span>
       <span class="edu-3d-icon" aria-hidden="true">🎓</span>
@@ -161,7 +241,7 @@
       </div>
       <p class="edu-fineprint" data-i18n="eduSource">Details transcribed from your uploaded NEB academic documents. Sensitive identifiers are not published.</p>
     </article>
-    <article class="education-card" data-place-id="siddha">
+    <article id="education-siddha" class="education-card" data-place-id="siddha">
       <div class="edu-card-ornament" aria-hidden="true">✦</div>
       <span class="edu-pill" data-i18n="eduGrade10Status">UP TO GRADE 10</span>
       <span class="edu-3d-icon" aria-hidden="true">🏫</span>
