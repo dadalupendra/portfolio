@@ -177,6 +177,7 @@ function translate(){
   });
   $('#siteLanguage').value=language;
   all('[data-cv]').forEach(el=>{const value=cvTranslations[language][el.dataset.cv];if(value)el.textContent=value;});
+  if (typeof window.refreshPortfolioMaps === 'function') window.refreshPortfolioMaps(language);
   renderProjects();
 }
 function renderProjects(){
