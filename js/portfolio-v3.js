@@ -104,6 +104,12 @@ dict.ne.filterStudy="वेब प्रोजेक्ट";
 dict.hi.filterStudy="वेब प्रोजेक्ट";
 dict.zh.filterStudy="网页项目";
 dict.ko.filterStudy="웹 프로젝트";
+Object.assign(dict.en,{workTitle:"Projects",workSubtitle:"Real development work and ongoing projects. No fabricated demos or placeholder links."});
+Object.assign(dict.ja,{workTitle:"プロジェクト",workSubtitle:"実際の制作・開発中のプロジェクトのみを掲載。架空のデモや仮のリンクはありません。"});
+Object.assign(dict.ne,{workTitle:"प्रोजेक्टहरू",workSubtitle:"वास्तविक निर्माण कार्य र विकासाधीन प्रोजेक्टहरू मात्र। नक्कली डेमो वा बनावटी लिंक छैनन्।"});
+Object.assign(dict.hi,{workTitle:"प्रोजेक्ट",workSubtitle:"वास्तविक विकास कार्य और प्रगति पर चल रहे प्रोजेक्ट। कोई नकली डेमो या लिंक नहीं।"});
+Object.assign(dict.zh,{workTitle:"项目",workSubtitle:"仅展示真实开发工作与进行中的项目，不包含虚构演示或占位链接。"});
+Object.assign(dict.ko,{workTitle:"프로젝트",workSubtitle:"실제 개발 작업과 진행 중인 프로젝트만 소개하며 가상 데모나 임시 링크는 없습니다."});
 const cvTranslations={
   en:{subtitle:'Information Processing Student | Tokyo, Japan',profile:'Profile',profileText:'IT student with practical project experience in HTML/CSS, JavaScript, Java and Oracle SQL.',tech:'Technical skills',work:'Selected work',education:'Education',experience:'Experience'},
   ja:{subtitle:'情報処理科 学生 | 日本・東京',profile:'プロフィール',profileText:'HTML/CSS、JavaScript、Java、Oracle SQLを学び、実践的な制作に取り組む情報処理科の学生。',tech:'技術スキル',work:'主な制作',education:'学歴',experience:'経験'},
@@ -177,7 +183,7 @@ function renderProjects(){
   const t=dict[language],grid=$('#projectsGrid');
   grid.replaceChildren();
   all('#projectFilters button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.filter===category)));
-  const visible=projects.filter(p=>category==='all'||p.category===category);
+  const visible=projects.filter(p=>category==='all'||(category==='inprogress'?p.status==='inprogress':p.category===category));
   if(!visible.length){const p=document.createElement('p');p.className='empty';p.textContent=t.empty;grid.appendChild(p);return;}
   visible.forEach(p=>{
     const article=document.createElement('article');article.className='project';
