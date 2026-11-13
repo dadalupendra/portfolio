@@ -21,30 +21,33 @@
 <link rel="stylesheet" href="css/three-enhancements.css">
 <link rel="stylesheet" href="css/location-maps.css">
 <link rel="stylesheet" href="css/curated-legacy-features.css">
-<link rel="stylesheet" href="css/nepal-entry-3d.css?v=20261113-refined-2">
+<link rel="stylesheet" href="css/earth-entry-3d.css?v=20261113-earth-v1">
 <script defer src="js/location-maps.js"></script>
 <script defer src="js/portfolio-v3.js"></script>
 <script defer src="js/three-effects.js"></script>
 <script defer src="js/curated-legacy-features.js"></script>
-<script defer src="js/nepal-entry-3d.js?v=20261113-refined-2"></script>
+<script defer src="js/earth-entry-3d.js?v=20261113-earth-v1"></script>
 </head>
-<body class="np-gateway-open">
+<body class="earth-gateway-open">
 <canvas id="threeBackground" aria-hidden="true"></canvas>
-<div class="np-portal" id="npPortal" role="dialog" aria-modal="true" aria-labelledby="npPortalTitle" aria-describedby="npPortalIntro">
-  <h2 class="np-sr-only" id="npPortalTitle">Nepal interactive 3D district map</h2>
-  <p class="np-sr-only" id="npPortalIntro">Tap the highlighted Darchula district on the Nepal map to open the portfolio. Use the top-right button to skip the map.</p>
-  <div class="np-map-stage" id="npMapStage">
-    <canvas id="npMapCanvas" class="np-map-canvas" role="img" aria-label="Interactive colorful three-dimensional map of Nepal's 77 districts. Click Darchula to enter the portfolio."></canvas>
-    <button id="npDarchulaMarker" class="np-map-float" type="button" data-np-i18n="pathDistrict" aria-label="Darchula: enter portfolio" hidden>DARCHULA</button>
-    <span class="np-sr-only" id="npHoverText" role="status" aria-live="polite" aria-atomic="true">Loading Nepal map…</span>
+<div class="earth-portal" id="earthPortal" role="dialog" aria-modal="true" aria-labelledby="earthPortalTitle" aria-describedby="earthPortalIntro">
+  <h2 class="earth-sr-only" id="earthPortalTitle">3D Earth — Nepal — Darchula</h2>
+  <p class="earth-sr-only" id="earthPortalIntro">Earth starts facing Nepal. Select the Nepal flag above Darchula to open the portfolio. You can drag the globe or use the top-right button.</p>
+  <div class="earth-stage" id="earthStage">
+    <canvas class="earth-canvas" id="earthCanvas" role="img" aria-label="Interactive 3D Earth with Darchula, Nepal highlighted" tabindex="0"></canvas>
+    <div class="earth-static" id="earthStatic" hidden aria-hidden="true"><div class="earth-static-sphere"></div></div>
+    <button class="earth-marker" id="earthDarchulaMarker" type="button" aria-label="Darchula, Nepal — open portfolio" hidden>
+      <img class="earth-marker-flag" src="assets/nepal-flag.svg" alt="" width="27" height="35" aria-hidden="true">
+      <span class="earth-marker-label"><strong id="earthMarkerName">DARCHULA</strong><small id="earthMarkerSub">Nepal · Enter portfolio</small></span>
+    </button>
   </div>
-  <button class="np-sr-only" id="npPortalEnter" type="button">Enter portfolio via Darchula</button>
-  <div class="np-portal-actions">
-    <button class="np-map-reset" id="npMapReset" type="button" aria-label="Reset Nepal map view" title="Reset map view">⟲</button>
-    <button class="np-portal-skip" id="npSkipMap" type="button" aria-label="Skip map and open portfolio" title="Open portfolio">↗</button>
+  <button class="earth-sr-only" id="earthEnter" type="button">Enter portfolio via Darchula</button>
+  <div class="earth-actions">
+    <button class="earth-reset" id="earthReset" type="button" aria-label="Reset 3D Earth view" title="Reset Earth view">⟲</button>
+    <button class="earth-skip" id="earthSkip" type="button" aria-label="Open portfolio" title="Open portfolio">↗</button>
   </div>
 </div>
-<noscript><style>.np-portal{display:none!important}body.np-gateway-open{overflow:visible}</style></noscript>
+<noscript><style>.earth-portal{display:none!important}body.earth-gateway-open{overflow:visible}</style></noscript>
 <a href="#main" class="skip">Skip to content</a>
 <header class="site-header" id="top">
 <div class="wrap header-inner">
