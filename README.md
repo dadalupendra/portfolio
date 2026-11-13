@@ -46,7 +46,7 @@ The three former practice demo pages (Java OOP, JavaScript Playground and SQL No
 
 ## Privacy and accuracy
 
-Academic credentials are summarized from user-supplied records (NEB Grade XII GPA 2.73; Shree Sampal Secondary School, Sunsera; Shree Siddha Secondary School, Sina for Grade 10). No scans, DOB, registration numbers or family-identifying data are included in public `index.html`.
+Academic credentials are summarized from user-supplied records (Shree Sampal Secondary School, Sunsera; Shree Siddha Secondary School, Sina for Grade 10). No scans, DOB, registration numbers or family-identifying data are included in public `index.html`.
 
 - `Print / Save Resume` uses browser printing; choose **Save as PDF**.
 - `Email Me` launches a mail draft; it does not send automatically.
