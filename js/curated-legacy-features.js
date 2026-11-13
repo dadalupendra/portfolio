@@ -14,7 +14,7 @@ en:{
  buildingHeading:'Currently building',buildingLead:'A selection of my actual projects and coursework. Unfinished projects are not presented as completed products.',
  buildingOne:'📚 NextStep Study · In development',buildingTwo:'🍽️ QR Menu Generator · In development',buildingThree:'🏏 NPL 2026 · Published website',buildingFour:'🌶️ Nepal Spice · School project',buildingView:'Explore actual projects ↗',
  journeyHeading:'My education journey',journeyLead:'From school in Darchula, Nepal, to Information Processing in Tokyo. Select a stage for its details and location map.',
- journeyOne:'Up to Grade 10 · Shree Siddha Secondary School',journeyOneSub:'Sina, Darchula, Nepal',journeyTwo:'Grade XII · Shree Sampal Secondary School',journeyTwoSub:'Sunsera · 2078 B.S. · GPA 2.73',journeyThree:'Information Processing · Tokyo Technical College',journeyThreeSub:'Higashinakano, Tokyo, Japan',journeyOpen:'View school & map ↗'
+ journeyOne:'Up to Grade 10 · Shree Siddha Secondary School',journeyOneSub:'Sina, Darchula, Nepal',journeyTwo:'Grade XII · Shree Sampal Secondary School',journeyTwoSub:'Sunsera · 2078 B.S.',journeyThree:'Information Processing · Tokyo Technical College',journeyThreeSub:'Higashinakano, Tokyo, Japan',journeyOpen:'View school & map ↗'
 },
 ja:{
  featuredLabel:'🚀 公開済みプロジェクト',featuredHeading:'NPL 2026 クリケット情報サイト',
@@ -24,7 +24,7 @@ ja:{
  buildingHeading:'現在取り組んでいること',buildingLead:'実際の制作や学校課題を紹介しています。開発中のものを完成済みとは表示しません。',
  buildingOne:'📚 NextStep Study · 開発中',buildingTwo:'🍽️ QR Menu Generator · 開発中',buildingThree:'🏏 NPL 2026 · 公開中',buildingFour:'🌶️ Nepal Spice · 学校制作',buildingView:'実際のプロジェクトを見る ↗',
  journeyHeading:'学歴の歩み',journeyLead:'ネパール・ダルチュラでの学校生活から東京の情報処理科まで。項目を選ぶと学校情報と地図が表示されます。',
- journeyOne:'10年生まで · Shree Siddha Secondary School',journeyOneSub:'ネパール・ダルチュラ、シナ',journeyTwo:'12年生 · Shree Sampal Secondary School',journeyTwoSub:'スンセラ · 2078 B.S. · GPA 2.73',journeyThree:'情報処理科 · 東京テクニカルカレッジ',journeyThreeSub:'東京都中野区東中野',journeyOpen:'学校と地図を見る ↗'
+ journeyOne:'10年生まで · Shree Siddha Secondary School',journeyOneSub:'ネパール・ダルチュラ、シナ',journeyTwo:'12年生 · Shree Sampal Secondary School',journeyTwoSub:'スンセラ · 2078 B.S.',journeyThree:'情報処理科 · 東京テクニカルカレッジ',journeyThreeSub:'東京都中野区東中野',journeyOpen:'学校と地図を見る ↗'
 },
 ne:{
  featuredLabel:'🚀 सार्वजनिक प्रोजेक्ट',featuredHeading:'NPL 2026 क्रिकेट जानकारी वेबसाइट',
@@ -34,7 +34,7 @@ ne:{
  buildingHeading:'अहिले बनाउँदै गरेका प्रोजेक्ट',buildingLead:'मैले काम गरेका वास्तविक प्रोजेक्ट र विद्यालयको काम। निर्माणाधीन प्रोजेक्टलाई पूरा भएको भनेर देखाइएको छैन।',
  buildingOne:'📚 NextStep Study · निर्माणाधीन',buildingTwo:'🍽️ QR Menu Generator · निर्माणाधीन',buildingThree:'🏏 NPL 2026 · प्रकाशित साइट',buildingFour:'🌶️ Nepal Spice · विद्यालय प्रोजेक्ट',buildingView:'वास्तविक प्रोजेक्टहरू हेर्नुहोस् ↗',
  journeyHeading:'मेरो शैक्षिक यात्रा',journeyLead:'दार्चुला, नेपालका विद्यालयदेखि टोकियोमा सूचना प्रविधिको अध्ययनसम्म। विद्यालय विवरण र नक्सा हेर्न कुनै चरण छान्नुहोस्।',
- journeyOne:'कक्षा १० सम्म · श्री सिद्ध माध्यमिक विद्यालय',journeyOneSub:'सिना, दार्चुला, नेपाल',journeyTwo:'कक्षा १२ · श्री सम्पाल माध्यमिक विद्यालय',journeyTwoSub:'सुनसेरा · २०७८ वि.सं. · GPA 2.73',journeyThree:'सूचना प्रशोधन · टोकियो टेक्निकल कलेज',journeyThreeSub:'हिगाशिनाकानो, टोकियो, जापान',journeyOpen:'विद्यालय र नक्सा हेर्नुहोस् ↗'
+ journeyOne:'कक्षा १० सम्म · श्री सिद्ध माध्यमिक विद्यालय',journeyOneSub:'सिना, दार्चुला, नेपाल',journeyTwo:'कक्षा १२ · श्री सम्पाल माध्यमिक विद्यालय',journeyTwoSub:'सुनसेरा · २०७८ वि.सं.',journeyThree:'सूचना प्रशोधन · टोकियो टेक्निकल कलेज',journeyThreeSub:'हिगाशिनाकानो, टोकियो, जापान',journeyOpen:'विद्यालय र नक्सा हेर्नुहोस् ↗'
 },
 hi:{
  featuredLabel:'🚀 प्रकाशित प्रोजेक्ट',featuredHeading:'NPL 2026 क्रिकेट जानकारी वेबसाइट',
@@ -44,7 +44,7 @@ hi:{
  buildingHeading:'अभी जिन प्रोजेक्ट पर काम है',buildingLead:'वास्तविक प्रोजेक्ट और स्कूल का काम। अधूरे प्रोजेक्ट को पूरा हुआ नहीं दिखाया गया है।',
  buildingOne:'📚 NextStep Study · विकासाधीन',buildingTwo:'🍽️ QR Menu Generator · विकासाधीन',buildingThree:'🏏 NPL 2026 · प्रकाशित वेबसाइट',buildingFour:'🌶️ Nepal Spice · स्कूल प्रोजेक्ट',buildingView:'वास्तविक प्रोजेक्ट देखें ↗',
  journeyHeading:'मेरी शैक्षिक यात्रा',journeyLead:'नेपाल के दार्चुला से टोक्यो में सूचना प्रसंस्करण की पढ़ाई तक। स्कूल और नक्शा देखने के लिए चरण चुनें।',
- journeyOne:'कक्षा 10 तक · Shree Siddha Secondary School',journeyOneSub:'सिना, दार्चुला, नेपाल',journeyTwo:'कक्षा 12 · Shree Sampal Secondary School',journeyTwoSub:'सुनसेरा · 2078 B.S. · GPA 2.73',journeyThree:'सूचना प्रसंस्करण · Tokyo Technical College',journeyThreeSub:'हिगाशिनाकानो, टोक्यो, जापान',journeyOpen:'स्कूल और नक्शा देखें ↗'
+ journeyOne:'कक्षा 10 तक · Shree Siddha Secondary School',journeyOneSub:'सिना, दार्चुला, नेपाल',journeyTwo:'कक्षा 12 · Shree Sampal Secondary School',journeyTwoSub:'सुनसेरा · 2078 B.S.',journeyThree:'सूचना प्रसंस्करण · Tokyo Technical College',journeyThreeSub:'हिगाशिनाकानो, टोक्यो, जापान',journeyOpen:'स्कूल और नक्शा देखें ↗'
 },
 zh:{
  featuredLabel:'🚀 已发布项目',featuredHeading:'NPL 2026 板球信息网站',
@@ -54,7 +54,7 @@ zh:{
  buildingHeading:'正在开发',buildingLead:'展示真实的项目和学校作业，不将尚未完成的项目标为已完成。',
  buildingOne:'📚 NextStep Study · 开发中',buildingTwo:'🍽️ QR Menu Generator · 开发中',buildingThree:'🏏 NPL 2026 · 已发布网站',buildingFour:'🌶️ Nepal Spice · 学校项目',buildingView:'查看实际项目 ↗',
  journeyHeading:'我的求学经历',journeyLead:'从尼泊尔达尔楚拉的学校到东京的信息处理专业。点击阶段可查看学校详情及地图。',
- journeyOne:'至十年级 · Shree Siddha Secondary School',journeyOneSub:'尼泊尔达尔楚拉 Sina',journeyTwo:'十二年级 · Shree Sampal Secondary School',journeyTwoSub:'Sunsera · 2078 B.S. · GPA 2.73',journeyThree:'信息处理专业 · 东京技术专门学校',journeyThreeSub:'日本东京东中野',journeyOpen:'查看学校和地图 ↗'
+ journeyOne:'至十年级 · Shree Siddha Secondary School',journeyOneSub:'尼泊尔达尔楚拉 Sina',journeyTwo:'十二年级 · Shree Sampal Secondary School',journeyTwoSub:'Sunsera · 2078 B.S.',journeyThree:'信息处理专业 · 东京技术专门学校',journeyThreeSub:'日本东京东中野',journeyOpen:'查看学校和地图 ↗'
 },
 ko:{
  featuredLabel:'🚀 공개된 프로젝트',featuredHeading:'NPL 2026 크리켓 정보 웹사이트',
@@ -64,7 +64,7 @@ ko:{
  buildingHeading:'현재 진행 중인 작업',buildingLead:'실제 프로젝트와 학교 과제를 소개하며, 미완성 프로젝트를 완료된 것으로 표시하지 않습니다.',
  buildingOne:'📚 NextStep Study · 개발 중',buildingTwo:'🍽️ QR Menu Generator · 개발 중',buildingThree:'🏏 NPL 2026 · 공개 웹사이트',buildingFour:'🌶️ Nepal Spice · 학교 프로젝트',buildingView:'실제 프로젝트 보기 ↗',
  journeyHeading:'나의 학업 여정',journeyLead:'네팔 다르출라의 학교부터 도쿄의 정보처리 과정까지. 단계를 선택하면 학교 정보와 지도를 볼 수 있습니다.',
- journeyOne:'10학년까지 · Shree Siddha Secondary School',journeyOneSub:'네팔 다르출라 Sina',journeyTwo:'12학년 · Shree Sampal Secondary School',journeyTwoSub:'Sunsera · 2078 B.S. · GPA 2.73',journeyThree:'정보처리 · 도쿄 테크니컬 칼리지',journeyThreeSub:'일본 도쿄 히가시나카노',journeyOpen:'학교 및 지도 보기 ↗'
+ journeyOne:'10학년까지 · Shree Siddha Secondary School',journeyOneSub:'네팔 다르출라 Sina',journeyTwo:'12학년 · Shree Sampal Secondary School',journeyTwoSub:'Sunsera · 2078 B.S.',journeyThree:'정보처리 · 도쿄 테크니컬 칼리지',journeyThreeSub:'일본 도쿄 히가시나카노',journeyOpen:'학교 및 지도 보기 ↗'
 }
 };
 translations.en.buildingFive="🌍 NextStep Global · Web project";
