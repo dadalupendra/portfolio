@@ -23,8 +23,7 @@ ko:{eyebrow:'네팔 인터랙티브 3D 지도',titleA:'네팔에서,',titleB:'�
 let locale='en',districts=[],scene=null,renderer=null,camera=null,mapGroup=null,mapMeshes=[],mapIsActive=false,raf=0,last=0,time=0;
 let meshDarchula=null,anchor=null,prevFocus=null,selectedHover='',mouseX=0,mouseY=0,raycaster=null,pointer=null,hasMap=false;
 let limits={minLon:80,minLat:26,maxLon:89,maxLat:31},coordCenter={x:84.5,y:28.5};
-let fallbackSVG=null,flagMesh=null,flagBasePositions=null,flagGroup=null;let frameSkip=0;
-const flagFallback=$('#npFlagFallback');
+let fallbackSVG=null;let frameSkip=0;
 const provincePalettes={
   dark:[null,0x25ba7f,0xe8b145,0xee7185,0x2ca8e9,0xac81ed,0x92c959,0xfb9854],
   light:[null,0x35b980,0xf1b447,0xe66e82,0x38a3ed,0xa67ce7,0x83bf4b,0xed944c]
@@ -63,7 +62,7 @@ function showPortal(){
  mapIsActive=true;
  translate();
  if(hasMap&&!reduce.matches)start();
- requestAnimationFrame(()=>{resize();entry.focus({preventScroll:true});});
+ requestAnimationFrame(()=>{resize();(marker&&!marker.hidden?marker:skip).focus({preventScroll:true});});
 }
 entry?.addEventListener('click',openPortfolio);
 skip?.addEventListener('click',openPortfolio);
@@ -91,7 +90,6 @@ reduce.addEventListener?.('change',()=>{
  if(reduce.matches){stop();renderSVG()}
  else {
    if(fallbackSVG)fallbackSVG.hidden=true;
-   if(flagFallback)flagFallback.hidden=true;
    canvas.hidden=false;
    if(!hasMap&&districts.length){try{plotGeo()}catch(e){renderSVG();return}}
    if(hasMap){resize();start()}
@@ -119,7 +117,7 @@ function plotGeo(){
  renderer.setPixelRatio(Math.min(devicePixelRatio||1,2));
  renderer.setClearColor(0x000000,0);
  scene=new T.Scene();camera=new T.PerspectiveCamera(43,1,.1,100);camera.position.set(0,1,18);
- mapGroup=new T.Group();mapGroup.rotation.x=-.24;mapGroup.rotation.y=.03;scene.add(mapGroup);
+ mapGroup=new T.Group();mapGroup.rotation.x=-.18;mapGroup.rotation.y=.015;scene.add(mapGroup);
  const ambient=new T.AmbientLight(0xa9e7ff,1.1);scene.add(ambient);
  const key=new T.DirectionalLight(0x84f9ff,2);key.position.set(-5,7,10);scene.add(key);
  const warm=new T.DirectionalLight(0x1ca6ed,.78);warm.position.set(8,-6,3);scene.add(warm);
@@ -150,7 +148,6 @@ function plotGeo(){
  const ringGeo=new T.RingGeometry(.13,.19,32);
  const ring=new T.Mesh(ringGeo,new T.MeshBasicMaterial({color:0xa0fff6,side:T.DoubleSide,transparent:true,opacity:.94,depthWrite:false}));
  ring.position.copy(anchor);ring.renderOrder=8;mapGroup.add(ring);
- createFlagCloth(T);
  const pointNum=mobile.matches?56:150;
  const points=[];
  for(let i=0;i<pointNum;i++){const r=8+Math.random()*10,a=Math.random()*Math.PI*2;points.push(Math.cos(a)*r,(Math.random()-.5)*11,Math.sin(a)*2-6)}
@@ -165,79 +162,29 @@ function plotGeo(){
  stage.addEventListener('pointerleave',()=>{mouseX=0;mouseY=0;canvas.classList.remove('np-map-hover');setHint(tr('hover'))});
  canvas.addEventListener('click',onMapClick);
 }
-/* Locally stored Nepal flag, with physical cloth-like ripples on a real 3D mesh.
-   Cropped authentic SVG source: assets/nepal-flag.svg (flag-icons, MIT).
-   No external images, image keys, false satellite layers or WebGL flags.
-*/
-function createFlagCloth(T){
- const width=mobile.matches?2.8:3.65, height=mobile.matches?3.5:4.55;
- flagGroup=new T.Group();
- flagGroup.position.set(.68,.25,2.25);
- scene.add(flagGroup);
- const mast=new T.Mesh(new T.CylinderGeometry(.046,.052,height*1.26,12),
-   new T.MeshStandardMaterial({color:0xbce5e9,metalness:.82,roughness:.23}));
- mast.position.set(-width/2+.075,-height*.06,-.04);
- flagGroup.add(mast);
- const finial=new T.Mesh(new T.SphereGeometry(.10,12,12),
-   new T.MeshStandardMaterial({color:0xf9df7a,metalness:.62,roughness:.24,emissive:0x845a1b,emissiveIntensity:.2}));
- finial.position.set(-width/2+.075,height*.57,-.04);
- flagGroup.add(finial);
- const fabric=new T.PlaneGeometry(width,height,mobile.matches?16:30,mobile.matches?21:32);
- flagBasePositions=new Float32Array(fabric.attributes.position.array);
- const mat=new T.MeshStandardMaterial({color:0xffffff,transparent:true,alphaTest:.08,
-   side:T.DoubleSide,depthWrite:false,roughness:.8,metalness:0});
- flagMesh=new T.Mesh(fabric,mat);
- flagMesh.position.set(.07,0,.04);
- flagMesh.renderOrder=20;flagMesh.frustumCulled=false;
- flagGroup.add(flagMesh);
- const tex=new T.TextureLoader();
- tex.load('assets/nepal-flag.svg',texture=>{
-   texture.colorSpace=T.SRGBColorSpace;
-   texture.anisotropy=Math.min(4,renderer.capabilities.getMaxAnisotropy());
-   mat.map=texture;mat.needsUpdate=true;
-   if(flagFallback)flagFallback.hidden=true;
- },undefined,error=>{
-   console.warn('Flag SVG texture not available; showing local fallback image',error);
-   flagMesh.visible=false;
-   if(flagFallback)flagFallback.hidden=false;
- });
-}
-function flutterFlag(seconds){
- if(!flagMesh||!flagMesh.visible||!flagBasePositions)return;
- const attribute=flagMesh.geometry.attributes.position;
- const width=flagMesh.geometry.parameters.width;
- for(let i=0;i<attribute.count;i++){
-   const j=i*3;
-   const x=flagBasePositions[j],y=flagBasePositions[j+1],u=(x+width*.5)/width;
-   const ripple=Math.sin(seconds*2.6-u*10.8+y*.55)*(.035+.29*u);
-   const secondary=Math.cos(seconds*1.7-u*5.7+y*.23)*(.052*u);
-   attribute.setXYZ(i,x,y+Math.sin(seconds*2.3-u*7.2+y*.35)*.04*u,ripple+secondary);
- }
- attribute.needsUpdate=true;
- flagMesh.geometry.computeVertexNormals();
- flagGroup.rotation.y=Math.sin(seconds*.32)*.065;
- flagGroup.rotation.x=Math.sin(seconds*.27)*.025;
- flagGroup.position.y=.25+Math.sin(seconds*.58)*.07;
-}
-
 function resize(){
  if(!renderer||!camera)return;
- // Fit all 77 genuine district polygons to the full viewport without cropping Nepal.
- // At narrow phone widths zoom out based on aspect ratio; at large widths zoom in.
  const w=Math.max(240,stage.clientWidth),h=Math.max(210,stage.clientHeight);
  renderer.setSize(w,h,false);
  const aspect=w/h;
+ const portrait=aspect<.90;
+ // Nepal's geographic east–west axis is placed upright in portrait layouts,
+ // making the REAL 77-district map much larger without cropping any district.
+ // Rotate the visualization only; underlying boundary coordinates remain real.
+ mapGroup.rotation.z=portrait?-Math.PI/2:0;
+ mapGroup.rotation.x=-.18;
  camera.aspect=aspect;
  const countryWidth=(limits.maxLon-limits.minLon)*1.45;
  const countryHeight=(limits.maxLat-limits.minLat)*1.45;
- const tanHalfFov=Math.tan(THREE.MathUtils.degToRad(camera.fov*.5));
- const fitWidth=countryWidth/(2*tanHalfFov*aspect);
- const fitHeight=countryHeight/(2*tanHalfFov);
- const padding=aspect<.8?1.22:1.18;
- camera.position.z=Math.min(58,Math.max(10.7,Math.max(fitWidth,fitHeight)*padding));
- camera.position.y=aspect<.8?.15:.35;
+ const rotatedWidth=portrait?countryHeight:countryWidth;
+ const rotatedHeight=portrait?countryWidth:countryHeight;
+ const halfFovTan=Math.tan(THREE.MathUtils.degToRad(camera.fov*.5));
+ const fitW=rotatedWidth/(2*halfFovTan*aspect);
+ const fitH=rotatedHeight/(2*halfFovTan);
+ const padding=portrait?1.12:1.17;
+ camera.position.set(0,0,Math.min(60,Math.max(9,Math.max(fitW,fitH)*padding)));
+ camera.lookAt(0,0,0);
  camera.updateProjectionMatrix();
- if(renderer.domElement!==canvas)return;
  updateMarker();
 }
 function getHovered(event){
@@ -280,12 +227,11 @@ function tick(now){
  if(last&&now-last<budget){raf=requestAnimationFrame(tick);return}
  const dt=last?Math.min((now-last)/1000,.08):.033;last=now;time+=dt;
  if(mapGroup){
-   mapGroup.rotation.x+=( -.24 - mouseY*.075-mapGroup.rotation.x)*.035;
-   mapGroup.rotation.y+=( .01 + mouseX*.085+Math.sin(time*.17)*.055-mapGroup.rotation.y)*.025;
+   mapGroup.rotation.x+=( -.18 - mouseY*.048-mapGroup.rotation.x)*.035;
+   mapGroup.rotation.y+=( .015 + mouseX*.06+Math.sin(time*.17)*.025-mapGroup.rotation.y)*.025;
    mapGroup.position.z=Math.sin(time*.48)*.07;
  }
  if(meshDarchula){const m=meshDarchula.material[0];m.emissiveIntensity=.46+Math.sin(time*1.7)*.15}
- flutterFlag(time);
  const cloud=scene.userData.cloud;if(cloud)cloud.rotation.z=time*.004;
  renderer.render(scene,camera);
  if(!mobile.matches||frameSkip++%3===0)updateMarker();
@@ -293,33 +239,52 @@ function tick(now){
 }
 function renderSVG(){
  if(!districts.length)return;
- stop();if(canvas)canvas.hidden=true;if(marker)marker.hidden=true;
- if(flagFallback)flagFallback.hidden=false;
- if(fallbackSVG){fallbackSVG.hidden=false;return}
+ stop();canvas.hidden=true;marker.hidden=true;
+ const portrait=stage.clientWidth/stage.clientHeight<.90;
+ const W=portrait?600:1200,H=portrait?1100:700;
+ const lonSpan=limits.maxLon-limits.minLon,latSpan=limits.maxLat-limits.minLat;
+ const ratio=.89;
+ const scale=portrait?Math.min(W*ratio/latSpan,H*ratio/lonSpan):Math.min(W*ratio/lonSpan,H*ratio/latSpan);
+ const toXY=portrait?([lon,lat])=>[(lat-coordCenter.y)*scale+W/2,(lon-coordCenter.x)*scale+H/2]:
+   ([lon,lat])=>[(lon-coordCenter.x)*scale+W/2,(coordCenter.y-lat)*scale+H/2];
+ if(fallbackSVG)fallbackSVG.remove();
  const NS='http://www.w3.org/2000/svg';
- fallbackSVG=document.createElementNS(NS,'svg');fallbackSVG.classList.add('np-geo-fallback');
- fallbackSVG.setAttribute('viewBox','0 0 1200 650');fallbackSVG.setAttribute('role','img');fallbackSVG.setAttribute('aria-label','Nepal district map with Darchula highlighted');
- for(const d of districts){
-   for(const ring of d.r){
-    const el=document.createElementNS(NS,'path');
-    const coords=ring.map(([lon,lat])=>[(lon-limits.minLon)/(limits.maxLon-limits.minLon)*1120+40,(limits.maxLat-lat)/(limits.maxLat-limits.minLat)*540+55]);
-    el.setAttribute('d',coords.map(([x,y],i)=>(i?'L':'M')+x.toFixed(2)+','+y.toFixed(2)).join(' ')+'Z');
-    const hot=d.n.toUpperCase()==='DARCHULA';
-    el.setAttribute('data-province',String(d.p));
-    el.setAttribute('aria-label',d.n+(hot?' — enter portfolio':''));
-    el.setAttribute('tabindex',hot?'0':'-1');
-    if(hot){
-      el.classList.add('np-darchula-svg');
-      el.setAttribute('role','button');
-      el.addEventListener('click',openPortfolio);
-      el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openPortfolio();}});
-    }
-    const title=document.createElementNS(NS,'title');title.textContent=d.n;el.appendChild(title);fallbackSVG.appendChild(el);
+ fallbackSVG=document.createElementNS(NS,'svg');
+ fallbackSVG.classList.add('np-geo-fallback');
+ fallbackSVG.setAttribute('viewBox',`0 0 ${W} ${H}`);
+ fallbackSVG.setAttribute('preserveAspectRatio','xMidYMid meet');
+ fallbackSVG.setAttribute('role','img');
+ fallbackSVG.setAttribute('aria-label','Real Nepal district boundaries; select Darchula to enter the portfolio');
+ for(const district of districts){
+  for(const ring of district.r){
+   if(!ring.length)continue;
+   const path=document.createElementNS(NS,'path');
+   const points=ring.map(toXY);
+   path.setAttribute('d',points.map(([x,y],i)=>(i?'L':'M')+x.toFixed(2)+','+y.toFixed(2)).join(' ')+'Z');
+   path.dataset.province=String(district.p);
+   const hot=district.n.toUpperCase()==='DARCHULA';
+   path.setAttribute('aria-label',district.n+(hot?' — open portfolio':''));
+   if(hot){
+    path.classList.add('np-darchula-svg');
+    path.setAttribute('role','button');
+    path.setAttribute('tabindex','0');
+    path.addEventListener('click',openPortfolio);
+    path.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openPortfolio();}});
    }
+   const title=document.createElementNS(NS,'title');title.textContent=district.n;
+   path.appendChild(title);fallbackSVG.appendChild(path);
+  }
  }
- stage.insertBefore(fallbackSVG,canvas);hint.textContent=tr('hover');
+ stage.insertBefore(fallbackSVG,canvas);
+ hint.textContent=tr('hover');
 }
-window.addEventListener('resize',()=>{clearTimeout(window.__npResizeTimer);window.__npResizeTimer=setTimeout(()=>{resize()},110)},{passive:true});
+window.addEventListener('resize',()=>{
+ clearTimeout(window.__npResizeTimer);
+ window.__npResizeTimer=setTimeout(()=>{
+  if(fallbackSVG&&!fallbackSVG.hidden)renderSVG();
+  else resize();
+ },110);
+},{passive:true});
 new MutationObserver(()=>{
  if(!scene)return;
  const c=getColor();
