@@ -1,7 +1,7 @@
 /* Nepal map | edge-to-edge cinematic WebGL entry.
    The map, not navigation panels, is the entire experience. */
 body.np-gateway-open{overflow:hidden}
-.np-portal[hidden],.np-map-float[hidden],.np-map-canvas[hidden],.np-geo-fallback[hidden]{display:none!important}
+.np-portal[hidden],.np-map-float[hidden],.np-map-canvas[hidden],.np-geo-fallback[hidden],.np-map-reset[hidden]{display:none!important}
 .np-portal{
  position:fixed;inset:0;z-index:300;overflow:hidden;isolation:isolate;
  width:100%;height:100vh;height:100dvh;
