@@ -8,7 +8,7 @@
 const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
 const portal=$('#npPortal'),stage=$('#npMapStage'),canvas=$('#npMapCanvas');
 if(!portal||!stage||!canvas)return;
-const marker=$('#npDarchulaMarker'),entry=$('#npPortalEnter'),skip=$('#npSkipMap'),reopen=$('#npMapReopen');
+const marker=$('#npDarchulaMarker'),entry=$('#npPortalEnter'),skip=$('#npSkipMap'),reopen=$('#npMapReopen'),resetButton=$('#npMapReset');
 const hint=$('#npHoverText'),langPicker=$('#npPortalLanguage');
 const controlTargets=$$('.site-header,main,.footer,.print-cv').filter(Boolean);
 const reduce=matchMedia('(prefers-reduced-motion: reduce)'),mobile=matchMedia('(max-width: 690px)');
@@ -24,9 +24,15 @@ let locale='en',districts=[],scene=null,renderer=null,camera=null,mapGroup=null,
 let meshDarchula=null,anchor=null,prevFocus=null,selectedHover='',mouseX=0,mouseY=0,raycaster=null,pointer=null,hasMap=false;
 let limits={minLon:80,minLat:26,maxLon:89,maxLat:31},coordCenter={x:84.5,y:28.5};
 let fallbackSVG=null;let frameSkip=0;
+let fitDistance=16,desiredZoom=1,currentZoom=1;
+const pan={x:0,y:0},currentPan={x:0,y:0},activePointers=new Map();
+let pinchDistance=0,pointerTravel=0,ignoreMapClick=false;
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+function resetView(){desiredZoom=1;pan.x=pan.y=0}
+resetButton?.addEventListener('click',resetView);
 const provincePalettes={
-  dark:[null,0x25ba7f,0xe8b145,0xee7185,0x2ca8e9,0xac81ed,0x92c959,0xfb9854],
-  light:[null,0x35b980,0xf1b447,0xe66e82,0x38a3ed,0xa67ce7,0x83bf4b,0xed944c]
+  dark:[null,0x29ae90,0xd4ab59,0xd97f8b,0x4fadd5,0xa18bda,0x91bf74,0xe0a064],
+  light:[null,0x38bd9a,0xe6b860,0xe18697,0x5ab7dd,0xb29ae4,0x9dce7b,0xe9b070]
 };
 const provinceColor=(p,name)=>{
  const palette=provincePalettes[document.documentElement.dataset.theme==='light'?'light':'dark'];
@@ -117,7 +123,7 @@ function plotGeo(){
  renderer.setPixelRatio(Math.min(devicePixelRatio||1,2));
  renderer.setClearColor(0x000000,0);
  scene=new T.Scene();camera=new T.PerspectiveCamera(43,1,.1,100);camera.position.set(0,1,18);
- mapGroup=new T.Group();mapGroup.rotation.x=-.18;mapGroup.rotation.y=.015;scene.add(mapGroup);
+ mapGroup=new T.Group();mapGroup.rotation.x=-.16;mapGroup.rotation.y=.008;scene.add(mapGroup);
  const ambient=new T.AmbientLight(0xa9e7ff,1.1);scene.add(ambient);
  const key=new T.DirectionalLight(0x84f9ff,2);key.position.set(-5,7,10);scene.add(key);
  const warm=new T.DirectionalLight(0x1ca6ed,.78);warm.position.set(8,-6,3);scene.add(warm);
@@ -131,10 +137,10 @@ function plotGeo(){
     ring.slice(1).forEach(([lon,lat])=>{const v=coordToWorld(lon,lat);shape.lineTo(v.x,v.y)});
     shape.closePath();
     const hot=d.n.toUpperCase()==='DARCHULA';
-    const geometry=new T.ExtrudeGeometry(shape,{depth:hot?.34:.13,steps:1,bevelEnabled:true,bevelThickness:.013,bevelSize:.011,bevelSegments:1});
+    const geometry=new T.ExtrudeGeometry(shape,{depth:hot?.4:.24,steps:1,bevelEnabled:true,bevelThickness:.018,bevelSize:.012,bevelSegments:1});
     const base=hot?new T.Color(colors.hot):provinceColor(d.p,d.n);
-    const side=new T.MeshStandardMaterial({color:base.clone().multiplyScalar(.61),metalness:.18,roughness:.68});
-    const top=new T.MeshStandardMaterial({color:base,emissive:hot?colors.hotEmissive:0x000000,emissiveIntensity:hot?.52:0,metalness:.16,roughness:.61});
+    const side=new T.MeshStandardMaterial({color:base.clone().multiplyScalar(.46),metalness:.18,roughness:.68});
+    const top=new T.MeshStandardMaterial({color:base,emissive:hot?colors.hotEmissive:0x000000,emissiveIntensity:hot?.7:0,metalness:.16,roughness:.61});
     const mesh=new T.Mesh(geometry,[top,side]);
     mesh.userData={district:d.n,province:d.p,hot};mesh.renderOrder=hot?2:1;
     mapGroup.add(mesh);mapMeshes.push(mesh);
@@ -144,7 +150,7 @@ function plotGeo(){
   }
  }
  const d=districts.find(x=>x.n.toUpperCase()==='DARCHULA');
- const c=centroid(d.r[0]);anchor=coordToWorld(c[0],c[1],.5);
+ const c=centroid(d.r[0]);anchor=coordToWorld(c[0],c[1],.72);
  const ringGeo=new T.RingGeometry(.13,.19,32);
  const ring=new T.Mesh(ringGeo,new T.MeshBasicMaterial({color:0xa0fff6,side:T.DoubleSide,transparent:true,opacity:.94,depthWrite:false}));
  ring.position.copy(anchor);ring.renderOrder=8;mapGroup.add(ring);
@@ -161,31 +167,63 @@ function plotGeo(){
  stage.addEventListener('pointermove',onPointerMove,{passive:true});
  stage.addEventListener('pointerleave',()=>{mouseX=0;mouseY=0;canvas.classList.remove('np-map-hover');setHint(tr('hover'))});
  canvas.addEventListener('click',onMapClick);
+ canvas.addEventListener('pointerdown',onDragStart);
+ canvas.addEventListener('pointermove',onDragMove,{passive:true});
+ canvas.addEventListener('pointerup',onDragEnd);
+ canvas.addEventListener('pointercancel',onDragEnd);
+ canvas.addEventListener('wheel',onWheel,{passive:false});
 }
 function resize(){
- if(!renderer||!camera)return;
+ if(!renderer||!camera||!mapGroup)return;
  const w=Math.max(240,stage.clientWidth),h=Math.max(210,stage.clientHeight);
  renderer.setSize(w,h,false);
- const aspect=w/h;
- const portrait=aspect<.90;
- // Nepal's geographic east–west axis is placed upright in portrait layouts,
- // making the REAL 77-district map much larger without cropping any district.
- // Rotate the visualization only; underlying boundary coordinates remain real.
- mapGroup.rotation.z=portrait?-Math.PI/2:0;
- mapGroup.rotation.x=-.18;
+ const aspect=w/h,portrait=aspect<.9,mapAngle=portrait?-Math.PI*.405:0;
+ mapGroup.rotation.z=mapAngle;
  camera.aspect=aspect;
- const countryWidth=(limits.maxLon-limits.minLon)*1.45;
- const countryHeight=(limits.maxLat-limits.minLat)*1.45;
- const rotatedWidth=portrait?countryHeight:countryWidth;
- const rotatedHeight=portrait?countryWidth:countryHeight;
- const halfFovTan=Math.tan(THREE.MathUtils.degToRad(camera.fov*.5));
- const fitW=rotatedWidth/(2*halfFovTan*aspect);
- const fitH=rotatedHeight/(2*halfFovTan);
- const padding=portrait?1.12:1.17;
- camera.position.set(0,0,Math.min(60,Math.max(9,Math.max(fitW,fitH)*padding)));
- camera.lookAt(0,0,0);
+ const cw=(limits.maxLon-limits.minLon)*1.45,ch=(limits.maxLat-limits.minLat)*1.45;
+ const c=Math.abs(Math.cos(mapAngle)),sn=Math.abs(Math.sin(mapAngle));
+ const rw=cw*c+ch*sn,rh=cw*sn+ch*c;
+ const t=Math.tan(THREE.MathUtils.degToRad(camera.fov*.5));
+ fitDistance=Math.min(74,Math.max(9.5,Math.max(rw/(2*t*aspect),rh/(2*t))*(portrait?1.1:1.18)));
+ camera.position.set(currentPan.x,currentPan.y,fitDistance/currentZoom);
+ camera.lookAt(currentPan.x,currentPan.y,0);
  camera.updateProjectionMatrix();
  updateMarker();
+}
+function setZoom(v){desiredZoom=clamp(v,1,3.2)}
+function onWheel(e){
+ if(portal.hidden||reduce.matches)return;
+ e.preventDefault();setZoom(desiredZoom*(e.deltaY<0?1.13:.885));
+}
+function onDragStart(e){
+ if(portal.hidden||reduce.matches||e.button!==0)return;
+ activePointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+ canvas.setPointerCapture?.(e.pointerId);
+ if(activePointers.size===1){pointerTravel=0;ignoreMapClick=false;pinchDistance=0}
+ if(activePointers.size===2){const [p,q]=[...activePointers.values()];pinchDistance=Math.hypot(p.x-q.x,p.y-q.y);ignoreMapClick=true}
+}
+function onDragMove(e){
+ if(!activePointers.has(e.pointerId)||!camera)return;
+ const last=activePointers.get(e.pointerId),dx=e.clientX-last.x,dy=e.clientY-last.y;
+ activePointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+ pointerTravel+=Math.hypot(dx,dy);
+ if(pointerTravel>7)ignoreMapClick=true;
+ if(activePointers.size===2){
+  const [p,q]=[...activePointers.values()];
+  const dist=Math.hypot(p.x-q.x,p.y-q.y);
+  if(pinchDistance>0)setZoom(desiredZoom*clamp(dist/pinchDistance,.76,1.31));
+  pinchDistance=dist;
+ }else{
+  const scale=2*(fitDistance/Math.max(1,currentZoom))*Math.tan(THREE.MathUtils.degToRad(camera.fov/2))/Math.max(1,stage.clientHeight);
+  pan.x=clamp(pan.x-dx*scale,-9,9);pan.y=clamp(pan.y+dy*scale,-9,9);
+ }
+ canvas.classList.add('np-dragging');
+}
+function onDragEnd(e){
+ activePointers.delete(e.pointerId);
+ try{canvas.releasePointerCapture?.(e.pointerId)}catch{}
+ if(activePointers.size<2)pinchDistance=0;
+ if(activePointers.size===0)canvas.classList.remove('np-dragging');
 }
 function getHovered(event){
  if(!renderer||!camera||!raycaster||!pointer||!mapGroup)return null;
@@ -207,6 +245,7 @@ function onPointerMove(e){
  else{canvas.classList.remove('np-map-hover');setHint(tr('hover'))}
 }
 function onMapClick(e){
+ if(ignoreMapClick){ignoreMapClick=false;return}
  const hit=getHovered(e);
  if(hit?.userData?.hot){openPortfolio();}
  else if(hit?.userData?.district){setHint(tr('district')+' '+hit.userData.district+' · '+tr('other'),true)}
@@ -217,9 +256,8 @@ function updateMarker(){
  const screen=anchor.clone().applyMatrix4(mapGroup.matrixWorld).project(camera);
  if(screen.z>1||screen.z< -1){marker.hidden=true;return}
  const r=stage.getBoundingClientRect(),px=(screen.x*.5+.5)*r.width,py=(-screen.y*.5+.5)*r.height;
- marker.hidden=false;
- marker.style.left=Math.max(88,Math.min(r.width-88,px))+'px';
- marker.style.top=Math.max(48,Math.min(r.height-35,py))+'px';
+ if(px<0||px>r.width||py<0||py>r.height){marker.hidden=true;return}
+ marker.hidden=false;marker.style.left=clamp(px,76,r.width-76)+'px';marker.style.top=clamp(py,70,r.height-40)+'px';
 }
 function tick(now){
  raf=0;if(!mapIsActive||document.hidden||reduce.matches||!renderer||!hasMap)return;
@@ -227,11 +265,16 @@ function tick(now){
  if(last&&now-last<budget){raf=requestAnimationFrame(tick);return}
  const dt=last?Math.min((now-last)/1000,.08):.033;last=now;time+=dt;
  if(mapGroup){
-   mapGroup.rotation.x+=( -.18 - mouseY*.048-mapGroup.rotation.x)*.035;
-   mapGroup.rotation.y+=( .015 + mouseX*.06+Math.sin(time*.17)*.025-mapGroup.rotation.y)*.025;
-   mapGroup.position.z=Math.sin(time*.48)*.07;
+   mapGroup.rotation.x+=(-.16-mouseY*.026-mapGroup.rotation.x)*.03;
+   mapGroup.rotation.y+=(.008+mouseX*.035+Math.sin(time*.22)*.014-mapGroup.rotation.y)*.028;
+   mapGroup.position.z=Math.sin(time*.48)*.032;
  }
- if(meshDarchula){const m=meshDarchula.material[0];m.emissiveIntensity=.46+Math.sin(time*1.7)*.15}
+ currentZoom+=(desiredZoom-currentZoom)*.11;
+ currentPan.x+=(pan.x-currentPan.x)*.12;
+ currentPan.y+=(pan.y-currentPan.y)*.12;
+ camera.position.set(currentPan.x,currentPan.y,fitDistance/currentZoom);
+ camera.lookAt(currentPan.x,currentPan.y,0);
+ if(meshDarchula){const m=meshDarchula.material[0];m.emissiveIntensity=.6+Math.sin(time*1.6)*.22}
  const cloud=scene.userData.cloud;if(cloud)cloud.rotation.z=time*.004;
  renderer.render(scene,camera);
  if(!mobile.matches||frameSkip++%3===0)updateMarker();
