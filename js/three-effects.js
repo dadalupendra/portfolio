@@ -176,11 +176,17 @@
   }
  }
  function stop(){if(state.raf)cancelAnimationFrame(state.raf);state.raf=0;state.last=0;}
- function start(){if(state.raf||state.hidden||state.reduced)return;state.raf=requestAnimationFrame(frame);}
+ const gatewayActive=()=>document.body.classList.contains('earth-gateway-open');
+ function start(){
+  if(state.raf||state.hidden||state.reduced||gatewayActive())return;
+  if(!engine&&!noThree()){createGlobal();makePortrait();}
+  if(!engine)return;
+  state.raf=requestAnimationFrame(frame);
+ }
  function onMotionChange(){
   state.reduced=reduced.matches;
   if(state.reduced){stop();canvas.style.display='none';portraitEngine?.overlay?.style.setProperty('display','none');}
-  else{canvas.style.display='block';if(engine)start();else if(!noThree()){createGlobal();makePortrait();start();}}
+  else{canvas.style.display='block';start();}
  }
  document.addEventListener('visibilitychange',()=>{state.hidden=document.hidden;if(state.hidden)stop();else start()});
  window.addEventListener('pointermove',e=>{if(mobile()||state.reduced)return;state.mouseX=e.clientX/innerWidth*2-1;state.mouseY=e.clientY/innerHeight*2-1;},{passive:true});
@@ -191,9 +197,11 @@
  },{passive:true});
  reduced.addEventListener?.('change',onMotionChange);
  new MutationObserver(updateTheme).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
- if(!noThree()&&!reduced.matches){
-   createGlobal();makePortrait();start();
- }else{canvas.style.display='none';}
+ new MutationObserver(()=>{
+  if(gatewayActive())stop(); else start();
+ }).observe(document.body,{attributes:true,attributeFilter:['class']});
+ if(!noThree()&&!reduced.matches){start();}
+ else{canvas.style.display='none';}
  // Mouse-follow tilt, works independently even if WebGL is unavailable.
  function tilt(el,limit){
   if(!el)return;
