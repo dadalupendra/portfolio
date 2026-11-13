@@ -1,0 +1,30 @@
+/* 3D Earth entry — dark navy/cyan. Only Darchula and two minimal controls. */
+body.earth-gateway-open{overflow:hidden}
+.earth-portal[hidden],.earth-marker[hidden],.earth-static[hidden],.earth-canvas[hidden],.earth-reset[hidden]{display:none!important}
+.earth-portal{position:fixed;inset:0;z-index:300;width:100%;height:100vh;height:100dvh;overflow:hidden;isolation:isolate;background:radial-gradient(ellipse at 47% 45%,#112d4b 0%,#061529 60%,#010613 100%);color:#e8ffff}
+.earth-portal::before{content:"";position:absolute;inset:-20%;pointer-events:none;z-index:-1;background:radial-gradient(circle at 18% 26%,#09517c42,transparent 38%),radial-gradient(circle at 76% 84%,#06828f1a,transparent 38%)}
+.earth-portal::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse 73% 67% at 50% 51%,transparent 58%,#020813a1 100%)}
+.earth-stage{position:absolute;inset:0;width:100%;height:100%;touch-action:none;overflow:hidden}
+.earth-canvas{width:100%;height:100%;display:block;touch-action:none;cursor:grab}
+.earth-canvas.is-dragging{cursor:grabbing}
+.earth-marker{position:absolute;left:50%;top:47%;z-index:14;display:flex;align-items:center;gap:9px;min-width:105px;max-width:195px;min-height:52px;padding:6px 12px 7px 7px;transform:translate(-50%,-116%);border:1px solid #77f8efc8;border-radius:15px;background:linear-gradient(115deg,#042c42ed,#061827f0);color:#efffff;font:800 .76rem/1.3 Inter,"Noto Sans Devanagari","Noto Sans JP",system-ui,sans-serif;box-shadow:0 0 0 5px #09decd24,0 0 26px #02efdd67,0 14px 26px #0009;backdrop-filter:blur(12px);cursor:pointer;text-align:left;white-space:nowrap;transition:background .2s,box-shadow .2s}
+.earth-marker::after{content:"";position:absolute;bottom:-7px;left:calc(50% - 6px);height:11px;width:11px;transform:rotate(45deg);background:#042c42;border-right:1px solid #77f8ef;border-bottom:1px solid #77f8ef}
+.earth-marker:hover,.earth-marker:focus-visible{background:#056173f0;box-shadow:0 0 0 7px #08ead526,0 0 37px #05f5eeb0}
+.earth-marker-flag{display:block;flex:none;width:27px;height:35px;object-fit:contain;filter:drop-shadow(0 3px 5px #000b);transform-origin:10% 50%;animation:flag-flutter 1.7s ease-in-out infinite alternate;will-change:transform}
+.earth-marker-label{display:flex;flex-direction:column;gap:2px;letter-spacing:.04em}
+.earth-marker-label small{font-size:.64rem;color:#84f4ec;letter-spacing:0;font-weight:650}
+@keyframes flag-flutter{0%{transform:perspective(180px) rotateY(-13deg) skewY(-1deg)}50%{transform:perspective(180px) rotateY(8deg) skewY(1.1deg)}100%{transform:perspective(180px) rotateY(-9deg) skewY(-.5deg)}}
+.earth-actions{position:absolute;right:max(12px,env(safe-area-inset-right));top:calc(max(12px,env(safe-area-inset-top)) + 2px);z-index:18;display:flex;align-items:center;gap:8px}
+.earth-reset,.earth-skip{display:grid;place-items:center;width:46px;height:46px;min-height:44px;min-width:44px;border-radius:14px;border:1px solid #52c8d58f;background:#041b31db;color:#d0f9fb;font:800 1.36rem/1 system-ui,sans-serif;cursor:pointer;backdrop-filter:blur(14px);box-shadow:0 7px 22px #0008;transition:transform .2s,background .2s}
+.earth-reset:hover,.earth-skip:hover{background:#135a6be8;transform:translateY(-2px)}
+.earth-portal :focus-visible{outline:3px solid #b9fff0;outline-offset:4px}
+.earth-sr-only{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;white-space:nowrap!important;clip:rect(0,0,0,0)!important;padding:0!important;margin:-1px!important;border:0!important}
+.earth-sr-only:focus-visible{clip:auto!important;width:auto!important;height:auto!important;z-index:400;left:12px;top:12px;margin:0!important;padding:12px!important;color:#fff;background:#103347;border:2px solid #57ffee;border-radius:10px}
+.earth-static{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden;pointer-events:none}
+.earth-static-sphere{width:min(94vw,85vh);height:min(94vw,85vh);border-radius:50%;background-image:radial-gradient(circle at 28% 22%,#b7edff55,transparent 42%),linear-gradient(90deg,#0313238a,transparent 60%),url("https://raw.githubusercontent.com/mrdoob/three.js/r152/examples/textures/planets/earth_atmos_2048.jpg");background-size:cover,cover,220% 100%;background-position:center,center,72% 50%;box-shadow:inset -46px -28px 65px #01091bcb,inset 16px 12px 34px #6fe0ff4d,0 0 0 2px #13afdc3b,0 0 65px #188fff4a;opacity:.95}
+:root[data-theme="light"] .earth-portal{background:radial-gradient(ellipse at center,#9bd6e2,#41738d 62%,#10354d)}
+:root[data-theme="light"] .earth-actions button{background:#d6f2f5e8;color:#13516c}
+@media(max-width:700px){.earth-marker{font-size:.71rem;min-height:48px;max-width:160px;gap:6px;padding:6px 10px 6px 6px}.earth-marker-flag{width:23px;height:32px}.earth-marker-label small{font-size:.58rem}.earth-reset,.earth-skip{width:44px;height:44px;border-radius:13px;font-size:1.23rem}.earth-static-sphere{width:min(140vw,72vh);height:min(140vw,72vh)}}
+@media(max-width:460px){.site-header .header-inner{gap:5px}.site-header .avatar{width:32px;height:32px}.site-header .brand-name{max-width:118px;font-size:.62rem;line-height:1.14}.site-header .lang-select{max-width:75px;padding:7px 4px}.site-header .theme-switch,.site-header .menu-switch{min-width:34px;min-height:44px;padding:7px}.site-header .header-tools{gap:4px}.site-header .np-reopen{min-width:36px;min-height:44px;padding:6px}}
+@media(prefers-reduced-motion:reduce){.earth-marker-flag{animation:none;will-change:auto}.earth-marker,.earth-reset,.earth-skip{transition:none!important}.earth-reset:hover,.earth-skip:hover{transform:none!important}}
+@media print{.earth-portal,.np-reopen{display:none!important}body.earth-gateway-open{overflow:visible}}
