@@ -59,4 +59,15 @@ body.np-gateway-open{overflow:hidden}
 @media(max-width:1050px){.np-portal-grid{grid-template-columns:1fr;gap:15px}.np-narrative{text-align:center}.np-portal h2{margin:12px auto;max-width:none;font-size:clamp(2.2rem,6vw,3.5rem)}.np-description{margin:0 auto 11px}.np-path,.np-controls{justify-content:center}.np-path{margin-bottom:13px}.np-map-wrap{height:min(54vw,440px)}.np-portal-shell{padding-top:13px;min-height:100dvh}.np-map-label{font-size:.68rem}.np-portal-grid{margin-top:7px}}
 @media(max-width:620px){.np-portal-shell{width:calc(100% - 22px);padding-top:9px}.np-top{gap:5px}.np-brand{font-size:.72rem}.np-brand-flag{font-size:1.2rem}.np-status{font-size:.6rem;padding:7px 8px;letter-spacing:0}.np-narrative{text-align:center}.np-portal h2{font-size:clamp(1.95rem,8vw,2.7rem);margin:10px auto}.np-eyebrow{font-size:.62rem}.np-description{font-size:.85rem;line-height:1.5;margin-bottom:9px}.np-path{font-size:.66rem;margin-bottom:12px}.np-controls{gap:7px}.np-btn{font-size:.74rem;padding:9px 11px;min-height:44px}.np-map-wrap{height:clamp(260px,63vw,380px)}.np-map-stage{border-radius:18px}.np-map-label{top:8px;left:9px;padding:6px 8px}.np-map-count{top:9px;right:8px;padding:6px;font-size:.61rem}.np-map-float{font-size:.68rem;padding:7px 9px;white-space:normal;max-width:200px;min-width:140px}.np-tooltip{bottom:10px;left:8px;font-size:.7rem}.np-bottom{justify-content:center;text-align:center;font-size:.59rem;gap:6px}.np-bottom .np-source{display:none}}
 @media(prefers-reduced-motion:reduce){.np-btn,.np-geo-fallback path{transition:none!important}.np-btn:hover{transform:none!important}}
+@media(max-width:460px){
+ .site-header .header-inner{gap:5px}
+ .site-header .brand{gap:5px}
+ .site-header .avatar{width:32px;height:32px}
+ .site-header .brand-name{max-width:118px;font-size:.62rem;line-height:1.14}
+ .site-header .lang-select{max-width:75px;padding:7px 4px}
+ .site-header .theme-switch,.site-header .menu-switch{min-width:34px;min-height:44px;padding:7px}
+ .site-header .header-tools{gap:4px}
+ .site-header .np-reopen{min-width:36px;min-height:44px;padding:6px}
+}
+@media(max-width:355px){.site-header .avatar{display:none}}
 @media print{.np-portal,.np-reopen{display:none!important}body.np-gateway-open{overflow:visible}}
