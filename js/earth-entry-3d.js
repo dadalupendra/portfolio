@@ -24,6 +24,7 @@
    zh:{label:'DARCHULA',sub:'尼泊尔 · 进入作品集',skip:'打开作品集',reset:'重置地球视角',entry:'从 Darchula 进入',hint:'拖动地球，点击 Darchula 的尼泊尔旗帜进入。'},
    ko:{label:'DARCHULA',sub:'네팔 · 포트폴리오 열기',skip:'포트폴리오 열기',reset:'지구 보기 초기화',entry:'Darchula에서 열기',hint:'지구를 드래그하고 Darchula의 네팔 국기를 누르세요.'}
  };
+ const REOPEN={en:'Reopen 3D Earth',ne:'3D पृथ्वी फेरि खोल्नुहोस्',ja:'3D地球を再表示',hi:'3D पृथ्वी फिर से खोलें',zh:'重新打开3D地球',ko:'3D 지구 다시 열기'};
  const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
  let renderer=null,scene=null,camera=null,globePivot=null,globe=null,globeMaterial=null,halo=null,spot=null,hitSphere=null,stars=null,cloudMesh=null;
  let raf=0,last=0,elapsed=0,active=false,has3D=false,textureLoaded=false;
@@ -38,6 +39,7 @@
   skip.setAttribute('aria-label',data.skip);
   reset.setAttribute('aria-label',data.reset);
   entry.setAttribute('aria-label',data.entry);
+  const reopen=$('#npMapReopen');if(reopen)reopen.setAttribute('aria-label',REOPEN[code]||REOPEN.en);
   canvas.setAttribute('aria-label',data.hint);
  }
  new MutationObserver(labelUpdate).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
@@ -119,8 +121,11 @@
     if(reduced.matches)renderOnce();
   };
   loader.load(EARTH,installEarth,undefined,()=>loader.load(EARTH_BACKUP,installEarth,undefined,()=>{
-    console.warn('Earth image unavailable from both fixed sources; displaying geographic globe fallback');
-    if(!has3D)staticScene.hidden=false;
+    console.warn('Both Earth image sources unavailable — showing offline-friendly globe fallback');
+    stop();
+    has3D=false;
+    if(renderer)renderer.dispose();
+    fallback();
   }));
   if(!mobile.matches){
    const cloudsMaterial=new T.MeshLambertMaterial({color:0xffffff,transparent:true,opacity:.2,depthWrite:false});
