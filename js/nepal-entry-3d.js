@@ -161,6 +161,7 @@ function plotGeo(){
  const cloud=new T.Points(g,new T.PointsMaterial({color:colors.point,size:mobile.matches?.065:.105,transparent:true,opacity:.65,depthWrite:false}));
  scene.add(cloud);scene.userData.cloud=cloud;
  raycaster=new T.Raycaster();pointer=new T.Vector2();
+ if(resetButton)resetButton.hidden=false;
  resize();
  hasMap=true;marker.hidden=false;
  canvas.classList.remove('np-map-hover');
@@ -282,6 +283,7 @@ function tick(now){
 }
 function renderSVG(){
  if(!districts.length)return;
+ if(resetButton)resetButton.hidden=true;
  stop();canvas.hidden=true;marker.hidden=true;
  const portrait=stage.clientWidth/stage.clientHeight<.90;
  const W=portrait?650:1200,H=portrait?1200:700;
