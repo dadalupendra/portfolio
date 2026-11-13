@@ -116,6 +116,12 @@ Object.assign(dict.ne,{"sourceRepo":"GitHub रिपोजिटरी ↗","pr
 Object.assign(dict.hi,{"sourceRepo":"GitHub रिपॉजिटरी ↗","privateSource":"प्राइवेट रिपॉजिटरी — खोलने के लिए अनुमति आवश्यक है"});
 Object.assign(dict.zh,{"sourceRepo":"GitHub 代码仓库 ↗","privateSource":"私人仓库 — 需要访问权限"});
 Object.assign(dict.ko,{"sourceRepo":"GitHub 저장소 ↗","privateSource":"비공개 저장소 — 접근 권한이 필요합니다"});
+dict.en.privateLabel="🔒 Private";
+dict.ja.privateLabel="🔒 非公開";
+dict.ne.privateLabel="🔒 निजी";
+dict.hi.privateLabel="🔒 निजी";
+dict.zh.privateLabel="🔒 私人";
+dict.ko.privateLabel="🔒 비공개";
 const cvTranslations={
   en:{subtitle:'Information Processing Student | Tokyo, Japan',profile:'Profile',profileText:'IT student with practical project experience in HTML/CSS, JavaScript, Java and Oracle SQL.',tech:'Technical skills',work:'Selected work',education:'Education',experience:'Experience'},
   ja:{subtitle:'情報処理科 学生 | 日本・東京',profile:'プロフィール',profileText:'HTML/CSS、JavaScript、Java、Oracle SQLを学び、実践的な制作に取り組む情報処理科の学生。',tech:'技術スキル',work:'主な制作',education:'学歴',experience:'経験'},
@@ -207,7 +213,7 @@ function renderProjects(){
       const sourceLink=document.createElement('a');
       sourceLink.href=p.source;sourceLink.target='_blank';sourceLink.rel='noopener noreferrer';
       sourceLink.className='secondary';
-      sourceLink.textContent=t.sourceRepo;
+      sourceLink.textContent=t.sourceRepo+(p.sourcePrivate?' · '+t.privateLabel:'');
       if(p.sourcePrivate){sourceLink.title=t.privateSource;sourceLink.setAttribute('aria-label',t.sourceRepo+' — '+t.privateSource);}
       links.appendChild(sourceLink);
     }
