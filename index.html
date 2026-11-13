@@ -21,13 +21,60 @@
 <link rel="stylesheet" href="css/three-enhancements.css">
 <link rel="stylesheet" href="css/location-maps.css">
 <link rel="stylesheet" href="css/curated-legacy-features.css">
+<link rel="stylesheet" href="css/nepal-entry-3d.css">
 <script defer src="js/location-maps.js"></script>
 <script defer src="js/portfolio-v3.js"></script>
 <script defer src="js/three-effects.js"></script>
 <script defer src="js/curated-legacy-features.js"></script>
+<script defer src="js/nepal-entry-3d.js"></script>
 </head>
-<body>
+<body class="np-gateway-open">
 <canvas id="threeBackground" aria-hidden="true"></canvas>
+<div class="np-portal" id="npPortal" role="dialog" aria-modal="true" aria-labelledby="npPortalTitle" aria-describedby="npPortalIntro">
+  <div class="np-portal-shell">
+    <div class="np-top">
+      <span class="np-brand"><span class="np-brand-flag" aria-hidden="true">🇳🇵</span> DADAL UPENDRA SINGH <span aria-hidden="true">✦</span></span>
+      <label class="np-lang-label" for="npPortalLanguage">
+        <span class="sr-only">Portal language</span>
+        <select id="npPortalLanguage" aria-label="Map entry language" style="min-height:44px;min-width:110px;border:1px solid #1bbcd386;background:#07243ae8;color:#edffff;border-radius:11px;padding:9px 11px;font-weight:700">
+          <option value="en">🌐 English</option>
+          <option value="ne">🇳🇵 नेपाली</option>
+          <option value="ja">🇯🇵 日本語</option>
+          <option value="hi">🇮🇳 हिन्दी</option>
+          <option value="zh">🇨🇳 中文</option>
+          <option value="ko">🇰🇷 한국어</option>
+        </select>
+      </label>
+      <span class="np-status" data-np-i18n="status">CLICK DARCHULA TO ENTER</span>
+    </div>
+    <div class="np-portal-grid">
+      <div class="np-narrative">
+        <span class="np-eyebrow" data-np-i18n="eyebrow">INTERACTIVE 3D NEPAL MAP</span>
+        <h2 id="npPortalTitle"><span data-np-i18n="titleA">From Nepal,</span> <span data-np-i18n="titleB">to my portfolio.</span></h2>
+        <p class="np-description" id="npPortalIntro" data-np-i18n="intro">Explore the real district boundaries of Nepal. Darchula, my home district, is highlighted in cyan. Click Darchula to enter my interactive portfolio.</p>
+        <div class="np-path" aria-label="Navigation route"><span data-np-i18n="pathCountry">NEPAL</span><i aria-hidden="true">→</i><strong data-np-i18n="pathDistrict">DARCHULA</strong><i aria-hidden="true">→</i><span data-np-i18n="pathPortfolio">MY PORTFOLIO</span></div>
+        <div class="np-controls">
+          <button class="np-btn np-btn-main" type="button" id="npPortalEnter" data-np-i18n="enter">📍 Enter via Darchula ↗</button>
+          <button class="np-btn np-btn-alt" type="button" id="npSkipMap" data-np-i18n="skip">Skip map / Open portfolio</button>
+        </div>
+      </div>
+      <div class="np-map-wrap">
+        <div class="np-map-stage" id="npMapStage">
+          <span class="np-map-label" data-np-i18n="mapLabel">NEPAL · 77 DISTRICTS</span>
+          <span class="np-map-count" data-np-i18n="mapCount">REAL BOUNDARIES · 3D</span>
+          <canvas id="npMapCanvas" class="np-map-canvas" role="img" aria-label="Interactive 3D Nepal district map with highlighted Darchula"></canvas>
+          <button id="npDarchulaMarker" class="np-map-float" type="button" data-np-i18n="darchula" aria-label="Darchula · Click to enter portfolio" hidden>DARCHULA · CLICK TO ENTER</button>
+          <div class="np-tooltip" id="npHoverText" role="status" aria-live="polite" aria-atomic="true">Loading district map…</div>
+        </div>
+      </div>
+    </div>
+    <div class="np-bottom">
+      <span data-np-i18n="source">Visual map boundaries simplified from the MIT-licensed Nepal GeoJSON dataset.</span>
+      <span class="np-source"><a href="https://github.com/Acesmndr/nepal-geojson" target="_blank" rel="noopener noreferrer" data-np-i18n="sourceLink">Map data / license</a></span>
+    </div>
+  </div>
+</div>
+<noscript><style>.np-portal{display:none!important}body.np-gateway-open{overflow:visible}</style></noscript>
 <a href="#main" class="skip">Skip to content</a>
 <header class="site-header" id="top">
 <div class="wrap header-inner">
@@ -52,6 +99,7 @@
       <option value="zh">🇨🇳 中文</option><option value="ko">🇰🇷 한국어</option>
     </select>
     <button class="theme-switch" id="themeToggle" type="button" aria-label="Toggle dark and light appearance">☀</button>
+    <button class="theme-switch np-reopen" id="npMapReopen" type="button" aria-label="Reopen interactive Nepal map" title="3D Nepal Map">🗺️</button>
     <a class="btn btn-primary header-hire" href="#contact" data-i18n="hire">Contact</a>
     <button class="menu-switch" id="menuToggle" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Open menu">☰</button>
   </div>
