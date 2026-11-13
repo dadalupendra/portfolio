@@ -284,12 +284,16 @@ function renderSVG(){
  if(!districts.length)return;
  stop();canvas.hidden=true;marker.hidden=true;
  const portrait=stage.clientWidth/stage.clientHeight<.90;
- const W=portrait?600:1200,H=portrait?1100:700;
+ const W=portrait?650:1200,H=portrait?1200:700;
+ const angle=portrait?Math.PI*.405:0;
+ const c=Math.cos(angle),sin=Math.sin(angle);
  const lonSpan=limits.maxLon-limits.minLon,latSpan=limits.maxLat-limits.minLat;
- const ratio=.89;
- const scale=portrait?Math.min(W*ratio/latSpan,H*ratio/lonSpan):Math.min(W*ratio/lonSpan,H*ratio/latSpan);
- const toXY=portrait?([lon,lat])=>[(lat-coordCenter.y)*scale+W/2,(lon-coordCenter.x)*scale+H/2]:
-   ([lon,lat])=>[(lon-coordCenter.x)*scale+W/2,(coordCenter.y-lat)*scale+H/2];
+ const rw=lonSpan*c+latSpan*sin,rh=lonSpan*sin+latSpan*c;
+ const scale=Math.min(W*.89/rw,H*.89/rh);
+ const toXY=([lon,lat])=>{
+   const dx=lon-coordCenter.x,dy=lat-coordCenter.y;
+   return [W/2+scale*(dx*c+dy*sin),H/2+scale*(dx*sin-dy*c)];
+ };
  if(fallbackSVG)fallbackSVG.remove();
  const NS='http://www.w3.org/2000/svg';
  fallbackSVG=document.createElementNS(NS,'svg');
@@ -319,6 +323,16 @@ function renderSVG(){
   }
  }
  stage.insertBefore(fallbackSVG,canvas);
+ // Keep a large, keyboard-accessible Darchula tap target even without WebGL.
+ const home=districts.find(d=>d.n.toUpperCase()==='DARCHULA');
+ if(home?.r?.[0]?.length&&marker){
+   const [x,y]=toXY(centroid(home.r[0]));
+   const w=stage.clientWidth,h=stage.clientHeight;
+   const k=Math.min(w/W,h/H),offX=(w-W*k)/2,offY=(h-H*k)/2;
+   marker.style.left=clamp(offX+x*k,76,w-76)+'px';
+   marker.style.top=clamp(offY+y*k,70,h-40)+'px';
+   marker.hidden=false;
+ }
  hint.textContent=tr('hover');
 }
 window.addEventListener('resize',()=>{
