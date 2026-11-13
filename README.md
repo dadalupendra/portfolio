@@ -131,3 +131,14 @@ delivery tracking and the Java email/Oracle backend are not connected.
 The separate private ChatGPT-hosted copy is no longer a portfolio destination.
 
 Frontend verification scripts are included in `nepal-spice/tests/`.
+
+## Interactive Nepal → Darchula 3D entry gateway (new)
+
+The live portfolio now opens through an **actual Three.js 3D model of Nepal's 77 district outlines**. **Darchula** (Sudurpashchim Province) is highlighted in glowing cyan. Clicking its district polygon, the anchored Darchula marker, or the **Enter via Darchula** button opens the existing portfolio (without changing its URL, navigation, projects or original content). A **Skip map** button is provided for accessibility, and the 🗺️ navbar button reopens the map at any time.
+
+- **Map data:** `data/nepal-districts-lite.json` contains simplified district polygons from [Acesmndr/nepal-geojson](https://github.com/Acesmndr/nepal-geojson), **MIT License, Copyright © 2018 Aashish Manandhar**. The geometry is simplified solely for 3D navigation. **This is not an elevation model, cadastral survey or authoritative border demarcation**; the extruded district plates are a visualization effect, not measured real terrain heights.
+- **True WebGL:** `js/nepal-entry-3d.js` uses the existing pinned Three.js CDN library to extrude all district shapes, add lighting, outline meshes, subtle parallax, animated Darchula highlight and a 3D navigation marker. District hover shows its name; only Darchula enters the portfolio.
+- **Accessibility:** accessible focusable controls, six-language English/Japanese/Nepali/Hindi/Chinese/Korean text, synchronization with the original language switcher, keyboard-accessible Darchula button and SVG fallback when WebGL fails, is blocked or reduced motion is preferred. A direct link to an existing `#section` bypasses the gateway so bookmarks work.
+- **Performance:** no new API keys, no tracking, no build step; use local GeoJSON; mobile effects are lighter, WebGL pixel ratio is capped at 2, frames stop when the tab is hidden or the gateway is closed, reduced-motion preference is respected. The original animated 3D portfolio, project links, skills, Education/Experience Google Maps, theme switcher and Print / Save Resume are preserved.
+- New files: `data/nepal-districts-lite.json`, `css/nepal-entry-3d.css`, `js/nepal-entry-3d.js`. The existing `index.html` only receives the entry gateway markup, assets and a map reopen button.
+
