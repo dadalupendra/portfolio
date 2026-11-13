@@ -29,7 +29,7 @@ body.np-gateway-open{overflow:hidden}
 .np-map-canvas{display:block;width:100%;height:100%;touch-action:pan-y;cursor:grab;outline-offset:-5px}
 .np-map-canvas.np-map-hover{cursor:pointer}
 .np-geo-fallback{display:block;width:100%;height:100%;padding:4px;overflow:visible}
-.np-geo-fallback[hidden]{display:none}
+.np-geo-fallback[hidden],.np-map-canvas[hidden],.np-map-float[hidden]{display:none!important}
 .np-geo-fallback path{stroke:#2ba3c7;stroke-width:1.1;fill:#0b2b51;transition:fill .16s,stroke .16s}
 .np-geo-fallback path.np-darchula-svg{fill:#0fa9c5;stroke:#b4fff9;stroke-width:2;cursor:pointer}
 .np-geo-fallback path.np-darchula-svg:hover,.np-geo-fallback path.np-darchula-svg:focus-visible{fill:#53fbf1;outline:2px solid #fcfffd;outline-offset:1px}
