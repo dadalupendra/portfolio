@@ -23,7 +23,17 @@ ko:{eyebrow:'네팔 인터랙티브 3D 지도',titleA:'네팔에서,',titleB:'�
 let locale='en',districts=[],scene=null,renderer=null,camera=null,mapGroup=null,mapMeshes=[],mapIsActive=false,raf=0,last=0,time=0;
 let meshDarchula=null,anchor=null,prevFocus=null,selectedHover='',mouseX=0,mouseY=0,raycaster=null,pointer=null,hasMap=false;
 let limits={minLon:80,minLat:26,maxLon:89,maxLat:31},coordCenter={x:84.5,y:28.5};
-let fallbackSVG=null;let frameSkip=0;
+let fallbackSVG=null,flagMesh=null,flagBasePositions=null,flagGroup=null;let frameSkip=0;
+const flagFallback=$('#npFlagFallback');
+const provincePalettes={
+  dark:[null,0x25ba7f,0xe8b145,0xee7185,0x2ca8e9,0xac81ed,0x92c959,0xfb9854],
+  light:[null,0x35b980,0xf1b447,0xe66e82,0x38a3ed,0xa67ce7,0x83bf4b,0xed944c]
+};
+const provinceColor=(p,name)=>{
+ const palette=provincePalettes[document.documentElement.dataset.theme==='light'?'light':'dark'];
+ const shade=([...name].reduce((a,ch)=>a+ch.charCodeAt(0),0)%7-3)*.015;
+ return new THREE.Color(palette[p]||0x2ca8e9).offsetHSL(0,0,shade);
+};
 function lang(){return words[document.documentElement.lang]?document.documentElement.lang:'en'}
 function tr(k){return words[locale][k]||words.en[k]||k}
 function translate(){
@@ -81,6 +91,7 @@ reduce.addEventListener?.('change',()=>{
  if(reduce.matches){stop();renderSVG()}
  else {
    if(fallbackSVG)fallbackSVG.hidden=true;
+   if(flagFallback)flagFallback.hidden=true;
    canvas.hidden=false;
    if(!hasMap&&districts.length){try{plotGeo()}catch(e){renderSVG();return}}
    if(hasMap){resize();start()}
@@ -123,13 +134,14 @@ function plotGeo(){
     shape.closePath();
     const hot=d.n.toUpperCase()==='DARCHULA';
     const geometry=new T.ExtrudeGeometry(shape,{depth:hot?.34:.13,steps:1,bevelEnabled:true,bevelThickness:.013,bevelSize:.011,bevelSegments:1});
-    const side=new T.MeshStandardMaterial({color:colors.side,metalness:.26,roughness:.42,transparent:false});
-    const top=new T.MeshStandardMaterial({color:hot?colors.hot:colors.base,emissive:hot?colors.hotEmissive:0x081d32,emissiveIntensity:hot?.52:.07,metalness:.3,roughness:.39});
+    const base=hot?new T.Color(colors.hot):provinceColor(d.p,d.n);
+    const side=new T.MeshStandardMaterial({color:base.clone().multiplyScalar(.61),metalness:.18,roughness:.68});
+    const top=new T.MeshStandardMaterial({color:base,emissive:hot?colors.hotEmissive:0x000000,emissiveIntensity:hot?.52:0,metalness:.16,roughness:.61});
     const mesh=new T.Mesh(geometry,[top,side]);
-    mesh.userData={district:d.n,hot};mesh.renderOrder=hot?2:1;
+    mesh.userData={district:d.n,province:d.p,hot};mesh.renderOrder=hot?2:1;
     mapGroup.add(mesh);mapMeshes.push(mesh);
     if(hot)meshDarchula=mesh;
-    const edge=new T.LineSegments(new T.EdgesGeometry(geometry,12),new T.LineBasicMaterial({color:hot?0x83fff6:colors.outline,transparent:true,opacity:hot?.92:.45,depthWrite:false}));
+    const edge=new T.LineSegments(new T.EdgesGeometry(geometry,12),new T.LineBasicMaterial({color:hot?0xc7fff4:(document.documentElement.dataset.theme==='light'?0x346378:0xaddde7),transparent:true,opacity:hot?.95:.53,depthWrite:false}));
     mapGroup.add(edge);
   }
  }
@@ -138,6 +150,7 @@ function plotGeo(){
  const ringGeo=new T.RingGeometry(.13,.19,32);
  const ring=new T.Mesh(ringGeo,new T.MeshBasicMaterial({color:0xa0fff6,side:T.DoubleSide,transparent:true,opacity:.94,depthWrite:false}));
  ring.position.copy(anchor);ring.renderOrder=8;mapGroup.add(ring);
+ createFlagCloth(T);
  const pointNum=mobile.matches?56:150;
  const points=[];
  for(let i=0;i<pointNum;i++){const r=8+Math.random()*10,a=Math.random()*Math.PI*2;points.push(Math.cos(a)*r,(Math.random()-.5)*11,Math.sin(a)*2-6)}
@@ -152,6 +165,61 @@ function plotGeo(){
  stage.addEventListener('pointerleave',()=>{mouseX=0;mouseY=0;canvas.classList.remove('np-map-hover');setHint(tr('hover'))});
  canvas.addEventListener('click',onMapClick);
 }
+/* Locally stored Nepal flag, with physical cloth-like ripples on a real 3D mesh.
+   Cropped authentic SVG source: assets/nepal-flag.svg (flag-icons, MIT).
+   No external images, image keys, false satellite layers or WebGL flags.
+*/
+function createFlagCloth(T){
+ const width=mobile.matches?2.8:3.65, height=mobile.matches?3.5:4.55;
+ flagGroup=new T.Group();
+ flagGroup.position.set(.68,.25,2.25);
+ scene.add(flagGroup);
+ const mast=new T.Mesh(new T.CylinderGeometry(.046,.052,height*1.26,12),
+   new T.MeshStandardMaterial({color:0xbce5e9,metalness:.82,roughness:.23}));
+ mast.position.set(-width/2+.075,-height*.06,-.04);
+ flagGroup.add(mast);
+ const finial=new T.Mesh(new T.SphereGeometry(.10,12,12),
+   new T.MeshStandardMaterial({color:0xf9df7a,metalness:.62,roughness:.24,emissive:0x845a1b,emissiveIntensity:.2}));
+ finial.position.set(-width/2+.075,height*.57,-.04);
+ flagGroup.add(finial);
+ const fabric=new T.PlaneGeometry(width,height,mobile.matches?16:30,mobile.matches?21:32);
+ flagBasePositions=new Float32Array(fabric.attributes.position.array);
+ const mat=new T.MeshStandardMaterial({color:0xffffff,transparent:true,alphaTest:.08,
+   side:T.DoubleSide,depthWrite:false,roughness:.8,metalness:0});
+ flagMesh=new T.Mesh(fabric,mat);
+ flagMesh.position.set(.07,0,.04);
+ flagMesh.renderOrder=20;flagMesh.frustumCulled=false;
+ flagGroup.add(flagMesh);
+ const tex=new T.TextureLoader();
+ tex.load('assets/nepal-flag.svg',texture=>{
+   texture.colorSpace=T.SRGBColorSpace;
+   texture.anisotropy=Math.min(4,renderer.capabilities.getMaxAnisotropy());
+   mat.map=texture;mat.needsUpdate=true;
+   if(flagFallback)flagFallback.hidden=true;
+ },undefined,error=>{
+   console.warn('Flag SVG texture not available; showing local fallback image',error);
+   flagMesh.visible=false;
+   if(flagFallback)flagFallback.hidden=false;
+ });
+}
+function flutterFlag(seconds){
+ if(!flagMesh||!flagMesh.visible||!flagBasePositions)return;
+ const attribute=flagMesh.geometry.attributes.position;
+ const width=flagMesh.geometry.parameters.width;
+ for(let i=0;i<attribute.count;i++){
+   const j=i*3;
+   const x=flagBasePositions[j],y=flagBasePositions[j+1],u=(x+width*.5)/width;
+   const ripple=Math.sin(seconds*2.6-u*10.8+y*.55)*(.035+.29*u);
+   const secondary=Math.cos(seconds*1.7-u*5.7+y*.23)*(.052*u);
+   attribute.setXYZ(i,x,y+Math.sin(seconds*2.3-u*7.2+y*.35)*.04*u,ripple+secondary);
+ }
+ attribute.needsUpdate=true;
+ flagMesh.geometry.computeVertexNormals();
+ flagGroup.rotation.y=Math.sin(seconds*.32)*.065;
+ flagGroup.rotation.x=Math.sin(seconds*.27)*.025;
+ flagGroup.position.y=.25+Math.sin(seconds*.58)*.07;
+}
+
 function resize(){
  if(!renderer||!camera)return;
  const w=Math.max(240,stage.clientWidth),h=Math.max(210,stage.clientHeight);
@@ -206,6 +274,7 @@ function tick(now){
    mapGroup.position.z=Math.sin(time*.48)*.07;
  }
  if(meshDarchula){const m=meshDarchula.material[0];m.emissiveIntensity=.46+Math.sin(time*1.7)*.15}
+ flutterFlag(time);
  const cloud=scene.userData.cloud;if(cloud)cloud.rotation.z=time*.004;
  renderer.render(scene,camera);
  if(!mobile.matches||frameSkip++%3===0)updateMarker();
@@ -214,6 +283,7 @@ function tick(now){
 function renderSVG(){
  if(!districts.length)return;
  stop();if(canvas)canvas.hidden=true;if(marker)marker.hidden=true;
+ if(flagFallback)flagFallback.hidden=false;
  if(fallbackSVG){fallbackSVG.hidden=false;return}
  const NS='http://www.w3.org/2000/svg';
  fallbackSVG=document.createElementNS(NS,'svg');fallbackSVG.classList.add('np-geo-fallback');
@@ -224,6 +294,7 @@ function renderSVG(){
     const coords=ring.map(([lon,lat])=>[(lon-limits.minLon)/(limits.maxLon-limits.minLon)*1120+40,(limits.maxLat-lat)/(limits.maxLat-limits.minLat)*540+55]);
     el.setAttribute('d',coords.map(([x,y],i)=>(i?'L':'M')+x.toFixed(2)+','+y.toFixed(2)).join(' ')+'Z');
     const hot=d.n.toUpperCase()==='DARCHULA';
+    el.setAttribute('data-province',String(d.p));
     el.setAttribute('aria-label',d.n+(hot?' — enter portfolio':''));
     el.setAttribute('tabindex',hot?'0':'-1');
     if(hot){
@@ -241,7 +312,11 @@ window.addEventListener('resize',()=>{clearTimeout(window.__npResizeTimer);windo
 new MutationObserver(()=>{
  if(!scene)return;
  const c=getColor();
- mapMeshes.forEach(m=>{const hot=m.userData.hot;m.material[0].color.setHex(hot?c.hot:c.base);m.material[1].color.setHex(c.side)});
+ mapMeshes.forEach(m=>{
+   const top=m.userData.hot?new THREE.Color(c.hot):provinceColor(m.userData.province,m.userData.district);
+   m.material[0].color.copy(top);
+   m.material[1].color.copy(top.clone().multiplyScalar(.61));
+ });
  scene.userData.cloud?.material.color.setHex(c.point);
 }).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
 async function init(){
