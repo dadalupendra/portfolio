@@ -103,3 +103,113 @@ body.np-gateway-open{overflow:hidden}
 @media(max-width:620px){.np-province-legend{gap:3px 9px;padding:5px 0 2px}.np-province-legend span{font-size:.59rem}.np-province-legend i{width:8px;height:8px}.np-flag-fallback{width:clamp(108px,34%,170px)}}
 @media(prefers-reduced-motion:reduce){.np-flag-fallback img{animation:none!important;will-change:auto}}
 @media print{.np-flag-fallback,.np-province-legend{display:none!important}}
+
+/* Full-viewport 3D Nepal map (the map is the screen, not a small side card).
+   Info and navigation remain accessible as overlays. */
+.np-portal{overflow:hidden}
+.np-portal-shell{
+ width:100%;max-width:none;min-height:100vh;min-height:100dvh;
+ height:100vh;height:100dvh;padding:0;margin:0;display:block;overflow:hidden
+}
+.np-portal-grid{position:absolute;inset:0;display:block;margin:0;min-height:0}
+.np-map-wrap{
+ position:absolute;inset:0;width:100%;height:100%;
+ min-height:0;max-height:none;align-self:auto
+}
+.np-map-stage{
+ position:absolute;inset:0;border:0;border-radius:0;
+ box-shadow:inset 0 0 130px #0097bc0c;
+ background:radial-gradient(ellipse at 53% 47%,#14578165,transparent 67%)
+}
+.np-map-stage:after{border-radius:0;inset:0;background:radial-gradient(ellipse at 50% 45%,transparent 55%,#030e2059 100%)}
+.np-top{
+ position:absolute;top:20px;left:clamp(16px,2.5vw,44px);
+ right:clamp(16px,2.5vw,44px);z-index:20;min-height:54px;
+ pointer-events:none
+}
+.np-top>*{pointer-events:auto}
+.np-narrative{
+ position:absolute;z-index:17;top:auto;left:clamp(15px,2.5vw,44px);
+ bottom:clamp(86px,10vh,120px);width:min(395px,37vw);
+ max-height:calc(100dvh - 195px);overflow-y:auto;
+ padding:clamp(16px,2vw,26px);border-radius:20px;
+ border:1px solid #31d9e75b;
+ background:linear-gradient(135deg,#031527eb,#071f39d9);
+ box-shadow:0 18px 55px #0008,0 0 38px #14cbe719;
+ backdrop-filter:blur(18px) saturate(1.2);
+ text-align:left;align-self:auto
+}
+.np-portal h2{font-size:clamp(1.5rem,2.4vw,2.35rem);max-width:none;margin:11px 0 10px}
+.np-description{font-size:.84rem;line-height:1.57;margin:0 0 14px}
+.np-path{font-size:.68rem;gap:5px;margin:0 0 14px;justify-content:flex-start}
+.np-controls{gap:8px;justify-content:flex-start}
+.np-btn{font-size:.76rem;min-height:44px;padding:9px 12px}
+.np-map-label{top:95px;left:clamp(16px,2.5vw,44px)}
+.np-map-count{top:95px;right:clamp(16px,2.5vw,44px)}
+.np-map-float{z-index:18}
+.np-tooltip{bottom:85px;left:auto;right:clamp(16px,2.5vw,44px);max-width:min(45vw,390px)}
+.np-bottom{
+ position:absolute;z-index:20;left:clamp(16px,2.5vw,44px);
+ right:clamp(16px,2.5vw,44px);bottom:12px;
+ display:flex;flex-direction:row;gap:6px 17px;
+ justify-content:center;align-items:center;
+ margin:0;padding:9px 12px;border:1px solid #37d4e53c;
+ border-radius:14px;background:#04172ac7;backdrop-filter:blur(14px)
+}
+.np-province-legend{
+ flex:1 1 100%;border-top:0;padding:0;
+ gap:6px 13px;justify-content:center
+}
+.np-bottom>span[data-np-i18n="source"]{display:none}
+.np-source{position:absolute;right:9px;bottom:5px;opacity:.72;font-size:.58rem}
+.np-geo-fallback{padding:0}
+:root[data-theme="light"] .np-narrative{
+ background:linear-gradient(135deg,#f3fcffec,#d4e9f7e8);
+ border-color:#31a5c989;box-shadow:0 16px 42px #173d6830
+}
+:root[data-theme="light"] .np-bottom{background:#e8f8ffdb;border-color:#168abb64}
+:root[data-theme="light"] .np-map-stage{background:radial-gradient(ellipse at center,#80cbf34a,transparent 68%)}
+@media(max-width:1050px){
+ .np-portal-grid{display:block;margin:0}
+ .np-map-wrap{height:100%;min-height:0}
+ .np-narrative{top:auto;bottom:90px;left:20px;width:min(360px,40vw);text-align:left}
+ .np-path,.np-controls{justify-content:flex-start}
+ .np-map-label,.np-map-count{top:88px}
+}
+@media(max-width:700px){
+ .np-top{top:8px;left:10px;right:10px;gap:5px}
+ .np-brand{font-size:.69rem;letter-spacing:.015em}
+ .np-status{font-size:.56rem;padding:6px}
+ .np-map-label{top:66px;left:10px;font-size:.59rem}
+ .np-map-count{top:66px;right:10px;font-size:.56rem}
+ .np-narrative{
+   top:106px;left:10px;right:10px;bottom:auto;
+   width:auto;max-height:33dvh;padding:12px 13px;
+   text-align:center;border-radius:14px;overflow-y:auto
+ }
+ .np-portal h2{font-size:clamp(1.14rem,4.5vw,1.55rem);line-height:1.2;margin:6px 0}
+ .np-eyebrow{font-size:.57rem;letter-spacing:.07em}
+ .np-description{font-size:.73rem;line-height:1.4;margin-bottom:7px}
+ .np-path{justify-content:center;font-size:.6rem;margin-bottom:8px}
+ .np-controls{justify-content:center;gap:6px}
+ .np-btn{font-size:.68rem;padding:7px 8px;min-height:44px}
+ .np-bottom{left:7px;right:7px;bottom:5px;padding:6px 8px}
+ .np-province-legend{gap:3px 9px}
+ .np-province-legend span{font-size:.58rem}
+ .np-source{display:none}
+ .np-tooltip{left:10px;right:auto;bottom:76px;max-width:calc(100% - 20px);font-size:.67rem}
+ .np-map-float{font-size:.66rem}
+}
+@media(max-width:700px) and (max-height:700px){
+ .np-narrative{top:77px;max-height:25dvh}
+ .np-description{display:none}
+ .np-path{display:none}
+ .np-map-label,.np-map-count{top:48px}
+ .np-tooltip{bottom:66px}
+}
+@media(max-width:400px){
+ .np-narrative{top:96px;padding:10px}
+ .np-map-count{font-size:.5rem}
+ .np-province-legend span{font-size:.51rem}
+ .np-province-legend{gap:2px 7px}
+}
