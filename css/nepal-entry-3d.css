@@ -71,3 +71,35 @@ body.np-gateway-open{overflow:hidden}
 }
 @media(max-width:355px){.site-header .avatar{display:none}}
 @media print{.np-portal,.np-reopen{display:none!important}body.np-gateway-open{overflow:visible}}
+
+/* Colourful real district boundaries: provinces 1–7 have distinct colours.
+   Colour is illustrative (not satellite imagery or measured elevations). */
+.np-geo-fallback path[data-province="1"]{fill:#25ba7f;stroke:#d8ffee}
+.np-geo-fallback path[data-province="2"]{fill:#e8b145;stroke:#fff2c6}
+.np-geo-fallback path[data-province="3"]{fill:#ee7185;stroke:#ffe4e7}
+.np-geo-fallback path[data-province="4"]{fill:#2ca8e9;stroke:#d5f3ff}
+.np-geo-fallback path[data-province="5"]{fill:#ac81ed;stroke:#f0e4ff}
+.np-geo-fallback path[data-province="6"]{fill:#92c959;stroke:#f2ffdf}
+.np-geo-fallback path[data-province="7"]{fill:#fb9854;stroke:#fff0e4}
+.np-geo-fallback path.np-darchula-svg{fill:#0ce5d3;stroke:#e5fffa;stroke-width:2.2;filter:drop-shadow(0 0 5px #00f4e6)}
+.np-geo-fallback path.np-darchula-svg:hover,.np-geo-fallback path.np-darchula-svg:focus-visible{fill:#70ffea}
+:root[data-theme="light"] .np-geo-fallback path:not(.np-darchula-svg){stroke:#ffffffbd}
+.np-flag-fallback{position:absolute;z-index:6;pointer-events:none;width:clamp(132px,36%,270px);height:auto;aspect-ratio:385 / 480;top:46%;left:51%;transform:translate(-50%,-50%) perspective(650px);filter:drop-shadow(0 10px 14px #0007) drop-shadow(0 0 11px #36ddea4e);transform-style:preserve-3d}
+.np-flag-fallback[hidden]{display:none!important}
+.np-flag-fallback img{display:block;width:100%;height:100%;object-fit:contain;transform-origin:8% 50%;animation:np-flag-ripple 1.55s ease-in-out infinite alternate;will-change:transform}
+@keyframes np-flag-ripple{
+  0%{transform:perspective(480px) rotateY(-13deg) skewY(-1.1deg) scaleX(.97)}
+  50%{transform:perspective(480px) rotateY(6deg) skewY(1.5deg) scaleX(1.02)}
+  100%{transform:perspective(480px) rotateY(-9deg) skewY(-1deg) scaleX(.98)}
+}
+.np-province-legend{display:flex;align-items:center;justify-content:center;gap:5px 12px;flex-wrap:wrap;flex-basis:100%;padding:10px 7px 2px;border-top:1px solid #21a9cf26}
+.np-province-legend span{display:inline-flex;align-items:center;gap:5px;font-size:.7rem;color:#b7d4e5;white-space:nowrap}
+.np-province-legend i{width:11px;height:11px;display:inline-block;border-radius:3px;border:1px solid #ffffff6c;box-shadow:0 0 7px #0004}
+.np-province-legend .np-p1{background:#25ba7f}.np-province-legend .np-p2{background:#e8b145}
+.np-province-legend .np-p3{background:#ee7185}.np-province-legend .np-p4{background:#2ca8e9}
+.np-province-legend .np-p5{background:#ac81ed}.np-province-legend .np-p6{background:#92c959}
+.np-province-legend .np-p7{background:#fb9854}
+:root[data-theme="light"] .np-province-legend span{color:#214e71}
+@media(max-width:620px){.np-province-legend{gap:3px 9px;padding:5px 0 2px}.np-province-legend span{font-size:.59rem}.np-province-legend i{width:8px;height:8px}.np-flag-fallback{width:clamp(108px,34%,170px)}}
+@media(prefers-reduced-motion:reduce){.np-flag-fallback img{animation:none!important;will-change:auto}}
+@media print{.np-flag-fallback,.np-province-legend{display:none!important}}
