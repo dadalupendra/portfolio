@@ -222,9 +222,20 @@ function flutterFlag(seconds){
 
 function resize(){
  if(!renderer||!camera)return;
+ // Fit all 77 genuine district polygons to the full viewport without cropping Nepal.
+ // At narrow phone widths zoom out based on aspect ratio; at large widths zoom in.
  const w=Math.max(240,stage.clientWidth),h=Math.max(210,stage.clientHeight);
- renderer.setSize(w,h,false);camera.aspect=w/h;
- camera.position.z=mobile.matches?22:((w/h)<1.3?20:17.5);
+ renderer.setSize(w,h,false);
+ const aspect=w/h;
+ camera.aspect=aspect;
+ const countryWidth=(limits.maxLon-limits.minLon)*1.45;
+ const countryHeight=(limits.maxLat-limits.minLat)*1.45;
+ const tanHalfFov=Math.tan(THREE.MathUtils.degToRad(camera.fov*.5));
+ const fitWidth=countryWidth/(2*tanHalfFov*aspect);
+ const fitHeight=countryHeight/(2*tanHalfFov);
+ const padding=aspect<.8?1.22:1.18;
+ camera.position.z=Math.min(58,Math.max(10.7,Math.max(fitWidth,fitHeight)*padding));
+ camera.position.y=aspect<.8?.15:.35;
  camera.updateProjectionMatrix();
  if(renderer.domElement!==canvas)return;
  updateMarker();
