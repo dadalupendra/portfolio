@@ -67,6 +67,12 @@ ko:{
  journeyOne:'10학년까지 · Shree Siddha Secondary School',journeyOneSub:'네팔 다르출라 Sina',journeyTwo:'12학년 · Shree Sampal Secondary School',journeyTwoSub:'Sunsera · 2078 B.S. · GPA 2.73',journeyThree:'정보처리 · 도쿄 테크니컬 칼리지',journeyThreeSub:'일본 도쿄 히가시나카노',journeyOpen:'학교 및 지도 보기 ↗'
 }
 };
+translations.en.buildingFive="🌍 NextStep Global · Web project";
+translations.ja.buildingFive="🌍 NextStep Global · Web制作";
+translations.ne.buildingFive="🌍 NextStep Global · वेब प्रोजेक्ट";
+translations.hi.buildingFive="🌍 NextStep Global · वेब प्रोजेक्ट";
+translations.zh.buildingFive="🌍 NextStep Global · 网页项目";
+translations.ko.buildingFive="🌍 NextStep Global · 웹 프로젝트";
 const all=s=>Array.from(document.querySelectorAll(s));
 const tabs=all('[data-bio-lang]');
 const panels={en:document.getElementById('bioPanelEn'),ja:document.getElementById('bioPanelJa'),ne:document.getElementById('bioPanelNe')};
