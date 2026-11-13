@@ -147,7 +147,7 @@
  }
  function frame(now){
   state.raf=requestAnimationFrame(frame);
-  if(state.hidden||state.reduced||document.body.classList.contains('np-gateway-open'))return; // Pause covered portfolio WebGL while Nepal gateway is visible
+  if(state.hidden||state.reduced||document.body.classList.contains('earth-gateway-open'))return; // Pause covered portfolio WebGL while Nepal gateway is visible
   if(state.last&&now-state.last<(mobile()?48:29))return;
   const dt=state.last?math.clamp((now-state.last)/1000,0,.06):.03;
   state.last=now;
