@@ -63,12 +63,22 @@
           <span class="np-map-label" data-np-i18n="mapLabel">NEPAL · 77 DISTRICTS</span>
           <span class="np-map-count" data-np-i18n="mapCount">REAL BOUNDARIES · 3D</span>
           <canvas id="npMapCanvas" class="np-map-canvas" role="img" aria-label="Interactive 3D Nepal district map with highlighted Darchula"></canvas>
+          <div class="np-flag-fallback" id="npFlagFallback" aria-hidden="true" hidden><img src="assets/nepal-flag.svg" alt="" width="385" height="480" decoding="async"></div>
           <button id="npDarchulaMarker" class="np-map-float" type="button" data-np-i18n="darchula" aria-label="Darchula · Click to enter portfolio" hidden>DARCHULA · CLICK TO ENTER</button>
           <div class="np-tooltip" id="npHoverText" role="status" aria-live="polite" aria-atomic="true">Loading district map…</div>
         </div>
       </div>
     </div>
     <div class="np-bottom">
+      <div class="np-province-legend" role="group" aria-label="Province colours on Nepal map">
+        <span><i class="np-p1" aria-hidden="true"></i>Koshi</span>
+        <span><i class="np-p2" aria-hidden="true"></i>Madhesh</span>
+        <span><i class="np-p3" aria-hidden="true"></i>Bagmati</span>
+        <span><i class="np-p4" aria-hidden="true"></i>Gandaki</span>
+        <span><i class="np-p5" aria-hidden="true"></i>Lumbini</span>
+        <span><i class="np-p6" aria-hidden="true"></i>Karnali</span>
+        <span><i class="np-p7" aria-hidden="true"></i>Sudurpashchim</span>
+      </div>
       <span data-np-i18n="source">Visual map boundaries simplified from the MIT-licensed Nepal GeoJSON dataset.</span>
       <span class="np-source"><a href="https://github.com/Acesmndr/nepal-geojson" target="_blank" rel="noopener noreferrer" data-np-i18n="sourceLink">Map data / license</a></span>
     </div>
