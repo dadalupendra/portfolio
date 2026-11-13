@@ -142,3 +142,11 @@ The live portfolio now opens through an **actual Three.js 3D model of Nepal's 77
 - **Performance:** no new API keys, no tracking, no build step; use local GeoJSON; mobile effects are lighter, WebGL pixel ratio is capped at 2, frames stop when the tab is hidden or the gateway is closed, reduced-motion preference is respected. The original animated 3D portfolio, project links, skills, Education/Experience Google Maps, theme switcher and Print / Save Resume are preserved.
 - New files: `data/nepal-districts-lite.json`, `css/nepal-entry-3d.css`, `js/nepal-entry-3d.js`. The existing `index.html` only receives the entry gateway markup, assets and a map reopen button.
 
+
+## Animated national flag and full-colour Nepal map
+
+The map gateway shows a **large 3D Nepal national flag floating at the centre of the geographic map**. The textured Three.js cloth mesh updates its vertices and normals while visible, producing an animated wind/waving effect. A thin mast is included. The flag image is served locally from `assets/nepal-flag.svg` — a cropped viewBox adaptation of the Nepal flag vector from [flag-icons](https://github.com/lipis/flag-icons), MIT License, Copyright © 2013 Panayiotis Lipiridis. The colours and white symbols of the official flag are preserved. This file is not hotlinked.
+
+The actual 77-district map boundaries are retained unchanged, but the 3D surfaces are now shaded using **seven distinct province colours** (Koshi, Madhesh, Bagmati, Gandaki, Lumbini, Karnali, Sudurpashchim). Each district has a slight, deterministic shade variation. Darchula still glows turquoise and opens the portfolio when clicked. A province-colour legend was added; the accessible SVG fallback also uses the same province colour categories. **The colouring is an aesthetic province visualisation, not measured satellite imagery or elevation data.**
+
+The flag waves continuously **while the map gateway is visible**; animation pauses when the tab is hidden, when the map closes and for reduced-motion users. If WebGL or the flag texture fails, the locally hosted flag SVG is displayed as a CSS-waving fallback; reduced-motion turns that fallback animation off.
