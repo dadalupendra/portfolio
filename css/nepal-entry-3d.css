@@ -1,85 +1,110 @@
-/* Nepal 77-district full-screen 3D map. No hero panels, flag, legend or text cards.
-   Darchula remains clickable; small skip and district marker are accessible. */
+/* Nepal map | edge-to-edge cinematic WebGL entry.
+   The map, not navigation panels, is the entire experience. */
 body.np-gateway-open{overflow:hidden}
 .np-portal[hidden],.np-map-float[hidden],.np-map-canvas[hidden],.np-geo-fallback[hidden]{display:none!important}
 .np-portal{
- position:fixed;inset:0;z-index:300;overflow:hidden;
+ position:fixed;inset:0;z-index:300;overflow:hidden;isolation:isolate;
  width:100%;height:100vh;height:100dvh;
- background:radial-gradient(ellipse at 51% 45%,#114968 0%,#071e37 44%,#030c1c 100%);
- isolation:isolate;color:#f0ffff
+ background:
+ radial-gradient(ellipse 70% 57% at 50% 53%,#103d50 0%,#092437 58%,transparent 100%),
+ radial-gradient(ellipse at 84% 15%,#14607844 0%,transparent 44%),
+ linear-gradient(142deg,#030b18,#07182b 55%,#030c1b);
+ color:#eafeff
 }
 .np-portal::before{
- content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
- background:radial-gradient(circle at 40% 39%,#19a9c022,transparent 58%);
+ content:"";position:absolute;inset:-30%;z-index:-1;pointer-events:none;
+ background:
+ repeating-linear-gradient(0deg,transparent 0px,transparent 53px,#1bc4d20a 54px,transparent 55px),
+ repeating-linear-gradient(90deg,transparent 0px,transparent 53px,#1bc4d208 54px,transparent 55px);
+ transform:perspective(800px) rotateX(29deg);opacity:.52
 }
-.np-map-stage{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;touch-action:pan-y}
-.np-map-canvas{display:block;width:100%;height:100%;cursor:grab;outline-offset:-5px}
+.np-portal::after{
+ content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+ background:radial-gradient(ellipse at 50% 47%,transparent 38%,#0108155c 100%)
+}
+.np-map-stage{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;touch-action:none}
+.np-map-canvas{display:block;width:100%;height:100%;touch-action:none;cursor:grab;outline-offset:-5px}
 .np-map-canvas.np-map-hover{cursor:pointer}
+.np-map-canvas.np-dragging{cursor:grabbing}
 .np-sr-only{
  position:absolute!important;width:1px!important;height:1px!important;padding:0!important;
  margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;
  white-space:nowrap!important;border:0!important
 }
 .np-sr-only:focus-visible{
- position:fixed!important;z-index:400;top:9px;left:9px;
+ position:fixed!important;z-index:400;left:12px;top:12px;
  width:auto!important;height:auto!important;overflow:visible!important;
  margin:0!important;padding:12px!important;clip:auto!important;
- background:#0b2943;color:#fff;border:2px solid #51fff2;border-radius:10px
+ color:#fff;background:#0b2943;border:2px solid #3ee4db;border-radius:10px
 }
-.np-portal-skip{
- position:absolute;z-index:30;right:max(12px,env(safe-area-inset-right));
- top:max(13px,env(safe-area-inset-top));display:grid;place-items:center;
+.np-portal-actions{
+ position:absolute;top:calc(max(13px,env(safe-area-inset-top)) + 3px);
+ right:max(14px,env(safe-area-inset-right));
+ z-index:30;display:flex;flex-direction:column;gap:9px;align-items:flex-end
+}
+.np-portal-skip,.np-map-reset{
  width:46px;height:46px;min-width:44px;min-height:44px;padding:0;
- border:1px solid #48d8e9a9;border-radius:50%;
- background:#04172dbc;color:#b9fbff;
- font-size:1.55rem;font-weight:800;line-height:1;cursor:pointer;
- box-shadow:0 3px 20px #0009;backdrop-filter:blur(12px);
- transition:border-color .18s ease,background .18s ease,transform .18s ease
+ display:grid;place-items:center;
+ border:1px solid #3db6bf94;border-radius:15px;
+ background:#071d30cd;color:#c9faff;font:800 1.55rem/1 system-ui;
+ cursor:pointer;backdrop-filter:blur(14px);
+ box-shadow:0 7px 27px #0006;transition:transform .2s,background .2s,border-color .2s
 }
-.np-portal-skip:hover{background:#106580e5;border-color:#9fffea;transform:scale(1.07)}
+.np-portal-skip:hover,.np-map-reset:hover{background:#164d61ed;border-color:#7afff1;transform:translateY(-2px)}
+.np-portal-skip:active,.np-map-reset:active{transform:scale(.95)}
 .np-map-float{
- position:absolute;z-index:18;display:inline-flex;align-items:center;justify-content:center;
- gap:5px;left:50%;top:50%;transform:translate(-50%,-110%);
- max-width:150px;min-height:44px;padding:7px 12px;border-radius:100px;
- border:1px solid #99fff4;background:#033c4eea;color:#f0fffe;
- font:800 clamp(.65rem,1.5vw,.84rem)/1.1 Inter,"Noto Sans Devanagari",system-ui,sans-serif;
- white-space:nowrap;text-align:center;letter-spacing:.03em;cursor:pointer;
- box-shadow:0 0 0 5px #0be6e123,0 0 23px #09f8e779,0 9px 18px #0009;
- pointer-events:auto
+ position:absolute;z-index:22;display:flex;align-items:center;gap:8px;
+ left:50%;top:50%;transform:translate(-50%,-105%);
+ min-height:48px;max-width:196px;padding:9px 15px;
+ border:1px solid #b8fff6d4;border-radius:14px;
+ background:linear-gradient(120deg,#053547f5,#042235f5);
+ color:#eaffff;font:850 .84rem/1.2 Inter,"Noto Sans Devanagari",system-ui,sans-serif;
+ letter-spacing:.06em;text-align:center;white-space:nowrap;
+ cursor:pointer;box-shadow:0 0 0 5px #16f9dc19,0 0 23px #06e3c781,0 9px 25px #000a;
+ transition:box-shadow .2s,background .2s;
 }
-.np-map-float::before{content:"";width:7px;height:7px;flex:none;background:#6effe5;border-radius:50%;box-shadow:0 0 9px #74ffee}
+.np-map-float::before{
+ content:"";flex:0 0 9px;width:9px;height:9px;border-radius:50%;background:#56ffe4;
+ box-shadow:0 0 0 4px #10ebba25,0 0 16px #38ffe1;animation:np-pulse 2.8s ease-in-out infinite
+}
 .np-map-float::after{
- content:"";position:absolute;left:calc(50% - 5px);bottom:-6px;width:10px;height:10px;
- transform:rotate(45deg);background:#033c4e;border-right:1px solid #99fff4;border-bottom:1px solid #99fff4
+ content:"";position:absolute;left:calc(50% - 6px);bottom:-7px;width:12px;height:12px;
+ transform:rotate(45deg);background:#042638;border-right:1px solid #b8fff6;
+ border-bottom:1px solid #b8fff6
 }
-.np-map-float:hover{border-color:#fff;background:#005f71;box-shadow:0 0 0 6px #0be6e12e,0 0 34px #09f8e7b0}
-.np-portal :focus-visible{outline:3px solid #d4fff2;outline-offset:3px}
+.np-map-float:hover{
+ background:#086472f7;box-shadow:0 0 0 8px #16f9dc29,0 0 32px #06e3c7ba,0 9px 25px #000a
+}
+@keyframes np-pulse{0%,100%{box-shadow:0 0 0 4px #10ebba25,0 0 12px #38ffe1}55%{box-shadow:0 0 0 8px #10ebba09,0 0 22px #38ffe1}}
+.np-portal :focus-visible{outline:3px solid #ebffed;outline-offset:4px}
 .np-geo-fallback{display:block;width:100%;height:100%;overflow:hidden}
-.np-geo-fallback path{stroke:#d9ecffb2;stroke-width:1.3;stroke-linejoin:round;stroke-linecap:round;transition:fill .16s}
-.np-geo-fallback path[data-province="1"]{fill:#25ba7f}
-.np-geo-fallback path[data-province="2"]{fill:#e8b145}
-.np-geo-fallback path[data-province="3"]{fill:#ee7185}
-.np-geo-fallback path[data-province="4"]{fill:#2ca8e9}
-.np-geo-fallback path[data-province="5"]{fill:#ac81ed}
-.np-geo-fallback path[data-province="6"]{fill:#92c959}
-.np-geo-fallback path[data-province="7"]{fill:#fb9854}
+.np-geo-fallback path{stroke:#c8edebad;stroke-width:1.2;stroke-linejoin:round;transition:fill .15s}
+.np-geo-fallback path[data-province="1"]{fill:#29ae90}
+.np-geo-fallback path[data-province="2"]{fill:#d4ab59}
+.np-geo-fallback path[data-province="3"]{fill:#d97f8b}
+.np-geo-fallback path[data-province="4"]{fill:#4fadd5}
+.np-geo-fallback path[data-province="5"]{fill:#a18bda}
+.np-geo-fallback path[data-province="6"]{fill:#91bf74}
+.np-geo-fallback path[data-province="7"]{fill:#e0a064}
 .np-geo-fallback path.np-darchula-svg{
- fill:#0ce5d3;stroke:#edffff;stroke-width:2.6;
- filter:drop-shadow(0 0 4px #21ffe0);cursor:pointer
+ fill:#14efcd;stroke:#fff;stroke-width:2.4;
+ filter:drop-shadow(0 0 6px #16f3d9);cursor:pointer
 }
-.np-geo-fallback path.np-darchula-svg:hover,.np-geo-fallback path.np-darchula-svg:focus-visible{
- fill:#80ffe6;outline:2px solid #fff;outline-offset:1px
-}
+.np-geo-fallback path.np-darchula-svg:hover,.np-geo-fallback path.np-darchula-svg:focus-visible{fill:#b9fff0}
 .np-reopen{min-height:44px;min-width:44px}
 :root[data-theme="light"] .np-portal{
- background:radial-gradient(ellipse at 50% 50%,#c4eaf5,#84bbd7 65%,#548aaa)
+ background:radial-gradient(ellipse at 48% 49%,#b7e4eb,#8ebccc 62%,#477995)
 }
-:root[data-theme="light"] .np-map-float{background:#005968;color:#fff;border-color:#b2fff9}
-:root[data-theme="light"] .np-portal-skip{background:#ecfbffcf;color:#07517a;border-color:#388aad}
+:root[data-theme="light"] .np-portal::before{opacity:.25}
+:root[data-theme="light"] .np-map-float{background:#024f60ee;color:#f5ffff;border-color:#d9fffc}
+:root[data-theme="light"] .np-portal-skip,:root[data-theme="light"] .np-map-reset{
+ background:#e7f8f9df;color:#073f55;border-color:#368e99a6
+}
 :root[data-theme="light"] .np-geo-fallback path:not(.np-darchula-svg){stroke:#ffffffbe}
 @media(max-width:700px){
- .np-portal-skip{top:max(12px,env(safe-area-inset-top));right:max(12px,env(safe-area-inset-right));width:44px;height:44px;font-size:1.35rem}
- .np-map-float{font-size:.7rem;min-height:44px;max-width:132px;padding:7px 11px}
+ .np-portal-actions{top:calc(max(9px,env(safe-area-inset-top)) + 2px);right:max(10px,env(safe-area-inset-right))}
+ .np-portal-skip,.np-map-reset{width:44px;height:44px;border-radius:13px;font-size:1.35rem}
+ .np-map-float{font-size:.74rem;max-width:160px;min-height:46px;padding:9px 12px;border-radius:12px}
 }
 @media(max-width:460px){
  .site-header .header-inner{gap:5px}
@@ -92,7 +117,8 @@ body.np-gateway-open{overflow:hidden}
 }
 @media(max-width:355px){.site-header .avatar{display:none}}
 @media(prefers-reduced-motion:reduce){
- .np-map-float,.np-portal-skip,.np-geo-fallback path{transition:none!important}
- .np-portal-skip:hover{transform:none!important}
+ .np-map-float,.np-map-reset,.np-portal-skip,.np-geo-fallback path{transition:none!important}
+ .np-map-float::before{animation:none!important}
+ .np-map-reset:hover,.np-portal-skip:hover{transform:none!important}
 }
 @media print{.np-portal,.np-reopen{display:none!important}body.np-gateway-open{overflow:visible}}
