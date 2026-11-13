@@ -40,7 +40,7 @@ function openPortfolio(){
  portal.hidden=true;
  document.body.classList.remove('np-gateway-open');
  setInert(false);mapIsActive=false;stop();
- window.scrollTo({top:0,behavior:'instant'});
+ window.scrollTo({top:0,behavior:'auto'});
  const first=$('#main');
  if(first){first.tabIndex=-1;first.focus({preventScroll:true});}
 }
@@ -48,12 +48,12 @@ function showPortal(){
  prevFocus=document.activeElement;
  portal.hidden=false;
  document.body.classList.add('np-gateway-open');
- window.scrollTo({top:0,behavior:'instant'});
+ window.scrollTo({top:0,behavior:'auto'});
  setInert(true);
  mapIsActive=true;
  translate();
  if(hasMap&&!reduce.matches)start();
- requestAnimationFrame(()=>entry.focus({preventScroll:true}));
+ requestAnimationFrame(()=>{resize();entry.focus({preventScroll:true});});
 }
 entry?.addEventListener('click',openPortfolio);
 skip?.addEventListener('click',openPortfolio);
@@ -77,7 +77,15 @@ new MutationObserver(translate).observe(document.documentElement,{attributes:tru
 function stop(){if(raf)cancelAnimationFrame(raf);raf=0;last=0}
 function start(){if(!raf&&mapIsActive&&!document.hidden&&!reduce.matches&&hasMap)raf=requestAnimationFrame(tick)}
 document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();else start()});
-reduce.addEventListener?.('change',()=>{if(reduce.matches){stop();renderSVG()}else if(hasMap)start()});
+reduce.addEventListener?.('change',()=>{
+ if(reduce.matches){stop();renderSVG()}
+ else {
+   if(fallbackSVG)fallbackSVG.hidden=true;
+   canvas.hidden=false;
+   if(!hasMap&&districts.length){try{plotGeo()}catch(e){renderSVG();return}}
+   if(hasMap){resize();start()}
+ }
+});
 function getColor(){return document.documentElement.dataset.theme==='light'?
  {base:0x8ad1f4,side:0x6badd2,outline:0x3985b3,hot:0x0086a0,hotEmissive:0x00ccd1,point:0x129ab8}:
  {base:0x083d6e,side:0x082845,outline:0x238bb6,hot:0x05b8cf,hotEmissive:0x00e7de,point:0x69edf6};}
@@ -239,9 +247,8 @@ new MutationObserver(()=>{
 async function init(){
  translate();
  const requested=location.hash&&location.hash!=='#home'&&$$('main section').some(el=>'#'+el.id===location.hash);
- if(requested){portal.hidden=true;document.body.classList.remove('np-gateway-open');setInert(false);return}
- showPortal();
- hint.textContent=tr('loading');
+ if(requested){portal.hidden=true;document.body.classList.remove('np-gateway-open');setInert(false);}
+ else {showPortal();hint.textContent=tr('loading');}
  try{
   const response=await fetch('data/nepal-districts-lite.json',{cache:'force-cache'});
   if(!response.ok)throw Error('Map JSON response '+response.status);
@@ -250,7 +257,7 @@ async function init(){
   const pts=districts.flatMap(d=>d.r.flat());limits={minLon:Math.min(...pts.map(p=>p[0])),minLat:Math.min(...pts.map(p=>p[1])),maxLon:Math.max(...pts.map(p=>p[0])),maxLat:Math.max(...pts.map(p=>p[1]))};
   coordCenter={x:(limits.minLon+limits.maxLon)/2,y:(limits.minLat+limits.maxLat)/2};
   if(reduce.matches||!window.THREE){renderSVG();return}
-  try{plotGeo();start();setHint(tr('hover'))}catch(e){console.warn('3D Nepal map unavailable; showing SVG fallback',e);renderSVG()}
+  try{plotGeo();if(mapIsActive)start();setHint(tr('hover'))}catch(e){console.warn('3D Nepal map unavailable; showing SVG fallback',e);renderSVG()}
  }catch(err){console.warn('Nepal map data unavailable',err);canvas.hidden=true;marker.hidden=true;hint.textContent=tr('fallback')}
 }
 init();
